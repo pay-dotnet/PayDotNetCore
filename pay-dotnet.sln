@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayDotNet.Core", "src\PayDotNet.Core\PayDotNet.Core.csproj", "{6FDF72F8-D8EA-4E34-B3E8-4C5544349049}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{4A719C85-A10F-4EAE-B206-ADA38D522818}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorWebApp", "examples\RazorWebApp\RazorWebApp.csproj", "{E837A87D-D781-401B-A6DD-20E26AE82BFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayDotNet.Core.Stripe", "src\PayDotNet.Core.Stripe\PayDotNet.Core.Stripe.csproj", "{A2C3465C-528D-420B-8EBF-B8F374836E64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FDF72F8-D8EA-4E34-B3E8-4C5544349049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FDF72F8-D8EA-4E34-B3E8-4C5544349049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FDF72F8-D8EA-4E34-B3E8-4C5544349049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FDF72F8-D8EA-4E34-B3E8-4C5544349049}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E837A87D-D781-401B-A6DD-20E26AE82BFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E837A87D-D781-401B-A6DD-20E26AE82BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E837A87D-D781-401B-A6DD-20E26AE82BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E837A87D-D781-401B-A6DD-20E26AE82BFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C3465C-528D-420B-8EBF-B8F374836E64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C3465C-528D-420B-8EBF-B8F374836E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C3465C-528D-420B-8EBF-B8F374836E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C3465C-528D-420B-8EBF-B8F374836E64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E837A87D-D781-401B-A6DD-20E26AE82BFA} = {4A719C85-A10F-4EAE-B206-ADA38D522818}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92A0DF56-DC37-444A-8842-129AA122EC65}
+	EndGlobalSection
+EndGlobal
