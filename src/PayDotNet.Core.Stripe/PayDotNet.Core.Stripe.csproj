@@ -14,4 +14,8 @@
     <ProjectReference Include="..\PayDotNet.Core\PayDotNet.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Webhooks\" />
+  </ItemGroup>
+
 </Project>

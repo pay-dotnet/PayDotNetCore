@@ -10,11 +10,11 @@ public class PayCustomer
 
     public string Email { get; set; }
 
-    public ICollection<PayCharges> Charges { get; set; }
+    public IReadOnlyCollection<PayCharges> Charges { get; init; } = new List<PayCharges>();
 
-    public ICollection<PaySubscription> Subscriptions { get; set; }
+    public IReadOnlyCollection<PaySubscription> Subscriptions { get; init; } = new List<PaySubscription>();
 
-    public ICollection<PayPaymentMethod> PaymentMethods { get; set; }
+    public IReadOnlyCollection<PayPaymentMethod> PaymentMethods { get; init; } = new List<PayPaymentMethod>();
 
     // Stripe, FakeProcessor, Braintree, etc.
     public string Processor { get; set; }

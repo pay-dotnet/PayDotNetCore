@@ -1,4 +1,6 @@
-﻿namespace PayDotNet.Core;
+﻿using PayDotNet.Core.Abstraction;
+
+namespace PayDotNet.Core;
 
 /// <summary>
 /// TODO: unique(customer, processorId)
@@ -19,7 +21,7 @@ public class PaySubscription
     public int Quantity { get; set; }
 
     // TODO: enum?
-    public string Status { get; set; }
+    public PayStatus Status { get; set; }
 
     public DateTime? CurrentPeriodStart { get; set; }
 
@@ -49,4 +51,43 @@ public class PaySubscription
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
+}
+
+
+public interface IPayment
+{
+    string Id { get; }
+
+    long Amount { get; }
+
+    string ClientSecret { get; }
+
+    string Currency { get; }
+
+    string CustomerId { get; }
+
+    string Status { get; }
+
+    bool RequiresPaymentMethod();
+
+    bool RequiresAction();
+
+    bool IsCanceled();
+
+    bool IsSucceeded();
+}
+
+public static class IPaymentExtensions
+{
+    public static void Validate(this IPayment payment)
+    {
+        if (payment.RequiresPaymentMethod())
+        {
+            throw new InvalidPaymentPayDotNetException(payment);
+        }
+        if (payment.RequiresAction())
+        {
+            throw new ActionRequiredPayDotNetException(payment);
+        }
+    }
 }
