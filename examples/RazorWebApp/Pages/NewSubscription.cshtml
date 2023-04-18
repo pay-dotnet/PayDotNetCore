@@ -1,0 +1,33 @@
+﻿@page
+@model RazorWebApp.Pages.NewSubscriptionModel
+@{
+}
+
+<h1>New subscription</h1>
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="Email">Email for customer</label>
+        <input type="text" class="form-control" asp-for="Email" placeholder="Email"/>
+    </div>
+
+    <div class="form-group">
+        <h5>Plan</h5>
+        @foreach (var plan in Model.Plans)
+        {
+            <input type="radio" asp-for="Price" value="@plan.PriceId" /> 
+            @plan.Price.ToString("c") 
+            @plan.Name
+        }
+    </div>
+
+    <div class="form-group">
+        <h5>Payment Processor</h5>
+        <input type="radio" asp-for="PaymentProcessor" value="stripe" /> Stripe
+    </div>
+
+    <br/>
+
+    <button type="submit" class="btn btn-primary">Pay now</button>
+</form>

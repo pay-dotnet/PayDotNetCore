@@ -1,21 +1,26 @@
 ﻿using PayDotNet.Core.Abstraction;
-using PayDotNet.Core.Infrastructure;
+using PayDotNet.Core.Models;
+using PayDotNet.Core.Services;
 using Stripe;
 
 namespace PayDotNet.Core.Stripe;
 
-
 public class StripePaymentProcessorService : IPaymentProcessorService
 {
+    private readonly CustomerService _customers;
+    private readonly SubscriptionService _subscriptions;
+    private readonly PaymentMethodService _paymentMethods;
+
     public StripePaymentProcessorService()
     {
+        _customers = new CustomerService();
+        _subscriptions = new SubscriptionService();
+        _paymentMethods = new PaymentMethodService();
     }
-
 
     public async Task<PaymentProcessorCustomer> CreateCustomerAsync(string email, Dictionary<string, string> attributes)
     {
-        var service = new CustomerService();
-        Customer customer = await service.CreateAsync(new CustomerCreateOptions
+        Customer customer = await _customers.CreateAsync(new CustomerCreateOptions
         {
             Email = email,
             Expand = new() { "tax" }
@@ -26,8 +31,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     public async Task<PaymentProcessorSubscription?> GetSubscriptionAsync(string subscriptionId)
     {
-        var service = new SubscriptionService();
-        Subscription subscription = await service.GetAsync(subscriptionId);
+        Subscription subscription = await _subscriptions.GetAsync(subscriptionId);
         if (subscription == null)
         {
             return null;
@@ -37,8 +41,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     public async Task<PaymentProcessorSubscription> CreateSubscriptionAsync(PayCustomer customer, string plan, Dictionary<string, object?> attributes)
     {
-        var service = new SubscriptionService();
-        Subscription subscription = await service.CreateAsync(new SubscriptionCreateOptions
+        Subscription subscription = await _subscriptions.CreateAsync(new SubscriptionCreateOptions
         {
             Customer = customer.ProcessorId,
             Expand = new() { "pending_setup_intent", "latest_invoice.payment_intent", "latest_invoice.charge" },
@@ -46,10 +49,15 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             {
                 new()
                 {
-                    Plan = plan,
+                    Price = plan,
                     Quantity = 1
                 }
-            }
+            },
+            PaymentSettings = new()
+            {
+                SaveDefaultPaymentMethod = "on_subscription",
+            },
+            PaymentBehavior = "default_incomplete"
         });
 
         return Map(subscription);
@@ -77,22 +85,19 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             ["pause_resumes_at"] = subscription.PauseCollection.ResumesAt,
             ["current_period_start"] = subscription.CurrentPeriodStart,
             ["current_period_end"] = subscription.CurrentPeriodEnd,
-        });
+        }, null);
     }
 
-    public async Task<PaymentProcessorPaymentMethod> CreatePaymentMethodAsync(string processorId, string paymentMethodId, bool isDefault)
+    public async Task<PaymentProcessorPaymentMethod> AttachPaymentMethodAsync(string processorId, string paymentMethodId, bool isDefault)
     {
-        PaymentMethodService paymentMethodService = new();
-        PaymentMethod paymentMethod = await paymentMethodService.AttachAsync(paymentMethodId, new()
+        PaymentMethod paymentMethod = await _paymentMethods.AttachAsync(paymentMethodId, new()
         {
             Customer = processorId,
         });
 
-        CustomerService customerService = new();
-
         if (isDefault)
         {
-            await customerService.UpdateAsync(processorId, new CustomerUpdateOptions
+            await _customers.UpdateAsync(processorId, new CustomerUpdateOptions
             {
                 InvoiceSettings = new()
                 {
@@ -103,17 +108,13 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
         return new PaymentProcessorPaymentMethod(paymentMethod.Id, paymentMethod.Type, isDefault);
     }
-}
 
-
-public record StripePaymentProcessorSubscription(
-    string Id,
-    string CustomerId,
-    Dictionary<string, object?> Attributes,
-    IPayment Payment) : PaymentProcessorSubscription(Id, CustomerId, Attributes, Payment)
-{
-    public override DateTime? GetTrialEndDate()
+    public async Task<PaymentProcessorCustomer> FindCustomerAsync(string processorId)
     {
-        throw new NotImplementedException();
+        Customer customer = await _customers.GetAsync(processorId, new CustomerGetOptions
+        {
+            Expand = new() { "tax" }
+        });
+        return new PaymentProcessorCustomer(customer.Id, new());
     }
 }

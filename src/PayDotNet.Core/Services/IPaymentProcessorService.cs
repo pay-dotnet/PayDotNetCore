@@ -1,14 +1,17 @@
 ﻿using PayDotNet.Core.Abstraction;
+using PayDotNet.Core.Models;
 
-namespace PayDotNet.Core.Infrastructure;
+namespace PayDotNet.Core.Services;
 
 public interface IPaymentProcessorService
 {
-    Task<PaymentProcessorPaymentMethod> CreatePaymentMethodAsync(string processorId, string paymentMethodId, bool isDefault);
+    Task<PaymentProcessorPaymentMethod> AttachPaymentMethodAsync(string processorId, string paymentMethodId, bool isDefault);
 
     Task<PaymentProcessorCustomer?> GetCustomerAsync(string processorId);
 
     Task<PaymentProcessorCustomer> CreateCustomerAsync(string email, Dictionary<string, string> attributes);
+
+    Task<PaymentProcessorCustomer> FindCustomerAsync(string processorId);
 
     Task<PaymentProcessorSubscription?> GetSubscriptionAsync(string subscriptionId);
 

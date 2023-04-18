@@ -20,7 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0A892F5E-838
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2E3C6133-6660-4175-9BCA-81A6EF0E4DC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayDotNet.Core.Tests", "tests\PayDotNet.Core.Tests\PayDotNet.Core.Tests.csproj", "{FAD06360-6C5F-43A6-8932-DDF8A11652CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayDotNet.Core.Tests", "tests\PayDotNet.Core.Tests\PayDotNet.Core.Tests.csproj", "{FAD06360-6C5F-43A6-8932-DDF8A11652CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayDotNet.Core.Stripe.Tests", "tests\PayDotNet.Core.Stripe.Tests\PayDotNet.Core.Stripe.Tests.csproj", "{6303B037-2E49-4EFB-89D8-F970D01BC62D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{FAD06360-6C5F-43A6-8932-DDF8A11652CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAD06360-6C5F-43A6-8932-DDF8A11652CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAD06360-6C5F-43A6-8932-DDF8A11652CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6303B037-2E49-4EFB-89D8-F970D01BC62D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6303B037-2E49-4EFB-89D8-F970D01BC62D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6303B037-2E49-4EFB-89D8-F970D01BC62D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6303B037-2E49-4EFB-89D8-F970D01BC62D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{E837A87D-D781-401B-A6DD-20E26AE82BFA} = {4A719C85-A10F-4EAE-B206-ADA38D522818}
 		{A2C3465C-528D-420B-8EBF-B8F374836E64} = {0A892F5E-838C-4104-ABB8-41AA637BE5F3}
 		{FAD06360-6C5F-43A6-8932-DDF8A11652CE} = {2E3C6133-6660-4175-9BCA-81A6EF0E4DC0}
+		{6303B037-2E49-4EFB-89D8-F970D01BC62D} = {2E3C6133-6660-4175-9BCA-81A6EF0E4DC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92A0DF56-DC37-444A-8842-129AA122EC65}

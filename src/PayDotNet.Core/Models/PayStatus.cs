@@ -1,4 +1,4 @@
-﻿namespace PayDotNet.Core;
+﻿namespace PayDotNet.Core.Models;
 
 /// <summary>
 /// TODO: map stripe vs locally.
@@ -15,11 +15,4 @@ public enum PayStatus
     Cancelled,
     Unpaid,
     Paused
-}
-
-
-public static class PaymentProcessors
-{
-    public static readonly string Stripe = "stripe";
-    public static readonly string Fake = "fake_processor";
 }

@@ -1,7 +1,13 @@
+using Stripe;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+StripeConfiguration.ApiKey = builder.Configuration["PayDotNet:Stripe:ApiKey"];
+builder.Services.AddPayDotNet()
+    .AddStripe();
 
 var app = builder.Build();
 

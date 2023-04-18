@@ -1,10 +1,12 @@
-﻿namespace PayDotNet.Core.Abstraction;
+﻿using PayDotNet.Core.Models;
+
+namespace PayDotNet.Core.Abstraction;
 
 public interface IBillableManager
 {
-    Task<PayCustomer> ResolveCustomerAsync(PayCustomer customer);
+    Task<PayCustomer> GetOrCreateCustomerAsync(string email, string processorName, bool allowFake = false);
 
-    Task<PayCustomer> SetPaymentProcessorAsync(string customerId, string processorName);
+    Task<PayCustomer> InitializeCustomerAsync(PayCustomer payCustomer, string? paymentMethodId);
 
-    Task<PaySubscription> SubscribeAsync(PayCustomer customer, string name = "default", string plan = "default");
+    Task<PaySubscription> SubscribeAsync(PayCustomer customer, string name = "default", string price = "default");
 }

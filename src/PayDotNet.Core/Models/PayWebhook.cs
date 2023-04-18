@@ -1,4 +1,4 @@
-﻿namespace PayDotNet.Core;
+﻿namespace PayDotNet.Core.Models;
 
 public class PayWebhook
 {

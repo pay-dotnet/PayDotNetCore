@@ -1,4 +1,7 @@
-﻿namespace PayDotNet.Core.Abstraction;
+﻿using PayDotNet.Core.Models;
+
+namespace PayDotNet.Core.Abstraction;
+
 
 public interface ICustomerStore : IModelStore<PayCustomer>
 {

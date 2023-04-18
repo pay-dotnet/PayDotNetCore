@@ -1,4 +1,4 @@
-﻿namespace PayDotNet.Core;
+﻿namespace PayDotNet.Core.Models;
 
 /// <summary>
 /// TODO: required id+email
@@ -10,11 +10,14 @@ public class PayCustomer
 
     public string Email { get; set; }
 
-    public IReadOnlyCollection<PayCharges> Charges { get; init; } = new List<PayCharges>();
+    // TODO: make readonly so you can't add them
+    public ICollection<PayCharges> Charges { get; init; } = new List<PayCharges>();
 
-    public IReadOnlyCollection<PaySubscription> Subscriptions { get; init; } = new List<PaySubscription>();
+    // TODO: make readonly so you can't add them
+    public ICollection<PaySubscription> Subscriptions { get; init; } = new List<PaySubscription>();
 
-    public IReadOnlyCollection<PayPaymentMethod> PaymentMethods { get; init; } = new List<PayPaymentMethod>();
+    // TODO: make readonly so you can't add them
+    public ICollection<PayPaymentMethod> PaymentMethods { get; init; } = new List<PayPaymentMethod>();
 
     // Stripe, FakeProcessor, Braintree, etc.
     public string Processor { get; set; }

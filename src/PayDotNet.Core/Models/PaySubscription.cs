@@ -1,6 +1,4 @@
-﻿using PayDotNet.Core.Abstraction;
-
-namespace PayDotNet.Core;
+﻿namespace PayDotNet.Core.Models;
 
 /// <summary>
 /// TODO: unique(customer, processorId)
@@ -52,7 +50,6 @@ public class PaySubscription
 
     public DateTime UpdatedAt { get; set; }
 }
-
 
 public interface IPayment
 {
