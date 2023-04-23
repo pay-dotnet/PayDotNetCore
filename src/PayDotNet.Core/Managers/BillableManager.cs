@@ -1,5 +1,4 @@
-﻿using LanguageExt.Common;
-using PayDotNet.Core.Abstraction;
+﻿using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Models;
 using PayDotNet.Core.Services;
 
@@ -9,19 +8,16 @@ public class BillableManager : IBillableManager
 {
     private readonly ICustomerManager _customerManager;
     private readonly ISubscriptionManager _subscriptionManager;
-    private readonly IPaymentMethodManager _paymentMethodManager;
     private readonly IPaymentProcessorService _paymentProcessorService;
 
     public BillableManager(
         ICustomerManager customerManager,
         ISubscriptionManager subscriptionManager,
-        IPaymentMethodManager paymentMethodManager,
         IPaymentProcessorService paymentProcessorService
         )
     {
         _customerManager = customerManager;
         _subscriptionManager = subscriptionManager;
-        _paymentMethodManager = paymentMethodManager;
         _paymentProcessorService = paymentProcessorService;
     }
 
@@ -36,57 +32,36 @@ public class BillableManager : IBillableManager
         return await _customerManager.GetOrCreateCustomerAsync(email, processorName);
     }
 
-    public async Task<PayCustomer> InitializeCustomerAsync(PayCustomer payCustomer, string? paymentMethodId)
+    public async Task<PaySubscription> SubscribeAsync(PayCustomer payCustomer, string name = "default", string price = "default")
     {
-        PaymentProcessorCustomer customer;
-        if (payCustomer.HasProcessorId())
+        if (_paymentProcessorService.IsPaymentMethodRequired)
         {
-            customer = await _paymentProcessorService.FindCustomerAsync(payCustomer.Email);
-        }
-        else
-        {
-            customer = await _paymentProcessorService.CreateCustomerAsync(payCustomer.Email, new());
-            payCustomer.ProcessorId = customer.Id;
-            await _customerManager.UpdateAsync(payCustomer);
+            PayPaymentMethod? paymentMethod = payCustomer.PaymentMethods.FirstOrDefault(p => p.IsDefault);
+            if (paymentMethod == null)
+            {
+                throw new PayDotNetException("Customer has no default payment method");
+            }
         }
 
-        if (!string.IsNullOrEmpty(paymentMethodId))
+        PaySubscriptionResult result = await _subscriptionManager.CreateSubscriptionAsync(payCustomer, price);
+        if (result.Payment is not null)
         {
-            PayPaymentMethod _ = await _paymentMethodManager.AddPaymentMethodAsync(customer, paymentMethodId, isDefault: true);
+            result.Payment.Validate();
         }
 
-        // Reload payCustomer due to new data being added.
-        return (await _customerManager.FindByEmailAsync(payCustomer.Email, payCustomer.Processor))!;
+        return result.PaySubscription;
+    }
+}
+
+public class ChargeManager : IChargeManager
+{
+    public Task<PayCharge> SynchroniseAsync(string chargeId, int attempt = 0, int retries = 1)
+    {
+        throw new NotImplementedException();
     }
 
-    public async Task<Result<PaySubscription>> SubscribeAsync(PayCustomer customer, string name = "default", string price = "default")
+    public Task<PayCharge> SynchroniseAsync(PayCharge payCharge, int attempt = 0, int retries = 1)
     {
-        PayPaymentMethod? paymentMethod = customer.PaymentMethods.FirstOrDefault(p => p.IsDefault);
-        if (paymentMethod == null)
-        {
-            return new(new PayDotNetException("Customer has no default payment method"));
-        }
-
-        // TODO: Standardize the trial period options
-        //# Standardize the trial period options
-        //if (trial_period_days = options.delete(:trial_period_days)) && trial_period_days > 0
-        //  options.merge!(trial_period: true, trial_duration: trial_period_days, trial_duration_unit: :day)
-        //end
-
-        // TODO: payCustomer.Id could also be Processor.Id
-        PaymentProcessorSubscription paymentProcessorSubscription = await _paymentProcessorService.CreateSubscriptionAsync(customer, price, new());
-        // BrainTree vs Stripe logic is different
-
-        PaySubscription subscription =
-            await _subscriptionManager.SynchroniseAsync(paymentProcessorSubscription.Id, paymentProcessorSubscription, name);
-
-        // No trial, payment method requires SCA
-        if (subscription.Status == PayStatus.Incomplete)
-        {
-            // TODO: remove exception flow.
-            paymentProcessorSubscription.Payment.Validate();
-        }
-
-        return subscription;
+        throw new NotImplementedException();
     }
 }

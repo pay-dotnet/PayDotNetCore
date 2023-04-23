@@ -1,0 +1,29 @@
+﻿@page
+@model RazorWebApp.Pages.PricingModel
+@{
+}
+
+<h1>Pricing</h1>
+<div class="row">
+    @foreach(var plan in Data.Plans)
+    {
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h3 class="my-0 fw-normal">@plan.Value.Name</h3>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">@plan.Value.Price.ToString("c")<small class="text-body-secondary fw-light">/mo</small></h1>
+                    <span>(@plan.Key)</span>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                        <li>Help center access</li>
+                    </ul>
+                    <a asp-page="Subscribe" asp-route-priceId="@plan.Key" role="button" class="w-100 btn btn-lg btn-primary">Sign up for free</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

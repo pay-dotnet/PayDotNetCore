@@ -6,31 +6,52 @@ namespace PayDotNet.Core.Managers;
 
 public class SubscriptionManager : ISubscriptionManager
 {
-    private readonly IPaymentProcessorService _paymentProcessorService;
+    private readonly IChargeManager _chargeManager;
     private readonly ISubscriptionStore _subscriptionStore;
-    private readonly ICustomerStore _customerStore;
+    private readonly IPaymentProcessorService _paymentProcessorService;
 
-    public SubscriptionManager(IPaymentProcessorService paymentProcessorService,
+    public SubscriptionManager(
+        IChargeManager chargeManager,
         ISubscriptionStore subscriptionStore,
-        ICustomerStore customerStore)
+        IPaymentProcessorService paymentProcessorService)
     {
-        _paymentProcessorService = paymentProcessorService;
+        _chargeManager = chargeManager;
         _subscriptionStore = subscriptionStore;
-        _customerStore = customerStore;
+        _paymentProcessorService = paymentProcessorService;
     }
 
-    public Task<PaySubscription> CreateAsync(string name, string processorId, string processorPlan, PayStatus status, DateTime? trailEndsAt, Dictionary<string, object?> Metadata)
+    public async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string priceId)
     {
-        throw new NotImplementedException();
+        // TODO: BrainTree vs Stripe logic is different
+        PaySubscriptionResult result = await _paymentProcessorService.CreateSubscriptionAsync(payCustomer, priceId, new());
+
+        await SynchroniseAsync(result.PaySubscription.ProcessorId, result, payCustomer);
+
+        return result;
     }
 
-    public async Task<PaySubscription> SynchroniseAsync(string subscriptionId, object @object = null, string name = "", string stripeAcount = "", int attempt = 0, int retries = 1)
+    public async Task SynchroniseAsync(string processorId, PaySubscriptionResult? @object, PayCustomer payCustomer)
     {
-        PaymentProcessorSubscription paymentProcessorSubscription = await _paymentProcessorService.GetSubscriptionAsync(subscriptionId);
+        @object ??= await _paymentProcessorService.GetSubscriptionAsync(processorId, payCustomer);
+        if (@object == null)
+        {
+            return;
+        }
 
-        PayCustomer? customer = _customerStore.Customers.FirstOrDefault(c => c.Processor == "TODO" && c.ProcessorId == paymentProcessorSubscription.CustomerId.ToString());
+        PaySubscription? existingSubscription = _subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == @object.PaySubscription.ProcessorId);
+        if (existingSubscription is not null)
+        {
+            await _subscriptionStore.UpdateAsync(@object.PaySubscription);
+        }
+        else
+        {
+            await _subscriptionStore.CreateAsync(@object.PaySubscription);
+        }
 
-        // https://github.com/pay-rails/pay/blob/v6.3.1/lib/pay/stripe/subscription.rb
-        throw new NotImplementedException();
+        PayCharge? charge = @object.PaySubscription.Charges.LastOrDefault();
+        if (charge is not null && charge.Status == PayStatus.Succeeded)
+        {
+            await _chargeManager.SynchroniseAsync(charge.ProccesorId);
+        }
     }
 }

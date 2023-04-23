@@ -6,12 +6,12 @@
 /// </summary>
 public class PayCustomer
 {
-    public string Id { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
 
     public string Email { get; set; }
 
     // TODO: make readonly so you can't add them
-    public ICollection<PayCharges> Charges { get; init; } = new List<PayCharges>();
+    public ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
 
     // TODO: make readonly so you can't add them
     public ICollection<PaySubscription> Subscriptions { get; init; } = new List<PaySubscription>();
@@ -26,8 +26,7 @@ public class PayCustomer
 
     public bool IsDefault { get; set; }
 
-    // TODO: JSON
-    public string Data { get; set; }
+    public Dictionary<string, object> Data { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

@@ -4,7 +4,7 @@
 /// TODO: map stripe vs locally.
 /// </summary>
 
-public enum PayStatus
+public enum PaySubscriptionStatus
 {
     None = 0,
     Incomplete,
@@ -15,4 +15,13 @@ public enum PayStatus
     Cancelled,
     Unpaid,
     Paused
+}
+
+public enum PayStatus
+{
+    None = 0,
+    Void,
+    Succeeded,
+    Warning,
+    Error,
 }

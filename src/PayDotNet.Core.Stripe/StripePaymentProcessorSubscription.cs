@@ -3,14 +3,11 @@ using PayDotNet.Core.Models;
 
 namespace PayDotNet.Core.Stripe;
 
-public record StripePaymentProcessorSubscription(
-    string Id,
-    string CustomerId,
-    Dictionary<string, object?> Attributes,
-    IPayment Payment) : PaymentProcessorSubscription(Id, CustomerId, Attributes, Payment)
+public class StripePaymentProcessorSubscription : PaymentProcessorSubscription
 {
-    public override DateTime? GetTrialEndDate()
+    public List<object> SubscriptionItems { get; set; } = new();
+
+    public override void Map(PaySubscription paySubscription)
     {
-        throw new NotImplementedException();
     }
 }

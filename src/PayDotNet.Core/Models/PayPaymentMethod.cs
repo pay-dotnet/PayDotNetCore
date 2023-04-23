@@ -13,8 +13,7 @@ public class PayPaymentMethod
 
     public string Type { get; set; }
 
-    // TODO: JSON
-    public string Data { get; set; }
+    public Dictionary<string, object> Data { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

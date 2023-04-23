@@ -13,7 +13,11 @@ public interface IPaymentProcessorService
 
     Task<PaymentProcessorCustomer> FindCustomerAsync(string processorId);
 
-    Task<PaymentProcessorSubscription?> GetSubscriptionAsync(string subscriptionId);
+    Task<PaySubscriptionResult?> GetSubscriptionAsync(string processorId, PayCustomer payCustomer);
 
-    Task<PaymentProcessorSubscription> CreateSubscriptionAsync(PayCustomer customer, string plan, Dictionary<string, object?> attributes);
+    Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string[] plans, Dictionary<string, object?> attributes);
+
+    Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string plan, Dictionary<string, object?> attributes);
+
+    bool IsPaymentMethodRequired { get; }
 }

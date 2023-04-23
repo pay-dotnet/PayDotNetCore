@@ -13,6 +13,7 @@ public static class ServiceCollectionExtension
             .AddScoped<ICustomerManager, CustomerManager>()
             .AddScoped<IPaymentMethodManager, PaymentMethodManager>()
             .AddScoped<ISubscriptionManager, SubscriptionManager>()
+            .AddScoped<IChargeManager, ChargeManager>()
             .AddSingleton<InMemoryStore>()
             .AddSingleton<ICustomerStore>(sp => sp.GetRequiredService<InMemoryStore>())
             .AddSingleton<IPaymentMethodStore>(sp => sp.GetRequiredService<InMemoryStore>())

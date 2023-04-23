@@ -3,6 +3,8 @@
 /// <summary>
 /// TODO: unique(customer, processorId)
 /// </summary>
+public record PaySubscriptionResult(PaySubscription PaySubscription, IPayment? Payment);
+
 public class PaySubscription
 {
     public virtual PayCustomer Customer { get; set; }
@@ -10,6 +12,8 @@ public class PaySubscription
     public string CustomerId { get; set; }
 
     public string Name { get; set; }
+
+    public string Processor { get; set; }
 
     public string ProcessorId { get; set; }
 
@@ -19,7 +23,7 @@ public class PaySubscription
     public int Quantity { get; set; }
 
     // TODO: enum?
-    public PayStatus Status { get; set; }
+    public PaySubscriptionStatus Status { get; set; }
 
     public DateTime? CurrentPeriodStart { get; set; }
 
@@ -40,51 +44,28 @@ public class PaySubscription
     // TÖDO: 8,2
     public decimal? ApplicationFeePercent { get; set; }
 
-    // TODO: JSON
-    public string Metadata { get; set; }
+    public Dictionary<string, string> Metadata { get; set; }
 
-    // TODO: JSON
-    public string Data { get; set; }
+    public Dictionary<string, object> Data { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
-}
 
-public interface IPayment
-{
-    string Id { get; }
-
-    long Amount { get; }
-
-    string ClientSecret { get; }
-
-    string Currency { get; }
-
-    string CustomerId { get; }
-
-    string Status { get; }
-
-    bool RequiresPaymentMethod();
-
-    bool RequiresAction();
-
-    bool IsCanceled();
-
-    bool IsSucceeded();
+    public ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
 }
 
 public static class IPaymentExtensions
 {
     public static void Validate(this IPayment payment)
     {
-        if (payment.RequiresPaymentMethod())
-        {
-            throw new InvalidPaymentPayDotNetException(payment);
-        }
         if (payment.RequiresAction())
         {
             throw new ActionRequiredPayDotNetException(payment);
+        }
+        if (payment.RequiresPaymentMethod())
+        {
+            throw new InvalidPaymentPayDotNetException(payment);
         }
     }
 }

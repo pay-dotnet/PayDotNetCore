@@ -2,7 +2,7 @@
 
 namespace PayDotNet.Core.Abstraction;
 
-public record PaymentProcessorSubscription(string Id, string CustomerId, Dictionary<string, object?> Attributes, IPayment Payment)
+public abstract class PaymentProcessorSubscription : PaySubscription
 {
-    public virtual DateTime? GetTrialEndDate() => null;
+    public abstract void Map(PaySubscription paySubscription);
 };

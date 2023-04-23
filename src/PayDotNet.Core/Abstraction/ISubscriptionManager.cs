@@ -4,7 +4,7 @@ namespace PayDotNet.Core.Abstraction;
 
 public interface ISubscriptionManager
 {
-    public Task<PaySubscription> CreateAsync(string name, string processorId, string processorPlan, PayStatus status, DateTime? trailEndsAt, Dictionary<string, object?> Metadata);
+    Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string priceId);
 
-    public Task<PaySubscription> SynchroniseAsync(string subscriptionId, object @object = null, string name = "", string stripeAcount = "", int attempt = 0, int retries = 1);
+    Task SynchroniseAsync(string processorId, PaySubscriptionResult? @object, PayCustomer payCustomer);
 }

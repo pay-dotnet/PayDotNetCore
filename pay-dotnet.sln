@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2E3C6133
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayDotNet.Core.Tests", "tests\PayDotNet.Core.Tests\PayDotNet.Core.Tests.csproj", "{FAD06360-6C5F-43A6-8932-DDF8A11652CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayDotNet.Core.Stripe.Tests", "tests\PayDotNet.Core.Stripe.Tests\PayDotNet.Core.Stripe.Tests.csproj", "{6303B037-2E49-4EFB-89D8-F970D01BC62D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayDotNet.Core.Stripe.Tests", "tests\PayDotNet.Core.Stripe.Tests\PayDotNet.Core.Stripe.Tests.csproj", "{6303B037-2E49-4EFB-89D8-F970D01BC62D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,20 +16,19 @@ public class InMemoryStore : ICustomerStore, IPaymentMethodStore, ISubscriptionS
     public Task CreateAsync(PaySubscription model)
     {
         Data[model.CustomerId].Subscriptions.Add(model);
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
 
     public Task CreateAsync(PayCustomer model)
     {
-        model.Id = Guid.NewGuid().ToString();
         Data.Add(model.Id, model);
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
 
     public Task CreateAsync(PayPaymentMethod model)
     {
         Data[model.CustomerId].PaymentMethods.Add(model);
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
 
     public Task UpdateAsync(PaySubscription model)

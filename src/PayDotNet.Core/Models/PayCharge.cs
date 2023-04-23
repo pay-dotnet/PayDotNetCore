@@ -3,7 +3,7 @@
 /// <summary>
 /// TODO: unique (customerid, processorid)
 /// </summary>
-public class PayCharges
+public class PayCharge
 {
     public virtual PayCustomer Customer { get; set; }
 
@@ -23,11 +23,11 @@ public class PayCharges
 
     public int? AmountRefunded { get; set; }
 
-    // TODO: JSON
-    public string Metadata { get; set; }
+    public Dictionary<string, string> Metadata { get; set; }
 
-    // TODO: JSON
-    public string Data { get; set; }
+    public Dictionary<string, object> Data { get; set; }
+
+    public PayStatus Status { get; set; }
 
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }

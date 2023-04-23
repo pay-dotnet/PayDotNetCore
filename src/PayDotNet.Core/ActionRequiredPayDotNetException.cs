@@ -10,8 +10,14 @@ public class ActionRequiredPayDotNetException : PayDotNetException
         Payment = payment;
     }
 
-    public ActionRequiredPayDotNetException(string message) : base(message) { }
-    public ActionRequiredPayDotNetException(string message, Exception inner) : base(message, inner) { }
+    public ActionRequiredPayDotNetException(string message) : base(message)
+    {
+    }
+
+    public ActionRequiredPayDotNetException(string message, Exception inner) : base(message, inner)
+    {
+    }
+
     protected ActionRequiredPayDotNetException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context) : base(info, context) { }

@@ -6,19 +6,32 @@ using PayDotNet.Core.Models;
 
 namespace RazorWebApp.Pages
 {
-    public class NewSubscriptionModel : PageModel
+    public class SubscribeModel : PageModel
     {
-        public NewSubscriptionModel(IBillableManager billableManager)
+        private readonly IBillableManager _billableManager;
+
+        public SubscribeModel(IBillableManager billableManager)
         {
             _billableManager = billableManager;
         }
 
-        public void OnGet()
+        public void OnGet(string priceId)
         {
-            Price = Plans.First().PriceId;
+            SelectedPlan = Data.Plans[priceId];
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public Data.Plan SelectedPlan { get; set; }
+
+        [BindProperty]
+        public string Price { get; set; }
+
+        [BindProperty]
+        public string PaymentProcessor { get; set; } = "stripe";
+
+        [BindProperty]
+        public string Email { get; set; }
+
+        public async Task<IActionResult> OnPostAsync(string priceId)
         {
             try
             {
@@ -30,31 +43,15 @@ namespace RazorWebApp.Pages
             {
                 return RedirectToPage("Pay", new { id = e.Payment.Id });
             }
+            catch (InvalidPaymentPayDotNetException e)
+            {
+                return RedirectToPage("Pay", new { id = e.Payment.Id });
+            }
             catch (PayDotNetException e)
             {
                 ModelState.AddModelError("", e.Message);
                 return Page();
             }
         }
-
-        [BindProperty]
-        public string Price { get; set; }
-
-        [BindProperty]
-        public string PaymentProcessor { get; set; } = "stripe";
-
-        [BindProperty]
-        public string Email { get; set; }
-
-        public Plan[] Plans = new[]
-        {
-            new Plan("Basic", "price_1MyDj2JUAL06t0UNphFwwc6l", 249m),
-            new Plan("Premium", "price_1MyDj2JUAL06t0UNjnmx5za5", 749m),
-            new Plan("Gold", "price_1MyI7PJUAL06t0UNO12eNG9M", 999m)
-        };
-
-        private readonly IBillableManager _billableManager;
     }
-
-    public record Plan(string Name, string PriceId, decimal Price);
 }

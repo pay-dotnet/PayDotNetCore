@@ -6,7 +6,5 @@ public interface IBillableManager
 {
     Task<PayCustomer> GetOrCreateCustomerAsync(string email, string processorName, bool allowFake = false);
 
-    Task<PayCustomer> InitializeCustomerAsync(PayCustomer payCustomer, string? paymentMethodId);
-
-    Task<PaySubscription> SubscribeAsync(PayCustomer customer, string name = "default", string price = "default");
+    Task<PaySubscription> SubscribeAsync(PayCustomer payCustomer, string name = "default", string price = "default");
 }
