@@ -1,6 +1,6 @@
 ﻿using Stripe;
 
-namespace PayDotNet.Core.Stripe.Webhooks;
+namespace PayDotNet.Core.Stripe;
 
 /// <summary>
 /// Strongly typed interface for handling the Stripe webhooks.

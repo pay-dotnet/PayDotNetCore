@@ -3,8 +3,6 @@
 /// <summary>
 /// TODO: unique(customer, processorId)
 /// </summary>
-public record PaySubscriptionResult(PaySubscription PaySubscription, IPayment? Payment);
-
 public class PaySubscription
 {
     public virtual PayCustomer Customer { get; set; }

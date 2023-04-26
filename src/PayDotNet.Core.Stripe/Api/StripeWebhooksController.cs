@@ -5,7 +5,7 @@ using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Models;
 using Stripe;
 
-namespace PayDotNet.Core.Stripe.Webhooks;
+namespace PayDotNet.Core.Stripe.Api;
 
 [Route("pay/webhooks/stripe")]
 public class StripeWebhookController : Controller

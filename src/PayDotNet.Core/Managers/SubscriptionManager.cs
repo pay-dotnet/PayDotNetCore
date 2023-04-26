@@ -20,6 +20,11 @@ public class SubscriptionManager : ISubscriptionManager
         _paymentProcessorService = paymentProcessorService;
     }
 
+    public Task CancellAllAsync(PayCustomer payCustomer)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string priceId)
     {
         // TODO: BrainTree vs Stripe logic is different
@@ -28,6 +33,11 @@ public class SubscriptionManager : ISubscriptionManager
         await SynchroniseAsync(result.PaySubscription.ProcessorId, result, payCustomer);
 
         return result;
+    }
+
+    public Task<PaySubscription?> FindByIdAsync(string processor, string processorId)
+    {
+        return Task.FromResult(_subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == processor && s.Processor == processor));
     }
 
     public async Task SynchroniseAsync(string processorId, PaySubscriptionResult? @object, PayCustomer payCustomer)

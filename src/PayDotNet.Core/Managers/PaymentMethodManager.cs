@@ -6,16 +6,13 @@ namespace PayDotNet.Core.Managers;
 
 public class PaymentMethodManager : IPaymentMethodManager
 {
-    private readonly ICustomerManager _customerManager;
     private readonly IPaymentMethodStore _paymentMethodStore;
     private readonly IPaymentProcessorService _paymentProcessorService;
 
     public PaymentMethodManager(
-        ICustomerManager customerManager,
         IPaymentMethodStore paymentMethodStore,
         IPaymentProcessorService paymentProcessorService)
     {
-        _customerManager = customerManager;
         _paymentMethodStore = paymentMethodStore;
         _paymentProcessorService = paymentProcessorService;
     }
@@ -27,6 +24,21 @@ public class PaymentMethodManager : IPaymentMethodManager
 
         PayPaymentMethod paymentMethod = await SavePaymentMethodAsync(isDefault, paymentProcessorPaymentMethod);
         return paymentMethod;
+    }
+
+    public Task DeleteAllAsync(PayCustomer payCustomer)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<PayPaymentMethod> SynchroniseAsync(string paymentMethodId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task UpdateAllAsync(bool isDefault)
+    {
+        throw new NotImplementedException();
     }
 
     private async Task<PayPaymentMethod> SavePaymentMethodAsync(bool isDefault, PaymentProcessorPaymentMethod paymentProcessorPaymentMethod)

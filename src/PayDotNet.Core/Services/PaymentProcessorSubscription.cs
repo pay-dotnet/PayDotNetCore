@@ -1,6 +1,6 @@
 ﻿using PayDotNet.Core.Models;
 
-namespace PayDotNet.Core.Abstraction;
+namespace PayDotNet.Core.Services;
 
 public abstract class PaymentProcessorSubscription : PaySubscription
 {

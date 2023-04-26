@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using PayDotNet.Core.Models;
-using PayDotNet.Core.Stripe.Webhooks;
 using PayDotNet.Core.Webhooks;
 using Stripe;
 

@@ -57,4 +57,9 @@ public class CustomerManager : ICustomerManager
     {
         return _customerStore.UpdateAsync(customer);
     }
+
+    public Task<PayCustomer?> FindByIdAsync(string processorId, string processorName)
+    {
+        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.ProcessorId == processorId && c.Processor == processorName));
+    }
 }
