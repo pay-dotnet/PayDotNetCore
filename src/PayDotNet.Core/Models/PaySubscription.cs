@@ -51,6 +51,16 @@ public class PaySubscription
     public DateTime UpdatedAt { get; set; }
 
     public ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
+
+    public bool IsTrial()
+    {
+        return TrailEndsAt.HasValue && TrailEndsAt.Value > DateTime.UtcNow;
+    }
+
+    public bool IsTrialEnded()
+    {
+        return TrailEndsAt.HasValue && TrailEndsAt.Value <= DateTime.UtcNow;
+    }
 }
 
 public static class IPaymentExtensions

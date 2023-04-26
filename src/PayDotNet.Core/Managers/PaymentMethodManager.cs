@@ -17,10 +17,10 @@ public class PaymentMethodManager : IPaymentMethodManager
         _paymentProcessorService = paymentProcessorService;
     }
 
-    public async Task<PayPaymentMethod> AddPaymentMethodAsync(PaymentProcessorCustomer customer, string paymentMethodId, bool isDefault = false)
+    public async Task<PayPaymentMethod> AddPaymentMethodAsync(PaymentProcessorCustomer customer, string processorId, bool isDefault = false)
     {
         PaymentProcessorPaymentMethod paymentProcessorPaymentMethod =
-            await _paymentProcessorService.AttachPaymentMethodAsync(customer.Id, paymentMethodId, isDefault);
+            await _paymentProcessorService.AttachPaymentMethodAsync(customer.Id, processorId, isDefault);
 
         PayPaymentMethod paymentMethod = await SavePaymentMethodAsync(isDefault, paymentProcessorPaymentMethod);
         return paymentMethod;
@@ -31,7 +31,12 @@ public class PaymentMethodManager : IPaymentMethodManager
         throw new NotImplementedException();
     }
 
-    public Task<PayPaymentMethod> SynchroniseAsync(string paymentMethodId)
+    public Task DeleteByIdAsync(string processorName, string processorId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<PayPaymentMethod> SynchroniseAsync(string processorId)
     {
         throw new NotImplementedException();
     }

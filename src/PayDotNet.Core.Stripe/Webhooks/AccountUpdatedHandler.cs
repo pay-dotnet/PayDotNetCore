@@ -1,12 +1,30 @@
-﻿using Stripe;
+﻿using PayDotNet.Core.Abstraction;
+using PayDotNet.Core.Models;
+using Stripe;
 
 namespace PayDotNet.Core.Stripe.Webhooks;
 
 // TODO: merchants.
 public class AccountUpdatedHandler : IStripeWebhookHandler
 {
-    public Task HandleAsync(Event @event)
+    private readonly IMerchantManager _merchantManager;
+
+    public AccountUpdatedHandler(IMerchantManager merchantManager)
     {
-        throw new NotImplementedException();
+        _merchantManager = merchantManager;
+    }
+
+    public async Task HandleAsync(Event @event)
+    {
+        if (@event.Data.Object is Account account)
+        {
+            PayMerchant? payMerchant = await _merchantManager.FindByIdAsync(PaymentProcessors.Stripe, account.Id);
+            if (payMerchant is not null)
+            {
+                // TODO: set onboarding_complete
+                payMerchant.Data["onboarding_complete "] = account.ChargesEnabled;
+                await _merchantManager.UpdateAsync(payMerchant);
+            }
+        }
     }
 }

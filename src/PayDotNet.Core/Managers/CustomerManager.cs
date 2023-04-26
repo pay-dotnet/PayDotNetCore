@@ -17,6 +17,23 @@ public class CustomerManager : ICustomerManager
         _customerStore = customerStore;
     }
 
+    public async Task<PayCustomer> GetOrCreateCustomerAsync(string processorName, string processorId, string email)
+    {
+        PayCustomer? customer = _customerStore.Customers.FirstOrDefault(c => c.ProcessorId == processorId && c.Processor == processorName);
+        if (customer == null)
+        {
+            customer = new()
+            {
+                Email = email,
+                Processor = processorName,
+                ProcessorId = processorId,
+                IsDefault = true
+            };
+            await _customerStore.CreateAsync(customer);
+        }
+        return customer;
+    }
+
     public async Task<PayCustomer> GetOrCreateCustomerAsync(string email, string processorName)
     {
         PayCustomer? customer = _customerStore.Customers.FirstOrDefault(c => c.Email == email && c.Processor == processorName);
@@ -58,8 +75,8 @@ public class CustomerManager : ICustomerManager
         return _customerStore.UpdateAsync(customer);
     }
 
-    public Task<PayCustomer?> FindByIdAsync(string processorId, string processorName)
+    public Task<PayCustomer?> FindByIdAsync(string processorName, string processorId)
     {
-        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.ProcessorId == processorId && c.Processor == processorName));
+        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Processor == processorName && c.ProcessorId == processorId));
     }
 }

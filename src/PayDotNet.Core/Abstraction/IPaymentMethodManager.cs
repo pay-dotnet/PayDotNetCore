@@ -9,6 +9,8 @@ public interface IPaymentMethodManager
 
     Task DeleteAllAsync(PayCustomer payCustomer);
 
+    Task DeleteByIdAsync(string processorName, string processorId);
+
     Task<PayPaymentMethod> SynchroniseAsync(string paymentMethodId);
 
     Task UpdateAllAsync(bool isDefault);

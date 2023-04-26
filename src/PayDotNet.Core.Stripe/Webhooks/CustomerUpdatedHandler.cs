@@ -21,7 +21,7 @@ public class CustomerUpdatedHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is Customer customer)
         {
-            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(customer.Id, PaymentProcessors.Stripe);
+            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, customer.Id);
             if (payCustomer is null)
             {
                 return;
@@ -29,10 +29,12 @@ public class CustomerUpdatedHandler : IStripeWebhookHandler
 
             if (!string.IsNullOrEmpty(customer.InvoiceSettings?.DefaultPaymentMethodId))
             {
+                // Sync default card
                 await _paymentMethodManager.SynchroniseAsync(customer.InvoiceSettings.DefaultPaymentMethodId);
             }
             else
             {
+                // No default payment method set
                 await _paymentMethodManager.UpdateAllAsync(isDefault: false);
             }
         }

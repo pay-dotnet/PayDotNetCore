@@ -81,11 +81,11 @@ public static class ServiceCollectionExtension
         builder.Webhooks.SubscribeWebhook<PaymentMethodDetachedHandler>(Events.PaymentMethodDetached);
 
         // If an account is updated in stripe, we should update it as well
-        builder.Webhooks.SubscribeWebhook<AccountUpdatedHandler>(Events.PaymentIntentSucceeded);
+        builder.Webhooks.SubscribeWebhook<AccountUpdatedHandler>(Events.AccountUpdated);
 
         // Handle subscriptions in Stripe Checkout Sessions
-        builder.Webhooks.SubscribeWebhook<CheckoutSessionAsyncPaymentSucceededHandler>(Events.PaymentIntentSucceeded);
-        builder.Webhooks.SubscribeWebhook<CheckoutSessionCompletedHandler>(Events.PaymentIntentSucceeded);
+        builder.Webhooks.SubscribeWebhook<CheckoutSessionAsyncPaymentSucceededHandler>(Events.CheckoutSessionAsyncPaymentSucceeded);
+        builder.Webhooks.SubscribeWebhook<CheckoutSessionCompletedHandler>(Events.CheckoutSessionCompleted);
 
         return builder;
     }

@@ -24,7 +24,7 @@ public class CustomerDeletedHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is Customer customer)
         {
-            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(customer.Id, PaymentProcessors.Stripe);
+            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, customer.Id);
             if (payCustomer is null)
             {
                 return;
