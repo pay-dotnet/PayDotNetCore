@@ -10,5 +10,7 @@ public class PayDotNetConfiguration
 
 public class PayDotNetStripeConfiguration
 {
+    public string? ApiKey { get; set; }
+
     public string? EndpointSecret { get; set; }
 }

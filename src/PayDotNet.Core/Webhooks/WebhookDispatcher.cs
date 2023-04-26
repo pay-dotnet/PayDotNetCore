@@ -1,24 +1,50 @@
-﻿using PayDotNet.Core.Abstraction;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using PayDotNet.Core.Abstraction;
 
 namespace PayDotNet.Core.Webhooks;
 
-public class WebhookDispatcher : IWebhookDispatcher
+public abstract class WebhookDispatcher : IWebhookDispatcher
 {
-    private readonly Dictionary<string, PaymentProcessorWebhookDispatcher> _dispatchers;
+    private readonly ILogger _logger;
 
-    public WebhookDispatcher(IEnumerable<PaymentProcessorWebhookDispatcher> dispatchers)
+    protected WebhookDispatcher(
+        string name,
+        WebhookRouterTable routingTable,
+        IServiceProvider serviceProvider,
+        ILogger logger)
     {
-        _dispatchers = dispatchers.ToDictionary(d => d.Name);
+        Name = name;
+        RoutingTable = routingTable;
+        ServiceProvider = serviceProvider;
+        _logger = logger;
     }
 
-    public Task DispatchAsync(string processorName, string eventType, string @event)
+    public string Name { get; }
+
+    public WebhookRouterTable RoutingTable { get; }
+
+    public IServiceProvider ServiceProvider { get; }
+
+    public abstract Task DispatchAsync(string processorName, string eventType, string @event);
+
+    public IEnumerable<object> GetWebhookHandlers(string eventType)
     {
-        if (!_dispatchers.ContainsKey(processorName))
+        if (!RoutingTable.ContainsKey(eventType))
         {
-            return Task.CompletedTask;
+            // Unexpected event type
+            _logger.LogWarning("Unhandled event type: {0}", eventType);
+            yield break;
         }
 
-        PaymentProcessorWebhookDispatcher dispatcher = _dispatchers[processorName];
-        return dispatcher.DispatchAsync(eventType, @event);
+        using var scope = ServiceProvider.CreateScope();
+        foreach (Type serviceType in RoutingTable[eventType])
+        {
+            object? service = scope.ServiceProvider.GetService(serviceType);
+            if (service is not null)
+            {
+                yield return service;
+            }
+        }
     }
 }

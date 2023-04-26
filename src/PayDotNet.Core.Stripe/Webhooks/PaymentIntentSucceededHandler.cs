@@ -14,7 +14,7 @@ public class PaymentIntentSucceededHandler : IStripeWebhookHandler
 
     public async Task HandleAsync(Event @event)
     {
-        PaymentIntent paymentIntent = @event.Data.Object as PaymentIntent;
+        PaymentIntent? paymentIntent = @event.Data.Object as PaymentIntent;
 
         await _chargeManager.SynchroniseAsync(paymentIntent.Id, new());
     }

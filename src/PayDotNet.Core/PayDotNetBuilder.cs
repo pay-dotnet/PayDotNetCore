@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PayDotNet.Core;
 
@@ -9,8 +10,14 @@ public sealed class PayDotNetBuilder
 {
     public IServiceCollection Services { get; }
 
-    public PayDotNetBuilder(IServiceCollection services)
+    public IConfiguration Configuration { get; }
+
+    public PayDotNetConfiguration PayDotNetConfiguration { get; }
+
+    public PayDotNetBuilder(IServiceCollection services, IConfiguration configuration, PayDotNetConfiguration payDotNetConfiguration)
     {
         Services = services;
+        Configuration = configuration;
+        PayDotNetConfiguration = payDotNetConfiguration;
     }
 }

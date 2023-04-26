@@ -11,10 +11,12 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     private readonly CustomerService _customers;
     private readonly SubscriptionService _subscriptions;
     private readonly PaymentMethodService _paymentMethods;
+    private readonly IOptions<PayDotNetConfiguration> _options;
 
     public bool IsPaymentMethodRequired => false;
 
-    public StripePaymentProcessorService(IOptions<PayDotNetConfiguration> options)
+    public StripePaymentProcessorService(
+        IOptions<PayDotNetConfiguration> options)
     {
         _customers = new CustomerService();
         _subscriptions = new SubscriptionService();
@@ -30,8 +32,6 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         "latest_invoice.total_discount_amounts.discount",
         "latest_invoice.total_tax_amounts.tax_rate"
     };
-
-    private readonly IOptions<PayDotNetConfiguration> _options;
 
     public async Task<PaymentProcessorCustomer> CreateCustomerAsync(string email, Dictionary<string, string> attributes)
     {

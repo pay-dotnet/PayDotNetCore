@@ -9,7 +9,7 @@ namespace PayDotNet.Core.Stripe;
 /// <summary>
 /// Custom dispatcher for stripe so we can have strongly typed WebhookHandlers
 /// </summary>
-public sealed class StripeWebhookDispatcher : PaymentProcessorWebhookDispatcher
+public sealed class StripeWebhookDispatcher : WebhookDispatcher
 {
     public StripeWebhookDispatcher(
         WebhookRouterTable routingTable,
@@ -19,7 +19,7 @@ public sealed class StripeWebhookDispatcher : PaymentProcessorWebhookDispatcher
     {
     }
 
-    public override async Task DispatchAsync(string eventType, string @event)
+    public override async Task DispatchAsync(string processorName, string eventType, string @event)
     {
         Event stripeEvent = EventUtility.ParseEvent(@event);
         foreach (object handler in GetWebhookHandlers(eventType))

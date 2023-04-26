@@ -25,12 +25,12 @@ public static class ServiceCollectionExtension
         // Webhook infrastructure registration
         services
             .AddScoped<IWebhookManager, WebhookManager>()
-            .AddSingleton<IWebhookDispatcher, WebhookDispatcher>();
+            .AddSingleton<IWebhookDispatcher, CompositeWebhookDispatcher>();
 
         // Configuration
-        services.Configure<PayDotNetConfiguration>(configuration.GetSection("PayDotNet"));
-
-        return new(services);
+        IConfigurationSection configSection = configuration.GetSection("PayDotNet");
+        services.Configure<PayDotNetConfiguration>(configSection);
+        return new(services, configuration, configSection.Get<PayDotNetConfiguration>());
     }
 
     public static IServiceCollection AddBillableManager<TBillableManager>(this IServiceCollection services)
