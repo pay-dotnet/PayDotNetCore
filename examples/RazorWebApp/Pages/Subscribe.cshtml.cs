@@ -43,6 +43,7 @@ namespace RazorWebApp.Pages
             {
                 return RedirectToPage("Pay", new { id = e.Payment.Id });
             }
+            // TODO: this doesn't make sense.
             catch (InvalidPaymentPayDotNetException e)
             {
                 return RedirectToPage("Pay", new { id = e.Payment.Id });

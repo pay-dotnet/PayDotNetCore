@@ -8,16 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
     <PackageReference Include="Stripe.net" Version="41.13.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PayDotNet.Core\PayDotNet.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Webhooks\" />
   </ItemGroup>
 
 </Project>

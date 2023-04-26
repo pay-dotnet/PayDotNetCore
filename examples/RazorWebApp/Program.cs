@@ -1,3 +1,4 @@
+using PayDotNet.Core.Stripe.Webhooks;
 using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +7,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 StripeConfiguration.ApiKey = builder.Configuration["PayDotNet:Stripe:ApiKey"];
-builder.Services.AddPayDotNet()
-    .AddStripe();
+StripeConfiguration.AppInfo = new()
+{
+    Name = "PayDotNetCore",
+    PartnerId = "TODO",
+    Url = "https://github.com/pay-dotnet/PayDotNetCore"
+};
+
+// STEP 1:
+builder.Services.AddPayDotNet(builder.Configuration)
+    .AddStripe(config =>
+    {
+        config.Webhooks.SubscribeWebhook<PaymentIntentSucceededHandler>(Events.PaymentIntentSucceeded);
+    });
 
 var app = builder.Build();
 
@@ -27,5 +39,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+// STEP 1:
+// REQUIRED TO ADD in RazorPage app.
+app.MapControllers();
 
 app.Run();

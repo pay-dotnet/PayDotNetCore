@@ -52,16 +52,3 @@ public class BillableManager : IBillableManager
         return result.PaySubscription;
     }
 }
-
-public class ChargeManager : IChargeManager
-{
-    public Task<PayCharge> SynchroniseAsync(string chargeId, int attempt = 0, int retries = 1)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<PayCharge> SynchroniseAsync(PayCharge payCharge, int attempt = 0, int retries = 1)
-    {
-        throw new NotImplementedException();
-    }
-}

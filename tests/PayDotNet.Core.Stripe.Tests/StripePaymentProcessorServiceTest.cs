@@ -30,6 +30,5 @@ public class StripePaymentProcessorServiceTest : TestBase<StripePaymentProcessor
 
         var stripeSubscription = await SystemUnderTest.CreateSubscriptionAsync(customer, "price_1MyDj2JUAL06t0UNphFwwc6l", new());
         stripeSubscription.Should().NotBeNull();
-
     }
 }

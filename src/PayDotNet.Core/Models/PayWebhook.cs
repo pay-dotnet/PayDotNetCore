@@ -2,15 +2,14 @@
 
 public class PayWebhook
 {
-    public string Processor { get; set; }
+    public string Processor { get; init; }
 
-    public string EventType { get; set; }
+    public string EventType { get; init; }
 
     // TODO: JSON
-    public string Event { get; set; }
+    public string Event { get; init; }
 
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; init; }
 
-    public DateTime UpdatedAt { get; set; }
+    public DateTime UpdatedAt { get; init; }
 }
-

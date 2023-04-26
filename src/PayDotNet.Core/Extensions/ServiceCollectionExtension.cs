@@ -1,12 +1,15 @@
-﻿using PayDotNet.Core.Abstraction;
+﻿using Microsoft.Extensions.Configuration;
+using PayDotNet.Core;
+using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Managers;
 using PayDotNet.Core.Stores;
+using PayDotNet.Core.Webhooks;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceCollectionExtension
 {
-    public static PayDotNetBuilder AddPayDotNet(this IServiceCollection services)
+    public static PayDotNetBuilder AddPayDotNet(this IServiceCollection services, IConfiguration configuration)
     {
         services
             .AddBillableManager<BillableManager>()
@@ -17,8 +20,16 @@ public static class ServiceCollectionExtension
             .AddSingleton<InMemoryStore>()
             .AddSingleton<ICustomerStore>(sp => sp.GetRequiredService<InMemoryStore>())
             .AddSingleton<IPaymentMethodStore>(sp => sp.GetRequiredService<InMemoryStore>())
-            .AddSingleton<ISubscriptionStore>(sp => sp.GetRequiredService<InMemoryStore>())
-            ;
+            .AddSingleton<ISubscriptionStore>(sp => sp.GetRequiredService<InMemoryStore>());
+
+        // Webhook infrastructure registration
+        services
+            .AddScoped<IWebhookManager, WebhookManager>()
+            .AddSingleton<IWebhookDispatcher, WebhookDispatcher>();
+
+        // Configuration
+        services.Configure<PayDotNetConfiguration>(configuration.GetSection("PayDotNet"));
+
         return new(services);
     }
 
@@ -26,15 +37,5 @@ public static class ServiceCollectionExtension
         where TBillableManager : class, IBillableManager
     {
         return services.AddScoped<IBillableManager, TBillableManager>();
-    }
-}
-
-public class PayDotNetBuilder
-{
-    public readonly IServiceCollection Services;
-
-    public PayDotNetBuilder(IServiceCollection services)
-    {
-        Services = services;
     }
 }
