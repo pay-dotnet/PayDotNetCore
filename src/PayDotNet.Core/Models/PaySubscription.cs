@@ -5,13 +5,13 @@
 /// </summary>
 public class PaySubscription
 {
-    public virtual PayCustomer Customer { get; set; }
+    public int Id { get; set; }
 
     public string CustomerId { get; set; }
 
     public string Name { get; set; }
 
-    public string Processor { get; set; }
+    // public string Processor { get; set; } Can be found in the Customer.
 
     public string ProcessorId { get; set; }
 
@@ -50,7 +50,9 @@ public class PaySubscription
 
     public DateTime UpdatedAt { get; set; }
 
-    public ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
+    public virtual ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
+
+    public virtual ICollection<PaySubscriptionItem> SubscriptionItems { get; set; } = new List<PaySubscriptionItem>();
 
     public bool IsTrial()
     {
@@ -61,19 +63,55 @@ public class PaySubscription
     {
         return TrailEndsAt.HasValue && TrailEndsAt.Value <= DateTime.UtcNow;
     }
+
+    public bool IsIncomplete()
+    {
+        return Status == PaySubscriptionStatus.Incomplete;
+    }
+}
+
+public class PaySubscriptionItem
+{
+    public string Id { get; set; } = default!;
+
+    public object Price { get; set; } = default!;
+
+    public Dictionary<string, string> Metadata { get; set; } = new();
+
+    public long Quantity { get; set; }
 }
 
 public static class IPaymentExtensions
 {
     public static void Validate(this IPayment payment)
     {
-        if (payment.RequiresAction())
-        {
-            throw new ActionRequiredPayDotNetException(payment);
-        }
         if (payment.RequiresPaymentMethod())
         {
             throw new InvalidPaymentPayDotNetException(payment);
         }
+        if (payment.RequiresAction())
+        {
+            throw new ActionRequiredPayDotNetException(payment);
+        }
+    }
+
+    public static bool IsCanceled(this IPayment payment)
+    {
+        return payment.Status == "canceled";
+    }
+
+    public static bool IsSucceeded(this IPayment payment)
+    {
+        return payment.Status == "succeeded";
+    }
+
+    public static bool RequiresAction(this IPayment payment)
+    {
+        return payment.Status == "requires_action";
+    }
+
+    public static bool RequiresPaymentMethod(this IPayment payment)
+    {
+        return payment.Status == "requires_payment_method";
     }
 }

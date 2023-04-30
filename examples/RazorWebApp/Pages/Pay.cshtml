@@ -1,71 +1,176 @@
-﻿@page "{id}"
+﻿@page "pay/{id?}"
+@using Microsoft.Extensions.Options;
+@using PayDotNet.Core;
 @model RazorWebApp.Pages.PayModel
+@inject IOptions<PayDotNetConfiguration> options;
 @{
 }
 
-<h1>Pending payment @Model.PaymentIntent.Id</h1>
+<h1>
+    @(Model.Payment?.Mode ?? "Setup")
+</h1>
 
-@if(Model.PaymentIntent.Status == "succeeded")
-{
-    <h4>Payment already completed</h4>
-}
-else
-{
-    <form method="post" id="payment-form">
-        <div id="payment-element">
-            <!-- Elements will create form elements here -->
-        </div>
-        <button class="btn btn-primary" id="submit">Pay</button>
-        <div id="error-message">
-            <!-- Display error message to your customers here -->
-        </div>
-    </form>
-}
 
+<!--EXTRACT To PaymentForm partial. -->
+<form id="payment-form" 
+    method="post"
+    data-payment-intent="@(Model.Payment?.Mode == "payment" ? Model.Payment.Id : null)" 
+    data-setup-intent="@(Model.Payment?.Mode == "setup" ? Model.Payment.Id : null)"
+    data-status="@(string.IsNullOrEmpty(Model.Payment?.Status) ? null : Model.Payment?.Status)">
+    <div id="payment-element">
+        <!-- Elements will create form elements here -->
+    </div>
+    <button id="submit-button" class="btn btn-primary">Submit</button>
+    <div id="error-message">
+        <!-- Display error message to your customers here -->
+    </div>
+</form>
 
 @section Scripts
-    {
+{
     <script>
-        const stripe = Stripe('pk_test_51IQViRJUAL06t0UN6YknkpmCTZ0OrwCvJopru0HD5GRm7UgTIKszzMbcT63FY7X5rkHZrqFfwdGLahRkv3tibA9Z00QpQrBOlP');
+        const form = document.getElementById('payment-form')
+        const submitButton = document.getElementById('submit-button');
+        const hasPayment = '@(Model.Payment is not null)' == '@true';
 
-        const options = {
-            clientSecret: '@Model.PaymentIntent.ClientSecret',
-            // Fully customizable with appearance API.
-            appearance: {/*...*/ },
-        };
+        document.addEventListener("DOMContentLoaded", async () => {
+            let paymentElement = document.querySelector("#payment-element")
 
-        // Set up Stripe.js and Elements to use in checkout form, passing the client secret obtained in step 5
-        const elements = stripe.elements(options);
-
-        // Create and mount the Payment Element
-        const paymentElement = elements.create('payment');
-        paymentElement.mount('#payment-element');
-
-
-        const form = document.getElementById('payment-form');
-
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const { error } = await stripe.confirmPayment({
-                //`Elements` instance that was used to create the Payment Element
-                elements,
-                confirmParams: {
-                    return_url: '@Url.PageLink("Success")',
-                }
-            });
-
-            if (error) {
-                // This point will only be reached if there is an immediate error when
-                // confirming the payment. Show error to your customer (for example, payment
-                // details incomplete)
-                const messageContainer = document.querySelector('#error-message');
-                messageContainer.textContent = error.message;
-            } else {
-                // Your customer will be redirected to your `return_url`. For some payment
-                // methods like iDEAL, your customer will be redirected to an intermediate
-                // site first to authorize the payment, then redirected to the `return_url`.
+            if (paymentElement !== null) 
+            { 
+                await setupStripe(); 
             }
-        });
+        })
+
+        const handleError = (error) => {
+            const messageContainer = document.querySelector('#error-message');
+            messageContainer.textContent = error.message;
+            submitButton.disabled = false;
+        }
+
+        async function setupStripe() {
+            const stripe_key = '@options.Value.Stripe.PublicKey';
+            const stripe = Stripe(stripe_key)
+
+            let paymentIntentId = form.dataset.paymentIntent
+            let setupIntentId = form.dataset.setupIntent
+
+            let mode = 
+                paymentIntentId ? 'payment' :
+                setupIntentId ? 'subscription' : 
+                'setup';
+
+            const options = {
+                
+                // Fully customizable with appearance API.
+                appearance: {/*...*/ },
+            };
+
+            if(hasPayment)
+            {
+                options.clientSecret = '@Model.Payment?.ClientSecret';
+            }
+            else 
+            {
+                options.mode = 'setup'
+                options.paymentMethodCreation = 'manual'
+            }
+
+            // Set up Stripe.js and Elements to use in checkout form
+            const elements = stripe.elements(options);
+
+            // Create and mount the Payment Element
+            const paymentElement = elements.create('payment');
+            paymentElement.mount('#payment-element');
+
+            // PaymentIntent is available, checking if we need to do SCA and trigger the form.
+            if (paymentIntentId) {
+                if (form.dataset.status == "requires_action") {
+                    const { paymentIntent, error } = await stripe.confirmCardPayment(paymentIntentId, { setup_future_usage: 'off_session' })
+                    if (error) {
+                        handleError(error);
+                    } else {
+                        form.submit()
+                    }
+                }
+            }
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                // Prevent multiple form submissions
+                if (submitButton.disabled) {
+                    return;
+                }
+
+                // Disable form submission while loading
+                submitButton.disabled = true;
+
+
+                if (paymentIntentId) {
+                    // Complete a payment intent
+                    const { paymentIntent, error } = await stripe.confirmPayment({
+                        elements, 
+                        confirmParams: {
+                            // setup_future_usage: 'off_session', TODO: stripe.confirmPayment(): do not pass setup_future_usage at confirm time. Instead, pass setup_future_usage when the PaymentIntent is created.
+                            save_payment_method: true,
+                            return_url: '@Url.PageLink("PayHandle")', // TODO: need to create a handle page.
+                        }
+                    });
+
+                    if (error) {
+                        handleError(error);
+                    } else {
+                        form.submit()
+                    }
+
+                }
+                else if (setupIntentId) {
+                    // Updating a payment method or setting up a subscription
+                    const { setupIntent, error } = await stripe.confirmSetup(elements);
+
+                    if (error) {
+                        handleError(error);
+                    } else {
+                        addHiddenField(form, "payment_method_id", setupIntent.payment_method)
+                        form.submit()
+                    }
+
+                }
+                else {
+                    // Just creating a payment method that can be used in the future
+                    const { error: submitError } = await elements.submit();
+                    if (submitError) {
+                        handleError(submitError);
+                        return;
+                    }
+
+                    const { paymentMethod, error } = await stripe.createPaymentMethod({
+                        elements,
+                        params: {
+                            billing_details: {
+                                name: 'John Doe'
+                            },
+                        },
+                    });
+
+                    if (error) {
+                        handleError(error);
+                    } else {
+                        addHiddenField(form, "payment_method_id", paymentMethod.id)
+                        form.submit()
+                    }
+                }
+            })
+
+        }
+
+        function addHiddenField(form, name, value) {
+            let input = document.createElement("input")
+            input.setAttribute("type", "hidden")
+            input.setAttribute("name", name)
+            input.setAttribute("value", value)
+            form.appendChild(input)
+        }
     </script>
 }

@@ -21,13 +21,13 @@ public class SubscriptionTrailWillEndHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is Subscription subscription)
         {
-            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(PaymentProcessors.Stripe, subscription.Id);
+            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, subscription.CustomerId);
+            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(subscription.Id, payCustomer.Id);
             if (paySubscription is null)
             {
                 return;
             }
 
-            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, subscription.CustomerId);
             await _subscriptionManager.SynchroniseAsync(subscription.Id, null, payCustomer);
 
             if (paySubscription.IsTrial())

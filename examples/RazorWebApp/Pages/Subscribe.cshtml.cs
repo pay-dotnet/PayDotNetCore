@@ -33,10 +33,11 @@ namespace RazorWebApp.Pages
 
         public async Task<IActionResult> OnPostAsync(string priceId)
         {
+            SelectedPlan = Data.Plans[priceId];
             try
             {
                 PayCustomer payCustomer = await _billableManager.GetOrCreateCustomerAsync(Email, PaymentProcessor);
-                PaySubscription paySubscription = await _billableManager.SubscribeAsync(payCustomer, "Basic", Price);
+                PaySubscription paySubscription = await _billableManager.SubscribeAsync(payCustomer, Price, SelectedPlan.Name);
                 return RedirectToPage("Success");
             }
             catch (ActionRequiredPayDotNetException e)

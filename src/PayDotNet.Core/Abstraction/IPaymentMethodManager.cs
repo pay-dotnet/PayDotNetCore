@@ -14,4 +14,6 @@ public interface IPaymentMethodManager
     Task<PayPaymentMethod> SynchroniseAsync(string paymentMethodId);
 
     Task UpdateAllAsync(bool isDefault);
+
+    bool IsPaymentMethodRequired();
 }

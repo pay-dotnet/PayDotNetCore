@@ -26,6 +26,6 @@ public class PaymentIntentSucceededHandler : IStripeWebhookHandler
             return;
         }
 
-        await _chargeManager.SynchroniseAsync(paymentIntent.LatestCharge.Id, new());
+        await _chargeManager.SynchroniseAsync(PaymentProcessors.Stripe, paymentIntent.LatestChargeId, paymentIntent.CustomerId);
     }
 }

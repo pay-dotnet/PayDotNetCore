@@ -1,26 +1,40 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Stripe;
+using PayDotNet.Core.Models;
+using PayDotNet.Core.Services;
 
 namespace RazorWebApp.Pages
 {
     public class PayModel : PageModel
     {
-        public PayModel()
+        private readonly IPaymentProcessorService _paymentProcessorService;
+
+        public PayModel(IPaymentProcessorService paymentProcessorService)
         {
+            _paymentProcessorService = paymentProcessorService;
         }
 
-        public PaymentIntent PaymentIntent { get; private set; }
+        public IPayment? Payment { get; set; }
 
-        public async Task OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(string? id)
         {
-            var service = new PaymentIntentService();
-            PaymentIntent = await service.GetAsync(id);
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToPage(new { id = "setup" });
+            }
+            if (id == "setup")
+            {
+                return Page();
+            }
+            if (!string.IsNullOrEmpty(id))
+            {
+                Payment = await _paymentProcessorService.GetPaymentAsync(id);
+            }
+            return Page();
         }
 
-        public async Task OnPostAsync(string id)
+        public void OnPost()
         {
-            var service = new PaymentIntentService();
-            PaymentIntent = await service.GetAsync(id);
         }
     }
 }

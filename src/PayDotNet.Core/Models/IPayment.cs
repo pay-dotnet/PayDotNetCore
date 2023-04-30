@@ -14,11 +14,5 @@ public interface IPayment
 
     string Status { get; }
 
-    bool RequiresPaymentMethod();
-
-    bool RequiresAction();
-
-    bool IsCanceled();
-
-    bool IsSucceeded();
+    string Mode { get; }
 }

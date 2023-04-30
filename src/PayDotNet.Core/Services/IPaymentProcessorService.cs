@@ -18,5 +18,9 @@ public interface IPaymentProcessorService
 
     Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string plan, Dictionary<string, object?> attributes);
 
+    Task<PayCharge> GetChargeAsync(string processorId);
+
+    Task<IPayment> GetPaymentAsync(string processorId);
+
     bool IsPaymentMethodRequired { get; }
 }

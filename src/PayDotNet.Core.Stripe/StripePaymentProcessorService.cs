@@ -1,35 +1,42 @@
 ﻿using Microsoft.Extensions.Options;
 using PayDotNet.Core.Models;
 using PayDotNet.Core.Services;
+using PayDotNet.Core.Stripe.Client;
 using Stripe;
 
 namespace PayDotNet.Core.Stripe;
 
 public class StripePaymentProcessorService : IPaymentProcessorService
 {
+    private readonly PaymentIntentService _paymentIntents;
+    private readonly ChargeService _charges;
     private readonly CustomerService _customers;
     private readonly SubscriptionService _subscriptions;
     private readonly PaymentMethodService _paymentMethods;
+    private readonly SetupIntentService _setupIntents;
     private readonly IOptions<PayDotNetConfiguration> _options;
+    private readonly DataTransferObjectMapper _mapper;
 
     public bool IsPaymentMethodRequired => false;
 
     public StripePaymentProcessorService(
         IOptions<PayDotNetConfiguration> options)
     {
-        _customers = new CustomerService();
-        _subscriptions = new SubscriptionService();
-        _paymentMethods = new PaymentMethodService();
+        _charges = new();
+        _customers = new();
+        _subscriptions = new();
+        _paymentMethods = new();
+        _paymentIntents = new();
+        _setupIntents = new();
         _options = options;
+        _mapper = new(options);
     }
 
-    private static readonly List<string> DefaultExpandOptions = new()
+    private static readonly List<string> DefaultSubscriptionExpandOptions = new()
     {
         "pending_setup_intent",
         "latest_invoice.payment_intent",
-        "latest_invoice.charge",
-        "latest_invoice.total_discount_amounts.discount",
-        "latest_invoice.total_tax_amounts.tax_rate"
+        "latest_invoice.charge"
     };
 
     public async Task<PaymentProcessorCustomer> CreateCustomerAsync(string email, Dictionary<string, string> attributes)
@@ -45,8 +52,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     public async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string[] plans, Dictionary<string, object?> attributes)
     {
-        // TODO: include pay_name as metadata.
-        Subscription subscription = await _subscriptions.CreateAsync(new SubscriptionCreateOptions
+        SubscriptionCreateOptions options = new SubscriptionCreateOptions
         {
             Customer = payCustomer.ProcessorId,
             Items = plans.Select(p => new SubscriptionItemOptions()
@@ -54,18 +60,20 @@ public class StripePaymentProcessorService : IPaymentProcessorService
                 Price = p,
                 Quantity = 1
             }).ToList(),
-            PaymentSettings = new()
-            {
-                SaveDefaultPaymentMethod = "on_subscription",
-            },
-            PaymentBehavior = "default_incomplete",
-            Expand = DefaultExpandOptions,
+            PaymentBehavior = _options.Value.Stripe.PaymentBehaviour,
             Metadata = new()
             {
                 ["pay_name"] = _options.Value.DefaultPlanName
             },
-        });
-        return Map(payCustomer, null, subscription);
+        };
+
+        options.AddExpand("latest_invoice");
+        options.AddExpand("latest_invoice.payment_intent");
+        options.AddExpand("latest_invoice.charge");
+        options.AddExpand("pending_setup_intent");
+
+        Subscription subscription = await _subscriptions.CreateAsync(options);
+        return Map(subscription);
     }
 
     public Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string plan, Dictionary<string, object?> attributes)
@@ -77,119 +85,24 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     {
         Subscription? subscription = await _subscriptions.GetAsync(processorId, new()
         {
-            Expand = DefaultExpandOptions,
+            Expand = DefaultSubscriptionExpandOptions,
         });
         if (subscription is null)
         {
             return null;
         }
-        return Map(payCustomer, null, subscription);
+        return Map(subscription);
     }
 
-    private PaySubscriptionResult Map(PayCustomer payCustomer, PaySubscription? existingPaySubscription, Subscription @object)
+    private PaySubscriptionResult Map(Subscription @object)
     {
-        string name = @object.Metadata.ContainsKey("pay_name")
-            ? @object.Metadata["pay_name"]
-            : _options.Value.DefaultPlanName;
-
-        StripePaymentProcessorSubscription paySubscription = new()
-        {
-            CustomerId = payCustomer.Id,
-
-            Name = name,
-            ApplicationFeePercent = @object.ApplicationFeePercent,
-            CreatedAt = @object.Created,
-            Processor = PaymentProcessors.Stripe,
-            ProcessorId = @object.Id,
-            ProcessorPlan = @object.Items.First().Price.Id,
-            Quantity = Convert.ToInt32(@object.Items.First().Quantity),
-            Status = ConvertStatus(@object),
-            IsMetered = false,
-            PauseBehaviour = @object.PauseCollection?.Behavior,
-            PauseResumesAt = @object.PauseCollection?.ResumesAt,
-            CurrentPeriodStart = @object.CurrentPeriodStart,
-            CurrentPeriodEnd = @object.CurrentPeriodEnd,
-            Metadata = @object.Metadata,
-            Data = new(StringComparer.OrdinalIgnoreCase)
-            {
-                // TODO: ["stripe_account"] = payCustomer.StripeAccount
-                ["payment_intent_id"] = @object.LatestInvoice.PaymentIntentId,
-                ["client_secret"] = @object.LatestInvoice.PaymentIntent.ClientSecret,
-            }
-        };
-
-        if (@object.TrialEnd.HasValue)
-        {
-            @object.TrialEnd = new[] { @object.EndedAt, @object.TrialEnd }.Min();
-        }
-
-        // Record subscription items to model
-        foreach (var subscriptionItem in @object.Items)
-        {
-            if (!paySubscription.IsMetered && subscriptionItem.Price.Recurring.UsageType == "metered")
-            {
-                paySubscription.IsMetered = true;
-            }
-
-            var paySubscriptionItem = new { subscriptionItem.Id, subscriptionItem.Price, subscriptionItem.Metadata, subscriptionItem.Quantity };
-            paySubscription.SubscriptionItems.Add(paySubscriptionItem);
-        }
-
-        if (@object.EndedAt.HasValue)
-        {
-            // Fully cancelled object
-            paySubscription.EndsAt = @object.EndedAt.Value;
-        }
-        else if (@object.CancelAt.HasValue)
-        {
-            // Subscription cancelling in the future
-            paySubscription.EndsAt = @object.CancelAt.Value;
-        }
-        else if (@object.CancelAtPeriodEnd)
-        {
-            // Subscriptions cancelling the future
-            paySubscription.EndsAt = @object.CurrentPeriodEnd;
-        }
-
-        // If pause behavior is changing to `void`, record the pause start date
-        // Any other pause status (or no pause at all) should have nil for start
-        if (existingPaySubscription is not null)
-        {
-            if (existingPaySubscription.PauseBehaviour != paySubscription.PauseBehaviour && paySubscription.PauseBehaviour == "void")
-            {
-                existingPaySubscription.PauseStartsAt = existingPaySubscription.CurrentPeriodEnd;
-            }
-        }
-        else
-        {
-            if (string.IsNullOrEmpty(paySubscription.Name))
-            {
-                paySubscription.Name = @object.Metadata["pay_name"] ?? _options.Value.DefaultProductName;
-            }
-        }
+        PaySubscription paySubscription = _mapper.Map(@object);
 
         IPayment? payment = @object.LatestInvoice?.PaymentIntent is not null
-            ? new StripePayment(@object.LatestInvoice.PaymentIntent)
+            ? new StripePaymentIntentPayment(@object.LatestInvoice.PaymentIntent)
             : null;
 
         return new(paySubscription, payment);
-    }
-
-    private static PaySubscriptionStatus ConvertStatus(Subscription subscription)
-    {
-        switch (subscription.Status)
-        {
-            case "incomplete": return PaySubscriptionStatus.Incomplete;
-
-            case "incomplete_expired": return PaySubscriptionStatus.IncompleteExpired;
-            case "trialing": return PaySubscriptionStatus.Trialing;
-            case "active": return PaySubscriptionStatus.Active;
-            case "past_due": return PaySubscriptionStatus.PastDue;
-            case "canceled": return PaySubscriptionStatus.Cancelled;
-            case "unpaid": return PaySubscriptionStatus.Unpaid;
-            default:
-                return PaySubscriptionStatus.None;
-        }
     }
 
     public Task<PaymentProcessorCustomer?> GetCustomerAsync(string processorId)
@@ -225,5 +138,41 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             Expand = new() { "tax" }
         });
         return new PaymentProcessorCustomer(customer.Id, new());
+    }
+
+    public async Task<PayCharge> GetChargeAsync(string processorId)
+    {
+        Charge charge = await _charges.GetAsync(processorId, new()
+        {
+            Expand = new()
+            {
+                "invoice.total_discount_amounts.discount",
+                "invoice.total_tax_amounts.tax_rate",
+                "refunds"
+            }
+        });
+        return _mapper.Map(charge);
+    }
+
+    public async Task<IPayment> GetPaymentAsync(string processorId)
+    {
+        PaymentIntent paymentIntent;
+        SetupIntent setupIntent;
+        return processorId.StartsWith("seti_")
+            ? new StripeSetupIntentPayment(await _setupIntents.GetAsync(processorId))
+            : new StripePaymentIntentPayment(await _paymentIntents.GetAsync(processorId));
+        throw new NotImplementedException();
+    }
+}
+
+public static class DictionaryExtensions
+{
+    public static string? Try(this Dictionary<string, string> dictionary, string key)
+    {
+        if (dictionary.ContainsKey(key))
+        {
+            return dictionary[key];
+        }
+        return null;
     }
 }

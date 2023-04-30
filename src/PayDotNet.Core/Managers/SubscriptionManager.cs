@@ -25,7 +25,7 @@ public class SubscriptionManager : ISubscriptionManager
         throw new NotImplementedException();
     }
 
-    public async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string priceId)
+    public async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string priceId, string name)
     {
         // TODO: BrainTree vs Stripe logic is different
         PaySubscriptionResult result = await _paymentProcessorService.CreateSubscriptionAsync(payCustomer, priceId, new());
@@ -35,9 +35,9 @@ public class SubscriptionManager : ISubscriptionManager
         return result;
     }
 
-    public Task<PaySubscription?> FindByIdAsync(string processor, string processorId)
+    public Task<PaySubscription?> FindByIdAsync(string processorId, string customerId)
     {
-        return Task.FromResult(_subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == processor && s.Processor == processor));
+        return Task.FromResult(_subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == processorId && s.CustomerId == customerId));
     }
 
     public async Task SynchroniseAsync(string processorId, PaySubscriptionResult? @object, PayCustomer payCustomer)
@@ -48,20 +48,28 @@ public class SubscriptionManager : ISubscriptionManager
             return;
         }
 
-        PaySubscription? existingSubscription = _subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == @object.PaySubscription.ProcessorId);
-        if (existingSubscription is not null)
+        PaySubscription? existingPaySubscription = _subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == @object.PaySubscription.ProcessorId);
+
+        @object.PaySubscription.CustomerId = payCustomer.Id;
+        if (existingPaySubscription is null)
         {
-            await _subscriptionStore.UpdateAsync(@object.PaySubscription);
+            await _subscriptionStore.CreateAsync(@object.PaySubscription);
         }
         else
         {
-            await _subscriptionStore.CreateAsync(@object.PaySubscription);
+            // If pause behavior is changing to `void`, record the pause start date
+            // Any other pause status (or no pause at all) should have nil for start
+            if (existingPaySubscription.PauseBehaviour != @object.PaySubscription.PauseBehaviour && @object.PaySubscription.PauseBehaviour == "void")
+            {
+                existingPaySubscription.PauseStartsAt = existingPaySubscription.CurrentPeriodEnd;
+            }
+            await _subscriptionStore.UpdateAsync(@object.PaySubscription);
         }
 
         PayCharge? charge = @object.PaySubscription.Charges.LastOrDefault();
         if (charge is not null && charge.Status == PayStatus.Succeeded)
         {
-            await _chargeManager.SynchroniseAsync(charge.ProccesorId);
+            await _chargeManager.SynchroniseAsync(payCustomer.Processor, charge.ProccesorId, payCustomer.ProcessorId);
         }
     }
 }

@@ -6,11 +6,14 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 
 public class PaymentActionRequiredHandler : IStripeWebhookHandler
 {
+    private readonly ICustomerManager _customerManager;
     private readonly ISubscriptionManager _subscriptionManager;
 
     public PaymentActionRequiredHandler(
+        ICustomerManager customerManager,
         ISubscriptionManager subscriptionManager)
     {
+        _customerManager = customerManager;
         _subscriptionManager = subscriptionManager;
     }
 
@@ -18,7 +21,8 @@ public class PaymentActionRequiredHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is Invoice invoice)
         {
-            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(PaymentProcessors.Stripe, invoice.Subscription.Id);
+            PayCustomer payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, invoice.CustomerId);
+            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(invoice.SubscriptionId, payCustomer.Id);
             if (paySubscription is null)
             {
                 return;

@@ -60,7 +60,7 @@ public class BillableManagerTest : TestBase<BillableManager>
         customer.PaymentMethods.Should().HaveCount(1);
 
         // Step 2: subscribe
-        PaySubscription subscription = await SystemUnderTest.SubscribeAsync(customer);
+        PaySubscription subscription = await SystemUnderTest.SubscribeAsync(customer, "price_id", "subscription");
         subscription.Status.Should().Be(PaySubscriptionStatus.Active);
     }
 }

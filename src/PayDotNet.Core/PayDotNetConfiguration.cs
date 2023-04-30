@@ -10,7 +10,13 @@ public class PayDotNetConfiguration
 
 public class PayDotNetStripeConfiguration
 {
+    public static readonly string DefaultPaymentBehaviour = "default_incomplete";
+
     public string? ApiKey { get; set; }
 
     public string? EndpointSecret { get; set; }
+
+    public string? PublicKey { get; set; }
+
+    public string PaymentBehaviour { get; set; } = DefaultPaymentBehaviour;
 }

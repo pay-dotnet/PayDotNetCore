@@ -10,6 +10,12 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceCollectionExtension
 {
+    /// <summary>
+    /// Adds the PayDotNetCore.Stripe related services and configuration.
+    /// </summary>
+    /// <param name="builder">The builder used in this package.</param>
+    /// <param name="configureOptionsAction">Action where you can configure additional webhooks or remove the existing ones that come out of the box.</param>
+    /// <returns></returns>
     public static PayDotNetBuilder AddStripe(this PayDotNetBuilder builder, Action<PaymentProcessorOptionsBuilder<IStripeWebhookHandler>>? configureOptionsAction = null)
     {
         // Make builder for payment processor.
@@ -27,11 +33,6 @@ public static class ServiceCollectionExtension
         return builder;
     }
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="builder"></param>
-    /// <returns></returns>
     /// <remarks>
     /// For reference, see: https://github.com/pay-rails/pay/blob/master/lib/pay/stripe.rb#L39
     /// </remarks>
@@ -50,7 +51,7 @@ public static class ServiceCollectionExtension
         // This probably should be ignored for monthly subscriptions.
         builder.Webhooks.SubscribeWebhook<SubscriptionRenewingHandler>(Events.InvoiceUpcoming);
 
-        // Payment action is required to process an invoice
+        // IPayment action is required to process an invoice
         builder.Webhooks.SubscribeWebhook<PaymentActionRequiredHandler>(Events.InvoicePaymentActionRequired);
 
         // If an invoice payment fails, we want to notify the user via email to update their payment details

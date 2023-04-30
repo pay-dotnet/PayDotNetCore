@@ -4,7 +4,6 @@ using Stripe;
 
 namespace PayDotNet.Core.Stripe.Webhooks;
 
-// TODO: merchants.
 public class AccountUpdatedHandler : IStripeWebhookHandler
 {
     private readonly IMerchantManager _merchantManager;
@@ -22,7 +21,7 @@ public class AccountUpdatedHandler : IStripeWebhookHandler
             if (payMerchant is not null)
             {
                 // TODO: set onboarding_complete
-                payMerchant.Data["onboarding_complete "] = account.ChargesEnabled;
+                payMerchant.Data["onboarding_complete"] = account.ChargesEnabled;
                 await _merchantManager.UpdateAsync(payMerchant);
             }
         }

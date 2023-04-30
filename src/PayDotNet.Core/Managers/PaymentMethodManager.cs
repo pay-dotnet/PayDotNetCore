@@ -28,22 +28,24 @@ public class PaymentMethodManager : IPaymentMethodManager
 
     public Task DeleteAllAsync(PayCustomer payCustomer)
     {
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
 
     public Task DeleteByIdAsync(string processorName, string processorId)
     {
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
+
+    public bool IsPaymentMethodRequired() => _paymentProcessorService.IsPaymentMethodRequired;
 
     public Task<PayPaymentMethod> SynchroniseAsync(string processorId)
     {
-        throw new NotImplementedException();
+        return Task.FromResult<PayPaymentMethod>(new());
     }
 
     public Task UpdateAllAsync(bool isDefault)
     {
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
 
     private async Task<PayPaymentMethod> SavePaymentMethodAsync(bool isDefault, PaymentProcessorPaymentMethod paymentProcessorPaymentMethod)
