@@ -1,42 +1,52 @@
-﻿using Microsoft.Extensions.Options;
-using PayDotNet.Core.Abstraction;
+﻿using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Models;
 
 namespace PayDotNet.Core.Managers;
 
+/// <summary>
+/// Implementation of the facade containing the primary operations for Pay
+/// </summary>
 public class BillableManager : IBillableManager
 {
+    private readonly ICheckoutManager _checkoutManager;
+    private readonly IChargeManager _chargeManager;
     private readonly ICustomerManager _customerManager;
     private readonly ISubscriptionManager _subscriptionManager;
     private readonly IPaymentMethodManager _paymentMethodManager;
-    private readonly IOptions<PayDotNetConfiguration> _options;
 
     public BillableManager(
+        ICheckoutManager checkoutManager,
+        IChargeManager chargeManager,
         ICustomerManager customerManager,
         ISubscriptionManager subscriptionManager,
-        IPaymentMethodManager paymentMethodManager,
-        IOptions<PayDotNetConfiguration> options)
+        IPaymentMethodManager paymentMethodManager)
     {
+        _checkoutManager = checkoutManager;
+        _chargeManager = chargeManager;
         _customerManager = customerManager;
         _subscriptionManager = subscriptionManager;
         _paymentMethodManager = paymentMethodManager;
-        _options = options;
     }
 
-    /// <remarks>
-    /// https://github.com/pay-rails/pay/blob/75cebad8786c901a447cc6459174c7044e2b261d/lib/pay/attributes.rb#L29
-    /// </remarks>
-    public async Task<PayCustomer> GetOrCreateCustomerAsync(string email, string processorName, bool allowFake = false)
+    /// <inheritdoc/>
+    public async Task<PayCustomer> GetOrCreateCustomerAsync(string email, PayCustomerOptions options)
     {
-        if (processorName.Equals(PaymentProcessors.Fake, StringComparison.OrdinalIgnoreCase) && !allowFake)
+        if (options.ProcessorName.Equals(PaymentProcessors.Fake, StringComparison.OrdinalIgnoreCase) && !options.AllowFake)
         {
-            throw new PayDotNetException($"Processor `{processorName}` is not allowed");
+            throw new PayDotNetException($"Processor `{options.ProcessorName}` is not allowed");
         }
 
-        return await _customerManager.GetOrCreateCustomerAsync(email, processorName);
+        PayCustomer payCustomer = await _customerManager.GetOrCreateCustomerAsync(email, options.ProcessorName);
+        if (!string.IsNullOrEmpty(options.PaymentMethodId))
+        {
+            await _paymentMethodManager.AddPaymentMethodAsync(payCustomer, options.PaymentMethodId, isDefault: true);
+        }
+
+        return payCustomer;
     }
 
-    public async Task<PaySubscription> SubscribeAsync(PayCustomer payCustomer, string priceId, string name)
+    /// <inheritdoc/>
+    public async Task<IPayment> SubscribeAsync(PayCustomer payCustomer, PaySubscribeOptions options)
     {
         if (_paymentMethodManager.IsPaymentMethodRequired())
         {
@@ -47,54 +57,45 @@ public class BillableManager : IBillableManager
             }
         }
 
-        PaySubscriptionResult result = await _subscriptionManager.CreateSubscriptionAsync(payCustomer, priceId, name);
-        //if (result.Payment is not null &&
-        //    _options.Value.Stripe.PaymentBehaviour != PayDotNetStripeConfiguration.DefaultPaymentBehaviour &&
-        //    result.PaySubscription.IsIncomplete())
-        if (result.PaySubscription.IsIncomplete())
+        PaySubscriptionResult result = await _subscriptionManager.CreateSubscriptionAsync(payCustomer, options);
+
+        // Let caller decide how to handle flow.
+        return result.Payment;
+    }
+
+    /// <inheritdoc/>
+    public async Task<IPayment> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
+    {
+        if (!string.IsNullOrEmpty(options.PaymentMethodId))
         {
-            result.Payment.Validate();
+            await _paymentMethodManager.AddPaymentMethodAsync(payCustomer, options.PaymentMethodId, isDefault: true);
         }
 
-        return result.PaySubscription;
+        return await _chargeManager.ChargeAsync(payCustomer, options);
     }
 
-    public Task AddPaymentMethodAsync(PayCustomer payCustomer, string paymentMethodId, bool isDefault)
+    /// <inheritdoc/>
+    public Task<Uri> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
     {
-        return Task.CompletedTask;
+        return _checkoutManager.CheckoutAsync(payCustomer, options);
     }
 
-    public Task SavePaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethod paymentMethod, bool isDefault)
+    /// <inheritdoc/>
+    public Task<Uri> CheckoutChargeAsync(PayCustomer payCustomer, PayCheckoutChargeOptions options)
     {
-        return Task.CompletedTask;
+        return CheckoutAsync(payCustomer, new()
+        {
+            AllowPromotionCodes = options.AllowPromotionCodes,
+            Mode = options.Mode,
+            LineItems = options.LineItems,
+            SuccessUrl = options.SuccessUrl,
+            CancelUrl = options.CancelUrl,
+        });
     }
 
-    // https://stripe.com/docs/api/checkout/sessions/create
-    //
-    // checkout(mode: "payment")
-    // checkout(mode: "setup")
-    // checkout(mode: "subscription")
-    //
-    // checkout(line_items: "price_12345", quantity: 2)
-    // checkout(line_items: [{ price: "price_123" }, { price: "price_456" }])
-    // checkout(line_items: "price_12345", allow_promotion_codes: true)
-    //
-    public Task CheckoutAsync(PayCustomer payCustomer)
+    /// <inheritdoc/>
+    public Task AuthorizeAsync(PayCustomer payCustomer, PayAuthorizeChargeOptions options)
     {
-        return Task.CompletedTask;
-    }
-
-    // https://stripe.com/docs/api/checkout/sessions/create
-    //
-    // checkout_charge(amount: 15_00, name: "T-shirt", quantity: 2)
-    //
-    public Task CheckoutChargeAsync(PayCustomer payCustomer)
-    {
-        return Task.CompletedTask;
-    }
-
-    public Task AuthorizeAsync(PayCustomer payCustomer)
-    {
-        return Task.CompletedTask;
+        return ChargeAsync(payCustomer, options);
     }
 }

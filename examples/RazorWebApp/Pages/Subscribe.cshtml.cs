@@ -36,18 +36,14 @@ namespace RazorWebApp.Pages
             SelectedPlan = Data.Plans[priceId];
             try
             {
-                PayCustomer payCustomer = await _billableManager.GetOrCreateCustomerAsync(Email, PaymentProcessor);
-                PaySubscription paySubscription = await _billableManager.SubscribeAsync(payCustomer, Price, SelectedPlan.Name);
+                PayCustomer payCustomer = await _billableManager.GetOrCreateCustomerAsync(Email, new(PaymentProcessor));
+                IPayment payment = await _billableManager.SubscribeAsync(payCustomer, new PaySubscribeOptions(SelectedPlan.Name, Price));
+                if (!payment.IsSucceeded())
+                {
+                    return RedirectToPage("Pay", new { id = payment.Id });
+                }
+
                 return RedirectToPage("Success");
-            }
-            catch (ActionRequiredPayDotNetException e)
-            {
-                return RedirectToPage("Pay", new { id = e.Payment.Id });
-            }
-            // TODO: this doesn't make sense.
-            catch (InvalidPaymentPayDotNetException e)
-            {
-                return RedirectToPage("Pay", new { id = e.Payment.Id });
             }
             catch (PayDotNetException e)
             {

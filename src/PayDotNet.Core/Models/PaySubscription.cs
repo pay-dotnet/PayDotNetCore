@@ -17,10 +17,8 @@ public class PaySubscription
 
     public string ProcessorPlan { get; set; }
 
-    // TODO: default 1
-    public int Quantity { get; set; }
+    public int Quantity { get; set; } = 1;
 
-    // TODO: enum?
     public PaySubscriptionStatus Status { get; set; }
 
     public DateTime? CurrentPeriodStart { get; set; }
@@ -54,7 +52,7 @@ public class PaySubscription
 
     public virtual ICollection<PaySubscriptionItem> SubscriptionItems { get; set; } = new List<PaySubscriptionItem>();
 
-    public bool IsTrial()
+    public bool IsOnTrial()
     {
         return TrailEndsAt.HasValue && TrailEndsAt.Value > DateTime.UtcNow;
     }
@@ -68,17 +66,12 @@ public class PaySubscription
     {
         return Status == PaySubscriptionStatus.Incomplete;
     }
-}
 
-public class PaySubscriptionItem
-{
-    public string Id { get; set; } = default!;
-
-    public object Price { get; set; } = default!;
-
-    public Dictionary<string, string> Metadata { get; set; } = new();
-
-    public long Quantity { get; set; }
+    public void CancelNow()
+    {
+        Status = PaySubscriptionStatus.Cancelled;
+        EndsAt = DateTime.UtcNow;
+    }
 }
 
 public static class IPaymentExtensions

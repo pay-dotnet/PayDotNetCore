@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Options;
+﻿using System.Text;
+using Microsoft.Extensions.Options;
 using PayDotNet.Core.Models;
 using Stripe;
 
@@ -173,5 +174,45 @@ public class DataTransferObjectMapper
             default:
                 return PaySubscriptionStatus.None;
         }
+    }
+}
+
+internal static class Extensions
+{
+    public static string ToSnakeCase(this string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return input;
+        }
+
+        StringBuilder result = new StringBuilder();
+        bool isFirst = true;
+
+        foreach (char c in input)
+        {
+            if (Char.IsWhiteSpace(c))
+            {
+                continue;
+            }
+
+            if (Char.IsUpper(c))
+            {
+                if (!isFirst)
+                {
+                    result.Append("_");
+                }
+
+                result.Append(Char.ToLower(c));
+            }
+            else
+            {
+                result.Append(c);
+            }
+
+            isFirst = false;
+        }
+
+        return result.ToString();
     }
 }

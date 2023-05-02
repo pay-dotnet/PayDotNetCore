@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PayDotNet.Core;
+using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Models;
 using PayDotNet.Core.Services;
 
@@ -7,10 +9,14 @@ namespace RazorWebApp.Pages
 {
     public class PayModel : PageModel
     {
+        private readonly IBillableManager _billableManager;
         private readonly IPaymentProcessorService _paymentProcessorService;
 
-        public PayModel(IPaymentProcessorService paymentProcessorService)
+        public PayModel(
+            IBillableManager billableManager,
+            IPaymentProcessorService paymentProcessorService)
         {
+            _billableManager = billableManager;
             _paymentProcessorService = paymentProcessorService;
         }
 
@@ -33,8 +39,14 @@ namespace RazorWebApp.Pages
             return Page();
         }
 
-        public void OnPost()
+        [BindProperty]
+        public string Email { get; set; }
+
+        public async Task<IActionResult> OnPost(
+            [FromForm(Name = "payment_method_id")] string paymentMethodId)
         {
+            await _billableManager.GetOrCreateCustomerAsync(Email, new(PaymentProcessors.Stripe, paymentMethodId));
+            return Page();
         }
     }
 }

@@ -66,8 +66,8 @@ public class CustomerManager : ICustomerManager
     {
         if (!payCustomer.HasProcessorId())
         {
-            PaymentProcessorCustomer customer = await _paymentProcessorService.CreateCustomerAsync(payCustomer.Email, new());
-            payCustomer.ProcessorId = customer.Id;
+            string processorId = await _paymentProcessorService.CreateCustomerAsync(payCustomer);
+            payCustomer.ProcessorId = processorId;
             await _customerStore.UpdateAsync(payCustomer);
         }
     }

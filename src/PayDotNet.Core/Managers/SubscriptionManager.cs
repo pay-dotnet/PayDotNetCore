@@ -20,15 +20,10 @@ public class SubscriptionManager : ISubscriptionManager
         _paymentProcessorService = paymentProcessorService;
     }
 
-    public Task CancellAllAsync(PayCustomer payCustomer)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string priceId, string name)
+    public async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, PaySubscribeOptions options)
     {
         // TODO: BrainTree vs Stripe logic is different
-        PaySubscriptionResult result = await _paymentProcessorService.CreateSubscriptionAsync(payCustomer, priceId, new());
+        PaySubscriptionResult result = await _paymentProcessorService.CreateSubscriptionAsync(payCustomer, options);
 
         await SynchroniseAsync(result.PaySubscription.ProcessorId, result, payCustomer);
 
@@ -42,15 +37,16 @@ public class SubscriptionManager : ISubscriptionManager
 
     public async Task SynchroniseAsync(string processorId, PaySubscriptionResult? @object, PayCustomer payCustomer)
     {
-        @object ??= await _paymentProcessorService.GetSubscriptionAsync(processorId, payCustomer);
+        @object ??= await _paymentProcessorService.GetSubscriptionAsync(processorId);
         if (@object == null)
         {
             return;
         }
 
-        PaySubscription? existingPaySubscription = _subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == @object.PaySubscription.ProcessorId);
-
+        // Fix link to Pay Customer.
         @object.PaySubscription.CustomerId = payCustomer.Id;
+
+        PaySubscription? existingPaySubscription = _subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == @object.PaySubscription.ProcessorId);
         if (existingPaySubscription is null)
         {
             await _subscriptionStore.CreateAsync(@object.PaySubscription);
@@ -71,5 +67,39 @@ public class SubscriptionManager : ISubscriptionManager
         {
             await _chargeManager.SynchroniseAsync(payCustomer.Processor, charge.ProccesorId, payCustomer.ProcessorId);
         }
+    }
+
+    public async Task CancelAsync(PaySubscription paySubscription, PayCancelSubscriptionOptions options)
+    {
+        paySubscription.EndsAt = paySubscription.IsOnTrial()
+            ? paySubscription.TrailEndsAt!.Value
+            : paySubscription.CurrentPeriodEnd!.Value;
+
+        // First cancel the payment processor, then save the outcome.
+        await _paymentProcessorService.CancelAsync(paySubscription, options);
+        await _subscriptionStore.UpdateAsync(paySubscription);
+    }
+
+    public async Task CancelNowAsync(PaySubscription paySubscription)
+    {
+        paySubscription.CancelNow();
+
+        // First cancel the payment processor, then save the outcome.
+        await _paymentProcessorService.CancelAsync(paySubscription, new(CancelAtEndPeriod: false));
+        await _subscriptionStore.UpdateAsync(paySubscription);
+    }
+
+    /// <remarks>
+    /// We manually cancel and save all subscriptions since the customer was deleted.
+    /// </remarks>
+    public Task CancellAllAsync(PayCustomer payCustomer)
+    {
+        ICollection<PaySubscription> customerSubscriptions = _subscriptionStore.Subscriptions.Where(sub => sub.CustomerId == payCustomer.Id).ToList();
+        foreach (PaySubscription paySubscription in customerSubscriptions)
+        {
+            paySubscription.CancelNow();
+        }
+
+        return _subscriptionStore.UpdateAsync(customerSubscriptions);
     }
 }

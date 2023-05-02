@@ -1,0 +1,21 @@
+﻿@page
+@model RazorWebApp.Pages.CheckoutModel
+@{
+}
+
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Email">Email for customer</label>
+        <input type="text" class="form-control" asp-for="Email" placeholder="Email" />
+    </div>
+
+    <div class="form-group">
+        <h5>Mode</h5>
+        <input type="radio" asp-for="Mode" value="checkout" /> Checkout
+        <input type="radio" asp-for="Mode" value="subscription" /> Subscription
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Start checkout session</button>
+</form>

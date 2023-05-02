@@ -6,9 +6,13 @@ public interface ISubscriptionManager
 {
     Task<PaySubscription?> FindByIdAsync(string processorId, string customerId);
 
-    Task CancellAllAsync(PayCustomer payCustomer);
-
-    Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, string priceId, string name);
+    Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, PaySubscribeOptions options);
 
     Task SynchroniseAsync(string processorId, PaySubscriptionResult? @object, PayCustomer payCustomer);
+
+    Task CancelAsync(PaySubscription paySubscription, PayCancelSubscriptionOptions options);
+
+    Task CancelNowAsync(PaySubscription paySubscription);
+
+    Task CancellAllAsync(PayCustomer payCustomer);
 }

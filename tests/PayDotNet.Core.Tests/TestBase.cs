@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Moq;
 
 namespace PayDotNet.Core.Tests;
 
@@ -16,7 +15,7 @@ public class TestBase<TSystemUnderTest>
 
     public TSystemUnderTest SystemUnderTest => GetSystemUnderTest();
 
-    private TSystemUnderTest CreateSystemUnderTest()
+    protected virtual TSystemUnderTest CreateSystemUnderTest()
     {
         Type type = typeof(TSystemUnderTest);
         if (!type.IsClass || type.IsAbstract)
@@ -37,7 +36,6 @@ public class TestBase<TSystemUnderTest>
         object?[] parameters = GetParameters(constructor.GetParameters());
         object result = constructor.Invoke(parameters);
         return (TSystemUnderTest)result;
-
     }
 
     private TSystemUnderTest GetSystemUnderTest()
@@ -65,7 +63,6 @@ public class TestBase<TSystemUnderTest>
         return (Mock<T>)_mockDictionary[type];
     }
 
-
     protected object?[] GetParameters(ParameterInfo[] parameters)
     {
         List<object?> result = new List<object?>();
@@ -85,6 +82,4 @@ public class TestBase<TSystemUnderTest>
 
         return result.ToArray();
     }
-
-
 }

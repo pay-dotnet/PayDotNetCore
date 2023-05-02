@@ -58,37 +58,7 @@ public class PayCharge
     public virtual ICollection<PayChargeRefund> Refunds { get; set; } = new List<PayChargeRefund>();
     public DateTime PeriodEnd { get; set; }
     public DateTime PeriodStart { get; set; }
-    public string InvoiceId { get; set; }
+    public string? InvoiceId { get; set; }
     public int Subtotal { get; set; }
     public int? Tax { get; set; }
-}
-
-public class PayChargeRefund
-{
-    public string ProcessorId { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public string Description { get; set; }
-    public int Amount { get; set; }
-    public string Reason { get; set; }
-    public string Status { get; set; }
-}
-
-public class PayChargeTaxAmount
-{
-}
-
-public class PayChargeDiscount
-{
-}
-
-public class PayChargeLineItem
-{
-    public DateTime PeriodEnd { get; set; }
-    public DateTime PeriodStart { get; set; }
-    public bool IsProration { get; set; }
-    public string ProcessorId { get; set; }
-    public string Description { get; set; }
-    public string PriceId { get; set; }
-    public int Quantity { get; set; }
-    public int? UnitAmount { get; set; }
 }
