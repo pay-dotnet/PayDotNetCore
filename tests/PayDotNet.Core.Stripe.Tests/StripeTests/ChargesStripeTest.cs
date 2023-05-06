@@ -28,7 +28,7 @@ public class CheckoutStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
         PayCheckoutResult result = await SystemUnderTest.CheckoutAsync(payCustomer, CheckoutOptions);
@@ -46,7 +46,7 @@ public class CheckoutStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
         PayCheckoutResult result = await SystemUnderTest.CheckoutAsync(payCustomer, new("setup"));
@@ -64,12 +64,12 @@ public class CheckoutStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
         PayCheckoutResult result = await SystemUnderTest.CheckoutAsync(payCustomer, new(LineItems: new()
             {
-                new PayCheckoutLineItem(StripeData.BasicSubscription)
+                new PayCheckoutLineItem(Subscriptions.BasicSubscription)
             },
             Mode: "subscription"));
 
@@ -100,7 +100,7 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
         PayChargeResult payChargeResult =
@@ -117,7 +117,7 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
         var payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.DeclineAfterAttaching);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
         Func<Task> action = () =>
@@ -134,7 +134,7 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
         var payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.SCA);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
         PayChargeResult result =

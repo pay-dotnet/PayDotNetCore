@@ -16,6 +16,12 @@ public class StripeTestBase<TSystemUnderTest> : TestBase<TSystemUnderTest>
         Email = "dotnetfromthemountain+test@gmail.com"
     };
 
+    public class Subscriptions
+    {
+        public const string BasicSubscription = "price_1MyDj2JUAL06t0UNphFwwc6l";
+        public const string PremiumSubscription = "price_1MyDj2JUAL06t0UNjnmx5za5";
+    }
+
     public class PaymentMethods
     {
         public static PaymentMethodCreateOptions Visa4242 => new()

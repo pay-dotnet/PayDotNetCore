@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PayDotNet.Core;
-using PayDotNet.Core.Services;
+using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Stripe;
 using PayDotNet.Core.Stripe.Webhooks;
 using PayDotNet.Core.Webhooks;

@@ -11,41 +11,40 @@ public class PaymentMethodManager : IPaymentMethodManager
 
     public PaymentMethodManager(
         IPaymentMethodStore paymentMethodStore,
-        IPaymentProcessorService paymentProcessorService)
+        CompositePaymentProcessorService paymentProcessorService)
     {
         _paymentMethodStore = paymentMethodStore;
         _paymentProcessorService = paymentProcessorService;
     }
 
-    public async Task<PayPaymentMethod> AddPaymentMethodAsync(PayCustomer payCustomer, string paymentMethodId, bool isDefault = false)
+    public virtual async Task<PayPaymentMethod> AddPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options)
     {
-        PayPaymentMethod payPaymentMethod =
-            await _paymentProcessorService.AttachPaymentMethodAsync(payCustomer, paymentMethodId, isDefault);
+        PayPaymentMethod payPaymentMethod = await _paymentProcessorService.AttachPaymentMethodAsync(payCustomer, options);
 
         await SavePaymentMethodAsync(payPaymentMethod);
         return payPaymentMethod;
     }
 
-    public Task DeleteAllAsync(PayCustomer payCustomer)
+    public virtual Task DeleteAllAsync(PayCustomer payCustomer)
     {
-        return Task.CompletedTask;
+        throw new NotImplementedException();
     }
 
-    public Task DeleteByIdAsync(string processorName, string processorId)
+    public virtual Task DeleteByIdAsync(string processorName, string processorId)
     {
-        return Task.CompletedTask;
+        throw new NotImplementedException();
     }
 
-    public bool IsPaymentMethodRequired() => _paymentProcessorService.IsPaymentMethodRequired;
+    public virtual bool IsPaymentMethodRequired(PayCustomer payCustomer) => _paymentProcessorService.IsPaymentMethodRequired(payCustomer);
 
-    public Task<PayPaymentMethod> SynchroniseAsync(string processorId)
+    public virtual Task<PayPaymentMethod> SynchroniseAsync(string processorId)
     {
         return Task.FromResult<PayPaymentMethod>(new());
     }
 
-    public Task UpdateAllAsync(bool isDefault)
+    public virtual Task UpdateAllAsync(bool isDefault)
     {
-        return Task.CompletedTask;
+        throw new NotImplementedException();
     }
 
     private async Task SavePaymentMethodAsync(PayPaymentMethod payPaymentMethod)

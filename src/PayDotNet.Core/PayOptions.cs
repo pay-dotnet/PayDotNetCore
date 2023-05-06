@@ -27,3 +27,5 @@ public record PayAuthorizeChargeOptions(int Amount, string Currency, string? Pay
 /// <param name="Description">Only used for credit notes in invoice.</param>
 /// <param name="RefundApplicationFee"></param>
 public record PayChargeRefundOptions(int Amount, string? Description = null, bool RefundApplicationFee = false);
+
+public record PayPaymentMethodOptions(string PaymentMethodId, bool IsDefault);

@@ -2,6 +2,7 @@
 using PayDotNet.Core;
 using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Managers;
+using PayDotNet.Core.Services;
 using PayDotNet.Core.Stores;
 using PayDotNet.Core.Webhooks;
 
@@ -19,11 +20,9 @@ public static class ServiceCollectionExtension
             .AddScoped<IChargeManager, ChargeManager>()
             .AddScoped<IMerchantManager, MerchantManager>()
             .AddScoped<ICheckoutManager, CheckoutManager>()
-            .AddSingleton<InMemoryStore>()
-            .AddSingleton<IChargeStore>(sp => sp.GetRequiredService<InMemoryStore>())
-            .AddSingleton<ICustomerStore>(sp => sp.GetRequiredService<InMemoryStore>())
-            .AddSingleton<IPaymentMethodStore>(sp => sp.GetRequiredService<InMemoryStore>())
-            .AddSingleton<ISubscriptionStore>(sp => sp.GetRequiredService<InMemoryStore>());
+            .AddSingleton<CompositePaymentProcessorService>()
+            .AddScoped<IPayCustomerEmailResolverService, PayDefaultCustomerEmailResolverService>()
+            .AddHttpContextAccessor();
 
         // Webhook infrastructure registration
         services
@@ -34,6 +33,18 @@ public static class ServiceCollectionExtension
         IConfigurationSection configSection = configuration.GetSection("PayDotNet");
         services.Configure<PayDotNetConfiguration>(configSection);
         return new(services, configuration, configSection.Get<PayDotNetConfiguration>());
+    }
+
+    [Obsolete("Do not use this method in production. Only used for SIMPLE test scenario's.")]
+    public static PayDotNetBuilder AddInMemoryStore(this PayDotNetBuilder builder)
+    {
+        builder.Services
+            .AddSingleton<InMemoryStore>()
+            .AddSingleton<IChargeStore>(sp => sp.GetRequiredService<InMemoryStore>())
+            .AddSingleton<ICustomerStore>(sp => sp.GetRequiredService<InMemoryStore>())
+            .AddSingleton<IPaymentMethodStore>(sp => sp.GetRequiredService<InMemoryStore>())
+            .AddSingleton<ISubscriptionStore>(sp => sp.GetRequiredService<InMemoryStore>());
+        return builder;
     }
 
     public static IServiceCollection AddBillableManager<TBillableManager>(this IServiceCollection services)

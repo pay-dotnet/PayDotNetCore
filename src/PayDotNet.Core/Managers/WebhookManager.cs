@@ -11,7 +11,7 @@ public class WebhookManager : IWebhookManager
         _webhookDispatcher = webhookDispatcher;
     }
 
-    public Task CreateAsync(string processor, string eventType, string @event)
+    public virtual Task CreateAsync(string processor, string eventType, string @event)
     {
         return _webhookDispatcher.DispatchAsync(processor, eventType, @event);
         //return _webhooksStore.CreateAsync(new()

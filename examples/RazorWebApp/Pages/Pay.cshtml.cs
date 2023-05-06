@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using PayDotNet.Core;
 using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Models;
-using PayDotNet.Core.Services;
 
 namespace RazorWebApp.Pages
 {
@@ -34,7 +33,9 @@ namespace RazorWebApp.Pages
             }
             if (!string.IsNullOrEmpty(id))
             {
-                Payment = await _paymentProcessorService.GetPaymentAsync(id);
+                // TODO: circumvent this issue
+                PayCustomer payCustomer = await _billableManager.GetOrCreateCustomerAsync("dotnetfromthemountain@gmail.com", new(PaymentProcessors.Stripe));
+                Payment = await _paymentProcessorService.GetPaymentAsync(payCustomer, id);
             }
             return Page();
         }

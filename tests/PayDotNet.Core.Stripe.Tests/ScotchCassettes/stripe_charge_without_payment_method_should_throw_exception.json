@@ -8,7 +8,7 @@
         "Authorization": "Bearer sk_test_key",
         "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
         "Stripe-Version": "2022-11-15",
-        "Idempotency-Key": "9326878f-49be-4b2c-aa9c-0648a6edd25b"
+        "Idempotency-Key": "261fe12e-7a0b-45cf-86ef-c7f91dfd0c70"
       },
       "ContentHeaders": {
         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
@@ -23,7 +23,7 @@
       },
       "ResponseHeaders": {
         "Server": "nginx",
-        "Date": "Thu, 04 May 2023 14:37:17 GMT",
+        "Date": "Sat, 06 May 2023 16:33:54 GMT",
         "Connection": "keep-alive",
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
@@ -31,9 +31,9 @@
         "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
         "Access-Control-Max-Age": "300",
         "Cache-Control": "no-store, no-cache",
-        "Idempotency-Key": "9326878f-49be-4b2c-aa9c-0648a6edd25b",
-        "Original-Request": "req_LHvtBfPkbGZvaF",
-        "Request-Id": "req_LHvtBfPkbGZvaF",
+        "Idempotency-Key": "261fe12e-7a0b-45cf-86ef-c7f91dfd0c70",
+        "Original-Request": "req_WkdNWn2w02bs0h",
+        "Request-Id": "req_WkdNWn2w02bs0h",
         "Stripe-Should-Retry": "false",
         "Stripe-Version": "2022-11-15",
         "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
@@ -42,10 +42,10 @@
         "Content-Type": "application/json",
         "Content-Length": "725"
       },
-      "Body": "{\n  \"id\": \"cus_Npiip4iaACXgmH\",\n  \"object\": \"customer\",\n  \"address\": null,\n  \"balance\": 0,\n  \"created\": 1683211037,\n  \"currency\": null,\n  \"default_source\": null,\n  \"delinquent\": false,\n  \"description\": null,\n  \"discount\": null,\n  \"email\": \"dotnetfromthemountain+test@gmail.com\",\n  \"invoice_prefix\": \"B0E92F53\",\n  \"invoice_settings\": {\n    \"custom_fields\": null,\n    \"default_payment_method\": null,\n    \"footer\": null,\n    \"rendering_options\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"name\": null,\n  \"phone\": null,\n  \"preferred_locales\": [],\n  \"shipping\": null,\n  \"tax\": {\n    \"automatic_tax\": \"unrecognized_location\",\n    \"ip_address\": null,\n    \"location\": null\n  },\n  \"tax_exempt\": \"none\",\n  \"test_clock\": null\n}",
+      "Body": "{\n  \"id\": \"cus_NqV3j9Gj5uEGdX\",\n  \"object\": \"customer\",\n  \"address\": null,\n  \"balance\": 0,\n  \"created\": 1683390834,\n  \"currency\": null,\n  \"default_source\": null,\n  \"delinquent\": false,\n  \"description\": null,\n  \"discount\": null,\n  \"email\": \"dotnetfromthemountain+test@gmail.com\",\n  \"invoice_prefix\": \"25C9105D\",\n  \"invoice_settings\": {\n    \"custom_fields\": null,\n    \"default_payment_method\": null,\n    \"footer\": null,\n    \"rendering_options\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"name\": null,\n  \"phone\": null,\n  \"preferred_locales\": [],\n  \"shipping\": null,\n  \"tax\": {\n    \"automatic_tax\": \"unrecognized_location\",\n    \"ip_address\": null,\n    \"location\": null\n  },\n  \"tax_exempt\": \"none\",\n  \"test_clock\": null\n}",
       "HttpVersion": "1.1"
     },
-    "RecordedAt": "2023-05-04T16:37:18.8026075+02:00"
+    "RecordedAt": "2023-05-06T18:33:54.8975871+02:00"
   },
   {
     "Request": {
@@ -56,14 +56,14 @@
         "Authorization": "Bearer sk_test_key",
         "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
         "Stripe-Version": "2022-11-15",
-        "Idempotency-Key": "e8ee58bc-bc94-4df0-9b48-a7b8d0b0b685",
-        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_LHvtBfPkbGZvaF\",\"request_duration_ms\":404}}"
+        "Idempotency-Key": "39cffa5d-5e6f-4f2a-bf53-1cdb98a8eb48",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_WkdNWn2w02bs0h\",\"request_duration_ms\":602}}"
       },
       "ContentHeaders": {
         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
         "Content-Length": "146"
       },
-      "Body": "amount=2900&capture_method=automatic&confirm=True&currency=eur&customer=cus_Npiip4iaACXgmH&expand[0]=latest_charge&expand[1]=latest_charge.refunds"
+      "Body": "amount=2900&capture_method=automatic&confirm=True&currency=eur&customer=cus_NqV3j9Gj5uEGdX&expand[0]=latest_charge&expand[1]=latest_charge.refunds"
     },
     "Response": {
       "Status": {
@@ -72,7 +72,7 @@
       },
       "ResponseHeaders": {
         "Server": "nginx",
-        "Date": "Thu, 04 May 2023 14:37:17 GMT",
+        "Date": "Sat, 06 May 2023 16:33:54 GMT",
         "Connection": "keep-alive",
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
@@ -80,9 +80,9 @@
         "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
         "Access-Control-Max-Age": "300",
         "Cache-Control": "no-store, no-cache",
-        "Idempotency-Key": "e8ee58bc-bc94-4df0-9b48-a7b8d0b0b685",
-        "Original-Request": "req_YmMxaIiNZGL0gy",
-        "Request-Id": "req_YmMxaIiNZGL0gy",
+        "Idempotency-Key": "39cffa5d-5e6f-4f2a-bf53-1cdb98a8eb48",
+        "Original-Request": "req_EOLGlvZLgPZoXS",
+        "Request-Id": "req_EOLGlvZLgPZoXS",
         "Stripe-Should-Retry": "false",
         "Stripe-Version": "2022-11-15",
         "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
@@ -91,9 +91,9 @@
         "Content-Type": "application/json",
         "Content-Length": "523"
       },
-      "Body": "{\n  \"error\": {\n    \"code\": \"payment_intent_unexpected_state\",\n    \"doc_url\": \"https://stripe.com/docs/error-codes/payment-intent-unexpected-state\",\n    \"message\": \"You cannot confirm this PaymentIntent because it's missing a payment method. You can either update the PaymentIntent with a payment method and then confirm it again, or confirm it again directly with a payment method.\",\n    \"request_log_url\": \"https://dashboard.stripe.com/test/logs/req_YmMxaIiNZGL0gy?t=1683211037\",\n    \"type\": \"invalid_request_error\"\n  }\n}\n",
+      "Body": "{\n  \"error\": {\n    \"code\": \"payment_intent_unexpected_state\",\n    \"doc_url\": \"https://stripe.com/docs/error-codes/payment-intent-unexpected-state\",\n    \"message\": \"You cannot confirm this PaymentIntent because it's missing a payment method. You can either update the PaymentIntent with a payment method and then confirm it again, or confirm it again directly with a payment method.\",\n    \"request_log_url\": \"https://dashboard.stripe.com/test/logs/req_EOLGlvZLgPZoXS?t=1683390834\",\n    \"type\": \"invalid_request_error\"\n  }\n}\n",
       "HttpVersion": "1.1"
     },
-    "RecordedAt": "2023-05-04T16:37:19.0784267+02:00"
+    "RecordedAt": "2023-05-06T18:33:55.2220092+02:00"
   }
 ]

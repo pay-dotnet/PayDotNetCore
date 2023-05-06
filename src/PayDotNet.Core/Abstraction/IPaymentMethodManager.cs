@@ -4,7 +4,7 @@ namespace PayDotNet.Core.Abstraction;
 
 public interface IPaymentMethodManager
 {
-    Task<PayPaymentMethod> AddPaymentMethodAsync(PayCustomer payCustomer, string paymentMethodId, bool isDefault = false);
+    Task<PayPaymentMethod> AddPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options);
 
     Task DeleteAllAsync(PayCustomer payCustomer);
 
@@ -14,5 +14,5 @@ public interface IPaymentMethodManager
 
     Task UpdateAllAsync(bool isDefault);
 
-    bool IsPaymentMethodRequired();
+    bool IsPaymentMethodRequired(PayCustomer payCustomer);
 }

@@ -8,14 +8,13 @@
         "Authorization": "Bearer sk_test_key",
         "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
         "Stripe-Version": "2022-11-15",
-        "Idempotency-Key": "63f47c7f-37bf-4434-a52a-201248403062",
-        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_CihnLT6cMqKL8Q\",\"request_duration_ms\":548}}"
+        "Idempotency-Key": "0b787792-3c80-43d1-9c1a-432482d3c317"
       },
       "ContentHeaders": {
         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-        "Content-Length": "60"
+        "Content-Length": "39"
       },
-      "Body": "email=dotnetfromthemountain%2Btest%40gmail.com&expand[0]=tax"
+      "Body": "email=johndoe%40email.com&expand[0]=tax"
     },
     "Response": {
       "Status": {
@@ -24,7 +23,7 @@
       },
       "ResponseHeaders": {
         "Server": "nginx",
-        "Date": "Thu, 04 May 2023 14:37:14 GMT",
+        "Date": "Sat, 06 May 2023 16:33:28 GMT",
         "Connection": "keep-alive",
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
@@ -32,21 +31,21 @@
         "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
         "Access-Control-Max-Age": "300",
         "Cache-Control": "no-store, no-cache",
-        "Idempotency-Key": "63f47c7f-37bf-4434-a52a-201248403062",
-        "Original-Request": "req_aphvbfpE41ewK7",
-        "Request-Id": "req_aphvbfpE41ewK7",
+        "Idempotency-Key": "0b787792-3c80-43d1-9c1a-432482d3c317",
+        "Original-Request": "req_BnMah3moNMBlE8",
+        "Request-Id": "req_BnMah3moNMBlE8",
         "Stripe-Should-Retry": "false",
         "Stripe-Version": "2022-11-15",
         "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
       },
       "ContentHeaders": {
         "Content-Type": "application/json",
-        "Content-Length": "725"
+        "Content-Length": "706"
       },
-      "Body": "{\n  \"id\": \"cus_NpiidMiscyssWI\",\n  \"object\": \"customer\",\n  \"address\": null,\n  \"balance\": 0,\n  \"created\": 1683211034,\n  \"currency\": null,\n  \"default_source\": null,\n  \"delinquent\": false,\n  \"description\": null,\n  \"discount\": null,\n  \"email\": \"dotnetfromthemountain+test@gmail.com\",\n  \"invoice_prefix\": \"A8455238\",\n  \"invoice_settings\": {\n    \"custom_fields\": null,\n    \"default_payment_method\": null,\n    \"footer\": null,\n    \"rendering_options\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"name\": null,\n  \"phone\": null,\n  \"preferred_locales\": [],\n  \"shipping\": null,\n  \"tax\": {\n    \"automatic_tax\": \"unrecognized_location\",\n    \"ip_address\": null,\n    \"location\": null\n  },\n  \"tax_exempt\": \"none\",\n  \"test_clock\": null\n}",
+      "Body": "{\n  \"id\": \"cus_NqV3giSDOjscdR\",\n  \"object\": \"customer\",\n  \"address\": null,\n  \"balance\": 0,\n  \"created\": 1683390808,\n  \"currency\": null,\n  \"default_source\": null,\n  \"delinquent\": false,\n  \"description\": null,\n  \"discount\": null,\n  \"email\": \"johndoe@email.com\",\n  \"invoice_prefix\": \"34F333B8\",\n  \"invoice_settings\": {\n    \"custom_fields\": null,\n    \"default_payment_method\": null,\n    \"footer\": null,\n    \"rendering_options\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"name\": null,\n  \"phone\": null,\n  \"preferred_locales\": [],\n  \"shipping\": null,\n  \"tax\": {\n    \"automatic_tax\": \"unrecognized_location\",\n    \"ip_address\": null,\n    \"location\": null\n  },\n  \"tax_exempt\": \"none\",\n  \"test_clock\": null\n}",
       "HttpVersion": "1.1"
     },
-    "RecordedAt": "2023-05-04T16:37:16.4478715+02:00"
+    "RecordedAt": "2023-05-06T18:33:29.0990819+02:00"
   },
   {
     "Request": {

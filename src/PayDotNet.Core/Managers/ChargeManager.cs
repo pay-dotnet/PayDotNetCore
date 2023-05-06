@@ -8,24 +8,24 @@ public class ChargeManager : IChargeManager
 {
     private readonly ICustomerManager _customerManager;
     private readonly IChargeStore _chargeStore;
-    private readonly IPaymentProcessorService _paymentProcessorService;
+    private readonly CompositePaymentProcessorService _paymentProcessorService;
 
     public ChargeManager(
         ICustomerManager customerManager,
         IChargeStore chargeStore,
-        IPaymentProcessorService paymentProcessorService)
+        CompositePaymentProcessorService paymentProcessorService)
     {
         _customerManager = customerManager;
         _chargeStore = chargeStore;
         _paymentProcessorService = paymentProcessorService;
     }
 
-    public async Task<IPayment> CaptureAsync(PayCharge payCharge, PayChargeOptions options)
+    public virtual async Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options)
     {
-        return await _paymentProcessorService.CaptureAsync(payCharge, options);
+        return await _paymentProcessorService.CaptureAsync(payCustomer, payCharge, options);
     }
 
-    public async Task<IPayment> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
+    public virtual async Task<IPayment> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
     {
         PayChargeResult result = await _paymentProcessorService.ChargeAsync(payCustomer, options);
         if (result.PayCharge is not null && result.Payment.IsSucceeded())
@@ -36,12 +36,12 @@ public class ChargeManager : IChargeManager
         return result.Payment;
     }
 
-    public Task<PayCharge?> GetAsync(string processorId)
+    public virtual Task<PayCharge?> GetAsync(string processorId)
     {
         return Task.FromResult(_chargeStore.Charges.FirstOrDefault(c => c.ProccesorId == processorId));
     }
 
-    public Task<ICollection<PayChargeRefund>> GetCreditNotesAsync(PayCharge payCharge)
+    public virtual Task<ICollection<PayChargeRefund>> GetCreditNotesAsync(PayCharge payCharge)
     {
         if (string.IsNullOrEmpty(payCharge.InvoiceId))
         {
@@ -52,30 +52,30 @@ public class ChargeManager : IChargeManager
     }
 
     /// <inheritdoc/>
-    public async Task RefundAsync(PayCharge payCharge, PayChargeRefundOptions options)
+    public virtual async Task RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options)
     {
         // Issues a CreditNote if there's an invoice, otherwise uses a Refund.
         // This allows Tax to be handled properly
         if (string.IsNullOrEmpty(payCharge.InvoiceId))
         {
-            await _paymentProcessorService.RefundAsync(payCharge, options);
+            await _paymentProcessorService.RefundAsync(payCustomer, payCharge, options);
         }
         else
         {
-            await _paymentProcessorService.IssueCreditNotesAsync(payCharge, options);
+            await _paymentProcessorService.IssueCreditNotesAsync(payCustomer, payCharge, options);
         }
     }
 
-    public async Task SynchroniseAsync(string processor, string processorId, string customerProcessorId, int attempt = 0, int retries = 1)
+    public virtual async Task SynchroniseAsync(string processor, string processorId, string customerProcessorId, int attempt = 0, int retries = 1)
     {
-        PayCharge payCharge = await _paymentProcessorService.GetChargeAsync(processorId);
         PayCustomer payCustomer = await _customerManager.FindByIdAsync(processor, customerProcessorId);
+        PayCharge payCharge = await _paymentProcessorService.GetChargeAsync(payCustomer, processorId);
         await SynchroniseAsync(payCustomer, processorId, payCharge);
     }
 
     private async Task SynchroniseAsync(PayCustomer payCustomer, string processorId, PayCharge? @object)
     {
-        @object ??= await _paymentProcessorService.GetChargeAsync(processorId);
+        @object ??= await _paymentProcessorService.GetChargeAsync(payCustomer, processorId);
         if (@object == null)
         {
             return;

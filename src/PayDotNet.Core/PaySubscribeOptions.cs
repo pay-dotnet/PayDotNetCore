@@ -1,4 +1,6 @@
-﻿namespace PayDotNet.Core;
+﻿using PayDotNet.Core.Models;
+
+namespace PayDotNet.Core;
 
 public record PaySubscribeOptions(string Name, List<PaySubscribeOptionsItem> Items)
 {

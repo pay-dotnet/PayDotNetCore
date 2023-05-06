@@ -8,12 +8,12 @@ public class CheckoutManager : ICheckoutManager
 {
     private readonly IPaymentProcessorService _paymentProcessorService;
 
-    public CheckoutManager(IPaymentProcessorService paymentProcessorService)
+    public CheckoutManager(CompositePaymentProcessorService paymentProcessorService)
     {
         _paymentProcessorService = paymentProcessorService;
     }
 
-    public Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
+    public virtual Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
     {
         return _paymentProcessorService.CheckoutAsync(payCustomer, options);
     }

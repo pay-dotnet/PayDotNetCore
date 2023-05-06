@@ -1,9 +1,11 @@
 ﻿using PayDotNet.Core.Models;
 
-namespace PayDotNet.Core.Services;
+namespace PayDotNet.Core.Abstraction;
 
 public interface IPaymentProcessorService
 {
+    string Name { get; }
+
     #region Customer
 
     Task<string> CreateCustomerAsync(PayCustomer payCustomer);
@@ -12,7 +14,7 @@ public interface IPaymentProcessorService
 
     #region Payment method API
 
-    Task<PayPaymentMethod> AttachPaymentMethodAsync(PayCustomer payCustomer, string paymentMethodId, bool isDefault);
+    Task<PayPaymentMethod> AttachPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options);
 
     #endregion Payment method API
 
@@ -30,19 +32,19 @@ public interface IPaymentProcessorService
     /// </remarks>
     Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, PaySubscribeOptions options);
 
-    Task<PaySubscriptionResult?> GetSubscriptionAsync(string processorId);
+    Task<PaySubscriptionResult?> GetSubscriptionAsync(PayCustomer payCustomer, string processorId);
 
-    Task CancelAsync(PaySubscription paySubscription, PayCancelSubscriptionOptions options);
+    Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options);
 
     #endregion Subscriptions API
 
     #region Charges API
 
-    Task<PayCharge> GetChargeAsync(string processorId);
+    Task<PayCharge> GetChargeAsync(PayCustomer payCustomer, string processorId);
 
-    Task<IPayment> CaptureAsync(PayCharge payCharge, PayChargeOptions options);
+    Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options);
 
-    Task<IPayment> GetPaymentAsync(string processorId);
+    Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId);
 
     Task<PayChargeResult> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options);
 
@@ -56,13 +58,13 @@ public interface IPaymentProcessorService
 
     #region Refunds API
 
-    Task<PayChargeRefund> RefundAsync(PayCharge payCharge, PayChargeRefundOptions options);
+    Task<PayChargeRefund> RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options);
 
-    Task IssueCreditNotesAsync(PayCharge payCharge, PayChargeRefundOptions options);
+    Task IssueCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options);
 
     Task<ICollection<object>> GetCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge);
 
     #endregion Refunds API
 
-    bool IsPaymentMethodRequired { get; }
+    bool IsPaymentMethodRequired(PayCustomer payCustomer);
 }

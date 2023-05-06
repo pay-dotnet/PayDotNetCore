@@ -8,7 +8,7 @@ namespace PayDotNet.Core.Stripe.Tests.StripeTests;
 public static class StripeTestHelper
 {
     public const ScotchMode DefaultMode = ScotchMode.Replaying;
-    private const string ApiKey = "sk_test_51IQViRJUAL06t0UNemg2YVbfQ150HFQm7MdQmBjznqR0lUD9QR65dTfBHIoP11rBdU9I8QYmmvpzN3Y6bgG4XGQ500BPIpaZwU";
+    private const string ApiKey = "sk_test_key";
 
     public static void SetupStripeRecording(this ITestOutputHelper testOutputHelper, ScotchMode mode = DefaultMode)
     {

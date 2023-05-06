@@ -10,9 +10,9 @@ public interface ISubscriptionManager
 
     Task SynchroniseAsync(string processorId, PaySubscriptionResult? @object, PayCustomer payCustomer);
 
-    Task CancelAsync(PaySubscription paySubscription, PayCancelSubscriptionOptions options);
+    Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options);
 
-    Task CancelNowAsync(PaySubscription paySubscription);
+    Task CancelNowAsync(PayCustomer payCustomer, PaySubscription paySubscription);
 
     Task CancellAllAsync(PayCustomer payCustomer);
 }

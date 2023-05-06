@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
+using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Models;
-using PayDotNet.Core.Services;
 using PayDotNet.Core.Stripe.Client;
 using Stripe;
 using Stripe.Checkout;
@@ -29,7 +29,12 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     private readonly IOptions<PayDotNetConfiguration> _options;
     private readonly DataTransferObjectMapper _mapper;
 
-    public bool IsPaymentMethodRequired => false;
+    public bool IsPaymentMethodRequired(PayCustomer payCustomer)
+    {
+        return false;
+    }
+
+    public string Name => PaymentProcessors.Stripe;
 
     public StripePaymentProcessorService(
         IStripeClient stripeClient,
@@ -77,20 +82,20 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     #region Payment method API
 
-    public async Task<PayPaymentMethod> AttachPaymentMethodAsync(PayCustomer payCustomer, string paymentMethodId, bool isDefault)
+    public async Task<PayPaymentMethod> AttachPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options)
     {
-        PaymentMethod paymentMethod = await _paymentMethods.AttachAsync(paymentMethodId, new()
+        PaymentMethod paymentMethod = await _paymentMethods.AttachAsync(options.PaymentMethodId, new()
         {
             Customer = payCustomer.ProcessorId,
         });
 
-        if (isDefault)
+        if (options.IsDefault)
         {
             await _customers.UpdateAsync(payCustomer.ProcessorId, new CustomerUpdateOptions
             {
                 InvoiceSettings = new()
                 {
-                    DefaultPaymentMethod = paymentMethodId
+                    DefaultPaymentMethod = paymentMethod.Id
                 }
             });
         }
@@ -102,7 +107,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
             // External fields
             ProcessorId = paymentMethod.Id,
-            IsDefault = isDefault,
+            IsDefault = options.IsDefault,
             Type = paymentMethod.Type,
             CreatedAt = paymentMethod.Created,
             UpdatedAt = paymentMethod.Created,
@@ -146,7 +151,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         return new(paySubscription, payment);
     }
 
-    public async Task<PaySubscriptionResult?> GetSubscriptionAsync(string processorId)
+    public async Task<PaySubscriptionResult?> GetSubscriptionAsync(PayCustomer payCustomer, string processorId)
     {
         SubscriptionGetOptions stripeOptions = new()
         {
@@ -164,7 +169,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         return new(paySubscription, payment);
     }
 
-    public async Task CancelAsync(PaySubscription paySubscription, PayCancelSubscriptionOptions options)
+    public async Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options)
     {
         await _subscriptions.CancelAsync(paySubscription.ProcessorId, new()
         {
@@ -181,7 +186,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     #region Charges API
 
-    public async Task<PayCharge> GetChargeAsync(string processorId)
+    public async Task<PayCharge> GetChargeAsync(PayCustomer payCustomer, string processorId)
     {
         Charge charge = await _charges.GetAsync(processorId, new()
         {
@@ -195,14 +200,15 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         return _mapper.Map(charge, invoice: null);
     }
 
-    public async Task<IPayment> GetPaymentAsync(string processorId)
+    public async Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId)
     {
+        // TODO: check if this charge is actually for this customer.
         return processorId.StartsWith("seti_")
             ? new StripeSetupIntentPayment(await _setupIntents.GetAsync(processorId))
             : new StripePaymentIntentPayment(await _paymentIntents.GetAsync(processorId));
     }
 
-    public async Task<IPayment> CaptureAsync(PayCharge payCharge, PayChargeOptions options)
+    public async Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options)
     {
         PaymentIntent paymentIntent = await _paymentIntents.CaptureAsync(payCharge.ProccesorId, new()
         {
@@ -316,7 +322,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     #region Refunds API
 
-    public async Task<PayChargeRefund> RefundAsync(PayCharge payCharge, PayChargeRefundOptions options)
+    public async Task<PayChargeRefund> RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options)
     {
         try
         {
@@ -333,7 +339,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         }
     }
 
-    public async Task IssueCreditNotesAsync(PayCharge payCharge, PayChargeRefundOptions options)
+    public async Task IssueCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options)
     {
         GuardInvoiceId(payCharge);
         try

@@ -29,7 +29,7 @@ public class PaymentMethodStripeTest : StripeTestBase<StripePaymentProcessorServ
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
 
         // Attach payment method.
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(new()
         {
             ProcessorId = paymentMethod.Id,

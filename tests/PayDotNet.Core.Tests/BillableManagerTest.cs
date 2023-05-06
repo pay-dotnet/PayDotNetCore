@@ -1,7 +1,6 @@
 using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Managers;
 using PayDotNet.Core.Models;
-using PayDotNet.Core.Services;
 
 namespace PayDotNet.Core.Tests;
 
@@ -42,7 +41,7 @@ public class BillableManagerTest : TestBase<BillableManager>
             .ReturnsAsync("cus_123456");
         Mocks<ICustomerManager>().Setup(m => m.UpdateAsync(It.IsAny<PayCustomer>()))
             .Returns(Task.CompletedTask);
-        Mocks<IPaymentMethodManager>().Setup(m => m.AddPaymentMethodAsync(It.IsAny<PayCustomer>(), "payment_id", true))
+        Mocks<IPaymentMethodManager>().Setup(m => m.AddPaymentMethodAsync(It.IsAny<PayCustomer>(), new PayPaymentMethodOptions("payment_id", true)))
             .ReturnsAsync(newCustomer.PaymentMethods.First());
         Mocks<ICustomerManager>().Setup(m => m.FindByEmailAsync(newCustomer.Email, "stripe"))
             .ReturnsAsync(newCustomer);

@@ -10,9 +10,9 @@ public interface IChargeManager
 
     Task<IPayment> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options);
 
-    Task<IPayment> CaptureAsync(PayCharge payCharge, PayChargeOptions options);
+    Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options);
 
-    Task RefundAsync(PayCharge payCharge, PayChargeRefundOptions options);
+    Task RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options);
 
     Task<ICollection<PayChargeRefund>> GetCreditNotesAsync(PayCharge payCharge);
 }

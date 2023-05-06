@@ -8,6 +8,7 @@ builder.Services.AddRazorPages();
 
 // STEP 1:
 builder.Services.AddPayDotNet(builder.Configuration)
+    .AddInMemoryStore()
     .AddStripe(config =>
     {
         config.Webhooks.SubscribeWebhook<PaymentIntentSucceededHandler>(Events.PaymentIntentSucceeded);

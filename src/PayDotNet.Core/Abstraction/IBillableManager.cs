@@ -8,6 +8,14 @@ namespace PayDotNet.Core.Abstraction;
 public interface IBillableManager
 {
     /// <summary>
+    /// Retrieves or create a new customer based on the options.
+    /// Uses the provided <see cref="IPayCustomerEmailResolverService"/> to resolve the customer email.
+    /// </summary>
+    /// <param name="options">The options for the customer.</param>
+    /// <returns>The pay customer that is used in the other operations.</returns>
+    Task<PayCustomer> GetOrCreateCustomerAsync(PayCustomerOptions options);
+
+    /// <summary>
     /// Retrieves or create a new customer based on processorName and email.
     /// </summary>
     /// <param name="email">The email of the customer</param>

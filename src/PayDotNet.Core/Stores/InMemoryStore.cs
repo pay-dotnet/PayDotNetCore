@@ -3,7 +3,7 @@ using PayDotNet.Core.Models;
 
 namespace PayDotNet.Core.Stores;
 
-public class InMemoryStore :
+internal class InMemoryStore :
     ICustomerStore,
     IChargeStore,
     IPaymentMethodStore,

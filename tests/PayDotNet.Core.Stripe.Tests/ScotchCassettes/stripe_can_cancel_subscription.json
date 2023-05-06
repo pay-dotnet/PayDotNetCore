@@ -8,7 +8,7 @@
         "Authorization": "Bearer sk_test_key",
         "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
         "Stripe-Version": "2022-11-15",
-        "Idempotency-Key": "b0b6184f-b66f-4e61-a34b-4b3b4a179165"
+        "Idempotency-Key": "37a9656e-8bbc-4117-b0a8-5cc62473aca7"
       },
       "ContentHeaders": {
         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
@@ -23,7 +23,7 @@
       },
       "ResponseHeaders": {
         "Server": "nginx",
-        "Date": "Fri, 05 May 2023 08:35:38 GMT",
+        "Date": "Sat, 06 May 2023 16:33:07 GMT",
         "Connection": "keep-alive",
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
@@ -31,9 +31,9 @@
         "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
         "Access-Control-Max-Age": "300",
         "Cache-Control": "no-store, no-cache",
-        "Idempotency-Key": "b0b6184f-b66f-4e61-a34b-4b3b4a179165",
-        "Original-Request": "req_U2v2xnCIXfIvWX",
-        "Request-Id": "req_U2v2xnCIXfIvWX",
+        "Idempotency-Key": "37a9656e-8bbc-4117-b0a8-5cc62473aca7",
+        "Original-Request": "req_LDzw3mfS4aJuhC",
+        "Request-Id": "req_LDzw3mfS4aJuhC",
         "Stripe-Should-Retry": "false",
         "Stripe-Version": "2022-11-15",
         "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
@@ -42,10 +42,10 @@
         "Content-Type": "application/json",
         "Content-Length": "931"
       },
-      "Body": "{\n  \"id\": \"pm_1N4K74JUAL06t0UNRWE5puVH\",\n  \"object\": \"payment_method\",\n  \"billing_details\": {\n    \"address\": {\n      \"city\": null,\n      \"country\": null,\n      \"line1\": null,\n      \"line2\": null,\n      \"postal_code\": null,\n      \"state\": null\n    },\n    \"email\": null,\n    \"name\": null,\n    \"phone\": null\n  },\n  \"card\": {\n    \"brand\": \"visa\",\n    \"checks\": {\n      \"address_line1_check\": null,\n      \"address_postal_code_check\": null,\n      \"cvc_check\": \"unchecked\"\n    },\n    \"country\": \"US\",\n    \"exp_month\": 12,\n    \"exp_year\": 2030,\n    \"fingerprint\": \"0t0vike8tPNRzyyV\",\n    \"funding\": \"credit\",\n    \"generated_from\": null,\n    \"last4\": \"4242\",\n    \"networks\": {\n      \"available\": [\n        \"visa\"\n      ],\n      \"preferred\": null\n    },\n    \"three_d_secure_usage\": {\n      \"supported\": true\n    },\n    \"wallet\": null\n  },\n  \"created\": 1683275738,\n  \"customer\": null,\n  \"livemode\": false,\n  \"metadata\": {},\n  \"type\": \"card\"\n}",
+      "Body": "{\n  \"id\": \"pm_1N4o2hJUAL06t0UNSTxklPIM\",\n  \"object\": \"payment_method\",\n  \"billing_details\": {\n    \"address\": {\n      \"city\": null,\n      \"country\": null,\n      \"line1\": null,\n      \"line2\": null,\n      \"postal_code\": null,\n      \"state\": null\n    },\n    \"email\": null,\n    \"name\": null,\n    \"phone\": null\n  },\n  \"card\": {\n    \"brand\": \"visa\",\n    \"checks\": {\n      \"address_line1_check\": null,\n      \"address_postal_code_check\": null,\n      \"cvc_check\": \"unchecked\"\n    },\n    \"country\": \"US\",\n    \"exp_month\": 12,\n    \"exp_year\": 2030,\n    \"fingerprint\": \"0t0vike8tPNRzyyV\",\n    \"funding\": \"credit\",\n    \"generated_from\": null,\n    \"last4\": \"4242\",\n    \"networks\": {\n      \"available\": [\n        \"visa\"\n      ],\n      \"preferred\": null\n    },\n    \"three_d_secure_usage\": {\n      \"supported\": true\n    },\n    \"wallet\": null\n  },\n  \"created\": 1683390787,\n  \"customer\": null,\n  \"livemode\": false,\n  \"metadata\": {},\n  \"type\": \"card\"\n}",
       "HttpVersion": "1.1"
     },
-    "RecordedAt": "2023-05-05T10:35:38.3586954+02:00"
+    "RecordedAt": "2023-05-06T18:33:07.9483772+02:00"
   },
   {
     "Request": {
@@ -56,8 +56,8 @@
         "Authorization": "Bearer sk_test_key",
         "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
         "Stripe-Version": "2022-11-15",
-        "Idempotency-Key": "2ba816c3-e6f1-4c25-93e4-2508cbb12e9f",
-        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_KklMuf94vH1UTq\",\"request_duration_ms\":447}}"
+        "Idempotency-Key": "7b7d59d4-43ea-4700-8c90-5080ca029fe0",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_LDzw3mfS4aJuhC\",\"request_duration_ms\":494}}"
       },
       "ContentHeaders": {
         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
@@ -72,7 +72,7 @@
       },
       "ResponseHeaders": {
         "Server": "nginx",
-        "Date": "Thu, 04 May 2023 14:53:23 GMT",
+        "Date": "Sat, 06 May 2023 16:33:08 GMT",
         "Connection": "keep-alive",
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
@@ -80,9 +80,9 @@
         "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
         "Access-Control-Max-Age": "300",
         "Cache-Control": "no-store, no-cache",
-        "Idempotency-Key": "2ba816c3-e6f1-4c25-93e4-2508cbb12e9f",
-        "Original-Request": "req_XtyoFyGV7dR7YM",
-        "Request-Id": "req_XtyoFyGV7dR7YM",
+        "Idempotency-Key": "7b7d59d4-43ea-4700-8c90-5080ca029fe0",
+        "Original-Request": "req_3Po71DMQeJkxD4",
+        "Request-Id": "req_3Po71DMQeJkxD4",
         "Stripe-Should-Retry": "false",
         "Stripe-Version": "2022-11-15",
         "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
@@ -91,10 +91,10 @@
         "Content-Type": "application/json",
         "Content-Length": "725"
       },
-      "Body": "{\n  \"id\": \"cus_NpizQNSLdXbILz\",\n  \"object\": \"customer\",\n  \"address\": null,\n  \"balance\": 0,\n  \"created\": 1683212002,\n  \"currency\": null,\n  \"default_source\": null,\n  \"delinquent\": false,\n  \"description\": null,\n  \"discount\": null,\n  \"email\": \"dotnetfromthemountain+test@gmail.com\",\n  \"invoice_prefix\": \"AA6441CB\",\n  \"invoice_settings\": {\n    \"custom_fields\": null,\n    \"default_payment_method\": null,\n    \"footer\": null,\n    \"rendering_options\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"name\": null,\n  \"phone\": null,\n  \"preferred_locales\": [],\n  \"shipping\": null,\n  \"tax\": {\n    \"automatic_tax\": \"unrecognized_location\",\n    \"ip_address\": null,\n    \"location\": null\n  },\n  \"tax_exempt\": \"none\",\n  \"test_clock\": null\n}",
+      "Body": "{\n  \"id\": \"cus_NqV2vUPgO9ZEsT\",\n  \"object\": \"customer\",\n  \"address\": null,\n  \"balance\": 0,\n  \"created\": 1683390787,\n  \"currency\": null,\n  \"default_source\": null,\n  \"delinquent\": false,\n  \"description\": null,\n  \"discount\": null,\n  \"email\": \"dotnetfromthemountain+test@gmail.com\",\n  \"invoice_prefix\": \"ADE11DF5\",\n  \"invoice_settings\": {\n    \"custom_fields\": null,\n    \"default_payment_method\": null,\n    \"footer\": null,\n    \"rendering_options\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"name\": null,\n  \"phone\": null,\n  \"preferred_locales\": [],\n  \"shipping\": null,\n  \"tax\": {\n    \"automatic_tax\": \"unrecognized_location\",\n    \"ip_address\": null,\n    \"location\": null\n  },\n  \"tax_exempt\": \"none\",\n  \"test_clock\": null\n}",
       "HttpVersion": "1.1"
     },
-    "RecordedAt": "2023-05-04T16:53:24.6052003+02:00"
+    "RecordedAt": "2023-05-06T18:33:08.3014114+02:00"
   },
   {
     "Request": {
@@ -203,14 +203,14 @@
         "Authorization": "Bearer sk_test_key",
         "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
         "Stripe-Version": "2022-11-15",
-        "Idempotency-Key": "cbf15a71-81f2-4fb7-a4d4-c189862e012a",
-        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_yvPEMrcJTjZXIk\",\"request_duration_ms\":358}}"
+        "Idempotency-Key": "c2751fec-8d79-47c5-bba5-b6e52d3e97ce",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_Az3wNfO9sRe3EN\",\"request_duration_ms\":336}}"
       },
       "ContentHeaders": {
         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
         "Content-Length": "324"
       },
-      "Body": "customer=cus_NpizQNSLdXbILz&items[0][price]=price_1MyDj2JUAL06t0UNphFwwc6l&items[0][quantity]=1&metadata[pay_name]=default&payment_behavior=allow_incomplete&expand[0]=pending_setup_intent&expand[1]=latest_invoice&expand[2]=latest_invoice.payment_intent&expand[3]=latest_invoice.charge&expand[4]=latest_invoice.charge.refunds"
+      "Body": "customer=cus_NqV2vUPgO9ZEsT&items[0][price]=price_1MyDj2JUAL06t0UNphFwwc6l&items[0][quantity]=1&metadata[pay_name]=default&payment_behavior=allow_incomplete&expand[0]=pending_setup_intent&expand[1]=latest_invoice&expand[2]=latest_invoice.payment_intent&expand[3]=latest_invoice.charge&expand[4]=latest_invoice.charge.refunds"
     },
     "Response": {
       "Status": {
@@ -219,7 +219,7 @@
       },
       "ResponseHeaders": {
         "Server": "nginx",
-        "Date": "Thu, 04 May 2023 14:53:26 GMT",
+        "Date": "Sat, 06 May 2023 16:33:11 GMT",
         "Connection": "keep-alive",
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
@@ -227,9 +227,9 @@
         "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
         "Access-Control-Max-Age": "300",
         "Cache-Control": "no-store, no-cache",
-        "Idempotency-Key": "cbf15a71-81f2-4fb7-a4d4-c189862e012a",
-        "Original-Request": "req_IYibutaIG06Xzt",
-        "Request-Id": "req_IYibutaIG06Xzt",
+        "Idempotency-Key": "c2751fec-8d79-47c5-bba5-b6e52d3e97ce",
+        "Original-Request": "req_VUIud9aDK7c3aB",
+        "Request-Id": "req_VUIud9aDK7c3aB",
         "Stripe-Should-Retry": "false",
         "Stripe-Version": "2022-11-15",
         "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
@@ -238,10 +238,10 @@
         "Content-Type": "application/json",
         "Content-Length": "14280"
       },
-      "Body": "{\n  \"id\": \"sub_1N43X6JUAL06t0UNvIj2Blgh\",\n  \"object\": \"subscription\",\n  \"application\": null,\n  \"application_fee_percent\": null,\n  \"automatic_tax\": {\n    \"enabled\": false\n  },\n  \"billing_cycle_anchor\": 1683212004,\n  \"billing_thresholds\": null,\n  \"cancel_at\": null,\n  \"cancel_at_period_end\": false,\n  \"canceled_at\": null,\n  \"cancellation_details\": {\n    \"comment\": null,\n    \"feedback\": null,\n    \"reason\": null\n  },\n  \"collection_method\": \"charge_automatically\",\n  \"created\": 1683212004,\n  \"currency\": \"eur\",\n  \"current_period_end\": 1714834404,\n  \"current_period_start\": 1683212004,\n  \"customer\": \"cus_NpizQNSLdXbILz\",\n  \"days_until_due\": null,\n  \"default_payment_method\": null,\n  \"default_source\": null,\n  \"default_tax_rates\": [],\n  \"description\": null,\n  \"discount\": null,\n  \"ended_at\": null,\n  \"items\": {\n    \"object\": \"list\",\n    \"data\": [\n      {\n        \"id\": \"si_NpizVxYUp32p9m\",\n        \"object\": \"subscription_item\",\n        \"billing_thresholds\": null,\n        \"created\": 1683212004,\n        \"metadata\": {},\n        \"plan\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"plan\",\n          \"active\": true,\n          \"aggregate_usage\": null,\n          \"amount\": 24900,\n          \"amount_decimal\": \"24900\",\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"interval\": \"year\",\n          \"interval_count\": 1,\n          \"livemode\": false,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"tiers_mode\": null,\n          \"transform_usage\": null,\n          \"trial_period_days\": null,\n          \"usage_type\": \"licensed\"\n        },\n        \"price\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"price\",\n          \"active\": true,\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"custom_unit_amount\": null,\n          \"livemode\": false,\n          \"lookup_key\": null,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"recurring\": {\n            \"aggregate_usage\": null,\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"tax_behavior\": \"unspecified\",\n          \"tiers_mode\": null,\n          \"transform_quantity\": null,\n          \"type\": \"recurring\",\n          \"unit_amount\": 24900,\n          \"unit_amount_decimal\": \"24900\"\n        },\n        \"quantity\": 1,\n        \"subscription\": \"sub_1N43X6JUAL06t0UNvIj2Blgh\",\n        \"tax_rates\": []\n      }\n    ],\n    \"has_more\": false,\n    \"total_count\": 1,\n    \"url\": \"/v1/subscription_items?subscription=sub_1N43X6JUAL06t0UNvIj2Blgh\"\n  },\n  \"latest_invoice\": {\n    \"id\": \"in_1N43X6JUAL06t0UNdeDZ6nDT\",\n    \"object\": \"invoice\",\n    \"account_country\": \"NL\",\n    \"account_name\": \"Dubbelbit B.V.\",\n    \"account_tax_ids\": null,\n    \"amount_due\": 24900,\n    \"amount_paid\": 24900,\n    \"amount_remaining\": 0,\n    \"amount_shipping\": 0,\n    \"application\": null,\n    \"application_fee_amount\": null,\n    \"attempt_count\": 1,\n    \"attempted\": true,\n    \"auto_advance\": false,\n    \"automatic_tax\": {\n      \"enabled\": false,\n      \"status\": null\n    },\n    \"billing_reason\": \"subscription_create\",\n    \"charge\": {\n      \"id\": \"ch_3N43X6JUAL06t0UN14YacaLL\",\n      \"object\": \"charge\",\n      \"amount\": 24900,\n      \"amount_captured\": 24900,\n      \"amount_refunded\": 0,\n      \"application\": null,\n      \"application_fee\": null,\n      \"application_fee_amount\": null,\n      \"balance_transaction\": \"txn_3N43X6JUAL06t0UN1Bsz4nyl\",\n      \"billing_details\": {\n        \"address\": {\n          \"city\": null,\n          \"country\": null,\n          \"line1\": null,\n          \"line2\": null,\n          \"postal_code\": null,\n          \"state\": null\n        },\n        \"email\": null,\n        \"name\": null,\n        \"phone\": null\n      },\n      \"calculated_statement_descriptor\": \"DOTNETFROMTHEMOUNTAIN\",\n      \"captured\": true,\n      \"created\": 1683212005,\n      \"currency\": \"eur\",\n      \"customer\": \"cus_NpizQNSLdXbILz\",\n      \"description\": \"Subscription creation\",\n      \"destination\": null,\n      \"dispute\": null,\n      \"disputed\": false,\n      \"failure_balance_transaction\": null,\n      \"failure_code\": null,\n      \"failure_message\": null,\n      \"fraud_details\": {},\n      \"invoice\": \"in_1N43X6JUAL06t0UNdeDZ6nDT\",\n      \"livemode\": false,\n      \"metadata\": {},\n      \"on_behalf_of\": null,\n      \"order\": null,\n      \"outcome\": {\n        \"network_status\": \"approved_by_network\",\n        \"reason\": null,\n        \"risk_level\": \"normal\",\n        \"risk_score\": 58,\n        \"seller_message\": \"Payment complete.\",\n        \"type\": \"authorized\"\n      },\n      \"paid\": true,\n      \"payment_intent\": \"pi_3N43X6JUAL06t0UN1g0yiNrI\",\n      \"payment_method\": \"pm_1N43X4JUAL06t0UNGPFxDCgq\",\n      \"payment_method_details\": {\n        \"card\": {\n          \"brand\": \"visa\",\n          \"checks\": {\n            \"address_line1_check\": null,\n            \"address_postal_code_check\": null,\n            \"cvc_check\": \"pass\"\n          },\n          \"country\": \"US\",\n          \"exp_month\": 12,\n          \"exp_year\": 2030,\n          \"fingerprint\": \"0t0vike8tPNRzyyV\",\n          \"funding\": \"credit\",\n          \"installments\": null,\n          \"last4\": \"4242\",\n          \"mandate\": null,\n          \"network\": \"visa\",\n          \"network_token\": {\n            \"used\": false\n          },\n          \"three_d_secure\": null,\n          \"wallet\": null\n        },\n        \"type\": \"card\"\n      },\n      \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n      \"receipt_number\": null,\n      \"receipt_url\": \"https://pay.stripe.com/receipts/invoices/CAcaFwoVYWNjdF8xSVFWaVJKVUFMMDZ0MFVOKOaNz6IGMgbKtB5NCnc6LBYz86L1wOvdbyqIqFaDnKbiL_OUZViqx2TDTObU26M5pQZPjG6EF7j0tbUw?s=ap\",\n      \"refunded\": false,\n      \"refunds\": {\n        \"object\": \"list\",\n        \"data\": [],\n        \"has_more\": false,\n        \"total_count\": 0,\n        \"url\": \"/v1/charges/ch_3N43X6JUAL06t0UN14YacaLL/refunds\"\n      },\n      \"review\": null,\n      \"shipping\": null,\n      \"source\": null,\n      \"source_transfer\": null,\n      \"statement_descriptor\": null,\n      \"statement_descriptor_suffix\": null,\n      \"status\": \"succeeded\",\n      \"transfer_data\": null,\n      \"transfer_group\": null\n    },\n    \"collection_method\": \"charge_automatically\",\n    \"created\": 1683212004,\n    \"currency\": \"eur\",\n    \"custom_fields\": null,\n    \"customer\": \"cus_NpizQNSLdXbILz\",\n    \"customer_address\": null,\n    \"customer_email\": \"dotnetfromthemountain+test@gmail.com\",\n    \"customer_name\": null,\n    \"customer_phone\": null,\n    \"customer_shipping\": null,\n    \"customer_tax_exempt\": \"none\",\n    \"customer_tax_ids\": [],\n    \"default_payment_method\": null,\n    \"default_source\": null,\n    \"default_tax_rates\": [],\n    \"description\": null,\n    \"discount\": null,\n    \"discounts\": [],\n    \"due_date\": null,\n    \"ending_balance\": 0,\n    \"footer\": null,\n    \"from_invoice\": null,\n    \"hosted_invoice_url\": \"https://invoice.stripe.com/i/acct_1IQViRJUAL06t0UN/test_YWNjdF8xSVFWaVJKVUFMMDZ0MFVOLF9OcGl6bjhyN1ZlTDVyTHNwVDk4WGM4eXg1NVd4UlJ6LDczNzUyODA20200YiLgb6D0?s=ap\",\n    \"invoice_pdf\": \"https://pay.stripe.com/invoice/acct_1IQViRJUAL06t0UN/test_YWNjdF8xSVFWaVJKVUFMMDZ0MFVOLF9OcGl6bjhyN1ZlTDVyTHNwVDk4WGM4eXg1NVd4UlJ6LDczNzUyODA20200YiLgb6D0/pdf?s=ap\",\n    \"last_finalization_error\": null,\n    \"latest_revision\": null,\n    \"lines\": {\n      \"object\": \"list\",\n      \"data\": [\n        {\n          \"id\": \"il_1N43X6JUAL06t0UNy82azZjn\",\n          \"object\": \"line_item\",\n          \"amount\": 24900,\n          \"amount_excluding_tax\": 24900,\n          \"currency\": \"eur\",\n          \"description\": \"1 × PayDotNet (at €249.00 / year)\",\n          \"discount_amounts\": [],\n          \"discountable\": true,\n          \"discounts\": [],\n          \"livemode\": false,\n          \"metadata\": {\n            \"pay_name\": \"default\"\n          },\n          \"period\": {\n            \"end\": 1714834404,\n            \"start\": 1683212004\n          },\n          \"plan\": {\n            \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n            \"object\": \"plan\",\n            \"active\": true,\n            \"aggregate_usage\": null,\n            \"amount\": 24900,\n            \"amount_decimal\": \"24900\",\n            \"billing_scheme\": \"per_unit\",\n            \"created\": 1681821216,\n            \"currency\": \"eur\",\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"livemode\": false,\n            \"metadata\": {},\n            \"nickname\": \"Basic\",\n            \"product\": \"prod_Njh7eTnfGm4pQ5\",\n            \"tiers_mode\": null,\n            \"transform_usage\": null,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"price\": {\n            \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n            \"object\": \"price\",\n            \"active\": true,\n            \"billing_scheme\": \"per_unit\",\n            \"created\": 1681821216,\n            \"currency\": \"eur\",\n            \"custom_unit_amount\": null,\n            \"livemode\": false,\n            \"lookup_key\": null,\n            \"metadata\": {},\n            \"nickname\": \"Basic\",\n            \"product\": \"prod_Njh7eTnfGm4pQ5\",\n            \"recurring\": {\n              \"aggregate_usage\": null,\n              \"interval\": \"year\",\n              \"interval_count\": 1,\n              \"trial_period_days\": null,\n              \"usage_type\": \"licensed\"\n            },\n            \"tax_behavior\": \"unspecified\",\n            \"tiers_mode\": null,\n            \"transform_quantity\": null,\n            \"type\": \"recurring\",\n            \"unit_amount\": 24900,\n            \"unit_amount_decimal\": \"24900\"\n          },\n          \"proration\": false,\n          \"proration_details\": {\n            \"credited_items\": null\n          },\n          \"quantity\": 1,\n          \"subscription\": \"sub_1N43X6JUAL06t0UNvIj2Blgh\",\n          \"subscription_item\": \"si_NpizVxYUp32p9m\",\n          \"tax_amounts\": [],\n          \"tax_rates\": [],\n          \"type\": \"subscription\",\n          \"unit_amount_excluding_tax\": \"24900\"\n        }\n      ],\n      \"has_more\": false,\n      \"total_count\": 1,\n      \"url\": \"/v1/invoices/in_1N43X6JUAL06t0UNdeDZ6nDT/lines\"\n    },\n    \"livemode\": false,\n    \"metadata\": {},\n    \"next_payment_attempt\": null,\n    \"number\": \"8CBC86EA-0182\",\n    \"on_behalf_of\": null,\n    \"paid\": true,\n    \"paid_out_of_band\": false,\n    \"payment_intent\": {\n      \"id\": \"pi_3N43X6JUAL06t0UN1g0yiNrI\",\n      \"object\": \"payment_intent\",\n      \"amount\": 24900,\n      \"amount_capturable\": 0,\n      \"amount_details\": {\n        \"tip\": {}\n      },\n      \"amount_received\": 24900,\n      \"application\": null,\n      \"application_fee_amount\": null,\n      \"automatic_payment_methods\": null,\n      \"canceled_at\": null,\n      \"cancellation_reason\": null,\n      \"capture_method\": \"automatic\",\n      \"client_secret\": \"pi_3N43X6JUAL06t0UN1g0yiNrI_secret_kHJkJjL72J1p0HCFqOB0QspTB\",\n      \"confirmation_method\": \"automatic\",\n      \"created\": 1683212004,\n      \"currency\": \"eur\",\n      \"customer\": \"cus_NpizQNSLdXbILz\",\n      \"description\": \"Subscription creation\",\n      \"invoice\": \"in_1N43X6JUAL06t0UNdeDZ6nDT\",\n      \"last_payment_error\": null,\n      \"latest_charge\": \"ch_3N43X6JUAL06t0UN14YacaLL\",\n      \"livemode\": false,\n      \"metadata\": {},\n      \"next_action\": null,\n      \"on_behalf_of\": null,\n      \"payment_method\": \"pm_1N43X4JUAL06t0UNGPFxDCgq\",\n      \"payment_method_options\": {\n        \"card\": {\n          \"installments\": null,\n          \"mandate_options\": null,\n          \"network\": null,\n          \"request_three_d_secure\": \"automatic\"\n        },\n        \"sepa_debit\": {}\n      },\n      \"payment_method_types\": [\n        \"card\",\n        \"sepa_debit\"\n      ],\n      \"processing\": null,\n      \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n      \"review\": null,\n      \"setup_future_usage\": \"off_session\",\n      \"shipping\": null,\n      \"source\": null,\n      \"statement_descriptor\": null,\n      \"statement_descriptor_suffix\": null,\n      \"status\": \"succeeded\",\n      \"transfer_data\": null,\n      \"transfer_group\": null\n    },\n    \"payment_settings\": {\n      \"default_mandate\": null,\n      \"payment_method_options\": null,\n      \"payment_method_types\": null\n    },\n    \"period_end\": 1683212004,\n    \"period_start\": 1683212004,\n    \"post_payment_credit_notes_amount\": 0,\n    \"pre_payment_credit_notes_amount\": 0,\n    \"quote\": null,\n    \"receipt_number\": null,\n    \"rendering_options\": null,\n    \"shipping_cost\": null,\n    \"shipping_details\": null,\n    \"starting_balance\": 0,\n    \"statement_descriptor\": null,\n    \"status\": \"paid\",\n    \"status_transitions\": {\n      \"finalized_at\": 1683212004,\n      \"marked_uncollectible_at\": null,\n      \"paid_at\": 1683212004,\n      \"voided_at\": null\n    },\n    \"subscription\": \"sub_1N43X6JUAL06t0UNvIj2Blgh\",\n    \"subtotal\": 24900,\n    \"subtotal_excluding_tax\": 24900,\n    \"tax\": null,\n    \"test_clock\": null,\n    \"total\": 24900,\n    \"total_discount_amounts\": [],\n    \"total_excluding_tax\": 24900,\n    \"total_tax_amounts\": [],\n    \"transfer_data\": null,\n    \"webhooks_delivered_at\": 1683212004\n  },\n  \"livemode\": false,\n  \"metadata\": {\n    \"pay_name\": \"default\"\n  },\n  \"next_pending_invoice_item_invoice\": null,\n  \"on_behalf_of\": null,\n  \"pause_collection\": null,\n  \"payment_settings\": {\n    \"payment_method_options\": null,\n    \"payment_method_types\": null,\n    \"save_default_payment_method\": \"off\"\n  },\n  \"pending_invoice_item_interval\": null,\n  \"pending_setup_intent\": null,\n  \"pending_update\": null,\n  \"plan\": {\n    \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n    \"object\": \"plan\",\n    \"active\": true,\n    \"aggregate_usage\": null,\n    \"amount\": 24900,\n    \"amount_decimal\": \"24900\",\n    \"billing_scheme\": \"per_unit\",\n    \"created\": 1681821216,\n    \"currency\": \"eur\",\n    \"interval\": \"year\",\n    \"interval_count\": 1,\n    \"livemode\": false,\n    \"metadata\": {},\n    \"nickname\": \"Basic\",\n    \"product\": \"prod_Njh7eTnfGm4pQ5\",\n    \"tiers_mode\": null,\n    \"transform_usage\": null,\n    \"trial_period_days\": null,\n    \"usage_type\": \"licensed\"\n  },\n  \"quantity\": 1,\n  \"schedule\": null,\n  \"start_date\": 1683212004,\n  \"status\": \"active\",\n  \"test_clock\": null,\n  \"transfer_data\": null,\n  \"trial_end\": null,\n  \"trial_settings\": {\n    \"end_behavior\": {\n      \"missing_payment_method\": \"create_invoice\"\n    }\n  },\n  \"trial_start\": null\n}",
+      "Body": "{\n  \"id\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n  \"object\": \"subscription\",\n  \"application\": null,\n  \"application_fee_percent\": null,\n  \"automatic_tax\": {\n    \"enabled\": false\n  },\n  \"billing_cycle_anchor\": 1683390789,\n  \"billing_thresholds\": null,\n  \"cancel_at\": null,\n  \"cancel_at_period_end\": false,\n  \"canceled_at\": null,\n  \"cancellation_details\": {\n    \"comment\": null,\n    \"feedback\": null,\n    \"reason\": null\n  },\n  \"collection_method\": \"charge_automatically\",\n  \"created\": 1683390789,\n  \"currency\": \"eur\",\n  \"current_period_end\": 1715013189,\n  \"current_period_start\": 1683390789,\n  \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n  \"days_until_due\": null,\n  \"default_payment_method\": null,\n  \"default_source\": null,\n  \"default_tax_rates\": [],\n  \"description\": null,\n  \"discount\": null,\n  \"ended_at\": null,\n  \"items\": {\n    \"object\": \"list\",\n    \"data\": [\n      {\n        \"id\": \"si_NqV25msBkhnQMh\",\n        \"object\": \"subscription_item\",\n        \"billing_thresholds\": null,\n        \"created\": 1683390789,\n        \"metadata\": {},\n        \"plan\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"plan\",\n          \"active\": true,\n          \"aggregate_usage\": null,\n          \"amount\": 24900,\n          \"amount_decimal\": \"24900\",\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"interval\": \"year\",\n          \"interval_count\": 1,\n          \"livemode\": false,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"tiers_mode\": null,\n          \"transform_usage\": null,\n          \"trial_period_days\": null,\n          \"usage_type\": \"licensed\"\n        },\n        \"price\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"price\",\n          \"active\": true,\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"custom_unit_amount\": null,\n          \"livemode\": false,\n          \"lookup_key\": null,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"recurring\": {\n            \"aggregate_usage\": null,\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"tax_behavior\": \"unspecified\",\n          \"tiers_mode\": null,\n          \"transform_quantity\": null,\n          \"type\": \"recurring\",\n          \"unit_amount\": 24900,\n          \"unit_amount_decimal\": \"24900\"\n        },\n        \"quantity\": 1,\n        \"subscription\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n        \"tax_rates\": []\n      }\n    ],\n    \"has_more\": false,\n    \"total_count\": 1,\n    \"url\": \"/v1/subscription_items?subscription=sub_1N4o2jJUAL06t0UNutZHyt3Z\"\n  },\n  \"latest_invoice\": {\n    \"id\": \"in_1N4o2jJUAL06t0UNhp5yUiIi\",\n    \"object\": \"invoice\",\n    \"account_country\": \"NL\",\n    \"account_name\": \"Dubbelbit B.V.\",\n    \"account_tax_ids\": null,\n    \"amount_due\": 24900,\n    \"amount_paid\": 24900,\n    \"amount_remaining\": 0,\n    \"amount_shipping\": 0,\n    \"application\": null,\n    \"application_fee_amount\": null,\n    \"attempt_count\": 1,\n    \"attempted\": true,\n    \"auto_advance\": false,\n    \"automatic_tax\": {\n      \"enabled\": false,\n      \"status\": null\n    },\n    \"billing_reason\": \"subscription_create\",\n    \"charge\": {\n      \"id\": \"ch_3N4o2jJUAL06t0UN0rTfV196\",\n      \"object\": \"charge\",\n      \"amount\": 24900,\n      \"amount_captured\": 24900,\n      \"amount_refunded\": 0,\n      \"application\": null,\n      \"application_fee\": null,\n      \"application_fee_amount\": null,\n      \"balance_transaction\": \"txn_3N4o2jJUAL06t0UN0d44FTXz\",\n      \"billing_details\": {\n        \"address\": {\n          \"city\": null,\n          \"country\": null,\n          \"line1\": null,\n          \"line2\": null,\n          \"postal_code\": null,\n          \"state\": null\n        },\n        \"email\": null,\n        \"name\": null,\n        \"phone\": null\n      },\n      \"calculated_statement_descriptor\": \"DOTNETFROMTHEMOUNTAIN\",\n      \"captured\": true,\n      \"created\": 1683390790,\n      \"currency\": \"eur\",\n      \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n      \"description\": \"Subscription creation\",\n      \"destination\": null,\n      \"dispute\": null,\n      \"disputed\": false,\n      \"failure_balance_transaction\": null,\n      \"failure_code\": null,\n      \"failure_message\": null,\n      \"fraud_details\": {},\n      \"invoice\": \"in_1N4o2jJUAL06t0UNhp5yUiIi\",\n      \"livemode\": false,\n      \"metadata\": {},\n      \"on_behalf_of\": null,\n      \"order\": null,\n      \"outcome\": {\n        \"network_status\": \"approved_by_network\",\n        \"reason\": null,\n        \"risk_level\": \"normal\",\n        \"risk_score\": 33,\n        \"seller_message\": \"Payment complete.\",\n        \"type\": \"authorized\"\n      },\n      \"paid\": true,\n      \"payment_intent\": \"pi_3N4o2jJUAL06t0UN0Me554HH\",\n      \"payment_method\": \"pm_1N4o2hJUAL06t0UNSTxklPIM\",\n      \"payment_method_details\": {\n        \"card\": {\n          \"brand\": \"visa\",\n          \"checks\": {\n            \"address_line1_check\": null,\n            \"address_postal_code_check\": null,\n            \"cvc_check\": \"pass\"\n          },\n          \"country\": \"US\",\n          \"exp_month\": 12,\n          \"exp_year\": 2030,\n          \"fingerprint\": \"0t0vike8tPNRzyyV\",\n          \"funding\": \"credit\",\n          \"installments\": null,\n          \"last4\": \"4242\",\n          \"mandate\": null,\n          \"network\": \"visa\",\n          \"network_token\": {\n            \"used\": false\n          },\n          \"three_d_secure\": null,\n          \"wallet\": null\n        },\n        \"type\": \"card\"\n      },\n      \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n      \"receipt_number\": null,\n      \"receipt_url\": \"https://pay.stripe.com/receipts/invoices/CAcaFwoVYWNjdF8xSVFWaVJKVUFMMDZ0MFVOKMeC2qIGMgYfJDXKSCs6LBaOxljvBVMsrQVzNv1R1CDR5bkzJFFRFmPs2L-wQ2SZp37KIj1IYPshHMNw?s=ap\",\n      \"refunded\": false,\n      \"refunds\": {\n        \"object\": \"list\",\n        \"data\": [],\n        \"has_more\": false,\n        \"total_count\": 0,\n        \"url\": \"/v1/charges/ch_3N4o2jJUAL06t0UN0rTfV196/refunds\"\n      },\n      \"review\": null,\n      \"shipping\": null,\n      \"source\": null,\n      \"source_transfer\": null,\n      \"statement_descriptor\": null,\n      \"statement_descriptor_suffix\": null,\n      \"status\": \"succeeded\",\n      \"transfer_data\": null,\n      \"transfer_group\": null\n    },\n    \"collection_method\": \"charge_automatically\",\n    \"created\": 1683390789,\n    \"currency\": \"eur\",\n    \"custom_fields\": null,\n    \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n    \"customer_address\": null,\n    \"customer_email\": \"dotnetfromthemountain+test@gmail.com\",\n    \"customer_name\": null,\n    \"customer_phone\": null,\n    \"customer_shipping\": null,\n    \"customer_tax_exempt\": \"none\",\n    \"customer_tax_ids\": [],\n    \"default_payment_method\": null,\n    \"default_source\": null,\n    \"default_tax_rates\": [],\n    \"description\": null,\n    \"discount\": null,\n    \"discounts\": [],\n    \"due_date\": null,\n    \"ending_balance\": 0,\n    \"footer\": null,\n    \"from_invoice\": null,\n    \"hosted_invoice_url\": \"https://invoice.stripe.com/i/acct_1IQViRJUAL06t0UN/test_YWNjdF8xSVFWaVJKVUFMMDZ0MFVOLF9OcVYyRUF0TTJYRUNEdTdUa2ZabDVZdWZoc29UYWV3LDczOTMxNTkx0200LiC90alS?s=ap\",\n    \"invoice_pdf\": \"https://pay.stripe.com/invoice/acct_1IQViRJUAL06t0UN/test_YWNjdF8xSVFWaVJKVUFMMDZ0MFVOLF9OcVYyRUF0TTJYRUNEdTdUa2ZabDVZdWZoc29UYWV3LDczOTMxNTkx0200LiC90alS/pdf?s=ap\",\n    \"last_finalization_error\": null,\n    \"latest_revision\": null,\n    \"lines\": {\n      \"object\": \"list\",\n      \"data\": [\n        {\n          \"id\": \"il_1N4o2jJUAL06t0UN232VDexJ\",\n          \"object\": \"line_item\",\n          \"amount\": 24900,\n          \"amount_excluding_tax\": 24900,\n          \"currency\": \"eur\",\n          \"description\": \"1 × PayDotNet (at €249.00 / year)\",\n          \"discount_amounts\": [],\n          \"discountable\": true,\n          \"discounts\": [],\n          \"livemode\": false,\n          \"metadata\": {\n            \"pay_name\": \"default\"\n          },\n          \"period\": {\n            \"end\": 1715013189,\n            \"start\": 1683390789\n          },\n          \"plan\": {\n            \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n            \"object\": \"plan\",\n            \"active\": true,\n            \"aggregate_usage\": null,\n            \"amount\": 24900,\n            \"amount_decimal\": \"24900\",\n            \"billing_scheme\": \"per_unit\",\n            \"created\": 1681821216,\n            \"currency\": \"eur\",\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"livemode\": false,\n            \"metadata\": {},\n            \"nickname\": \"Basic\",\n            \"product\": \"prod_Njh7eTnfGm4pQ5\",\n            \"tiers_mode\": null,\n            \"transform_usage\": null,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"price\": {\n            \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n            \"object\": \"price\",\n            \"active\": true,\n            \"billing_scheme\": \"per_unit\",\n            \"created\": 1681821216,\n            \"currency\": \"eur\",\n            \"custom_unit_amount\": null,\n            \"livemode\": false,\n            \"lookup_key\": null,\n            \"metadata\": {},\n            \"nickname\": \"Basic\",\n            \"product\": \"prod_Njh7eTnfGm4pQ5\",\n            \"recurring\": {\n              \"aggregate_usage\": null,\n              \"interval\": \"year\",\n              \"interval_count\": 1,\n              \"trial_period_days\": null,\n              \"usage_type\": \"licensed\"\n            },\n            \"tax_behavior\": \"unspecified\",\n            \"tiers_mode\": null,\n            \"transform_quantity\": null,\n            \"type\": \"recurring\",\n            \"unit_amount\": 24900,\n            \"unit_amount_decimal\": \"24900\"\n          },\n          \"proration\": false,\n          \"proration_details\": {\n            \"credited_items\": null\n          },\n          \"quantity\": 1,\n          \"subscription\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n          \"subscription_item\": \"si_NqV25msBkhnQMh\",\n          \"tax_amounts\": [],\n          \"tax_rates\": [],\n          \"type\": \"subscription\",\n          \"unit_amount_excluding_tax\": \"24900\"\n        }\n      ],\n      \"has_more\": false,\n      \"total_count\": 1,\n      \"url\": \"/v1/invoices/in_1N4o2jJUAL06t0UNhp5yUiIi/lines\"\n    },\n    \"livemode\": false,\n    \"metadata\": {},\n    \"next_payment_attempt\": null,\n    \"number\": \"8CBC86EA-0212\",\n    \"on_behalf_of\": null,\n    \"paid\": true,\n    \"paid_out_of_band\": false,\n    \"payment_intent\": {\n      \"id\": \"pi_3N4o2jJUAL06t0UN0Me554HH\",\n      \"object\": \"payment_intent\",\n      \"amount\": 24900,\n      \"amount_capturable\": 0,\n      \"amount_details\": {\n        \"tip\": {}\n      },\n      \"amount_received\": 24900,\n      \"application\": null,\n      \"application_fee_amount\": null,\n      \"automatic_payment_methods\": null,\n      \"canceled_at\": null,\n      \"cancellation_reason\": null,\n      \"capture_method\": \"automatic\",\n      \"client_secret\": \"pi_3N4o2jJUAL06t0UN0Me554HH_secret_fMWHoF9ruvB2qibMmNaYBV2Ti\",\n      \"confirmation_method\": \"automatic\",\n      \"created\": 1683390789,\n      \"currency\": \"eur\",\n      \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n      \"description\": \"Subscription creation\",\n      \"invoice\": \"in_1N4o2jJUAL06t0UNhp5yUiIi\",\n      \"last_payment_error\": null,\n      \"latest_charge\": \"ch_3N4o2jJUAL06t0UN0rTfV196\",\n      \"livemode\": false,\n      \"metadata\": {},\n      \"next_action\": null,\n      \"on_behalf_of\": null,\n      \"payment_method\": \"pm_1N4o2hJUAL06t0UNSTxklPIM\",\n      \"payment_method_options\": {\n        \"card\": {\n          \"installments\": null,\n          \"mandate_options\": null,\n          \"network\": null,\n          \"request_three_d_secure\": \"automatic\"\n        },\n        \"sepa_debit\": {}\n      },\n      \"payment_method_types\": [\n        \"card\",\n        \"sepa_debit\"\n      ],\n      \"processing\": null,\n      \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n      \"review\": null,\n      \"setup_future_usage\": \"off_session\",\n      \"shipping\": null,\n      \"source\": null,\n      \"statement_descriptor\": null,\n      \"statement_descriptor_suffix\": null,\n      \"status\": \"succeeded\",\n      \"transfer_data\": null,\n      \"transfer_group\": null\n    },\n    \"payment_settings\": {\n      \"default_mandate\": null,\n      \"payment_method_options\": null,\n      \"payment_method_types\": null\n    },\n    \"period_end\": 1683390789,\n    \"period_start\": 1683390789,\n    \"post_payment_credit_notes_amount\": 0,\n    \"pre_payment_credit_notes_amount\": 0,\n    \"quote\": null,\n    \"receipt_number\": null,\n    \"rendering_options\": null,\n    \"shipping_cost\": null,\n    \"shipping_details\": null,\n    \"starting_balance\": 0,\n    \"statement_descriptor\": null,\n    \"status\": \"paid\",\n    \"status_transitions\": {\n      \"finalized_at\": 1683390789,\n      \"marked_uncollectible_at\": null,\n      \"paid_at\": 1683390789,\n      \"voided_at\": null\n    },\n    \"subscription\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n    \"subtotal\": 24900,\n    \"subtotal_excluding_tax\": 24900,\n    \"tax\": null,\n    \"test_clock\": null,\n    \"total\": 24900,\n    \"total_discount_amounts\": [],\n    \"total_excluding_tax\": 24900,\n    \"total_tax_amounts\": [],\n    \"transfer_data\": null,\n    \"webhooks_delivered_at\": 1683390789\n  },\n  \"livemode\": false,\n  \"metadata\": {\n    \"pay_name\": \"default\"\n  },\n  \"next_pending_invoice_item_invoice\": null,\n  \"on_behalf_of\": null,\n  \"pause_collection\": null,\n  \"payment_settings\": {\n    \"payment_method_options\": null,\n    \"payment_method_types\": null,\n    \"save_default_payment_method\": \"off\"\n  },\n  \"pending_invoice_item_interval\": null,\n  \"pending_setup_intent\": null,\n  \"pending_update\": null,\n  \"plan\": {\n    \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n    \"object\": \"plan\",\n    \"active\": true,\n    \"aggregate_usage\": null,\n    \"amount\": 24900,\n    \"amount_decimal\": \"24900\",\n    \"billing_scheme\": \"per_unit\",\n    \"created\": 1681821216,\n    \"currency\": \"eur\",\n    \"interval\": \"year\",\n    \"interval_count\": 1,\n    \"livemode\": false,\n    \"metadata\": {},\n    \"nickname\": \"Basic\",\n    \"product\": \"prod_Njh7eTnfGm4pQ5\",\n    \"tiers_mode\": null,\n    \"transform_usage\": null,\n    \"trial_period_days\": null,\n    \"usage_type\": \"licensed\"\n  },\n  \"quantity\": 1,\n  \"schedule\": null,\n  \"start_date\": 1683390789,\n  \"status\": \"active\",\n  \"test_clock\": null,\n  \"transfer_data\": null,\n  \"trial_end\": null,\n  \"trial_settings\": {\n    \"end_behavior\": {\n      \"missing_payment_method\": \"create_invoice\"\n    }\n  },\n  \"trial_start\": null\n}",
       "HttpVersion": "1.1"
     },
-    "RecordedAt": "2023-05-04T16:53:28.1981849+02:00"
+    "RecordedAt": "2023-05-06T18:33:11.9476048+02:00"
   },
   {
     "Request": {
@@ -326,5 +326,516 @@
       "HttpVersion": "1.1"
     },
     "RecordedAt": "2023-05-04T16:53:29.8508714+02:00"
+  },
+  {
+    "Request": {
+      "Method": "POST",
+      "URI": "https://api.stripe.com/v1/payment_methods/pm_1N4o21JUAL06t0UNZhDFWjbK/attach",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "Idempotency-Key": "4293a574-24f9-47f7-a2e1-43dfd265f0c0",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_1MhS5sP678kS5I\",\"request_duration_ms\":340}}"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "Content-Length": "27"
+      },
+      "Body": "customer=cus_NqV23E7mQl99bg"
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:32:26 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Idempotency-Key": "4293a574-24f9-47f7-a2e1-43dfd265f0c0",
+        "Original-Request": "req_W1rt7YzkdlAWpg",
+        "Request-Id": "req_W1rt7YzkdlAWpg",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "942"
+      },
+      "Body": "{\n  \"id\": \"pm_1N4o21JUAL06t0UNZhDFWjbK\",\n  \"object\": \"payment_method\",\n  \"billing_details\": {\n    \"address\": {\n      \"city\": null,\n      \"country\": null,\n      \"line1\": null,\n      \"line2\": null,\n      \"postal_code\": null,\n      \"state\": null\n    },\n    \"email\": null,\n    \"name\": null,\n    \"phone\": null\n  },\n  \"card\": {\n    \"brand\": \"visa\",\n    \"checks\": {\n      \"address_line1_check\": null,\n      \"address_postal_code_check\": null,\n      \"cvc_check\": \"pass\"\n    },\n    \"country\": \"US\",\n    \"exp_month\": 12,\n    \"exp_year\": 2030,\n    \"fingerprint\": \"0t0vike8tPNRzyyV\",\n    \"funding\": \"credit\",\n    \"generated_from\": null,\n    \"last4\": \"4242\",\n    \"networks\": {\n      \"available\": [\n        \"visa\"\n      ],\n      \"preferred\": null\n    },\n    \"three_d_secure_usage\": {\n      \"supported\": true\n    },\n    \"wallet\": null\n  },\n  \"created\": 1683390745,\n  \"customer\": \"cus_NqV23E7mQl99bg\",\n  \"livemode\": false,\n  \"metadata\": {},\n  \"type\": \"card\"\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:32:26.7895644+02:00"
+  },
+  {
+    "Request": {
+      "Method": "POST",
+      "URI": "https://api.stripe.com/v1/payment_methods/pm_1N4o21JUAL06t0UN4QmNpz4B/attach",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "Idempotency-Key": "06939bbe-615c-45c3-ba46-89dfffa44296",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_r7h26SOP642lIC\",\"request_duration_ms\":458}}"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "Content-Length": "27"
+      },
+      "Body": "customer=cus_NqV2TzyIc5xBnr"
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:32:26 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Idempotency-Key": "06939bbe-615c-45c3-ba46-89dfffa44296",
+        "Original-Request": "req_uLigeOeQQIDkpL",
+        "Request-Id": "req_uLigeOeQQIDkpL",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "942"
+      },
+      "Body": "{\n  \"id\": \"pm_1N4o21JUAL06t0UN4QmNpz4B\",\n  \"object\": \"payment_method\",\n  \"billing_details\": {\n    \"address\": {\n      \"city\": null,\n      \"country\": null,\n      \"line1\": null,\n      \"line2\": null,\n      \"postal_code\": null,\n      \"state\": null\n    },\n    \"email\": null,\n    \"name\": null,\n    \"phone\": null\n  },\n  \"card\": {\n    \"brand\": \"visa\",\n    \"checks\": {\n      \"address_line1_check\": null,\n      \"address_postal_code_check\": null,\n      \"cvc_check\": \"pass\"\n    },\n    \"country\": \"US\",\n    \"exp_month\": 12,\n    \"exp_year\": 2030,\n    \"fingerprint\": \"0t0vike8tPNRzyyV\",\n    \"funding\": \"credit\",\n    \"generated_from\": null,\n    \"last4\": \"4242\",\n    \"networks\": {\n      \"available\": [\n        \"visa\"\n      ],\n      \"preferred\": null\n    },\n    \"three_d_secure_usage\": {\n      \"supported\": true\n    },\n    \"wallet\": null\n  },\n  \"created\": 1683390745,\n  \"customer\": \"cus_NqV2TzyIc5xBnr\",\n  \"livemode\": false,\n  \"metadata\": {},\n  \"type\": \"card\"\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:32:26.8995607+02:00"
+  },
+  {
+    "Request": {
+      "Method": "POST",
+      "URI": "https://api.stripe.com/v1/customers/cus_NqV23E7mQl99bg",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "Idempotency-Key": "65a2f517-591b-4663-9b5f-ad0a7f1ef099",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_W1rt7YzkdlAWpg\",\"request_duration_ms\":572}}"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "Content-Length": "68"
+      },
+      "Body": "invoice_settings[default_payment_method]=pm_1N4o21JUAL06t0UNZhDFWjbK"
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:32:26 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Idempotency-Key": "65a2f517-591b-4663-9b5f-ad0a7f1ef099",
+        "Original-Request": "req_2wpZYpXUlW8nLC",
+        "Request-Id": "req_2wpZYpXUlW8nLC",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "643"
+      },
+      "Body": "{\n  \"id\": \"cus_NqV23E7mQl99bg\",\n  \"object\": \"customer\",\n  \"address\": null,\n  \"balance\": 0,\n  \"created\": 1683390745,\n  \"currency\": null,\n  \"default_source\": null,\n  \"delinquent\": false,\n  \"description\": null,\n  \"discount\": null,\n  \"email\": \"dotnetfromthemountain+test@gmail.com\",\n  \"invoice_prefix\": \"5EC791BD\",\n  \"invoice_settings\": {\n    \"custom_fields\": null,\n    \"default_payment_method\": \"pm_1N4o21JUAL06t0UNZhDFWjbK\",\n    \"footer\": null,\n    \"rendering_options\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"name\": null,\n  \"phone\": null,\n  \"preferred_locales\": [],\n  \"shipping\": null,\n  \"tax_exempt\": \"none\",\n  \"test_clock\": null\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:32:27.12076+02:00"
+  },
+  {
+    "Request": {
+      "Method": "POST",
+      "URI": "https://api.stripe.com/v1/customers/cus_NqV2TzyIc5xBnr",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "Idempotency-Key": "fed1ea43-d6f2-48d2-bee2-d828d917d291",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_uLigeOeQQIDkpL\",\"request_duration_ms\":561}}"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "Content-Length": "68"
+      },
+      "Body": "invoice_settings[default_payment_method]=pm_1N4o21JUAL06t0UN4QmNpz4B"
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:32:26 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Idempotency-Key": "fed1ea43-d6f2-48d2-bee2-d828d917d291",
+        "Original-Request": "req_XuaziY1SAS5iZS",
+        "Request-Id": "req_XuaziY1SAS5iZS",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "643"
+      },
+      "Body": "{\n  \"id\": \"cus_NqV2TzyIc5xBnr\",\n  \"object\": \"customer\",\n  \"address\": null,\n  \"balance\": 0,\n  \"created\": 1683390745,\n  \"currency\": null,\n  \"default_source\": null,\n  \"delinquent\": false,\n  \"description\": null,\n  \"discount\": null,\n  \"email\": \"dotnetfromthemountain+test@gmail.com\",\n  \"invoice_prefix\": \"A7A79E3E\",\n  \"invoice_settings\": {\n    \"custom_fields\": null,\n    \"default_payment_method\": \"pm_1N4o21JUAL06t0UN4QmNpz4B\",\n    \"footer\": null,\n    \"rendering_options\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"name\": null,\n  \"phone\": null,\n  \"preferred_locales\": [],\n  \"shipping\": null,\n  \"tax_exempt\": \"none\",\n  \"test_clock\": null\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:32:27.2728527+02:00"
+  },
+  {
+    "Request": {
+      "Method": "POST",
+      "URI": "https://api.stripe.com/v1/payment_intents",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "Idempotency-Key": "b70205ba-39f0-4218-a603-95316b4566f2",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_XuaziY1SAS5iZS\",\"request_duration_ms\":373}}"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "Content-Length": "189"
+      },
+      "Body": "amount=2900&capture_method=automatic&confirm=True&currency=eur&customer=cus_NqV2TzyIc5xBnr&payment_method=pm_1N4o21JUAL06t0UN4QmNpz4B&expand[0]=latest_charge&expand[1]=latest_charge.refunds"
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:32:28 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Idempotency-Key": "b70205ba-39f0-4218-a603-95316b4566f2",
+        "Original-Request": "req_yTedjrIi8q8IpQ",
+        "Request-Id": "req_yTedjrIi8q8IpQ",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "4079"
+      },
+      "Body": "{\n  \"id\": \"pi_3N4o23JUAL06t0UN0B10C0kF\",\n  \"object\": \"payment_intent\",\n  \"amount\": 2900,\n  \"amount_capturable\": 0,\n  \"amount_details\": {\n    \"tip\": {}\n  },\n  \"amount_received\": 2900,\n  \"application\": null,\n  \"application_fee_amount\": null,\n  \"automatic_payment_methods\": null,\n  \"canceled_at\": null,\n  \"cancellation_reason\": null,\n  \"capture_method\": \"automatic\",\n  \"client_secret\": \"pi_3N4o23JUAL06t0UN0B10C0kF_secret_ALKY7aPg9W9q0gc6osGyWI2hW\",\n  \"confirmation_method\": \"automatic\",\n  \"created\": 1683390747,\n  \"currency\": \"eur\",\n  \"customer\": \"cus_NqV2TzyIc5xBnr\",\n  \"description\": null,\n  \"invoice\": null,\n  \"last_payment_error\": null,\n  \"latest_charge\": {\n    \"id\": \"ch_3N4o23JUAL06t0UN0tDnhRWQ\",\n    \"object\": \"charge\",\n    \"amount\": 2900,\n    \"amount_captured\": 2900,\n    \"amount_refunded\": 0,\n    \"application\": null,\n    \"application_fee\": null,\n    \"application_fee_amount\": null,\n    \"balance_transaction\": \"txn_3N4o23JUAL06t0UN0kN4PQf9\",\n    \"billing_details\": {\n      \"address\": {\n        \"city\": null,\n        \"country\": null,\n        \"line1\": null,\n        \"line2\": null,\n        \"postal_code\": null,\n        \"state\": null\n      },\n      \"email\": null,\n      \"name\": null,\n      \"phone\": null\n    },\n    \"calculated_statement_descriptor\": \"DOTNETFROMTHEMOUNTAIN\",\n    \"captured\": true,\n    \"created\": 1683390747,\n    \"currency\": \"eur\",\n    \"customer\": \"cus_NqV2TzyIc5xBnr\",\n    \"description\": null,\n    \"destination\": null,\n    \"dispute\": null,\n    \"disputed\": false,\n    \"failure_balance_transaction\": null,\n    \"failure_code\": null,\n    \"failure_message\": null,\n    \"fraud_details\": {},\n    \"invoice\": null,\n    \"livemode\": false,\n    \"metadata\": {},\n    \"on_behalf_of\": null,\n    \"order\": null,\n    \"outcome\": {\n      \"network_status\": \"approved_by_network\",\n      \"reason\": null,\n      \"risk_level\": \"normal\",\n      \"risk_score\": 43,\n      \"seller_message\": \"Payment complete.\",\n      \"type\": \"authorized\"\n    },\n    \"paid\": true,\n    \"payment_intent\": \"pi_3N4o23JUAL06t0UN0B10C0kF\",\n    \"payment_method\": \"pm_1N4o21JUAL06t0UN4QmNpz4B\",\n    \"payment_method_details\": {\n      \"card\": {\n        \"brand\": \"visa\",\n        \"checks\": {\n          \"address_line1_check\": null,\n          \"address_postal_code_check\": null,\n          \"cvc_check\": \"pass\"\n        },\n        \"country\": \"US\",\n        \"exp_month\": 12,\n        \"exp_year\": 2030,\n        \"fingerprint\": \"0t0vike8tPNRzyyV\",\n        \"funding\": \"credit\",\n        \"installments\": null,\n        \"last4\": \"4242\",\n        \"mandate\": null,\n        \"network\": \"visa\",\n        \"network_token\": {\n          \"used\": false\n        },\n        \"three_d_secure\": null,\n        \"wallet\": null\n      },\n      \"type\": \"card\"\n    },\n    \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n    \"receipt_number\": null,\n    \"receipt_url\": \"https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xSVFWaVJKVUFMMDZ0MFVOKJyC2qIGMgbSW04KS6E6LBbRIQtCvpg51IxHyU1Cyh9dM--bnSOb4xeiQWQ2mmBn6t5lt2TjfazzdlYg\",\n    \"refunded\": false,\n    \"refunds\": {\n      \"object\": \"list\",\n      \"data\": [],\n      \"has_more\": false,\n      \"total_count\": 0,\n      \"url\": \"/v1/charges/ch_3N4o23JUAL06t0UN0tDnhRWQ/refunds\"\n    },\n    \"review\": null,\n    \"shipping\": null,\n    \"source\": null,\n    \"source_transfer\": null,\n    \"statement_descriptor\": null,\n    \"statement_descriptor_suffix\": null,\n    \"status\": \"succeeded\",\n    \"transfer_data\": null,\n    \"transfer_group\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"next_action\": null,\n  \"on_behalf_of\": null,\n  \"payment_method\": \"pm_1N4o21JUAL06t0UN4QmNpz4B\",\n  \"payment_method_options\": {\n    \"card\": {\n      \"installments\": null,\n      \"mandate_options\": null,\n      \"network\": null,\n      \"request_three_d_secure\": \"automatic\"\n    }\n  },\n  \"payment_method_types\": [\n    \"card\"\n  ],\n  \"processing\": null,\n  \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n  \"review\": null,\n  \"setup_future_usage\": null,\n  \"shipping\": null,\n  \"source\": null,\n  \"statement_descriptor\": null,\n  \"statement_descriptor_suffix\": null,\n  \"status\": \"succeeded\",\n  \"transfer_data\": null,\n  \"transfer_group\": null\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:32:28.5468524+02:00"
+  },
+  {
+    "Request": {
+      "Method": "DELETE",
+      "URI": "https://api.stripe.com/v1/subscriptions/sub_1N4o23JUAL06t0UN4ZA3Avxn?cancellation_details[comment]=test&cancellation_details[feedback]=other&prorate=False",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_yTedjrIi8q8IpQ\",\"request_duration_ms\":1273}}"
+      },
+      "ContentHeaders": {},
+      "Body": ""
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:32:30 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Request-Id": "req_8cPkBWFN5vQG8e",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "4100"
+      },
+      "Body": "{\n  \"id\": \"sub_1N4o23JUAL06t0UN4ZA3Avxn\",\n  \"object\": \"subscription\",\n  \"application\": null,\n  \"application_fee_percent\": null,\n  \"automatic_tax\": {\n    \"enabled\": false\n  },\n  \"billing_cycle_anchor\": 1683390747,\n  \"billing_thresholds\": null,\n  \"cancel_at\": null,\n  \"cancel_at_period_end\": false,\n  \"canceled_at\": 1683390750,\n  \"cancellation_details\": {\n    \"comment\": \"test\",\n    \"feedback\": \"other\",\n    \"reason\": \"cancellation_requested\"\n  },\n  \"collection_method\": \"charge_automatically\",\n  \"created\": 1683390747,\n  \"currency\": \"eur\",\n  \"current_period_end\": 1715013147,\n  \"current_period_start\": 1683390747,\n  \"customer\": \"cus_NqV23E7mQl99bg\",\n  \"days_until_due\": null,\n  \"default_payment_method\": null,\n  \"default_source\": null,\n  \"default_tax_rates\": [],\n  \"description\": null,\n  \"discount\": null,\n  \"ended_at\": 1683390750,\n  \"items\": {\n    \"object\": \"list\",\n    \"data\": [\n      {\n        \"id\": \"si_NqV2NdLmReNvNx\",\n        \"object\": \"subscription_item\",\n        \"billing_thresholds\": null,\n        \"created\": 1683390747,\n        \"metadata\": {},\n        \"plan\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"plan\",\n          \"active\": true,\n          \"aggregate_usage\": null,\n          \"amount\": 24900,\n          \"amount_decimal\": \"24900\",\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"interval\": \"year\",\n          \"interval_count\": 1,\n          \"livemode\": false,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"tiers_mode\": null,\n          \"transform_usage\": null,\n          \"trial_period_days\": null,\n          \"usage_type\": \"licensed\"\n        },\n        \"price\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"price\",\n          \"active\": true,\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"custom_unit_amount\": null,\n          \"livemode\": false,\n          \"lookup_key\": null,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"recurring\": {\n            \"aggregate_usage\": null,\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"tax_behavior\": \"unspecified\",\n          \"tiers_mode\": null,\n          \"transform_quantity\": null,\n          \"type\": \"recurring\",\n          \"unit_amount\": 24900,\n          \"unit_amount_decimal\": \"24900\"\n        },\n        \"quantity\": 1,\n        \"subscription\": \"sub_1N4o23JUAL06t0UN4ZA3Avxn\",\n        \"tax_rates\": []\n      }\n    ],\n    \"has_more\": false,\n    \"total_count\": 1,\n    \"url\": \"/v1/subscription_items?subscription=sub_1N4o23JUAL06t0UN4ZA3Avxn\"\n  },\n  \"latest_invoice\": \"in_1N4o23JUAL06t0UNwLS6vKfc\",\n  \"livemode\": false,\n  \"metadata\": {\n    \"pay_name\": \"default\"\n  },\n  \"next_pending_invoice_item_invoice\": null,\n  \"on_behalf_of\": null,\n  \"pause_collection\": null,\n  \"payment_settings\": {\n    \"payment_method_options\": null,\n    \"payment_method_types\": null,\n    \"save_default_payment_method\": \"off\"\n  },\n  \"pending_invoice_item_interval\": null,\n  \"pending_setup_intent\": null,\n  \"pending_update\": null,\n  \"plan\": {\n    \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n    \"object\": \"plan\",\n    \"active\": true,\n    \"aggregate_usage\": null,\n    \"amount\": 24900,\n    \"amount_decimal\": \"24900\",\n    \"billing_scheme\": \"per_unit\",\n    \"created\": 1681821216,\n    \"currency\": \"eur\",\n    \"interval\": \"year\",\n    \"interval_count\": 1,\n    \"livemode\": false,\n    \"metadata\": {},\n    \"nickname\": \"Basic\",\n    \"product\": \"prod_Njh7eTnfGm4pQ5\",\n    \"tiers_mode\": null,\n    \"transform_usage\": null,\n    \"trial_period_days\": null,\n    \"usage_type\": \"licensed\"\n  },\n  \"quantity\": 1,\n  \"schedule\": null,\n  \"start_date\": 1683390747,\n  \"status\": \"canceled\",\n  \"test_clock\": null,\n  \"transfer_data\": null,\n  \"trial_end\": null,\n  \"trial_settings\": {\n    \"end_behavior\": {\n      \"missing_payment_method\": \"create_invoice\"\n    }\n  },\n  \"trial_start\": null\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:32:30.9389272+02:00"
+  },
+  {
+    "Request": {
+      "Method": "GET",
+      "URI": "https://api.stripe.com/v1/subscriptions/sub_1N4o23JUAL06t0UN4ZA3Avxn?expand[0]=pending_setup_intent&expand[1]=latest_invoice&expand[2]=latest_invoice.payment_intent&expand[3]=latest_invoice.charge&expand[4]=latest_invoice.charge.refunds",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_Tr3Ny9FpoBctpO\",\"request_duration_ms\":2458}}"
+      },
+      "ContentHeaders": {},
+      "Body": ""
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:32:31 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Request-Id": "req_bM9AT3F8BF4URO",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "14319"
+      },
+      "Body": "{\n  \"id\": \"sub_1N4o23JUAL06t0UN4ZA3Avxn\",\n  \"object\": \"subscription\",\n  \"application\": null,\n  \"application_fee_percent\": null,\n  \"automatic_tax\": {\n    \"enabled\": false\n  },\n  \"billing_cycle_anchor\": 1683390747,\n  \"billing_thresholds\": null,\n  \"cancel_at\": null,\n  \"cancel_at_period_end\": false,\n  \"canceled_at\": 1683390750,\n  \"cancellation_details\": {\n    \"comment\": \"test\",\n    \"feedback\": \"other\",\n    \"reason\": \"cancellation_requested\"\n  },\n  \"collection_method\": \"charge_automatically\",\n  \"created\": 1683390747,\n  \"currency\": \"eur\",\n  \"current_period_end\": 1715013147,\n  \"current_period_start\": 1683390747,\n  \"customer\": \"cus_NqV23E7mQl99bg\",\n  \"days_until_due\": null,\n  \"default_payment_method\": null,\n  \"default_source\": null,\n  \"default_tax_rates\": [],\n  \"description\": null,\n  \"discount\": null,\n  \"ended_at\": 1683390750,\n  \"items\": {\n    \"object\": \"list\",\n    \"data\": [\n      {\n        \"id\": \"si_NqV2NdLmReNvNx\",\n        \"object\": \"subscription_item\",\n        \"billing_thresholds\": null,\n        \"created\": 1683390747,\n        \"metadata\": {},\n        \"plan\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"plan\",\n          \"active\": true,\n          \"aggregate_usage\": null,\n          \"amount\": 24900,\n          \"amount_decimal\": \"24900\",\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"interval\": \"year\",\n          \"interval_count\": 1,\n          \"livemode\": false,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"tiers_mode\": null,\n          \"transform_usage\": null,\n          \"trial_period_days\": null,\n          \"usage_type\": \"licensed\"\n        },\n        \"price\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"price\",\n          \"active\": true,\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"custom_unit_amount\": null,\n          \"livemode\": false,\n          \"lookup_key\": null,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"recurring\": {\n            \"aggregate_usage\": null,\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"tax_behavior\": \"unspecified\",\n          \"tiers_mode\": null,\n          \"transform_quantity\": null,\n          \"type\": \"recurring\",\n          \"unit_amount\": 24900,\n          \"unit_amount_decimal\": \"24900\"\n        },\n        \"quantity\": 1,\n        \"subscription\": \"sub_1N4o23JUAL06t0UN4ZA3Avxn\",\n        \"tax_rates\": []\n      }\n    ],\n    \"has_more\": false,\n    \"total_count\": 1,\n    \"url\": \"/v1/subscription_items?subscription=sub_1N4o23JUAL06t0UN4ZA3Avxn\"\n  },\n  \"latest_invoice\": {\n    \"id\": \"in_1N4o23JUAL06t0UNwLS6vKfc\",\n    \"object\": \"invoice\",\n    \"account_country\": \"NL\",\n    \"account_name\": \"Dubbelbit B.V.\",\n    \"account_tax_ids\": null,\n    \"amount_due\": 24900,\n    \"amount_paid\": 24900,\n    \"amount_remaining\": 0,\n    \"amount_shipping\": 0,\n    \"application\": null,\n    \"application_fee_amount\": null,\n    \"attempt_count\": 1,\n    \"attempted\": true,\n    \"auto_advance\": false,\n    \"automatic_tax\": {\n      \"enabled\": false,\n      \"status\": null\n    },\n    \"billing_reason\": \"subscription_create\",\n    \"charge\": {\n      \"id\": \"ch_3N4o23JUAL06t0UN1TGSpufU\",\n      \"object\": \"charge\",\n      \"amount\": 24900,\n      \"amount_captured\": 24900,\n      \"amount_refunded\": 0,\n      \"application\": null,\n      \"application_fee\": null,\n      \"application_fee_amount\": null,\n      \"balance_transaction\": \"txn_3N4o23JUAL06t0UN1LOEvbVo\",\n      \"billing_details\": {\n        \"address\": {\n          \"city\": null,\n          \"country\": null,\n          \"line1\": null,\n          \"line2\": null,\n          \"postal_code\": null,\n          \"state\": null\n        },\n        \"email\": null,\n        \"name\": null,\n        \"phone\": null\n      },\n      \"calculated_statement_descriptor\": \"DOTNETFROMTHEMOUNTAIN\",\n      \"captured\": true,\n      \"created\": 1683390748,\n      \"currency\": \"eur\",\n      \"customer\": \"cus_NqV23E7mQl99bg\",\n      \"description\": \"Subscription creation\",\n      \"destination\": null,\n      \"dispute\": null,\n      \"disputed\": false,\n      \"failure_balance_transaction\": null,\n      \"failure_code\": null,\n      \"failure_message\": null,\n      \"fraud_details\": {},\n      \"invoice\": \"in_1N4o23JUAL06t0UNwLS6vKfc\",\n      \"livemode\": false,\n      \"metadata\": {},\n      \"on_behalf_of\": null,\n      \"order\": null,\n      \"outcome\": {\n        \"network_status\": \"approved_by_network\",\n        \"reason\": null,\n        \"risk_level\": \"normal\",\n        \"risk_score\": 46,\n        \"seller_message\": \"Payment complete.\",\n        \"type\": \"authorized\"\n      },\n      \"paid\": true,\n      \"payment_intent\": \"pi_3N4o23JUAL06t0UN1U25Ktmf\",\n      \"payment_method\": \"pm_1N4o21JUAL06t0UNZhDFWjbK\",\n      \"payment_method_details\": {\n        \"card\": {\n          \"brand\": \"visa\",\n          \"checks\": {\n            \"address_line1_check\": null,\n            \"address_postal_code_check\": null,\n            \"cvc_check\": \"pass\"\n          },\n          \"country\": \"US\",\n          \"exp_month\": 12,\n          \"exp_year\": 2030,\n          \"fingerprint\": \"0t0vike8tPNRzyyV\",\n          \"funding\": \"credit\",\n          \"installments\": null,\n          \"last4\": \"4242\",\n          \"mandate\": null,\n          \"network\": \"visa\",\n          \"network_token\": {\n            \"used\": false\n          },\n          \"three_d_secure\": null,\n          \"wallet\": null\n        },\n        \"type\": \"card\"\n      },\n      \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n      \"receipt_number\": null,\n      \"receipt_url\": \"https://pay.stripe.com/receipts/invoices/CAcaFwoVYWNjdF8xSVFWaVJKVUFMMDZ0MFVOKJ6C2qIGMgb_wTpIUhw6LBaCvNnPfBhLhGG1rU3GCrdkx-AaxfS6kopAuitFZV-_UyPqjvlu0h86X_H9?s=ap\",\n      \"refunded\": false,\n      \"refunds\": {\n        \"object\": \"list\",\n        \"data\": [],\n        \"has_more\": false,\n        \"total_count\": 0,\n        \"url\": \"/v1/charges/ch_3N4o23JUAL06t0UN1TGSpufU/refunds\"\n      },\n      \"review\": null,\n      \"shipping\": null,\n      \"source\": null,\n      \"source_transfer\": null,\n      \"statement_descriptor\": null,\n      \"statement_descriptor_suffix\": null,\n      \"status\": \"succeeded\",\n      \"transfer_data\": null,\n      \"transfer_group\": null\n    },\n    \"collection_method\": \"charge_automatically\",\n    \"created\": 1683390747,\n    \"currency\": \"eur\",\n    \"custom_fields\": null,\n    \"customer\": \"cus_NqV23E7mQl99bg\",\n    \"customer_address\": null,\n    \"customer_email\": \"dotnetfromthemountain+test@gmail.com\",\n    \"customer_name\": null,\n    \"customer_phone\": null,\n    \"customer_shipping\": null,\n    \"customer_tax_exempt\": \"none\",\n    \"customer_tax_ids\": [],\n    \"default_payment_method\": null,\n    \"default_source\": null,\n    \"default_tax_rates\": [],\n    \"description\": null,\n    \"discount\": null,\n    \"discounts\": [],\n    \"due_date\": null,\n    \"ending_balance\": 0,\n    \"footer\": null,\n    \"from_invoice\": null,\n    \"hosted_invoice_url\": \"https://invoice.stripe.com/i/acct_1IQViRJUAL06t0UN/test_YWNjdF8xSVFWaVJKVUFMMDZ0MFVOLF9OcVYyTWtZbjNGajRTOTd4cTlCYjhVTEh6c2pLcXdtLDczOTMxNTUw0200cgcFvM5E?s=ap\",\n    \"invoice_pdf\": \"https://pay.stripe.com/invoice/acct_1IQViRJUAL06t0UN/test_YWNjdF8xSVFWaVJKVUFMMDZ0MFVOLF9OcVYyTWtZbjNGajRTOTd4cTlCYjhVTEh6c2pLcXdtLDczOTMxNTUw0200cgcFvM5E/pdf?s=ap\",\n    \"last_finalization_error\": null,\n    \"latest_revision\": null,\n    \"lines\": {\n      \"object\": \"list\",\n      \"data\": [\n        {\n          \"id\": \"il_1N4o23JUAL06t0UNhFNkbCgN\",\n          \"object\": \"line_item\",\n          \"amount\": 24900,\n          \"amount_excluding_tax\": 24900,\n          \"currency\": \"eur\",\n          \"description\": \"1 × PayDotNet (at €249.00 / year)\",\n          \"discount_amounts\": [],\n          \"discountable\": true,\n          \"discounts\": [],\n          \"livemode\": false,\n          \"metadata\": {\n            \"pay_name\": \"default\"\n          },\n          \"period\": {\n            \"end\": 1715013147,\n            \"start\": 1683390747\n          },\n          \"plan\": {\n            \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n            \"object\": \"plan\",\n            \"active\": true,\n            \"aggregate_usage\": null,\n            \"amount\": 24900,\n            \"amount_decimal\": \"24900\",\n            \"billing_scheme\": \"per_unit\",\n            \"created\": 1681821216,\n            \"currency\": \"eur\",\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"livemode\": false,\n            \"metadata\": {},\n            \"nickname\": \"Basic\",\n            \"product\": \"prod_Njh7eTnfGm4pQ5\",\n            \"tiers_mode\": null,\n            \"transform_usage\": null,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"price\": {\n            \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n            \"object\": \"price\",\n            \"active\": true,\n            \"billing_scheme\": \"per_unit\",\n            \"created\": 1681821216,\n            \"currency\": \"eur\",\n            \"custom_unit_amount\": null,\n            \"livemode\": false,\n            \"lookup_key\": null,\n            \"metadata\": {},\n            \"nickname\": \"Basic\",\n            \"product\": \"prod_Njh7eTnfGm4pQ5\",\n            \"recurring\": {\n              \"aggregate_usage\": null,\n              \"interval\": \"year\",\n              \"interval_count\": 1,\n              \"trial_period_days\": null,\n              \"usage_type\": \"licensed\"\n            },\n            \"tax_behavior\": \"unspecified\",\n            \"tiers_mode\": null,\n            \"transform_quantity\": null,\n            \"type\": \"recurring\",\n            \"unit_amount\": 24900,\n            \"unit_amount_decimal\": \"24900\"\n          },\n          \"proration\": false,\n          \"proration_details\": {\n            \"credited_items\": null\n          },\n          \"quantity\": 1,\n          \"subscription\": \"sub_1N4o23JUAL06t0UN4ZA3Avxn\",\n          \"subscription_item\": \"si_NqV2NdLmReNvNx\",\n          \"tax_amounts\": [],\n          \"tax_rates\": [],\n          \"type\": \"subscription\",\n          \"unit_amount_excluding_tax\": \"24900\"\n        }\n      ],\n      \"has_more\": false,\n      \"total_count\": 1,\n      \"url\": \"/v1/invoices/in_1N4o23JUAL06t0UNwLS6vKfc/lines\"\n    },\n    \"livemode\": false,\n    \"metadata\": {},\n    \"next_payment_attempt\": null,\n    \"number\": \"8CBC86EA-0204\",\n    \"on_behalf_of\": null,\n    \"paid\": true,\n    \"paid_out_of_band\": false,\n    \"payment_intent\": {\n      \"id\": \"pi_3N4o23JUAL06t0UN1U25Ktmf\",\n      \"object\": \"payment_intent\",\n      \"amount\": 24900,\n      \"amount_capturable\": 0,\n      \"amount_details\": {\n        \"tip\": {}\n      },\n      \"amount_received\": 24900,\n      \"application\": null,\n      \"application_fee_amount\": null,\n      \"automatic_payment_methods\": null,\n      \"canceled_at\": null,\n      \"cancellation_reason\": null,\n      \"capture_method\": \"automatic\",\n      \"client_secret\": \"pi_3N4o23JUAL06t0UN1U25Ktmf_secret_KrXofeAn5lSQ6Yl3ACWjikHy4\",\n      \"confirmation_method\": \"automatic\",\n      \"created\": 1683390747,\n      \"currency\": \"eur\",\n      \"customer\": \"cus_NqV23E7mQl99bg\",\n      \"description\": \"Subscription creation\",\n      \"invoice\": \"in_1N4o23JUAL06t0UNwLS6vKfc\",\n      \"last_payment_error\": null,\n      \"latest_charge\": \"ch_3N4o23JUAL06t0UN1TGSpufU\",\n      \"livemode\": false,\n      \"metadata\": {},\n      \"next_action\": null,\n      \"on_behalf_of\": null,\n      \"payment_method\": \"pm_1N4o21JUAL06t0UNZhDFWjbK\",\n      \"payment_method_options\": {\n        \"card\": {\n          \"installments\": null,\n          \"mandate_options\": null,\n          \"network\": null,\n          \"request_three_d_secure\": \"automatic\"\n        },\n        \"sepa_debit\": {}\n      },\n      \"payment_method_types\": [\n        \"card\",\n        \"sepa_debit\"\n      ],\n      \"processing\": null,\n      \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n      \"review\": null,\n      \"setup_future_usage\": \"off_session\",\n      \"shipping\": null,\n      \"source\": null,\n      \"statement_descriptor\": null,\n      \"statement_descriptor_suffix\": null,\n      \"status\": \"succeeded\",\n      \"transfer_data\": null,\n      \"transfer_group\": null\n    },\n    \"payment_settings\": {\n      \"default_mandate\": null,\n      \"payment_method_options\": null,\n      \"payment_method_types\": null\n    },\n    \"period_end\": 1683390747,\n    \"period_start\": 1683390747,\n    \"post_payment_credit_notes_amount\": 0,\n    \"pre_payment_credit_notes_amount\": 0,\n    \"quote\": null,\n    \"receipt_number\": null,\n    \"rendering_options\": null,\n    \"shipping_cost\": null,\n    \"shipping_details\": null,\n    \"starting_balance\": 0,\n    \"statement_descriptor\": null,\n    \"status\": \"paid\",\n    \"status_transitions\": {\n      \"finalized_at\": 1683390747,\n      \"marked_uncollectible_at\": null,\n      \"paid_at\": 1683390747,\n      \"voided_at\": null\n    },\n    \"subscription\": \"sub_1N4o23JUAL06t0UN4ZA3Avxn\",\n    \"subtotal\": 24900,\n    \"subtotal_excluding_tax\": 24900,\n    \"tax\": null,\n    \"test_clock\": null,\n    \"total\": 24900,\n    \"total_discount_amounts\": [],\n    \"total_excluding_tax\": 24900,\n    \"total_tax_amounts\": [],\n    \"transfer_data\": null,\n    \"webhooks_delivered_at\": 1683390747\n  },\n  \"livemode\": false,\n  \"metadata\": {\n    \"pay_name\": \"default\"\n  },\n  \"next_pending_invoice_item_invoice\": null,\n  \"on_behalf_of\": null,\n  \"pause_collection\": null,\n  \"payment_settings\": {\n    \"payment_method_options\": null,\n    \"payment_method_types\": null,\n    \"save_default_payment_method\": \"off\"\n  },\n  \"pending_invoice_item_interval\": null,\n  \"pending_setup_intent\": null,\n  \"pending_update\": null,\n  \"plan\": {\n    \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n    \"object\": \"plan\",\n    \"active\": true,\n    \"aggregate_usage\": null,\n    \"amount\": 24900,\n    \"amount_decimal\": \"24900\",\n    \"billing_scheme\": \"per_unit\",\n    \"created\": 1681821216,\n    \"currency\": \"eur\",\n    \"interval\": \"year\",\n    \"interval_count\": 1,\n    \"livemode\": false,\n    \"metadata\": {},\n    \"nickname\": \"Basic\",\n    \"product\": \"prod_Njh7eTnfGm4pQ5\",\n    \"tiers_mode\": null,\n    \"transform_usage\": null,\n    \"trial_period_days\": null,\n    \"usage_type\": \"licensed\"\n  },\n  \"quantity\": 1,\n  \"schedule\": null,\n  \"start_date\": 1683390747,\n  \"status\": \"canceled\",\n  \"test_clock\": null,\n  \"transfer_data\": null,\n  \"trial_end\": null,\n  \"trial_settings\": {\n    \"end_behavior\": {\n      \"missing_payment_method\": \"create_invoice\"\n    }\n  },\n  \"trial_start\": null\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:32:31.3072004+02:00"
+  },
+  {
+    "Request": {
+      "Method": "POST",
+      "URI": "https://api.stripe.com/v1/payment_methods/pm_1N4o2hJUAL06t0UNSTxklPIM/attach",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "Idempotency-Key": "5ec23949-7327-48c9-a019-13456d18704b",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_3Po71DMQeJkxD4\",\"request_duration_ms\":352}}"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "Content-Length": "27"
+      },
+      "Body": "customer=cus_NqV2vUPgO9ZEsT"
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:33:08 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Idempotency-Key": "5ec23949-7327-48c9-a019-13456d18704b",
+        "Original-Request": "req_mDZw1Bic4pkaI3",
+        "Request-Id": "req_mDZw1Bic4pkaI3",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "942"
+      },
+      "Body": "{\n  \"id\": \"pm_1N4o2hJUAL06t0UNSTxklPIM\",\n  \"object\": \"payment_method\",\n  \"billing_details\": {\n    \"address\": {\n      \"city\": null,\n      \"country\": null,\n      \"line1\": null,\n      \"line2\": null,\n      \"postal_code\": null,\n      \"state\": null\n    },\n    \"email\": null,\n    \"name\": null,\n    \"phone\": null\n  },\n  \"card\": {\n    \"brand\": \"visa\",\n    \"checks\": {\n      \"address_line1_check\": null,\n      \"address_postal_code_check\": null,\n      \"cvc_check\": \"pass\"\n    },\n    \"country\": \"US\",\n    \"exp_month\": 12,\n    \"exp_year\": 2030,\n    \"fingerprint\": \"0t0vike8tPNRzyyV\",\n    \"funding\": \"credit\",\n    \"generated_from\": null,\n    \"last4\": \"4242\",\n    \"networks\": {\n      \"available\": [\n        \"visa\"\n      ],\n      \"preferred\": null\n    },\n    \"three_d_secure_usage\": {\n      \"supported\": true\n    },\n    \"wallet\": null\n  },\n  \"created\": 1683390787,\n  \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n  \"livemode\": false,\n  \"metadata\": {},\n  \"type\": \"card\"\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:33:08.9000659+02:00"
+  },
+  {
+    "Request": {
+      "Method": "POST",
+      "URI": "https://api.stripe.com/v1/customers/cus_NqV2vUPgO9ZEsT",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "Idempotency-Key": "375a4fa5-f80e-4bfa-825a-3aa52c252f5f",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_mDZw1Bic4pkaI3\",\"request_duration_ms\":598}}"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "Content-Length": "68"
+      },
+      "Body": "invoice_settings[default_payment_method]=pm_1N4o2hJUAL06t0UNSTxklPIM"
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:33:08 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Idempotency-Key": "375a4fa5-f80e-4bfa-825a-3aa52c252f5f",
+        "Original-Request": "req_Az3wNfO9sRe3EN",
+        "Request-Id": "req_Az3wNfO9sRe3EN",
+        "Stripe-Should-Retry": "false",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "643"
+      },
+      "Body": "{\n  \"id\": \"cus_NqV2vUPgO9ZEsT\",\n  \"object\": \"customer\",\n  \"address\": null,\n  \"balance\": 0,\n  \"created\": 1683390787,\n  \"currency\": null,\n  \"default_source\": null,\n  \"delinquent\": false,\n  \"description\": null,\n  \"discount\": null,\n  \"email\": \"dotnetfromthemountain+test@gmail.com\",\n  \"invoice_prefix\": \"ADE11DF5\",\n  \"invoice_settings\": {\n    \"custom_fields\": null,\n    \"default_payment_method\": \"pm_1N4o2hJUAL06t0UNSTxklPIM\",\n    \"footer\": null,\n    \"rendering_options\": null\n  },\n  \"livemode\": false,\n  \"metadata\": {},\n  \"name\": null,\n  \"phone\": null,\n  \"preferred_locales\": [],\n  \"shipping\": null,\n  \"tax_exempt\": \"none\",\n  \"test_clock\": null\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:33:09.2369752+02:00"
+  },
+  {
+    "Request": {
+      "Method": "DELETE",
+      "URI": "https://api.stripe.com/v1/subscriptions/sub_1N4o2jJUAL06t0UNutZHyt3Z?cancellation_details[comment]=test&cancellation_details[feedback]=other&prorate=False",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_VUIud9aDK7c3aB\",\"request_duration_ms\":2712}}"
+      },
+      "ContentHeaders": {},
+      "Body": ""
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:33:13 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Request-Id": "req_RzctaGnfbQN74j",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "4100"
+      },
+      "Body": "{\n  \"id\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n  \"object\": \"subscription\",\n  \"application\": null,\n  \"application_fee_percent\": null,\n  \"automatic_tax\": {\n    \"enabled\": false\n  },\n  \"billing_cycle_anchor\": 1683390789,\n  \"billing_thresholds\": null,\n  \"cancel_at\": null,\n  \"cancel_at_period_end\": false,\n  \"canceled_at\": 1683390793,\n  \"cancellation_details\": {\n    \"comment\": \"test\",\n    \"feedback\": \"other\",\n    \"reason\": \"cancellation_requested\"\n  },\n  \"collection_method\": \"charge_automatically\",\n  \"created\": 1683390789,\n  \"currency\": \"eur\",\n  \"current_period_end\": 1715013189,\n  \"current_period_start\": 1683390789,\n  \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n  \"days_until_due\": null,\n  \"default_payment_method\": null,\n  \"default_source\": null,\n  \"default_tax_rates\": [],\n  \"description\": null,\n  \"discount\": null,\n  \"ended_at\": 1683390793,\n  \"items\": {\n    \"object\": \"list\",\n    \"data\": [\n      {\n        \"id\": \"si_NqV25msBkhnQMh\",\n        \"object\": \"subscription_item\",\n        \"billing_thresholds\": null,\n        \"created\": 1683390789,\n        \"metadata\": {},\n        \"plan\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"plan\",\n          \"active\": true,\n          \"aggregate_usage\": null,\n          \"amount\": 24900,\n          \"amount_decimal\": \"24900\",\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"interval\": \"year\",\n          \"interval_count\": 1,\n          \"livemode\": false,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"tiers_mode\": null,\n          \"transform_usage\": null,\n          \"trial_period_days\": null,\n          \"usage_type\": \"licensed\"\n        },\n        \"price\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"price\",\n          \"active\": true,\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"custom_unit_amount\": null,\n          \"livemode\": false,\n          \"lookup_key\": null,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"recurring\": {\n            \"aggregate_usage\": null,\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"tax_behavior\": \"unspecified\",\n          \"tiers_mode\": null,\n          \"transform_quantity\": null,\n          \"type\": \"recurring\",\n          \"unit_amount\": 24900,\n          \"unit_amount_decimal\": \"24900\"\n        },\n        \"quantity\": 1,\n        \"subscription\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n        \"tax_rates\": []\n      }\n    ],\n    \"has_more\": false,\n    \"total_count\": 1,\n    \"url\": \"/v1/subscription_items?subscription=sub_1N4o2jJUAL06t0UNutZHyt3Z\"\n  },\n  \"latest_invoice\": \"in_1N4o2jJUAL06t0UNhp5yUiIi\",\n  \"livemode\": false,\n  \"metadata\": {\n    \"pay_name\": \"default\"\n  },\n  \"next_pending_invoice_item_invoice\": null,\n  \"on_behalf_of\": null,\n  \"pause_collection\": null,\n  \"payment_settings\": {\n    \"payment_method_options\": null,\n    \"payment_method_types\": null,\n    \"save_default_payment_method\": \"off\"\n  },\n  \"pending_invoice_item_interval\": null,\n  \"pending_setup_intent\": null,\n  \"pending_update\": null,\n  \"plan\": {\n    \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n    \"object\": \"plan\",\n    \"active\": true,\n    \"aggregate_usage\": null,\n    \"amount\": 24900,\n    \"amount_decimal\": \"24900\",\n    \"billing_scheme\": \"per_unit\",\n    \"created\": 1681821216,\n    \"currency\": \"eur\",\n    \"interval\": \"year\",\n    \"interval_count\": 1,\n    \"livemode\": false,\n    \"metadata\": {},\n    \"nickname\": \"Basic\",\n    \"product\": \"prod_Njh7eTnfGm4pQ5\",\n    \"tiers_mode\": null,\n    \"transform_usage\": null,\n    \"trial_period_days\": null,\n    \"usage_type\": \"licensed\"\n  },\n  \"quantity\": 1,\n  \"schedule\": null,\n  \"start_date\": 1683390789,\n  \"status\": \"canceled\",\n  \"test_clock\": null,\n  \"transfer_data\": null,\n  \"trial_end\": null,\n  \"trial_settings\": {\n    \"end_behavior\": {\n      \"missing_payment_method\": \"create_invoice\"\n    }\n  },\n  \"trial_start\": null\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:33:13.5306634+02:00"
+  },
+  {
+    "Request": {
+      "Method": "GET",
+      "URI": "https://api.stripe.com/v1/subscriptions/sub_1N4o2jJUAL06t0UNutZHyt3Z?expand[0]=pending_setup_intent&expand[1]=latest_invoice&expand[2]=latest_invoice.payment_intent&expand[3]=latest_invoice.charge&expand[4]=latest_invoice.charge.refunds",
+      "RequestHeaders": {
+        "User-Agent": "Stripe/v1,.NetBindings/41.13.0,Pay.DotNet,(https://github.com/pay-dotnet/PayDotNetCore)",
+        "Authorization": "Bearer sk_test_key",
+        "X-Stripe-Client-User-Agent": "{\"bindings_version\":\"41.13.0\",\"lang\":\".net\",\"publisher\":\"stripe\",\"stripe_net_target_framework\":\"unknown\",\"lang_version\":\".NET 6.0.16\",\"os_version\":\"Microsoft Windows 10.0.19044\",\"newtonsoft_json_version\":\"12.0.3.23909\",\"application\":{\"name\":\"Pay.DotNet\",\"partner_id\":\"TODO\",\"version\":null,\"url\":\"https://github.com/pay-dotnet/PayDotNetCore\"}}",
+        "Stripe-Version": "2022-11-15",
+        "X-Stripe-Client-Telemetry": "{\"last_request_metrics\":{\"request_id\":\"req_RzctaGnfbQN74j\",\"request_duration_ms\":1576}}"
+      },
+      "ContentHeaders": {},
+      "Body": ""
+    },
+    "Response": {
+      "Status": {
+        "Code": 200,
+        "Message": "OK"
+      },
+      "ResponseHeaders": {
+        "Server": "nginx",
+        "Date": "Sat, 06 May 2023 16:33:13 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, POST, HEAD, OPTIONS, DELETE",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required",
+        "Access-Control-Max-Age": "300",
+        "Cache-Control": "no-store, no-cache",
+        "Request-Id": "req_bDDmCIntIlhqy4",
+        "Stripe-Version": "2022-11-15",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload"
+      },
+      "ContentHeaders": {
+        "Content-Type": "application/json",
+        "Content-Length": "14319"
+      },
+      "Body": "{\n  \"id\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n  \"object\": \"subscription\",\n  \"application\": null,\n  \"application_fee_percent\": null,\n  \"automatic_tax\": {\n    \"enabled\": false\n  },\n  \"billing_cycle_anchor\": 1683390789,\n  \"billing_thresholds\": null,\n  \"cancel_at\": null,\n  \"cancel_at_period_end\": false,\n  \"canceled_at\": 1683390793,\n  \"cancellation_details\": {\n    \"comment\": \"test\",\n    \"feedback\": \"other\",\n    \"reason\": \"cancellation_requested\"\n  },\n  \"collection_method\": \"charge_automatically\",\n  \"created\": 1683390789,\n  \"currency\": \"eur\",\n  \"current_period_end\": 1715013189,\n  \"current_period_start\": 1683390789,\n  \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n  \"days_until_due\": null,\n  \"default_payment_method\": null,\n  \"default_source\": null,\n  \"default_tax_rates\": [],\n  \"description\": null,\n  \"discount\": null,\n  \"ended_at\": 1683390793,\n  \"items\": {\n    \"object\": \"list\",\n    \"data\": [\n      {\n        \"id\": \"si_NqV25msBkhnQMh\",\n        \"object\": \"subscription_item\",\n        \"billing_thresholds\": null,\n        \"created\": 1683390789,\n        \"metadata\": {},\n        \"plan\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"plan\",\n          \"active\": true,\n          \"aggregate_usage\": null,\n          \"amount\": 24900,\n          \"amount_decimal\": \"24900\",\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"interval\": \"year\",\n          \"interval_count\": 1,\n          \"livemode\": false,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"tiers_mode\": null,\n          \"transform_usage\": null,\n          \"trial_period_days\": null,\n          \"usage_type\": \"licensed\"\n        },\n        \"price\": {\n          \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n          \"object\": \"price\",\n          \"active\": true,\n          \"billing_scheme\": \"per_unit\",\n          \"created\": 1681821216,\n          \"currency\": \"eur\",\n          \"custom_unit_amount\": null,\n          \"livemode\": false,\n          \"lookup_key\": null,\n          \"metadata\": {},\n          \"nickname\": \"Basic\",\n          \"product\": \"prod_Njh7eTnfGm4pQ5\",\n          \"recurring\": {\n            \"aggregate_usage\": null,\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"tax_behavior\": \"unspecified\",\n          \"tiers_mode\": null,\n          \"transform_quantity\": null,\n          \"type\": \"recurring\",\n          \"unit_amount\": 24900,\n          \"unit_amount_decimal\": \"24900\"\n        },\n        \"quantity\": 1,\n        \"subscription\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n        \"tax_rates\": []\n      }\n    ],\n    \"has_more\": false,\n    \"total_count\": 1,\n    \"url\": \"/v1/subscription_items?subscription=sub_1N4o2jJUAL06t0UNutZHyt3Z\"\n  },\n  \"latest_invoice\": {\n    \"id\": \"in_1N4o2jJUAL06t0UNhp5yUiIi\",\n    \"object\": \"invoice\",\n    \"account_country\": \"NL\",\n    \"account_name\": \"Dubbelbit B.V.\",\n    \"account_tax_ids\": null,\n    \"amount_due\": 24900,\n    \"amount_paid\": 24900,\n    \"amount_remaining\": 0,\n    \"amount_shipping\": 0,\n    \"application\": null,\n    \"application_fee_amount\": null,\n    \"attempt_count\": 1,\n    \"attempted\": true,\n    \"auto_advance\": false,\n    \"automatic_tax\": {\n      \"enabled\": false,\n      \"status\": null\n    },\n    \"billing_reason\": \"subscription_create\",\n    \"charge\": {\n      \"id\": \"ch_3N4o2jJUAL06t0UN0rTfV196\",\n      \"object\": \"charge\",\n      \"amount\": 24900,\n      \"amount_captured\": 24900,\n      \"amount_refunded\": 0,\n      \"application\": null,\n      \"application_fee\": null,\n      \"application_fee_amount\": null,\n      \"balance_transaction\": \"txn_3N4o2jJUAL06t0UN0d44FTXz\",\n      \"billing_details\": {\n        \"address\": {\n          \"city\": null,\n          \"country\": null,\n          \"line1\": null,\n          \"line2\": null,\n          \"postal_code\": null,\n          \"state\": null\n        },\n        \"email\": null,\n        \"name\": null,\n        \"phone\": null\n      },\n      \"calculated_statement_descriptor\": \"DOTNETFROMTHEMOUNTAIN\",\n      \"captured\": true,\n      \"created\": 1683390790,\n      \"currency\": \"eur\",\n      \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n      \"description\": \"Subscription creation\",\n      \"destination\": null,\n      \"dispute\": null,\n      \"disputed\": false,\n      \"failure_balance_transaction\": null,\n      \"failure_code\": null,\n      \"failure_message\": null,\n      \"fraud_details\": {},\n      \"invoice\": \"in_1N4o2jJUAL06t0UNhp5yUiIi\",\n      \"livemode\": false,\n      \"metadata\": {},\n      \"on_behalf_of\": null,\n      \"order\": null,\n      \"outcome\": {\n        \"network_status\": \"approved_by_network\",\n        \"reason\": null,\n        \"risk_level\": \"normal\",\n        \"risk_score\": 33,\n        \"seller_message\": \"Payment complete.\",\n        \"type\": \"authorized\"\n      },\n      \"paid\": true,\n      \"payment_intent\": \"pi_3N4o2jJUAL06t0UN0Me554HH\",\n      \"payment_method\": \"pm_1N4o2hJUAL06t0UNSTxklPIM\",\n      \"payment_method_details\": {\n        \"card\": {\n          \"brand\": \"visa\",\n          \"checks\": {\n            \"address_line1_check\": null,\n            \"address_postal_code_check\": null,\n            \"cvc_check\": \"pass\"\n          },\n          \"country\": \"US\",\n          \"exp_month\": 12,\n          \"exp_year\": 2030,\n          \"fingerprint\": \"0t0vike8tPNRzyyV\",\n          \"funding\": \"credit\",\n          \"installments\": null,\n          \"last4\": \"4242\",\n          \"mandate\": null,\n          \"network\": \"visa\",\n          \"network_token\": {\n            \"used\": false\n          },\n          \"three_d_secure\": null,\n          \"wallet\": null\n        },\n        \"type\": \"card\"\n      },\n      \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n      \"receipt_number\": null,\n      \"receipt_url\": \"https://pay.stripe.com/receipts/invoices/CAcaFwoVYWNjdF8xSVFWaVJKVUFMMDZ0MFVOKMmC2qIGMgYKMD63PfU6LBb-h9GZHKRn32MUgbZywDQXbURvUbxJyMJzQuWRiWK7czEqIHu6Kv_k-z7i?s=ap\",\n      \"refunded\": false,\n      \"refunds\": {\n        \"object\": \"list\",\n        \"data\": [],\n        \"has_more\": false,\n        \"total_count\": 0,\n        \"url\": \"/v1/charges/ch_3N4o2jJUAL06t0UN0rTfV196/refunds\"\n      },\n      \"review\": null,\n      \"shipping\": null,\n      \"source\": null,\n      \"source_transfer\": null,\n      \"statement_descriptor\": null,\n      \"statement_descriptor_suffix\": null,\n      \"status\": \"succeeded\",\n      \"transfer_data\": null,\n      \"transfer_group\": null\n    },\n    \"collection_method\": \"charge_automatically\",\n    \"created\": 1683390789,\n    \"currency\": \"eur\",\n    \"custom_fields\": null,\n    \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n    \"customer_address\": null,\n    \"customer_email\": \"dotnetfromthemountain+test@gmail.com\",\n    \"customer_name\": null,\n    \"customer_phone\": null,\n    \"customer_shipping\": null,\n    \"customer_tax_exempt\": \"none\",\n    \"customer_tax_ids\": [],\n    \"default_payment_method\": null,\n    \"default_source\": null,\n    \"default_tax_rates\": [],\n    \"description\": null,\n    \"discount\": null,\n    \"discounts\": [],\n    \"due_date\": null,\n    \"ending_balance\": 0,\n    \"footer\": null,\n    \"from_invoice\": null,\n    \"hosted_invoice_url\": \"https://invoice.stripe.com/i/acct_1IQViRJUAL06t0UN/test_YWNjdF8xSVFWaVJKVUFMMDZ0MFVOLF9OcVYyRUF0TTJYRUNEdTdUa2ZabDVZdWZoc29UYWV3LDczOTMxNTkz0200QgOHSawr?s=ap\",\n    \"invoice_pdf\": \"https://pay.stripe.com/invoice/acct_1IQViRJUAL06t0UN/test_YWNjdF8xSVFWaVJKVUFMMDZ0MFVOLF9OcVYyRUF0TTJYRUNEdTdUa2ZabDVZdWZoc29UYWV3LDczOTMxNTkz0200QgOHSawr/pdf?s=ap\",\n    \"last_finalization_error\": null,\n    \"latest_revision\": null,\n    \"lines\": {\n      \"object\": \"list\",\n      \"data\": [\n        {\n          \"id\": \"il_1N4o2jJUAL06t0UN232VDexJ\",\n          \"object\": \"line_item\",\n          \"amount\": 24900,\n          \"amount_excluding_tax\": 24900,\n          \"currency\": \"eur\",\n          \"description\": \"1 × PayDotNet (at €249.00 / year)\",\n          \"discount_amounts\": [],\n          \"discountable\": true,\n          \"discounts\": [],\n          \"livemode\": false,\n          \"metadata\": {\n            \"pay_name\": \"default\"\n          },\n          \"period\": {\n            \"end\": 1715013189,\n            \"start\": 1683390789\n          },\n          \"plan\": {\n            \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n            \"object\": \"plan\",\n            \"active\": true,\n            \"aggregate_usage\": null,\n            \"amount\": 24900,\n            \"amount_decimal\": \"24900\",\n            \"billing_scheme\": \"per_unit\",\n            \"created\": 1681821216,\n            \"currency\": \"eur\",\n            \"interval\": \"year\",\n            \"interval_count\": 1,\n            \"livemode\": false,\n            \"metadata\": {},\n            \"nickname\": \"Basic\",\n            \"product\": \"prod_Njh7eTnfGm4pQ5\",\n            \"tiers_mode\": null,\n            \"transform_usage\": null,\n            \"trial_period_days\": null,\n            \"usage_type\": \"licensed\"\n          },\n          \"price\": {\n            \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n            \"object\": \"price\",\n            \"active\": true,\n            \"billing_scheme\": \"per_unit\",\n            \"created\": 1681821216,\n            \"currency\": \"eur\",\n            \"custom_unit_amount\": null,\n            \"livemode\": false,\n            \"lookup_key\": null,\n            \"metadata\": {},\n            \"nickname\": \"Basic\",\n            \"product\": \"prod_Njh7eTnfGm4pQ5\",\n            \"recurring\": {\n              \"aggregate_usage\": null,\n              \"interval\": \"year\",\n              \"interval_count\": 1,\n              \"trial_period_days\": null,\n              \"usage_type\": \"licensed\"\n            },\n            \"tax_behavior\": \"unspecified\",\n            \"tiers_mode\": null,\n            \"transform_quantity\": null,\n            \"type\": \"recurring\",\n            \"unit_amount\": 24900,\n            \"unit_amount_decimal\": \"24900\"\n          },\n          \"proration\": false,\n          \"proration_details\": {\n            \"credited_items\": null\n          },\n          \"quantity\": 1,\n          \"subscription\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n          \"subscription_item\": \"si_NqV25msBkhnQMh\",\n          \"tax_amounts\": [],\n          \"tax_rates\": [],\n          \"type\": \"subscription\",\n          \"unit_amount_excluding_tax\": \"24900\"\n        }\n      ],\n      \"has_more\": false,\n      \"total_count\": 1,\n      \"url\": \"/v1/invoices/in_1N4o2jJUAL06t0UNhp5yUiIi/lines\"\n    },\n    \"livemode\": false,\n    \"metadata\": {},\n    \"next_payment_attempt\": null,\n    \"number\": \"8CBC86EA-0212\",\n    \"on_behalf_of\": null,\n    \"paid\": true,\n    \"paid_out_of_band\": false,\n    \"payment_intent\": {\n      \"id\": \"pi_3N4o2jJUAL06t0UN0Me554HH\",\n      \"object\": \"payment_intent\",\n      \"amount\": 24900,\n      \"amount_capturable\": 0,\n      \"amount_details\": {\n        \"tip\": {}\n      },\n      \"amount_received\": 24900,\n      \"application\": null,\n      \"application_fee_amount\": null,\n      \"automatic_payment_methods\": null,\n      \"canceled_at\": null,\n      \"cancellation_reason\": null,\n      \"capture_method\": \"automatic\",\n      \"client_secret\": \"pi_3N4o2jJUAL06t0UN0Me554HH_secret_fMWHoF9ruvB2qibMmNaYBV2Ti\",\n      \"confirmation_method\": \"automatic\",\n      \"created\": 1683390789,\n      \"currency\": \"eur\",\n      \"customer\": \"cus_NqV2vUPgO9ZEsT\",\n      \"description\": \"Subscription creation\",\n      \"invoice\": \"in_1N4o2jJUAL06t0UNhp5yUiIi\",\n      \"last_payment_error\": null,\n      \"latest_charge\": \"ch_3N4o2jJUAL06t0UN0rTfV196\",\n      \"livemode\": false,\n      \"metadata\": {},\n      \"next_action\": null,\n      \"on_behalf_of\": null,\n      \"payment_method\": \"pm_1N4o2hJUAL06t0UNSTxklPIM\",\n      \"payment_method_options\": {\n        \"card\": {\n          \"installments\": null,\n          \"mandate_options\": null,\n          \"network\": null,\n          \"request_three_d_secure\": \"automatic\"\n        },\n        \"sepa_debit\": {}\n      },\n      \"payment_method_types\": [\n        \"card\",\n        \"sepa_debit\"\n      ],\n      \"processing\": null,\n      \"receipt_email\": \"dotnetfromthemountain+test@gmail.com\",\n      \"review\": null,\n      \"setup_future_usage\": \"off_session\",\n      \"shipping\": null,\n      \"source\": null,\n      \"statement_descriptor\": null,\n      \"statement_descriptor_suffix\": null,\n      \"status\": \"succeeded\",\n      \"transfer_data\": null,\n      \"transfer_group\": null\n    },\n    \"payment_settings\": {\n      \"default_mandate\": null,\n      \"payment_method_options\": null,\n      \"payment_method_types\": null\n    },\n    \"period_end\": 1683390789,\n    \"period_start\": 1683390789,\n    \"post_payment_credit_notes_amount\": 0,\n    \"pre_payment_credit_notes_amount\": 0,\n    \"quote\": null,\n    \"receipt_number\": null,\n    \"rendering_options\": null,\n    \"shipping_cost\": null,\n    \"shipping_details\": null,\n    \"starting_balance\": 0,\n    \"statement_descriptor\": null,\n    \"status\": \"paid\",\n    \"status_transitions\": {\n      \"finalized_at\": 1683390789,\n      \"marked_uncollectible_at\": null,\n      \"paid_at\": 1683390789,\n      \"voided_at\": null\n    },\n    \"subscription\": \"sub_1N4o2jJUAL06t0UNutZHyt3Z\",\n    \"subtotal\": 24900,\n    \"subtotal_excluding_tax\": 24900,\n    \"tax\": null,\n    \"test_clock\": null,\n    \"total\": 24900,\n    \"total_discount_amounts\": [],\n    \"total_excluding_tax\": 24900,\n    \"total_tax_amounts\": [],\n    \"transfer_data\": null,\n    \"webhooks_delivered_at\": 1683390789\n  },\n  \"livemode\": false,\n  \"metadata\": {\n    \"pay_name\": \"default\"\n  },\n  \"next_pending_invoice_item_invoice\": null,\n  \"on_behalf_of\": null,\n  \"pause_collection\": null,\n  \"payment_settings\": {\n    \"payment_method_options\": null,\n    \"payment_method_types\": null,\n    \"save_default_payment_method\": \"off\"\n  },\n  \"pending_invoice_item_interval\": null,\n  \"pending_setup_intent\": null,\n  \"pending_update\": null,\n  \"plan\": {\n    \"id\": \"price_1MyDj2JUAL06t0UNphFwwc6l\",\n    \"object\": \"plan\",\n    \"active\": true,\n    \"aggregate_usage\": null,\n    \"amount\": 24900,\n    \"amount_decimal\": \"24900\",\n    \"billing_scheme\": \"per_unit\",\n    \"created\": 1681821216,\n    \"currency\": \"eur\",\n    \"interval\": \"year\",\n    \"interval_count\": 1,\n    \"livemode\": false,\n    \"metadata\": {},\n    \"nickname\": \"Basic\",\n    \"product\": \"prod_Njh7eTnfGm4pQ5\",\n    \"tiers_mode\": null,\n    \"transform_usage\": null,\n    \"trial_period_days\": null,\n    \"usage_type\": \"licensed\"\n  },\n  \"quantity\": 1,\n  \"schedule\": null,\n  \"start_date\": 1683390789,\n  \"status\": \"canceled\",\n  \"test_clock\": null,\n  \"transfer_data\": null,\n  \"trial_end\": null,\n  \"trial_settings\": {\n    \"end_behavior\": {\n      \"missing_payment_method\": \"create_invoice\"\n    }\n  },\n  \"trial_start\": null\n}",
+      "HttpVersion": "1.1"
+    },
+    "RecordedAt": "2023-05-06T18:33:13.9122596+02:00"
   }
 ]

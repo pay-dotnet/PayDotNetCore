@@ -20,7 +20,7 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(payPaymentMethod);
 
         // Act
@@ -32,10 +32,10 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         // Act #2
         PayCharge payCharge = result.PaySubscription.Charges.Last();
-        await SystemUnderTest.IssueCreditNotesAsync(payCharge, new(5_00, "Credit note"));
+        await SystemUnderTest.IssueCreditNotesAsync(payCustomer, payCharge, new(5_00, "Credit note"));
 
         // Assert #2
-        result = await SystemUnderTest.GetSubscriptionAsync(result.PaySubscription.ProcessorId);
+        result = await SystemUnderTest.GetSubscriptionAsync(payCustomer, result.PaySubscription.ProcessorId);
         result.PaySubscription.Charges.Last().Refunds.Should().NotBeEmpty();
         result.PaySubscription.Charges.Last().Refunds.Last().Amount.Should().Be(5_00);
     }
@@ -48,7 +48,7 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(payPaymentMethod);
 
         // Act
@@ -56,10 +56,10 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
         result.PayCharge.Should().NotBeNull();
 
         // Act #2
-        await SystemUnderTest.RefundAsync(result.PayCharge, new(5_00, "Refund"));
+        await SystemUnderTest.RefundAsync(payCustomer, result.PayCharge, new(5_00, "Refund"));
 
         // Assert #2
-        PayCharge payCharge = await SystemUnderTest.GetChargeAsync(result.PayCharge.ProccesorId);
+        PayCharge payCharge = await SystemUnderTest.GetChargeAsync(payCustomer, result.PayCharge.ProccesorId);
         payCharge.Should().NotBeNull();
         payCharge.Refunds.Should().NotBeEmpty();
         payCharge.Refunds.Last().Amount.Should().Be(5_00);
@@ -73,7 +73,7 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(payPaymentMethod);
 
         // Act
@@ -81,11 +81,11 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
         result.PayCharge.Should().NotBeNull();
 
         // Act #2
-        await SystemUnderTest.RefundAsync(result.PayCharge, new(15_00, "Refund"));
-        await SystemUnderTest.RefundAsync(result.PayCharge, new(5_00, "Refund"));
+        await SystemUnderTest.RefundAsync(payCustomer, result.PayCharge, new(15_00, "Refund"));
+        await SystemUnderTest.RefundAsync(payCustomer, result.PayCharge, new(5_00, "Refund"));
 
         // Assert #2
-        PayCharge payCharge = await SystemUnderTest.GetChargeAsync(result.PayCharge.ProccesorId);
+        PayCharge payCharge = await SystemUnderTest.GetChargeAsync(payCustomer, result.PayCharge.ProccesorId);
         payCharge.Should().NotBeNull();
         payCharge.Refunds.Should().NotBeEmpty();
         payCharge.Refunds.First().Amount.Should().Be(15_00);
@@ -100,7 +100,7 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, paymentMethod.Id, isDefault: true);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(payPaymentMethod);
 
         // Act
@@ -108,8 +108,7 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
         result.PayCharge.Should().NotBeNull();
 
         // Act #2
-        Func<Task> action = () =>
-            SystemUnderTest.RefundAsync(result.PayCharge, new(500_00, "Refund"));
+        Func<Task> action = () => SystemUnderTest.RefundAsync(payCustomer, result.PayCharge, new(500_00, "Refund"));
 
         var exceptionAssertions = await action.Should().ThrowAsync<PayDotNetStripeException>();
         exceptionAssertions.Which.InnerException.Message.Should().Be("Refund amount (€500.00) is greater than charge amount (€30.00)");

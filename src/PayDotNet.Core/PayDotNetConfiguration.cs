@@ -3,13 +3,16 @@
 public class PayDotNetConfiguration
 {
     public string DefaultProductName { get; set; } = "default";
+
     public string DefaultPlanName { get; set; } = "default";
 
     public string DefaultRefundDescription { get; set; } = "Refund";
 
-    public string RootUrl { get; set; } = "https://localhost:7148";
+    public string DefaultPaymentProcessor { get; set; } = PaymentProcessors.Stripe;
 
     public PayDotNetStripeConfiguration Stripe { get; set; } = new();
+
+    public string RootUrl { get; set; } = "https://localhost:7148";
 }
 
 public class PayDotNetStripeConfiguration
