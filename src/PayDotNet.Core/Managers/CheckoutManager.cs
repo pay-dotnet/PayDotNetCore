@@ -13,7 +13,7 @@ public class CheckoutManager : ICheckoutManager
         _paymentProcessorService = paymentProcessorService;
     }
 
-    public Task<Uri> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
+    public Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
     {
         return _paymentProcessorService.CheckoutAsync(payCustomer, options);
     }

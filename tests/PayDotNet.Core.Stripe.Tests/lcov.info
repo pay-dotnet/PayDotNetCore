@@ -1,0 +1,3192 @@
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Extensions\ServiceCollectionExtension.cs
+FN:12,PayDotNet.Core.PayDotNetBuilder Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::AddPayDotNet(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+FNDA:0,PayDotNet.Core.PayDotNetBuilder Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::AddPayDotNet(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:37,0
+FN:40,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::AddBillableManager(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+FNDA:0,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::AddBillableManager(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+DA:41,0
+DA:42,0
+DA:43,0
+LF:24
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Exceptions\ActionRequiredPayDotNetException.cs
+FN:24,PayDotNet.Core.Models.IPayment PayDotNet.Core.ActionRequiredPayDotNetException::get_Payment()
+FNDA:0,PayDotNet.Core.Models.IPayment PayDotNet.Core.ActionRequiredPayDotNetException::get_Payment()
+DA:25,0
+FN:7,System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(PayDotNet.Core.Models.IPayment)
+FNDA:0,System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(PayDotNet.Core.Models.IPayment)
+DA:8,0
+DA:9,0
+DA:10,0
+DA:11,0
+FN:12,System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(System.String)
+FNDA:0,System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(System.String)
+DA:13,0
+DA:14,0
+DA:15,0
+FN:16,System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(System.String,System.Exception)
+DA:17,0
+DA:18,0
+DA:19,0
+FN:22,System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:23,0
+LF:12
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Exceptions\InvalidPaymentPayDotNetException.cs
+FN:18,PayDotNet.Core.Models.IPayment PayDotNet.Core.InvalidPaymentPayDotNetException::get_Payment()
+FNDA:0,PayDotNet.Core.Models.IPayment PayDotNet.Core.InvalidPaymentPayDotNetException::get_Payment()
+DA:19,0
+FN:7,System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(PayDotNet.Core.Models.IPayment)
+FNDA:0,System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(PayDotNet.Core.Models.IPayment)
+DA:8,0
+DA:9,0
+DA:10,0
+DA:11,0
+FN:12,System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(System.String)
+FNDA:0,System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(System.String)
+DA:13,0
+FN:13,System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(System.String,System.Exception)
+DA:14,0
+FN:16,System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:17,0
+LF:8
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Exceptions\PayDotNetException.cs
+FN:5,System.Void PayDotNet.Core.PayDotNetException::.ctor()
+FNDA:0,System.Void PayDotNet.Core.PayDotNetException::.ctor()
+DA:6,0
+DA:7,0
+FN:8,System.Void PayDotNet.Core.PayDotNetException::.ctor(System.String)
+FNDA:0,System.Void PayDotNet.Core.PayDotNetException::.ctor(System.String)
+DA:9,0
+DA:10,0
+DA:11,0
+FN:12,System.Void PayDotNet.Core.PayDotNetException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void PayDotNet.Core.PayDotNetException::.ctor(System.String,System.Exception)
+DA:13,0
+DA:14,0
+DA:15,0
+FN:18,System.Void PayDotNet.Core.PayDotNetException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void PayDotNet.Core.PayDotNetException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:19,0
+LF:9
+LH:0
+BRF:0
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Extensions\Helpers.cs
+FN:4,System.Boolean PayDotNet.Core.Helpers::None(System.Collections.Generic.ICollection`1<T>)
+FNDA:0,System.Boolean PayDotNet.Core.Helpers::None(System.Collections.Generic.ICollection`1<T>)
+DA:5,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PayAuthorizeChargeOptions.cs
+FN:3,System.Void PayDotNet.Core.PayAuthorizeChargeOptions::.ctor(System.Int32,System.String,System.String)
+FNDA:0,System.Void PayDotNet.Core.PayAuthorizeChargeOptions::.ctor(System.Int32,System.String,System.String)
+DA:4,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PayChargeOptions.cs
+FN:9,System.Int32 PayDotNet.Core.PayChargeOptions::get_Amount()
+FNDA:39,System.Int32 PayDotNet.Core.PayChargeOptions::get_Amount()
+DA:10,39
+FN:10,System.Void PayDotNet.Core.PayChargeOptions::.ctor(System.Int32,System.String,System.String,System.String)
+FNDA:4,System.Void PayDotNet.Core.PayChargeOptions::.ctor(System.Int32,System.String,System.String,System.String)
+DA:11,4
+DA:12,4
+LF:3
+LH:3
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PayChargeRefundOptions.cs
+FN:2,System.Int32 PayDotNet.Core.PayChargeRefundOptions::get_Amount()
+FNDA:0,System.Int32 PayDotNet.Core.PayChargeRefundOptions::get_Amount()
+DA:3,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PayCheckoutChargeOptions.cs
+FN:3,System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(System.Collections.Generic.List`1<PayDotNet.Core.PayCheckoutLineItem>,System.String,System.Boolean,System.String,System.String)
+FNDA:0,System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(System.Collections.Generic.List`1<PayDotNet.Core.PayCheckoutLineItem>,System.String,System.Boolean,System.String,System.String)
+DA:4,0
+FN:6,System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(PayDotNet.Core.PayCheckoutLineItem[])
+FNDA:0,System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(PayDotNet.Core.PayCheckoutLineItem[])
+DA:7,0
+DA:8,0
+DA:9,0
+FN:11,System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(PayDotNet.Core.PayCheckoutLineItemProductData[])
+FNDA:0,System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(PayDotNet.Core.PayCheckoutLineItemProductData[])
+DA:12,0
+DA:13,0
+DA:14,0
+FN:21,System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(System.Int32,System.String,System.String,System.String,System.Int32)
+FNDA:0,System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(System.Int32,System.String,System.String,System.String,System.Int32)
+DA:22,0
+DA:23,0
+DA:24,0
+LF:10
+LH:0
+BRF:0
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PayCheckoutLineItem.cs
+FN:2,System.String PayDotNet.Core.PayCheckoutLineItem::get_PriceId()
+FNDA:0,System.String PayDotNet.Core.PayCheckoutLineItem::get_PriceId()
+DA:3,0
+FN:3,System.Void PayDotNet.Core.PayCheckoutLineItem::.ctor(System.String,System.Int32,PayDotNet.Core.PayCheckoutLineItemProductData)
+FNDA:0,System.Void PayDotNet.Core.PayCheckoutLineItem::.ctor(System.String,System.Int32,PayDotNet.Core.PayCheckoutLineItemProductData)
+DA:4,0
+DA:5,0
+DA:6,0
+DA:7,0
+DA:8,0
+DA:9,0
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+DA:14,0
+LF:12
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PayCheckoutLineItemProductData.cs
+FN:2,System.String PayDotNet.Core.PayCheckoutLineItemProductData::get_Name()
+FNDA:0,System.String PayDotNet.Core.PayCheckoutLineItemProductData::get_Name()
+DA:3,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PayCheckoutOptions.cs
+FN:2,System.Collections.Generic.List`1<PayDotNet.Core.PayCheckoutLineItem> PayDotNet.Core.PayCheckoutOptions::get_LineItems()
+FNDA:0,System.Collections.Generic.List`1<PayDotNet.Core.PayCheckoutLineItem> PayDotNet.Core.PayCheckoutOptions::get_LineItems()
+DA:3,0
+FN:3,System.Void PayDotNet.Core.PayCheckoutOptions::.ctor(System.Collections.Generic.List`1<PayDotNet.Core.PayCheckoutLineItem>,System.String,System.Boolean,System.String,System.String)
+FNDA:0,System.Void PayDotNet.Core.PayCheckoutOptions::.ctor(System.Collections.Generic.List`1<PayDotNet.Core.PayCheckoutLineItem>,System.String,System.Boolean,System.String,System.String)
+DA:4,0
+DA:5,0
+DA:6,0
+DA:7,0
+DA:8,0
+DA:9,0
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+LF:20
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PayDotNetBuilder.cs
+FN:10,Microsoft.Extensions.DependencyInjection.IServiceCollection PayDotNet.Core.PayDotNetBuilder::get_Services()
+FNDA:0,Microsoft.Extensions.DependencyInjection.IServiceCollection PayDotNet.Core.PayDotNetBuilder::get_Services()
+DA:11,0
+FN:12,Microsoft.Extensions.Configuration.IConfiguration PayDotNet.Core.PayDotNetBuilder::get_Configuration()
+FNDA:0,Microsoft.Extensions.Configuration.IConfiguration PayDotNet.Core.PayDotNetBuilder::get_Configuration()
+DA:13,0
+FN:14,PayDotNet.Core.PayDotNetConfiguration PayDotNet.Core.PayDotNetBuilder::get_PayDotNetConfiguration()
+FNDA:0,PayDotNet.Core.PayDotNetConfiguration PayDotNet.Core.PayDotNetBuilder::get_PayDotNetConfiguration()
+DA:15,0
+FN:16,System.Void PayDotNet.Core.PayDotNetBuilder::.ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,PayDotNet.Core.PayDotNetConfiguration)
+FNDA:0,System.Void PayDotNet.Core.PayDotNetBuilder::.ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,PayDotNet.Core.PayDotNetConfiguration)
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+LF:9
+LH:0
+BRF:0
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PayDotNetConfiguration.cs
+FN:4,System.String PayDotNet.Core.PayDotNetConfiguration::get_DefaultProductName()
+FNDA:11,System.String PayDotNet.Core.PayDotNetConfiguration::get_DefaultProductName()
+DA:5,11
+FN:5,System.String PayDotNet.Core.PayDotNetConfiguration::get_DefaultPlanName()
+FNDA:15,System.String PayDotNet.Core.PayDotNetConfiguration::get_DefaultPlanName()
+DA:6,15
+FN:7,System.String PayDotNet.Core.PayDotNetConfiguration::get_DefaultRefundDescription()
+FNDA:11,System.String PayDotNet.Core.PayDotNetConfiguration::get_DefaultRefundDescription()
+DA:8,11
+FN:9,System.String PayDotNet.Core.PayDotNetConfiguration::get_RootUrl()
+FNDA:11,System.String PayDotNet.Core.PayDotNetConfiguration::get_RootUrl()
+DA:10,11
+FN:11,PayDotNet.Core.PayDotNetStripeConfiguration PayDotNet.Core.PayDotNetConfiguration::get_Stripe()
+FNDA:13,PayDotNet.Core.PayDotNetStripeConfiguration PayDotNet.Core.PayDotNetConfiguration::get_Stripe()
+DA:12,13
+FN:18,System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_ApiKey()
+FNDA:0,System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_ApiKey()
+DA:19,0
+FN:20,System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_EndpointSecret()
+FNDA:0,System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_EndpointSecret()
+DA:21,0
+FN:22,System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_PublicKey()
+FNDA:0,System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_PublicKey()
+DA:23,0
+FN:24,System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_PaymentBehaviour()
+FNDA:13,System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_PaymentBehaviour()
+DA:25,13
+FN:16,System.Void PayDotNet.Core.PayDotNetStripeConfiguration::.cctor()
+FNDA:1,System.Void PayDotNet.Core.PayDotNetStripeConfiguration::.cctor()
+DA:17,1
+LF:10
+LH:7
+BRF:0
+BRH:0
+FNF:10
+FNH:7
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PaymentProcessorOptionsBuilder.cs
+FN:6,PayDotNet.Core.Webhooks.WebhookRouterBuilder`1<TService> PayDotNet.Core.PaymentProcessorOptionsBuilder`1::get_Webhooks()
+FNDA:0,PayDotNet.Core.Webhooks.WebhookRouterBuilder`1<TService> PayDotNet.Core.PaymentProcessorOptionsBuilder`1::get_Webhooks()
+DA:7,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PaymentProcessors.cs
+FN:4,System.Void PayDotNet.Core.PaymentProcessors::.cctor()
+FNDA:0,System.Void PayDotNet.Core.PaymentProcessors::.cctor()
+DA:5,0
+DA:6,0
+LF:2
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PaySubscribeOptions.cs
+FN:2,System.String PayDotNet.Core.PaySubscribeOptions::get_Name()
+FNDA:26,System.String PayDotNet.Core.PaySubscribeOptions::get_Name()
+DA:3,26
+FN:3,System.Void PayDotNet.Core.PaySubscribeOptions::.ctor(System.String,System.Collections.Generic.List`1<PayDotNet.Core.PaySubscribeOptionsItem>)
+FNDA:5,System.Void PayDotNet.Core.PaySubscribeOptions::.ctor(System.String,System.Collections.Generic.List`1<PayDotNet.Core.PaySubscribeOptionsItem>)
+DA:4,5
+DA:5,5
+DA:6,4
+DA:7,4
+DA:8,4
+DA:9,5
+FN:10,System.String PayDotNet.Core.PayCustomerOptions::get_ProcessorName()
+FNDA:0,System.String PayDotNet.Core.PayCustomerOptions::get_ProcessorName()
+DA:11,0
+FN:12,PayDotNet.Core.CancellationReason PayDotNet.Core.PayCancelSubscriptionOptions::get_Feedback()
+FNDA:0,PayDotNet.Core.CancellationReason PayDotNet.Core.PayCancelSubscriptionOptions::get_Feedback()
+DA:13,0
+LF:9
+LH:7
+BRF:0
+BRH:0
+FNF:4
+FNH:2
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\PaySubscribeOptionsItem.cs
+FN:2,System.String PayDotNet.Core.PaySubscribeOptionsItem::get_PriceId()
+FNDA:30,System.String PayDotNet.Core.PaySubscribeOptionsItem::get_PriceId()
+DA:3,30
+LF:1
+LH:1
+BRF:0
+BRH:0
+FNF:1
+FNH:1
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Webhooks\CompositeWebhookDispatcher.cs
+FN:22,System.Threading.Tasks.Task PayDotNet.Core.Webhooks.CompositeWebhookDispatcher::DispatchAsync(System.String,System.String,System.String)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Webhooks.CompositeWebhookDispatcher::DispatchAsync(System.String,System.String,System.String)
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:30,0
+DA:31,0
+DA:32,0
+BRDA:24,18,0,0
+BRDA:24,18,1,0
+FN:13,System.Void PayDotNet.Core.Webhooks.CompositeWebhookDispatcher::.ctor(System.Collections.Generic.IEnumerable`1<PayDotNet.Core.Webhooks.WebhookDispatcher>,Microsoft.Extensions.Logging.ILogger`1<PayDotNet.Core.Webhooks.CompositeWebhookDispatcher>)
+FNDA:0,System.Void PayDotNet.Core.Webhooks.CompositeWebhookDispatcher::.ctor(System.Collections.Generic.IEnumerable`1<PayDotNet.Core.Webhooks.WebhookDispatcher>,Microsoft.Extensions.Logging.ILogger`1<PayDotNet.Core.Webhooks.CompositeWebhookDispatcher>)
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+LF:15
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Webhooks\WebhookDispatcher.cs
+FN:22,System.String PayDotNet.Core.Webhooks.WebhookDispatcher::get_Name()
+FNDA:0,System.String PayDotNet.Core.Webhooks.WebhookDispatcher::get_Name()
+DA:23,0
+FN:24,PayDotNet.Core.Webhooks.WebhookRouterTable PayDotNet.Core.Webhooks.WebhookDispatcher::get_RoutingTable()
+FNDA:0,PayDotNet.Core.Webhooks.WebhookRouterTable PayDotNet.Core.Webhooks.WebhookDispatcher::get_RoutingTable()
+DA:25,0
+FN:26,System.IServiceProvider PayDotNet.Core.Webhooks.WebhookDispatcher::get_ServiceProvider()
+FNDA:0,System.IServiceProvider PayDotNet.Core.Webhooks.WebhookDispatcher::get_ServiceProvider()
+DA:27,0
+FN:10,System.Void PayDotNet.Core.Webhooks.WebhookDispatcher::.ctor(System.String,PayDotNet.Core.Webhooks.WebhookRouterTable,System.IServiceProvider,Microsoft.Extensions.Logging.ILogger)
+FNDA:0,System.Void PayDotNet.Core.Webhooks.WebhookDispatcher::.ctor(System.String,PayDotNet.Core.Webhooks.WebhookRouterTable,System.IServiceProvider,Microsoft.Extensions.Logging.ILogger)
+DA:11,0
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+FN:31,System.Boolean PayDotNet.Core.Webhooks.WebhookDispatcher/<GetWebhookHandlers>d__12::MoveNext()
+FNDA:0,System.Boolean PayDotNet.Core.Webhooks.WebhookDispatcher/<GetWebhookHandlers>d__12::MoveNext()
+DA:32,0
+DA:33,0
+DA:34,0
+DA:36,0
+DA:37,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+BRDA:33,67,0,0
+BRDA:33,67,1,0
+BRDA:41,306,1,0
+BRDA:44,245,0,0
+BRDA:44,245,1,0
+BRDA:41,306,0,0
+LF:29
+LH:0
+BRF:6
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Webhooks\WebhookRouterBuilder.cs
+FN:10,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::SubscribeWebhook(System.String)
+FNDA:0,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::SubscribeWebhook(System.String)
+DA:11,0
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+BRDA:12,18,0,0
+BRDA:12,18,1,0
+FN:20,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::UnsubscribeWebhook(System.String)
+FNDA:0,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::UnsubscribeWebhook(System.String)
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:27,0
+DA:28,0
+BRDA:22,18,0,0
+BRDA:22,18,1,0
+FN:30,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::UnsubscribeAllWebhooks(System.String)
+FNDA:0,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::UnsubscribeAllWebhooks(System.String)
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:37,0
+DA:38,0
+BRDA:32,18,0,0
+BRDA:32,18,1,0
+FN:39,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::Clear()
+FNDA:0,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::Clear()
+DA:40,0
+FN:42,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+FNDA:0,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:49,0
+DA:50,0
+DA:51,0
+BRDA:44,92,1,0
+BRDA:46,65,1,0
+BRDA:46,65,0,0
+BRDA:44,92,0,0
+FN:53,PayDotNet.Core.Webhooks.WebhookRouterTable PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::Build()
+FNDA:0,PayDotNet.Core.Webhooks.WebhookRouterTable PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::Build()
+DA:54,0
+DA:55,0
+DA:56,0
+FN:6,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::.ctor()
+FNDA:0,System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::.ctor()
+DA:7,0
+LF:33
+LH:0
+BRF:10
+BRH:0
+FNF:7
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Webhooks\WebhookRouterTable.cs
+FN:9,System.Void PayDotNet.Core.Webhooks.WebhookRouterTable::.ctor(System.Collections.Generic.IDictionary`2<System.String,System.Collections.Generic.HashSet`1<System.Type>>)
+FNDA:0,System.Void PayDotNet.Core.Webhooks.WebhookRouterTable::.ctor(System.Collections.Generic.IDictionary`2<System.String,System.Collections.Generic.HashSet`1<System.Type>>)
+DA:10,0
+DA:11,0
+DA:12,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Stores\InMemoryStore.cs
+FN:13,System.Linq.IQueryable`1<PayDotNet.Core.Models.PaySubscription> PayDotNet.Core.Stores.InMemoryStore::get_Subscriptions()
+FNDA:0,System.Linq.IQueryable`1<PayDotNet.Core.Models.PaySubscription> PayDotNet.Core.Stores.InMemoryStore::get_Subscriptions()
+DA:14,0
+FN:15,System.Linq.IQueryable`1<PayDotNet.Core.Models.PayCustomer> PayDotNet.Core.Stores.InMemoryStore::get_Customers()
+FNDA:0,System.Linq.IQueryable`1<PayDotNet.Core.Models.PayCustomer> PayDotNet.Core.Stores.InMemoryStore::get_Customers()
+DA:16,0
+FN:17,System.Linq.IQueryable`1<PayDotNet.Core.Models.PayPaymentMethod> PayDotNet.Core.Stores.InMemoryStore::get_PaymentMethods()
+FNDA:0,System.Linq.IQueryable`1<PayDotNet.Core.Models.PayPaymentMethod> PayDotNet.Core.Stores.InMemoryStore::get_PaymentMethods()
+DA:18,0
+FN:19,System.Linq.IQueryable`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Stores.InMemoryStore::get_Charges()
+FNDA:0,System.Linq.IQueryable`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Stores.InMemoryStore::get_Charges()
+DA:20,0
+FN:22,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PaySubscription)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PaySubscription)
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+FN:28,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PayCustomer)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PayCustomer)
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+FN:34,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PayPaymentMethod)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PayPaymentMethod)
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+FN:40,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PayCharge)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PayCharge)
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+FN:46,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PaySubscription)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PaySubscription)
+DA:47,0
+DA:48,0
+DA:49,0
+FN:51,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PaySubscription>)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PaySubscription>)
+DA:52,0
+DA:53,0
+DA:54,0
+FN:56,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PayCustomer)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PayCustomer)
+DA:57,0
+DA:58,0
+DA:59,0
+FN:61,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCustomer>)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCustomer>)
+DA:62,0
+DA:63,0
+DA:64,0
+FN:66,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PayPaymentMethod)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PayPaymentMethod)
+DA:67,0
+DA:68,0
+DA:69,0
+FN:71,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayPaymentMethod>)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayPaymentMethod>)
+DA:72,0
+DA:73,0
+DA:74,0
+FN:76,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PayCharge)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PayCharge)
+DA:77,0
+DA:78,0
+DA:79,0
+FN:81,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCharge>)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCharge>)
+DA:82,0
+DA:83,0
+DA:84,0
+FN:11,System.Void PayDotNet.Core.Stores.InMemoryStore::.cctor()
+FNDA:0,System.Void PayDotNet.Core.Stores.InMemoryStore::.cctor()
+DA:12,0
+LF:45
+LH:0
+BRF:0
+BRH:0
+FNF:17
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Services\PaymentProcessorPaymentMethod.cs
+FN:2,System.String PayDotNet.Core.Services.PaymentProcessorPaymentMethod::get_Id()
+FNDA:0,System.String PayDotNet.Core.Services.PaymentProcessorPaymentMethod::get_Id()
+DA:3,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PayCharge.cs
+FN:7,PayDotNet.Core.Models.PayCustomer PayDotNet.Core.Models.PayCharge::get_Customer()
+FNDA:0,PayDotNet.Core.Models.PayCustomer PayDotNet.Core.Models.PayCharge::get_Customer()
+DA:8,0
+FN:9,System.String PayDotNet.Core.Models.PayCharge::get_CustomerId()
+FNDA:0,System.String PayDotNet.Core.Models.PayCharge::get_CustomerId()
+DA:10,0
+FN:11,PayDotNet.Core.Models.PaySubscription PayDotNet.Core.Models.PayCharge::get_Subscription()
+FNDA:0,PayDotNet.Core.Models.PaySubscription PayDotNet.Core.Models.PayCharge::get_Subscription()
+DA:12,0
+FN:13,System.String PayDotNet.Core.Models.PayCharge::get_SubscriptionId()
+FNDA:0,System.String PayDotNet.Core.Models.PayCharge::get_SubscriptionId()
+DA:14,0
+FN:15,System.String PayDotNet.Core.Models.PayCharge::get_ProccesorId()
+FNDA:0,System.String PayDotNet.Core.Models.PayCharge::get_ProccesorId()
+DA:16,0
+FN:17,System.String PayDotNet.Core.Models.PayCharge::get_Brand()
+FNDA:2,System.String PayDotNet.Core.Models.PayCharge::get_Brand()
+DA:18,2
+FN:19,System.Int32 PayDotNet.Core.Models.PayCharge::get_Amount()
+FNDA:3,System.Int32 PayDotNet.Core.Models.PayCharge::get_Amount()
+DA:20,3
+FN:21,System.String PayDotNet.Core.Models.PayCharge::get_Currency()
+FNDA:2,System.String PayDotNet.Core.Models.PayCharge::get_Currency()
+DA:22,2
+FN:23,System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayCharge::get_ApplicationFeeAmount()
+FNDA:2,System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayCharge::get_ApplicationFeeAmount()
+DA:24,2
+FN:25,System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayCharge::get_AmountRefunded()
+FNDA:2,System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayCharge::get_AmountRefunded()
+DA:26,2
+FN:27,System.Int32 PayDotNet.Core.Models.PayCharge::get_AmountCaptured()
+FNDA:2,System.Int32 PayDotNet.Core.Models.PayCharge::get_AmountCaptured()
+DA:28,2
+FN:29,System.Int32 PayDotNet.Core.Models.PayCharge::get_ExpirationMonth()
+FNDA:2,System.Int32 PayDotNet.Core.Models.PayCharge::get_ExpirationMonth()
+DA:30,2
+FN:31,System.Int32 PayDotNet.Core.Models.PayCharge::get_ExpirationYear()
+FNDA:2,System.Int32 PayDotNet.Core.Models.PayCharge::get_ExpirationYear()
+DA:32,2
+FN:33,System.String PayDotNet.Core.Models.PayCharge::get_PaymentIntentId()
+FNDA:2,System.String PayDotNet.Core.Models.PayCharge::get_PaymentIntentId()
+DA:34,2
+FN:35,System.String PayDotNet.Core.Models.PayCharge::get_PaymentMethodType()
+FNDA:2,System.String PayDotNet.Core.Models.PayCharge::get_PaymentMethodType()
+DA:36,2
+FN:37,System.String PayDotNet.Core.Models.PayCharge::get_ReceiptUrl()
+FNDA:2,System.String PayDotNet.Core.Models.PayCharge::get_ReceiptUrl()
+DA:38,2
+FN:39,System.String PayDotNet.Core.Models.PayCharge::get_Last4()
+FNDA:2,System.String PayDotNet.Core.Models.PayCharge::get_Last4()
+DA:40,2
+FN:41,System.Collections.Generic.Dictionary`2<System.String,System.String> PayDotNet.Core.Models.PayCharge::get_Metadata()
+FNDA:2,System.Collections.Generic.Dictionary`2<System.String,System.String> PayDotNet.Core.Models.PayCharge::get_Metadata()
+DA:42,2
+FN:43,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayCharge::get_Data()
+FNDA:0,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayCharge::get_Data()
+DA:44,0
+FN:45,PayDotNet.Core.Models.PayStatus PayDotNet.Core.Models.PayCharge::get_Status()
+FNDA:0,PayDotNet.Core.Models.PayStatus PayDotNet.Core.Models.PayCharge::get_Status()
+DA:46,0
+FN:47,System.DateTime PayDotNet.Core.Models.PayCharge::get_CreatedAt()
+FNDA:2,System.DateTime PayDotNet.Core.Models.PayCharge::get_CreatedAt()
+DA:48,2
+FN:49,System.DateTime PayDotNet.Core.Models.PayCharge::get_UpdatedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayCharge::get_UpdatedAt()
+DA:50,0
+FN:51,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeLineItem> PayDotNet.Core.Models.PayCharge::get_LineItems()
+FNDA:2,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeLineItem> PayDotNet.Core.Models.PayCharge::get_LineItems()
+DA:52,2
+FN:53,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeDiscount> PayDotNet.Core.Models.PayCharge::get_Discounts()
+FNDA:2,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeDiscount> PayDotNet.Core.Models.PayCharge::get_Discounts()
+DA:54,2
+FN:55,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeTaxAmount> PayDotNet.Core.Models.PayCharge::get_TaxAmounts()
+FNDA:2,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeTaxAmount> PayDotNet.Core.Models.PayCharge::get_TaxAmounts()
+DA:56,2
+FN:57,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeRefund> PayDotNet.Core.Models.PayCharge::get_Refunds()
+FNDA:4,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeRefund> PayDotNet.Core.Models.PayCharge::get_Refunds()
+DA:58,4
+FN:58,System.DateTime PayDotNet.Core.Models.PayCharge::get_PeriodEnd()
+FNDA:2,System.DateTime PayDotNet.Core.Models.PayCharge::get_PeriodEnd()
+DA:59,2
+FN:59,System.DateTime PayDotNet.Core.Models.PayCharge::get_PeriodStart()
+FNDA:2,System.DateTime PayDotNet.Core.Models.PayCharge::get_PeriodStart()
+DA:60,2
+FN:60,System.String PayDotNet.Core.Models.PayCharge::get_InvoiceId()
+FNDA:0,System.String PayDotNet.Core.Models.PayCharge::get_InvoiceId()
+DA:61,0
+FN:61,System.Int32 PayDotNet.Core.Models.PayCharge::get_Subtotal()
+FNDA:0,System.Int32 PayDotNet.Core.Models.PayCharge::get_Subtotal()
+DA:62,0
+FN:62,System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayCharge::get_Tax()
+FNDA:0,System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayCharge::get_Tax()
+DA:63,0
+LF:31
+LH:20
+BRF:0
+BRH:0
+FNF:31
+FNH:20
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PayChargeLineItem.cs
+FN:4,System.DateTime PayDotNet.Core.Models.PayChargeLineItem::get_PeriodEnd()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayChargeLineItem::get_PeriodEnd()
+DA:5,0
+FN:5,System.DateTime PayDotNet.Core.Models.PayChargeLineItem::get_PeriodStart()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayChargeLineItem::get_PeriodStart()
+DA:6,0
+FN:6,System.Boolean PayDotNet.Core.Models.PayChargeLineItem::get_IsProration()
+FNDA:0,System.Boolean PayDotNet.Core.Models.PayChargeLineItem::get_IsProration()
+DA:7,0
+FN:7,System.String PayDotNet.Core.Models.PayChargeLineItem::get_ProcessorId()
+FNDA:0,System.String PayDotNet.Core.Models.PayChargeLineItem::get_ProcessorId()
+DA:8,0
+FN:8,System.String PayDotNet.Core.Models.PayChargeLineItem::get_Description()
+FNDA:0,System.String PayDotNet.Core.Models.PayChargeLineItem::get_Description()
+DA:9,0
+FN:9,System.String PayDotNet.Core.Models.PayChargeLineItem::get_PriceId()
+FNDA:0,System.String PayDotNet.Core.Models.PayChargeLineItem::get_PriceId()
+DA:10,0
+FN:10,System.Int32 PayDotNet.Core.Models.PayChargeLineItem::get_Quantity()
+FNDA:0,System.Int32 PayDotNet.Core.Models.PayChargeLineItem::get_Quantity()
+DA:11,0
+FN:11,System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayChargeLineItem::get_UnitAmount()
+FNDA:0,System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayChargeLineItem::get_UnitAmount()
+DA:12,0
+LF:8
+LH:0
+BRF:0
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PayChargeRefund.cs
+FN:4,System.String PayDotNet.Core.Models.PayChargeRefund::get_ProcessorId()
+FNDA:0,System.String PayDotNet.Core.Models.PayChargeRefund::get_ProcessorId()
+DA:5,0
+FN:5,System.DateTime PayDotNet.Core.Models.PayChargeRefund::get_CreatedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayChargeRefund::get_CreatedAt()
+DA:6,0
+FN:6,System.String PayDotNet.Core.Models.PayChargeRefund::get_Description()
+FNDA:0,System.String PayDotNet.Core.Models.PayChargeRefund::get_Description()
+DA:7,0
+FN:7,System.Int32 PayDotNet.Core.Models.PayChargeRefund::get_Amount()
+FNDA:0,System.Int32 PayDotNet.Core.Models.PayChargeRefund::get_Amount()
+DA:8,0
+FN:8,System.String PayDotNet.Core.Models.PayChargeRefund::get_Reason()
+FNDA:0,System.String PayDotNet.Core.Models.PayChargeRefund::get_Reason()
+DA:9,0
+FN:9,System.String PayDotNet.Core.Models.PayChargeRefund::get_Status()
+FNDA:0,System.String PayDotNet.Core.Models.PayChargeRefund::get_Status()
+DA:10,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PayCustomer.cs
+FN:8,System.String PayDotNet.Core.Models.PayCustomer::get_Id()
+FNDA:19,System.String PayDotNet.Core.Models.PayCustomer::get_Id()
+DA:9,19
+FN:10,System.String PayDotNet.Core.Models.PayCustomer::get_Email()
+FNDA:23,System.String PayDotNet.Core.Models.PayCustomer::get_Email()
+DA:11,23
+FN:13,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Models.PayCustomer::get_Charges()
+FNDA:13,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Models.PayCustomer::get_Charges()
+DA:14,13
+FN:16,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PaySubscription> PayDotNet.Core.Models.PayCustomer::get_Subscriptions()
+FNDA:13,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PaySubscription> PayDotNet.Core.Models.PayCustomer::get_Subscriptions()
+DA:17,13
+FN:19,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayPaymentMethod> PayDotNet.Core.Models.PayCustomer::get_PaymentMethods()
+FNDA:22,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayPaymentMethod> PayDotNet.Core.Models.PayCustomer::get_PaymentMethods()
+DA:20,22
+FN:22,System.String PayDotNet.Core.Models.PayCustomer::get_Processor()
+FNDA:0,System.String PayDotNet.Core.Models.PayCustomer::get_Processor()
+DA:23,0
+FN:24,System.String PayDotNet.Core.Models.PayCustomer::get_ProcessorId()
+FNDA:31,System.String PayDotNet.Core.Models.PayCustomer::get_ProcessorId()
+DA:25,31
+FN:26,System.Boolean PayDotNet.Core.Models.PayCustomer::get_IsDefault()
+FNDA:0,System.Boolean PayDotNet.Core.Models.PayCustomer::get_IsDefault()
+DA:27,0
+FN:28,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayCustomer::get_Data()
+FNDA:0,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayCustomer::get_Data()
+DA:29,0
+FN:30,System.DateTime PayDotNet.Core.Models.PayCustomer::get_CreatedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayCustomer::get_CreatedAt()
+DA:31,0
+FN:32,System.DateTime PayDotNet.Core.Models.PayCustomer::get_UpdatedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayCustomer::get_UpdatedAt()
+DA:33,0
+FN:34,System.DateTime PayDotNet.Core.Models.PayCustomer::get_DeletedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayCustomer::get_DeletedAt()
+DA:35,0
+FN:36,PayDotNet.Core.Models.PayPaymentMethod PayDotNet.Core.Models.PayCustomer::get_DefaultPaymentMethod()
+FNDA:8,PayDotNet.Core.Models.PayPaymentMethod PayDotNet.Core.Models.PayCustomer::get_DefaultPaymentMethod()
+DA:37,8
+FN:39,System.Boolean PayDotNet.Core.Models.PayCustomer::HasProcessorId()
+FNDA:0,System.Boolean PayDotNet.Core.Models.PayCustomer::HasProcessorId()
+DA:40,0
+DA:41,0
+DA:42,0
+LF:16
+LH:7
+BRF:0
+BRH:0
+FNF:14
+FNH:7
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PayMerchant.cs
+FN:4,System.String PayDotNet.Core.Models.PayMerchant::get_Processor()
+FNDA:0,System.String PayDotNet.Core.Models.PayMerchant::get_Processor()
+DA:5,0
+FN:6,System.String PayDotNet.Core.Models.PayMerchant::get_ProcessorId()
+FNDA:0,System.String PayDotNet.Core.Models.PayMerchant::get_ProcessorId()
+DA:7,0
+FN:8,System.Boolean PayDotNet.Core.Models.PayMerchant::get_IsDefault()
+FNDA:0,System.Boolean PayDotNet.Core.Models.PayMerchant::get_IsDefault()
+DA:9,0
+FN:10,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayMerchant::get_Data()
+FNDA:0,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayMerchant::get_Data()
+DA:11,0
+FN:12,System.DateTime PayDotNet.Core.Models.PayMerchant::get_CreatedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayMerchant::get_CreatedAt()
+DA:13,0
+FN:14,System.DateTime PayDotNet.Core.Models.PayMerchant::get_UpdatedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayMerchant::get_UpdatedAt()
+DA:15,0
+LF:6
+LH:0
+BRF:0
+BRH:0
+FNF:6
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PayPaymentMethod.cs
+FN:5,PayDotNet.Core.Models.PayCustomer PayDotNet.Core.Models.PayPaymentMethod::get_Customer()
+FNDA:0,PayDotNet.Core.Models.PayCustomer PayDotNet.Core.Models.PayPaymentMethod::get_Customer()
+DA:6,0
+FN:7,System.String PayDotNet.Core.Models.PayPaymentMethod::get_CustomerId()
+FNDA:6,System.String PayDotNet.Core.Models.PayPaymentMethod::get_CustomerId()
+DA:8,6
+FN:9,System.String PayDotNet.Core.Models.PayPaymentMethod::get_ProcessorId()
+FNDA:12,System.String PayDotNet.Core.Models.PayPaymentMethod::get_ProcessorId()
+DA:10,12
+FN:11,System.Boolean PayDotNet.Core.Models.PayPaymentMethod::get_IsDefault()
+FNDA:10,System.Boolean PayDotNet.Core.Models.PayPaymentMethod::get_IsDefault()
+DA:12,10
+FN:13,System.String PayDotNet.Core.Models.PayPaymentMethod::get_Type()
+FNDA:6,System.String PayDotNet.Core.Models.PayPaymentMethod::get_Type()
+DA:14,6
+FN:15,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayPaymentMethod::get_Data()
+FNDA:0,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayPaymentMethod::get_Data()
+DA:16,0
+FN:17,System.DateTime PayDotNet.Core.Models.PayPaymentMethod::get_CreatedAt()
+FNDA:6,System.DateTime PayDotNet.Core.Models.PayPaymentMethod::get_CreatedAt()
+DA:18,6
+FN:19,System.DateTime PayDotNet.Core.Models.PayPaymentMethod::get_UpdatedAt()
+FNDA:6,System.DateTime PayDotNet.Core.Models.PayPaymentMethod::get_UpdatedAt()
+DA:20,6
+LF:8
+LH:6
+BRF:0
+BRH:0
+FNF:8
+FNH:6
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PaySubscription.cs
+FN:7,System.Int32 PayDotNet.Core.Models.PaySubscription::get_Id()
+FNDA:0,System.Int32 PayDotNet.Core.Models.PaySubscription::get_Id()
+DA:8,0
+FN:9,System.String PayDotNet.Core.Models.PaySubscription::get_CustomerId()
+FNDA:0,System.String PayDotNet.Core.Models.PaySubscription::get_CustomerId()
+DA:10,0
+FN:11,System.String PayDotNet.Core.Models.PaySubscription::get_Name()
+FNDA:6,System.String PayDotNet.Core.Models.PaySubscription::get_Name()
+DA:12,6
+FN:15,System.String PayDotNet.Core.Models.PaySubscription::get_ProcessorId()
+FNDA:7,System.String PayDotNet.Core.Models.PaySubscription::get_ProcessorId()
+DA:16,7
+FN:17,System.String PayDotNet.Core.Models.PaySubscription::get_ProcessorPlan()
+FNDA:6,System.String PayDotNet.Core.Models.PaySubscription::get_ProcessorPlan()
+DA:18,6
+FN:19,System.Int32 PayDotNet.Core.Models.PaySubscription::get_Quantity()
+FNDA:12,System.Int32 PayDotNet.Core.Models.PaySubscription::get_Quantity()
+DA:20,12
+FN:21,PayDotNet.Core.Models.PaySubscriptionStatus PayDotNet.Core.Models.PaySubscription::get_Status()
+FNDA:6,PayDotNet.Core.Models.PaySubscriptionStatus PayDotNet.Core.Models.PaySubscription::get_Status()
+DA:22,6
+FN:23,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_CurrentPeriodStart()
+FNDA:6,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_CurrentPeriodStart()
+DA:24,6
+FN:25,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_CurrentPeriodEnd()
+FNDA:6,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_CurrentPeriodEnd()
+DA:26,6
+FN:27,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_TrailEndsAt()
+FNDA:0,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_TrailEndsAt()
+DA:28,0
+FN:29,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_EndsAt()
+FNDA:0,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_EndsAt()
+DA:30,0
+FN:31,System.Boolean PayDotNet.Core.Models.PaySubscription::get_IsMetered()
+FNDA:13,System.Boolean PayDotNet.Core.Models.PaySubscription::get_IsMetered()
+DA:32,13
+FN:33,System.String PayDotNet.Core.Models.PaySubscription::get_PauseBehaviour()
+FNDA:6,System.String PayDotNet.Core.Models.PaySubscription::get_PauseBehaviour()
+DA:34,6
+FN:35,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_PauseStartsAt()
+FNDA:0,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_PauseStartsAt()
+DA:36,0
+FN:37,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_PauseResumesAt()
+FNDA:6,System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_PauseResumesAt()
+DA:38,6
+FN:40,System.Nullable`1<System.Decimal> PayDotNet.Core.Models.PaySubscription::get_ApplicationFeePercent()
+FNDA:6,System.Nullable`1<System.Decimal> PayDotNet.Core.Models.PaySubscription::get_ApplicationFeePercent()
+DA:41,6
+FN:42,System.Collections.Generic.Dictionary`2<System.String,System.String> PayDotNet.Core.Models.PaySubscription::get_Metadata()
+FNDA:6,System.Collections.Generic.Dictionary`2<System.String,System.String> PayDotNet.Core.Models.PaySubscription::get_Metadata()
+DA:43,6
+FN:44,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PaySubscription::get_Data()
+FNDA:0,System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PaySubscription::get_Data()
+DA:45,0
+FN:46,System.DateTime PayDotNet.Core.Models.PaySubscription::get_CreatedAt()
+FNDA:6,System.DateTime PayDotNet.Core.Models.PaySubscription::get_CreatedAt()
+DA:47,6
+FN:48,System.DateTime PayDotNet.Core.Models.PaySubscription::get_UpdatedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PaySubscription::get_UpdatedAt()
+DA:49,0
+FN:50,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Models.PaySubscription::get_Charges()
+FNDA:10,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Models.PaySubscription::get_Charges()
+DA:51,10
+FN:52,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PaySubscriptionItem> PayDotNet.Core.Models.PaySubscription::get_SubscriptionItems()
+FNDA:17,System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PaySubscriptionItem> PayDotNet.Core.Models.PaySubscription::get_SubscriptionItems()
+DA:53,17
+FN:55,System.Boolean PayDotNet.Core.Models.PaySubscription::IsOnTrial()
+FNDA:0,System.Boolean PayDotNet.Core.Models.PaySubscription::IsOnTrial()
+DA:56,0
+DA:57,0
+DA:58,0
+BRDA:57,15,0,0
+BRDA:57,15,1,0
+FN:60,System.Boolean PayDotNet.Core.Models.PaySubscription::IsTrialEnded()
+FNDA:0,System.Boolean PayDotNet.Core.Models.PaySubscription::IsTrialEnded()
+DA:61,0
+DA:62,0
+DA:63,0
+BRDA:62,15,0,0
+BRDA:62,15,1,0
+FN:65,System.Boolean PayDotNet.Core.Models.PaySubscription::IsIncomplete()
+FNDA:0,System.Boolean PayDotNet.Core.Models.PaySubscription::IsIncomplete()
+DA:66,0
+DA:67,0
+DA:68,0
+FN:70,System.Void PayDotNet.Core.Models.PaySubscription::CancelNow()
+FNDA:0,System.Void PayDotNet.Core.Models.PaySubscription::CancelNow()
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+FN:79,System.Void PayDotNet.Core.Models.IPaymentExtensions::Validate(PayDotNet.Core.Models.IPayment)
+FNDA:0,System.Void PayDotNet.Core.Models.IPaymentExtensions::Validate(PayDotNet.Core.Models.IPayment)
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:89,0
+BRDA:81,9,0,0
+BRDA:81,9,1,0
+BRDA:85,27,0,0
+BRDA:85,27,1,0
+FN:91,System.Boolean PayDotNet.Core.Models.IPaymentExtensions::IsCanceled(PayDotNet.Core.Models.IPayment)
+FNDA:0,System.Boolean PayDotNet.Core.Models.IPaymentExtensions::IsCanceled(PayDotNet.Core.Models.IPayment)
+DA:92,0
+DA:93,0
+DA:94,0
+FN:96,System.Boolean PayDotNet.Core.Models.IPaymentExtensions::IsSucceeded(PayDotNet.Core.Models.IPayment)
+FNDA:7,System.Boolean PayDotNet.Core.Models.IPaymentExtensions::IsSucceeded(PayDotNet.Core.Models.IPayment)
+DA:97,7
+DA:98,7
+DA:99,7
+FN:101,System.Boolean PayDotNet.Core.Models.IPaymentExtensions::RequiresAction(PayDotNet.Core.Models.IPayment)
+FNDA:2,System.Boolean PayDotNet.Core.Models.IPaymentExtensions::RequiresAction(PayDotNet.Core.Models.IPayment)
+DA:102,2
+DA:103,2
+DA:104,2
+FN:106,System.Boolean PayDotNet.Core.Models.IPaymentExtensions::RequiresPaymentMethod(PayDotNet.Core.Models.IPayment)
+FNDA:5,System.Boolean PayDotNet.Core.Models.IPaymentExtensions::RequiresPaymentMethod(PayDotNet.Core.Models.IPayment)
+DA:107,5
+DA:108,5
+DA:109,5
+LF:55
+LH:24
+BRF:8
+BRH:0
+FNF:31
+FNH:18
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PaySubscriptionItem.cs
+FN:4,System.String PayDotNet.Core.Models.PaySubscriptionItem::get_Id()
+FNDA:14,System.String PayDotNet.Core.Models.PaySubscriptionItem::get_Id()
+DA:5,14
+FN:6,PayDotNet.Core.Models.PaySubscriptionItemPrice PayDotNet.Core.Models.PaySubscriptionItem::get_Price()
+FNDA:17,PayDotNet.Core.Models.PaySubscriptionItemPrice PayDotNet.Core.Models.PaySubscriptionItem::get_Price()
+DA:7,17
+FN:8,System.Collections.Generic.Dictionary`2<System.String,System.String> PayDotNet.Core.Models.PaySubscriptionItem::get_Metadata()
+FNDA:14,System.Collections.Generic.Dictionary`2<System.String,System.String> PayDotNet.Core.Models.PaySubscriptionItem::get_Metadata()
+DA:9,14
+FN:10,System.Int64 PayDotNet.Core.Models.PaySubscriptionItem::get_Quantity()
+FNDA:9,System.Int64 PayDotNet.Core.Models.PaySubscriptionItem::get_Quantity()
+DA:11,9
+FN:15,System.String PayDotNet.Core.Models.PaySubscriptionItemPrice::get_Id()
+FNDA:10,System.String PayDotNet.Core.Models.PaySubscriptionItemPrice::get_Id()
+DA:16,10
+LF:5
+LH:5
+BRF:0
+BRH:0
+FNF:5
+FNH:5
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PaySubscriptionResult.cs
+FN:2,PayDotNet.Core.Models.PaySubscription PayDotNet.Core.Models.PaySubscriptionResult::get_PaySubscription()
+FNDA:36,PayDotNet.Core.Models.PaySubscription PayDotNet.Core.Models.PaySubscriptionResult::get_PaySubscription()
+DA:3,36
+FN:4,PayDotNet.Core.Models.PayCharge PayDotNet.Core.Models.PayChargeResult::get_PayCharge()
+FNDA:10,PayDotNet.Core.Models.PayCharge PayDotNet.Core.Models.PayChargeResult::get_PayCharge()
+DA:5,10
+LF:2
+LH:2
+BRF:0
+BRH:0
+FNF:2
+FNH:2
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Models\PayWebhook.cs
+FN:4,System.String PayDotNet.Core.Models.PayWebhook::get_Processor()
+FNDA:0,System.String PayDotNet.Core.Models.PayWebhook::get_Processor()
+DA:5,0
+FN:6,System.String PayDotNet.Core.Models.PayWebhook::get_EventType()
+FNDA:0,System.String PayDotNet.Core.Models.PayWebhook::get_EventType()
+DA:7,0
+FN:9,System.String PayDotNet.Core.Models.PayWebhook::get_Event()
+FNDA:0,System.String PayDotNet.Core.Models.PayWebhook::get_Event()
+DA:10,0
+FN:11,System.DateTime PayDotNet.Core.Models.PayWebhook::get_CreatedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayWebhook::get_CreatedAt()
+DA:12,0
+FN:13,System.DateTime PayDotNet.Core.Models.PayWebhook::get_UpdatedAt()
+FNDA:0,System.DateTime PayDotNet.Core.Models.PayWebhook::get_UpdatedAt()
+DA:14,0
+LF:5
+LH:0
+BRF:0
+BRH:0
+FNF:5
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Managers\BillableManager.cs
+FN:77,System.Threading.Tasks.Task`1<System.Uri> PayDotNet.Core.Managers.BillableManager::CheckoutAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayCheckoutOptions)
+FNDA:0,System.Threading.Tasks.Task`1<System.Uri> PayDotNet.Core.Managers.BillableManager::CheckoutAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayCheckoutOptions)
+DA:78,0
+DA:79,0
+DA:80,0
+FN:83,System.Threading.Tasks.Task`1<System.Uri> PayDotNet.Core.Managers.BillableManager::CheckoutChargeAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayCheckoutChargeOptions)
+FNDA:0,System.Threading.Tasks.Task`1<System.Uri> PayDotNet.Core.Managers.BillableManager::CheckoutChargeAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayCheckoutChargeOptions)
+DA:84,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+DA:91,0
+DA:92,0
+DA:93,0
+FN:96,System.Threading.Tasks.Task PayDotNet.Core.Managers.BillableManager::AuthorizeAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayAuthorizeChargeOptions)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Managers.BillableManager::AuthorizeAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayAuthorizeChargeOptions)
+DA:97,0
+DA:98,0
+DA:99,0
+FN:16,System.Void PayDotNet.Core.Managers.BillableManager::.ctor(PayDotNet.Core.Abstraction.ICheckoutManager,PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager,PayDotNet.Core.Abstraction.IPaymentMethodManager)
+FNDA:0,System.Void PayDotNet.Core.Managers.BillableManager::.ctor(PayDotNet.Core.Abstraction.ICheckoutManager,PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager,PayDotNet.Core.Abstraction.IPaymentMethodManager)
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+FN:66,System.Void PayDotNet.Core.Managers.BillableManager/<ChargeAsync>d__8::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.BillableManager/<ChargeAsync>d__8::MoveNext()
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:73,0
+DA:74,0
+BRDA:68,47,0,0
+BRDA:68,47,1,0
+FN:32,System.Void PayDotNet.Core.Managers.BillableManager/<GetOrCreateCustomerAsync>d__6::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.BillableManager/<GetOrCreateCustomerAsync>d__6::MoveNext()
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:45,0
+DA:46,0
+BRDA:34,51,0,0
+BRDA:34,51,1,0
+BRDA:34,72,0,0
+BRDA:34,72,1,0
+BRDA:40,278,0,0
+BRDA:40,278,1,0
+FN:49,System.Void PayDotNet.Core.Managers.BillableManager/<SubscribeAsync>d__7::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.BillableManager/<SubscribeAsync>d__7::MoveNext()
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:57,0
+DA:59,0
+DA:62,0
+DA:63,0
+BRDA:51,36,0,0
+BRDA:53,55,0,0
+BRDA:53,55,1,0
+BRDA:51,36,1,0
+LF:57
+LH:0
+BRF:12
+BRH:0
+FNF:7
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Managers\ChargeManager.cs
+FN:39,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Managers.ChargeManager::GetAsync(System.String)
+FNDA:0,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Managers.ChargeManager::GetAsync(System.String)
+DA:40,0
+DA:41,0
+DA:42,0
+FN:44,System.Threading.Tasks.Task`1<System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeRefund>> PayDotNet.Core.Managers.ChargeManager::GetCreditNotesAsync(PayDotNet.Core.Models.PayCharge)
+FNDA:0,System.Threading.Tasks.Task`1<System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeRefund>> PayDotNet.Core.Managers.ChargeManager::GetCreditNotesAsync(PayDotNet.Core.Models.PayCharge)
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:51,0
+BRDA:46,14,0,0
+BRDA:46,14,1,0
+FN:12,System.Void PayDotNet.Core.Managers.ChargeManager::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.IChargeStore,PayDotNet.Core.Services.IPaymentProcessorService)
+FNDA:0,System.Void PayDotNet.Core.Managers.ChargeManager::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.IChargeStore,PayDotNet.Core.Services.IPaymentProcessorService)
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+FN:23,System.Void PayDotNet.Core.Managers.ChargeManager/<CaptureAsync>d__4::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.ChargeManager/<CaptureAsync>d__4::MoveNext()
+DA:24,0
+DA:25,0
+DA:26,0
+FN:28,System.Void PayDotNet.Core.Managers.ChargeManager/<ChargeAsync>d__5::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.ChargeManager/<ChargeAsync>d__5::MoveNext()
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:36,0
+DA:37,0
+BRDA:31,179,0,0
+BRDA:31,179,1,0
+BRDA:31,204,0,0
+BRDA:31,204,1,0
+FN:55,System.Void PayDotNet.Core.Managers.ChargeManager/<RefundAsync>d__8::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.ChargeManager/<RefundAsync>d__8::MoveNext()
+DA:56,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+BRDA:59,44,0,0
+BRDA:59,44,1,0
+FN:76,System.Void PayDotNet.Core.Managers.ChargeManager/<SynchroniseAsync>d__10::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.ChargeManager/<SynchroniseAsync>d__10::MoveNext()
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:84,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:91,0
+DA:92,0
+DA:93,0
+DA:94,0
+BRDA:78,101,0,0
+BRDA:78,101,1,0
+BRDA:79,290,0,0
+BRDA:79,290,1,0
+BRDA:86,462,0,0
+BRDA:86,462,1,0
+FN:69,System.Void PayDotNet.Core.Managers.ChargeManager/<SynchroniseAsync>d__9::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.ChargeManager/<SynchroniseAsync>d__9::MoveNext()
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+LF:57
+LH:0
+BRF:14
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Managers\CheckoutManager.cs
+FN:16,System.Threading.Tasks.Task`1<System.Uri> PayDotNet.Core.Managers.CheckoutManager::CheckoutAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayCheckoutOptions)
+FNDA:0,System.Threading.Tasks.Task`1<System.Uri> PayDotNet.Core.Managers.CheckoutManager::CheckoutAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayCheckoutOptions)
+DA:17,0
+DA:18,0
+DA:19,0
+FN:10,System.Void PayDotNet.Core.Managers.CheckoutManager::.ctor(PayDotNet.Core.Services.IPaymentProcessorService)
+FNDA:0,System.Void PayDotNet.Core.Managers.CheckoutManager::.ctor(PayDotNet.Core.Services.IPaymentProcessorService)
+DA:11,0
+DA:12,0
+DA:13,0
+DA:14,0
+LF:7
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Managers\CustomerManager.cs
+FN:75,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayCustomer> PayDotNet.Core.Managers.CustomerManager::FindByEmailAsync(System.String,System.String)
+FNDA:0,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayCustomer> PayDotNet.Core.Managers.CustomerManager::FindByEmailAsync(System.String,System.String)
+DA:76,0
+DA:77,0
+DA:78,0
+FN:80,System.Threading.Tasks.Task PayDotNet.Core.Managers.CustomerManager::UpdateAsync(PayDotNet.Core.Models.PayCustomer)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Managers.CustomerManager::UpdateAsync(PayDotNet.Core.Models.PayCustomer)
+DA:81,0
+DA:82,0
+DA:83,0
+FN:85,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayCustomer> PayDotNet.Core.Managers.CustomerManager::FindByIdAsync(System.String,System.String)
+FNDA:0,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayCustomer> PayDotNet.Core.Managers.CustomerManager::FindByIdAsync(System.String,System.String)
+DA:86,0
+DA:87,0
+DA:88,0
+FN:11,System.Void PayDotNet.Core.Managers.CustomerManager::.ctor(PayDotNet.Core.Services.IPaymentProcessorService,PayDotNet.Core.Abstraction.ICustomerStore)
+FNDA:0,System.Void PayDotNet.Core.Managers.CustomerManager::.ctor(PayDotNet.Core.Services.IPaymentProcessorService,PayDotNet.Core.Abstraction.ICustomerStore)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerAsync>d__3::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+BRDA:23,266,0,0
+BRDA:23,266,1,0
+FN:37,System.Void PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerAsync>d__4::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerAsync>d__4::MoveNext()
+DA:38,0
+DA:39,0
+DA:40,0
+DA:45,0
+DA:46,0
+FN:48,System.Void PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerForEmailAsync>d__5::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerForEmailAsync>d__5::MoveNext()
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:62,0
+DA:63,0
+BRDA:51,266,0,0
+BRDA:51,266,1,0
+FN:65,System.Void PayDotNet.Core.Managers.CustomerManager/<InitializeCustomerAsync>d__6::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.CustomerManager/<InitializeCustomerAsync>d__6::MoveNext()
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+BRDA:67,42,0,0
+BRDA:67,42,1,0
+LF:58
+LH:0
+BRF:6
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Managers\MerchantManager.cs
+FN:8,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayMerchant> PayDotNet.Core.Managers.MerchantManager::FindByIdAsync(System.String,System.String)
+FNDA:0,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayMerchant> PayDotNet.Core.Managers.MerchantManager::FindByIdAsync(System.String,System.String)
+DA:9,0
+DA:10,0
+FN:13,System.Threading.Tasks.Task PayDotNet.Core.Managers.MerchantManager::UpdateAsync(PayDotNet.Core.Models.PayMerchant)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Managers.MerchantManager::UpdateAsync(PayDotNet.Core.Models.PayMerchant)
+DA:14,0
+DA:15,0
+LF:4
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Managers\PaymentMethodManager.cs
+FN:29,System.Threading.Tasks.Task PayDotNet.Core.Managers.PaymentMethodManager::DeleteAllAsync(PayDotNet.Core.Models.PayCustomer)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Managers.PaymentMethodManager::DeleteAllAsync(PayDotNet.Core.Models.PayCustomer)
+DA:30,0
+DA:31,0
+DA:32,0
+FN:34,System.Threading.Tasks.Task PayDotNet.Core.Managers.PaymentMethodManager::DeleteByIdAsync(System.String,System.String)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Managers.PaymentMethodManager::DeleteByIdAsync(System.String,System.String)
+DA:35,0
+DA:36,0
+DA:37,0
+FN:38,System.Boolean PayDotNet.Core.Managers.PaymentMethodManager::IsPaymentMethodRequired()
+FNDA:0,System.Boolean PayDotNet.Core.Managers.PaymentMethodManager::IsPaymentMethodRequired()
+DA:39,0
+FN:41,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayPaymentMethod> PayDotNet.Core.Managers.PaymentMethodManager::SynchroniseAsync(System.String)
+FNDA:0,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayPaymentMethod> PayDotNet.Core.Managers.PaymentMethodManager::SynchroniseAsync(System.String)
+DA:42,0
+DA:43,0
+DA:44,0
+FN:46,System.Threading.Tasks.Task PayDotNet.Core.Managers.PaymentMethodManager::UpdateAllAsync(System.Boolean)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Managers.PaymentMethodManager::UpdateAllAsync(System.Boolean)
+DA:47,0
+DA:48,0
+DA:49,0
+FN:11,System.Void PayDotNet.Core.Managers.PaymentMethodManager::.ctor(PayDotNet.Core.Abstraction.IPaymentMethodStore,PayDotNet.Core.Services.IPaymentProcessorService)
+FNDA:0,System.Void PayDotNet.Core.Managers.PaymentMethodManager::.ctor(PayDotNet.Core.Abstraction.IPaymentMethodStore,PayDotNet.Core.Services.IPaymentProcessorService)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Managers.PaymentMethodManager/<AddPaymentMethodAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.PaymentMethodManager/<AddPaymentMethodAsync>d__3::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:25,0
+DA:26,0
+DA:27,0
+FN:51,System.Void PayDotNet.Core.Managers.PaymentMethodManager/<SavePaymentMethodAsync>d__9::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.PaymentMethodManager/<SavePaymentMethodAsync>d__9::MoveNext()
+DA:52,0
+DA:53,0
+DA:54,0
+DA:55,0
+DA:56,0
+DA:57,0
+DA:59,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+BRDA:54,227,0,0
+BRDA:54,227,1,0
+BRDA:61,375,0,0
+BRDA:66,688,1,0
+BRDA:66,688,0,0
+BRDA:61,375,1,0
+LF:48
+LH:0
+BRF:6
+BRH:0
+FNF:8
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Managers\SubscriptionManager.cs
+FN:33,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PaySubscription> PayDotNet.Core.Managers.SubscriptionManager::FindByIdAsync(System.String,System.String)
+FNDA:0,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PaySubscription> PayDotNet.Core.Managers.SubscriptionManager::FindByIdAsync(System.String,System.String)
+DA:34,0
+DA:35,0
+DA:36,0
+FN:95,System.Threading.Tasks.Task PayDotNet.Core.Managers.SubscriptionManager::CancellAllAsync(PayDotNet.Core.Models.PayCustomer)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Managers.SubscriptionManager::CancellAllAsync(PayDotNet.Core.Models.PayCustomer)
+DA:96,0
+DA:97,0
+DA:98,0
+DA:99,0
+DA:100,0
+DA:101,0
+DA:103,0
+DA:104,0
+BRDA:98,183,1,0
+BRDA:98,183,0,0
+FN:12,System.Void PayDotNet.Core.Managers.SubscriptionManager::.ctor(PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ISubscriptionStore,PayDotNet.Core.Services.IPaymentProcessorService)
+FNDA:0,System.Void PayDotNet.Core.Managers.SubscriptionManager::.ctor(PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ISubscriptionStore,PayDotNet.Core.Services.IPaymentProcessorService)
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+FN:72,System.Void PayDotNet.Core.Managers.SubscriptionManager/<CancelAsync>d__7::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.SubscriptionManager/<CancelAsync>d__7::MoveNext()
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:79,0
+DA:80,0
+DA:81,0
+BRDA:74,46,0,0
+BRDA:74,46,1,0
+FN:83,System.Void PayDotNet.Core.Managers.SubscriptionManager/<CancelNowAsync>d__8::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.SubscriptionManager/<CancelNowAsync>d__8::MoveNext()
+DA:84,0
+DA:85,0
+DA:88,0
+DA:89,0
+DA:90,0
+FN:23,System.Void PayDotNet.Core.Managers.SubscriptionManager/<CreateSubscriptionAsync>d__4::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.SubscriptionManager/<CreateSubscriptionAsync>d__4::MoveNext()
+DA:24,0
+DA:26,0
+DA:28,0
+DA:30,0
+DA:31,0
+FN:38,System.Void PayDotNet.Core.Managers.SubscriptionManager/<SynchroniseAsync>d__6::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Managers.SubscriptionManager/<SynchroniseAsync>d__6::MoveNext()
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:47,0
+DA:49,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:55,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:62,0
+DA:63,0
+DA:65,0
+DA:66,0
+DA:67,0
+DA:68,0
+DA:69,0
+DA:70,0
+BRDA:40,115,0,0
+BRDA:40,115,1,0
+BRDA:41,312,0,0
+BRDA:41,312,1,0
+BRDA:50,534,0,0
+BRDA:50,534,1,0
+BRDA:58,709,0,0
+BRDA:58,709,1,0
+BRDA:58,749,0,0
+BRDA:58,749,1,0
+BRDA:66,940,0,0
+BRDA:66,940,1,0
+BRDA:66,963,0,0
+BRDA:66,963,1,0
+LF:61
+LH:0
+BRF:18
+BRH:0
+FNF:7
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core\Managers\WebhookManager.cs
+FN:14,System.Threading.Tasks.Task PayDotNet.Core.Managers.WebhookManager::CreateAsync(System.String,System.String,System.String)
+FNDA:0,System.Threading.Tasks.Task PayDotNet.Core.Managers.WebhookManager::CreateAsync(System.String,System.String,System.String)
+DA:15,0
+DA:16,0
+DA:28,0
+FN:8,System.Void PayDotNet.Core.Managers.WebhookManager::.ctor(PayDotNet.Core.Abstraction.IWebhookDispatcher)
+FNDA:0,System.Void PayDotNet.Core.Managers.WebhookManager::.ctor(PayDotNet.Core.Abstraction.IWebhookDispatcher)
+DA:9,0
+DA:10,0
+DA:11,0
+DA:12,0
+LF:7
+LH:0
+BRF:0
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\ServiceCollectionExtension.cs
+FN:20,PayDotNet.Core.PayDotNetBuilder Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::AddStripe(PayDotNet.Core.PayDotNetBuilder,System.Action`1<PayDotNet.Core.PaymentProcessorOptionsBuilder`1<PayDotNet.Core.Stripe.IStripeWebhookHandler>>)
+FNDA:0,PayDotNet.Core.PayDotNetBuilder Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::AddStripe(PayDotNet.Core.PayDotNetBuilder,System.Action`1<PayDotNet.Core.PaymentProcessorOptionsBuilder`1<PayDotNet.Core.Stripe.IStripeWebhookHandler>>)
+DA:21,0
+DA:23,0
+DA:24,0
+DA:27,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:35,0
+DA:36,0
+BRDA:27,13,1,0
+BRDA:27,13,0,0
+FN:41,PayDotNet.Core.PaymentProcessorOptionsBuilder`1<PayDotNet.Core.Stripe.IStripeWebhookHandler> Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureWebhookHandlers(PayDotNet.Core.PaymentProcessorOptionsBuilder`1<PayDotNet.Core.Stripe.IStripeWebhookHandler>)
+FNDA:0,PayDotNet.Core.PaymentProcessorOptionsBuilder`1<PayDotNet.Core.Stripe.IStripeWebhookHandler> Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureWebhookHandlers(PayDotNet.Core.PaymentProcessorOptionsBuilder`1<PayDotNet.Core.Stripe.IStripeWebhookHandler>)
+DA:42,0
+DA:46,0
+DA:47,0
+DA:49,0
+DA:54,0
+DA:57,0
+DA:60,0
+DA:63,0
+DA:66,0
+DA:69,0
+DA:72,0
+DA:75,0
+DA:78,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:84,0
+DA:87,0
+DA:90,0
+DA:91,0
+DA:93,0
+DA:94,0
+FN:96,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureStripeClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+FNDA:0,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureStripeClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+DA:97,0
+DA:99,0
+DA:102,0
+DA:103,0
+DA:104,0
+FN:106,Stripe.StripeClient Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::CreateStripeClient(System.IServiceProvider)
+FNDA:0,Stripe.StripeClient Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::CreateStripeClient(System.IServiceProvider)
+DA:107,0
+DA:109,0
+DA:110,0
+DA:111,0
+DA:114,0
+DA:116,0
+DA:117,0
+FN:119,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureStripeServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+FNDA:0,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureStripeServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+DA:120,0
+DA:121,0
+DA:122,0
+DA:123,0
+DA:124,0
+FN:126,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureStripeWebhookServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,PayDotNet.Core.PaymentProcessorOptionsBuilder`1<PayDotNet.Core.Stripe.IStripeWebhookHandler>)
+FNDA:0,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureStripeWebhookServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,PayDotNet.Core.PaymentProcessorOptionsBuilder`1<PayDotNet.Core.Stripe.IStripeWebhookHandler>)
+DA:127,0
+DA:128,0
+DA:129,0
+DA:130,0
+DA:131,0
+DA:132,0
+DA:133,0
+DA:135,0
+DA:136,0
+FN:138,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureWebhookController(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+FNDA:0,Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::ConfigureWebhookController(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+DA:139,0
+DA:140,0
+DA:141,0
+DA:142,0
+DA:143,0
+DA:144,0
+LF:65
+LH:0
+BRF:2
+BRH:0
+FNF:7
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\PayDotNetStripeException.cs
+FN:7,System.Void PayDotNet.Core.PayDotNetStripeException::.ctor()
+FNDA:0,System.Void PayDotNet.Core.PayDotNetStripeException::.ctor()
+DA:8,0
+DA:9,0
+FN:10,System.Void PayDotNet.Core.PayDotNetStripeException::.ctor(System.String)
+FNDA:0,System.Void PayDotNet.Core.PayDotNetStripeException::.ctor(System.String)
+DA:11,0
+DA:12,0
+DA:13,0
+FN:14,System.Void PayDotNet.Core.PayDotNetStripeException::.ctor(System.String,System.Exception)
+FNDA:2,System.Void PayDotNet.Core.PayDotNetStripeException::.ctor(System.String,System.Exception)
+DA:15,2
+DA:16,2
+DA:17,2
+FN:20,System.Void PayDotNet.Core.PayDotNetStripeException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void PayDotNet.Core.PayDotNetStripeException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:21,0
+LF:9
+LH:3
+BRF:0
+BRH:0
+FNF:4
+FNH:1
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\StripePaymentIntentPayment.cs
+FN:5,Stripe.PaymentIntent PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Intent()
+FNDA:30,Stripe.PaymentIntent PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Intent()
+DA:6,30
+FN:7,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Id()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Id()
+DA:8,0
+FN:9,System.Int64 PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Amount()
+FNDA:0,System.Int64 PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Amount()
+DA:10,0
+FN:11,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_ClientSecret()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_ClientSecret()
+DA:12,0
+FN:13,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Currency()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Currency()
+DA:14,0
+FN:15,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_CustomerId()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_CustomerId()
+DA:16,0
+FN:17,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Status()
+FNDA:14,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Status()
+DA:18,14
+FN:19,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Mode()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripePaymentIntentPayment::get_Mode()
+DA:20,0
+FN:6,System.Void PayDotNet.Core.Stripe.StripePaymentIntentPayment::.ctor(Stripe.PaymentIntent)
+FNDA:8,System.Void PayDotNet.Core.Stripe.StripePaymentIntentPayment::.ctor(Stripe.PaymentIntent)
+DA:7,8
+DA:9,8
+DA:11,8
+DA:13,8
+DA:15,8
+DA:17,8
+DA:19,8
+DA:21,8
+LF:16
+LH:10
+BRF:0
+BRH:0
+FNF:9
+FNH:3
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\StripePaymentProcessorService.cs
+FN:31,System.Boolean PayDotNet.Core.Stripe.StripePaymentProcessorService::get_IsPaymentMethodRequired()
+FNDA:0,System.Boolean PayDotNet.Core.Stripe.StripePaymentProcessorService::get_IsPaymentMethodRequired()
+DA:32,0
+FN:212,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayChargeResult> PayDotNet.Core.Stripe.StripePaymentProcessorService::ChargeAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayChargeOptions)
+FNDA:4,System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayChargeResult> PayDotNet.Core.Stripe.StripePaymentProcessorService::ChargeAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayChargeOptions)
+DA:213,4
+DA:214,4
+DA:215,4
+DA:216,4
+DA:217,4
+DA:218,4
+DA:219,4
+DA:220,4
+DA:221,4
+DA:222,4
+DA:223,4
+DA:224,4
+DA:225,4
+DA:226,4
+DA:227,4
+DA:228,4
+DA:229,2
+DA:230,2
+DA:231,2
+DA:232,6
+DA:233,4
+FN:354,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService::GuardInvoiceId(PayDotNet.Core.Models.PayCharge)
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService::GuardInvoiceId(PayDotNet.Core.Models.PayCharge)
+DA:355,0
+DA:356,0
+DA:357,0
+DA:358,0
+DA:360,0
+BRDA:356,14,0,0
+BRDA:356,14,1,0
+FN:33,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService::.ctor(Stripe.IStripeClient,Microsoft.Extensions.Options.IOptions`1<PayDotNet.Core.PayDotNetConfiguration>)
+FNDA:11,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService::.ctor(Stripe.IStripeClient,Microsoft.Extensions.Options.IOptions`1<PayDotNet.Core.PayDotNetConfiguration>)
+DA:34,11
+DA:35,11
+DA:36,11
+DA:37,11
+DA:38,11
+DA:39,11
+DA:40,11
+DA:42,11
+DA:43,11
+DA:44,11
+DA:45,11
+DA:46,11
+DA:47,11
+DA:48,11
+DA:49,11
+DA:50,11
+DA:51,11
+FN:11,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService::.cctor()
+FNDA:1,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService::.cctor()
+DA:12,1
+DA:13,1
+DA:14,1
+DA:15,1
+DA:16,1
+DA:17,1
+DA:53,1
+DA:54,1
+DA:55,1
+DA:56,1
+DA:57,1
+DA:58,1
+DA:59,1
+FN:125,Stripe.SubscriptionItemOptions PayDotNet.Core.Stripe.StripePaymentProcessorService/<>c::<CreateSubscriptionAsync>b__19_0(PayDotNet.Core.PaySubscribeOptionsItem)
+FNDA:6,Stripe.SubscriptionItemOptions PayDotNet.Core.Stripe.StripePaymentProcessorService/<>c::<CreateSubscriptionAsync>b__19_0(PayDotNet.Core.PaySubscribeOptionsItem)
+DA:126,6
+DA:127,6
+DA:128,6
+DA:129,6
+DA:130,6
+FN:263,Stripe.Checkout.SessionLineItemOptions PayDotNet.Core.Stripe.StripePaymentProcessorService/<>c::<CheckoutAsync>b__27_0(PayDotNet.Core.PayCheckoutLineItem)
+FNDA:0,Stripe.Checkout.SessionLineItemOptions PayDotNet.Core.Stripe.StripePaymentProcessorService/<>c::<CheckoutAsync>b__27_0(PayDotNet.Core.PayCheckoutLineItem)
+DA:264,0
+DA:265,0
+DA:266,0
+DA:267,0
+DA:268,0
+DA:269,0
+DA:270,0
+DA:271,0
+DA:274,0
+DA:275,0
+DA:276,0
+DA:277,0
+DA:278,0
+DA:279,0
+DA:280,0
+DA:281,0
+DA:282,0
+DA:283,0
+DA:284,0
+DA:285,0
+DA:286,0
+DA:287,0
+DA:288,0
+DA:289,0
+DA:291,0
+BRDA:265,12,0,0
+BRDA:265,12,1,0
+FN:79,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<AttachPaymentMethodAsync>d__18::MoveNext()
+FNDA:6,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<AttachPaymentMethodAsync>d__18::MoveNext()
+DA:80,6
+DA:81,6
+DA:82,6
+DA:83,6
+DA:84,6
+DA:86,6
+DA:87,6
+DA:88,6
+DA:89,6
+DA:90,6
+DA:91,6
+DA:92,6
+DA:93,6
+DA:94,6
+DA:95,6
+DA:97,6
+DA:98,6
+DA:99,6
+DA:100,6
+DA:101,6
+DA:102,6
+DA:103,6
+DA:104,6
+DA:105,6
+DA:106,6
+DA:107,6
+DA:108,6
+DA:109,6
+BRDA:86,206,0,6
+BRDA:86,206,1,6
+FN:164,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CancelAsync>d__21::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CancelAsync>d__21::MoveNext()
+DA:165,0
+DA:166,0
+DA:167,0
+DA:168,0
+DA:169,0
+DA:170,0
+DA:171,0
+DA:172,0
+DA:173,0
+DA:174,0
+DA:175,0
+FN:202,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CaptureAsync>d__24::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CaptureAsync>d__24::MoveNext()
+DA:203,0
+DA:204,0
+DA:205,0
+DA:206,0
+DA:207,0
+DA:209,0
+DA:210,0
+FN:251,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CheckoutAsync>d__27::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CheckoutAsync>d__27::MoveNext()
+DA:252,0
+DA:253,0
+DA:254,0
+DA:256,0
+DA:257,0
+DA:258,0
+DA:259,0
+DA:260,0
+DA:261,0
+DA:262,0
+DA:263,0
+DA:272,0
+DA:273,0
+DA:290,0
+DA:292,0
+DA:293,0
+DA:294,0
+BRDA:253,35,0,0
+BRDA:253,35,1,0
+BRDA:254,93,0,0
+BRDA:254,93,1,0
+BRDA:256,240,0,0
+BRDA:256,240,1,0
+FN:63,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CreateCustomerAsync>d__17::MoveNext()
+FNDA:11,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CreateCustomerAsync>d__17::MoveNext()
+DA:64,11
+DA:65,11
+DA:66,11
+DA:67,11
+DA:68,11
+DA:69,11
+DA:70,11
+DA:72,11
+DA:73,11
+FN:115,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CreateSubscriptionAsync>d__19::MoveNext()
+FNDA:5,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<CreateSubscriptionAsync>d__19::MoveNext()
+DA:116,5
+DA:119,5
+DA:120,5
+DA:121,5
+DA:123,5
+DA:124,5
+DA:125,5
+DA:131,5
+DA:132,5
+DA:133,5
+DA:134,5
+DA:135,5
+DA:136,5
+DA:137,5
+DA:139,5
+DA:141,5
+DA:142,5
+DA:143,5
+DA:144,5
+BRDA:119,30,0,2
+BRDA:119,30,1,3
+BRDA:123,194,0,1
+BRDA:123,194,1,4
+FN:181,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<GetChargeAsync>d__22::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<GetChargeAsync>d__22::MoveNext()
+DA:182,0
+DA:183,0
+DA:184,0
+DA:185,0
+DA:186,0
+DA:187,0
+DA:188,0
+DA:189,0
+DA:190,0
+DA:191,0
+DA:192,0
+DA:193,0
+FN:342,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<GetCreditNotesAsync>d__30::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<GetCreditNotesAsync>d__30::MoveNext()
+DA:343,0
+DA:344,0
+DA:345,0
+DA:346,0
+DA:347,0
+DA:348,0
+DA:349,0
+DA:350,0
+FN:195,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<GetPaymentAsync>d__23::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<GetPaymentAsync>d__23::MoveNext()
+DA:196,0
+DA:197,0
+DA:198,0
+DA:199,0
+DA:200,0
+BRDA:197,42,0,0
+BRDA:197,42,1,0
+FN:146,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<GetSubscriptionAsync>d__20::MoveNext()
+FNDA:1,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<GetSubscriptionAsync>d__20::MoveNext()
+DA:147,1
+DA:148,1
+DA:149,1
+DA:150,1
+DA:151,1
+DA:153,1
+DA:154,1
+DA:155,0
+DA:156,0
+DA:159,1
+DA:160,1
+DA:161,1
+DA:162,1
+BRDA:154,204,0,0
+BRDA:154,204,1,1
+FN:316,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<IssueCreditNotesAsync>d__29::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<IssueCreditNotesAsync>d__29::MoveNext()
+DA:317,0
+DA:318,0
+DA:320,0
+DA:321,0
+DA:322,0
+DA:323,0
+DA:324,0
+DA:325,0
+DA:326,0
+DA:327,0
+DA:328,0
+DA:329,0
+DA:330,0
+DA:331,0
+DA:332,0
+DA:333,0
+DA:334,0
+DA:335,0
+DA:336,0
+DA:337,0
+DA:338,0
+DA:340,0
+BRDA:322,114,0,0
+BRDA:322,114,1,0
+FN:300,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<RefundAsync>d__28::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<RefundAsync>d__28::MoveNext()
+DA:301,0
+DA:303,0
+DA:304,0
+DA:305,0
+DA:306,0
+DA:307,0
+DA:308,0
+DA:309,0
+DA:310,0
+DA:311,0
+DA:312,0
+DA:314,0
+FN:235,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<TryAsync>d__26`1::MoveNext()
+FNDA:4,System.Void PayDotNet.Core.Stripe.StripePaymentProcessorService/<TryAsync>d__26`1::MoveNext()
+DA:236,4
+DA:238,4
+DA:239,4
+DA:241,2
+DA:242,2
+DA:243,2
+DA:245,2
+FN:365,System.String PayDotNet.Core.Stripe.DictionaryExtensions::Try(System.Collections.Generic.Dictionary`2<System.String,System.String>,System.String)
+FNDA:6,System.String PayDotNet.Core.Stripe.DictionaryExtensions::Try(System.Collections.Generic.Dictionary`2<System.String,System.String>,System.String)
+DA:366,6
+DA:367,6
+DA:368,6
+DA:369,6
+DA:371,0
+DA:372,6
+BRDA:367,10,0,6
+BRDA:367,10,1,0
+LF:263
+LH:135
+BRF:30
+BRH:13
+FNF:21
+FNH:10
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\StripeSetupIntentPayment.cs
+FN:5,Stripe.SetupIntent PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Intent()
+FNDA:0,Stripe.SetupIntent PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Intent()
+DA:6,0
+FN:7,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Id()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Id()
+DA:8,0
+FN:9,System.Int64 PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Amount()
+FNDA:0,System.Int64 PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Amount()
+DA:10,0
+FN:11,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_ClientSecret()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_ClientSecret()
+DA:12,0
+FN:13,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Currency()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Currency()
+DA:14,0
+FN:15,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_CustomerId()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_CustomerId()
+DA:16,0
+FN:17,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Status()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Status()
+DA:18,0
+FN:19,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Mode()
+FNDA:0,System.String PayDotNet.Core.Stripe.StripeSetupIntentPayment::get_Mode()
+DA:20,0
+FN:6,System.Void PayDotNet.Core.Stripe.StripeSetupIntentPayment::.ctor(Stripe.SetupIntent)
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripeSetupIntentPayment::.ctor(Stripe.SetupIntent)
+DA:7,0
+DA:9,0
+DA:11,0
+DA:13,0
+DA:15,0
+DA:17,0
+DA:19,0
+DA:21,0
+LF:16
+LH:0
+BRF:0
+BRH:0
+FNF:9
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\StripeWebhookDispatcher.cs
+FN:15,System.Void PayDotNet.Core.Stripe.StripeWebhookDispatcher::.ctor(PayDotNet.Core.Webhooks.WebhookRouterTable,System.IServiceProvider,Microsoft.Extensions.Logging.ILogger)
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripeWebhookDispatcher::.ctor(PayDotNet.Core.Webhooks.WebhookRouterTable,System.IServiceProvider,Microsoft.Extensions.Logging.ILogger)
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Stripe.StripeWebhookDispatcher/<DispatchAsync>d__1::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.StripeWebhookDispatcher/<DispatchAsync>d__1::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+BRDA:23,258,1,0
+BRDA:25,121,0,0
+BRDA:25,121,1,0
+BRDA:23,258,0,0
+LF:13
+LH:0
+BRF:4
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\AccountUpdatedHandler.cs
+FN:10,System.Void PayDotNet.Core.Stripe.Webhooks.AccountUpdatedHandler::.ctor(PayDotNet.Core.Abstraction.IMerchantManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.AccountUpdatedHandler::.ctor(PayDotNet.Core.Abstraction.IMerchantManager)
+DA:11,0
+DA:12,0
+DA:13,0
+DA:14,0
+FN:16,System.Void PayDotNet.Core.Stripe.Webhooks.AccountUpdatedHandler/<HandleAsync>d__2::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.AccountUpdatedHandler/<HandleAsync>d__2::MoveNext()
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+BRDA:18,69,0,0
+BRDA:21,235,0,0
+BRDA:21,235,1,0
+BRDA:18,69,1,0
+LF:15
+LH:0
+BRF:4
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\ChargeRefundedHandler.cs
+FN:9,System.Void PayDotNet.Core.Stripe.Webhooks.ChargeRefundedHandler::.ctor(PayDotNet.Core.Abstraction.IChargeManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.ChargeRefundedHandler::.ctor(PayDotNet.Core.Abstraction.IChargeManager)
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+FN:15,System.Void PayDotNet.Core.Stripe.Webhooks.ChargeRefundedHandler/<HandleAsync>d__2::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.ChargeRefundedHandler/<HandleAsync>d__2::MoveNext()
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:23,0
+BRDA:17,58,0,0
+BRDA:17,58,1,0
+LF:10
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\ChargeSucceededHandler.cs
+FN:9,System.Void PayDotNet.Core.Stripe.Webhooks.ChargeSucceededHandler::.ctor(PayDotNet.Core.Abstraction.IChargeManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.ChargeSucceededHandler::.ctor(PayDotNet.Core.Abstraction.IChargeManager)
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+FN:15,System.Void PayDotNet.Core.Stripe.Webhooks.ChargeSucceededHandler/<HandleAsync>d__2::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.ChargeSucceededHandler/<HandleAsync>d__2::MoveNext()
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:21,0
+DA:22,0
+BRDA:17,58,0,0
+BRDA:17,58,1,0
+LF:10
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\CheckoutSessionAsyncPaymentSucceededHandler.cs
+FN:7,System.Void PayDotNet.Core.Stripe.Webhooks.CheckoutSessionAsyncPaymentSucceededHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.CheckoutSessionAsyncPaymentSucceededHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+DA:8,0
+DA:9,0
+DA:10,0
+LF:3
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\CheckoutSessionCompletedHandler.cs
+FN:13,System.Void PayDotNet.Core.Stripe.Webhooks.CheckoutSessionCompletedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.CheckoutSessionCompletedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+FN:24,System.Void PayDotNet.Core.Stripe.Webhooks.CheckoutSessionCompletedHandler/<HandleAsync>d__4::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.CheckoutSessionCompletedHandler/<HandleAsync>d__4::MoveNext()
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:35,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+BRDA:26,83,0,0
+BRDA:30,117,0,0
+BRDA:30,117,1,0
+BRDA:35,327,0,0
+BRDA:35,327,1,0
+BRDA:40,515,0,0
+BRDA:40,515,1,0
+BRDA:26,83,1,0
+LF:27
+LH:0
+BRF:8
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\CustomerDeletedHandler.cs
+FN:12,System.Void PayDotNet.Core.Stripe.Webhooks.CustomerDeletedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager,PayDotNet.Core.Abstraction.IPaymentMethodManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.CustomerDeletedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager,PayDotNet.Core.Abstraction.IPaymentMethodManager)
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+FN:23,System.Void PayDotNet.Core.Stripe.Webhooks.CustomerDeletedHandler/<HandleAsync>d__4::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.CustomerDeletedHandler/<HandleAsync>d__4::MoveNext()
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:34,0
+DA:37,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+BRDA:25,92,0,0
+BRDA:28,258,0,0
+BRDA:28,258,1,0
+BRDA:25,92,1,0
+LF:23
+LH:0
+BRF:4
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\CustomerUpdatedHandler.cs
+FN:11,System.Void PayDotNet.Core.Stripe.Webhooks.CustomerUpdatedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.IPaymentMethodManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.CustomerUpdatedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.IPaymentMethodManager)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Stripe.Webhooks.CustomerUpdatedHandler/<HandleAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.CustomerUpdatedHandler/<HandleAsync>d__3::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:30,0
+DA:31,0
+DA:33,0
+DA:34,0
+DA:36,0
+DA:38,0
+DA:39,0
+DA:40,0
+DA:41,0
+BRDA:22,83,0,0
+BRDA:25,249,0,0
+BRDA:25,249,1,0
+BRDA:30,269,0,0
+BRDA:30,269,1,0
+BRDA:30,292,0,0
+BRDA:30,292,1,0
+BRDA:22,83,1,0
+LF:23
+LH:0
+BRF:8
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\PaymentActionRequiredHandler.cs
+FN:11,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentActionRequiredHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentActionRequiredHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentActionRequiredHandler/<HandleAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentActionRequiredHandler/<HandleAsync>d__3::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:32,0
+DA:33,0
+BRDA:22,69,0,0
+BRDA:26,391,0,0
+BRDA:26,391,1,0
+BRDA:22,69,1,0
+LF:17
+LH:0
+BRF:4
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\PaymentFailedHandler.cs
+FN:11,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentFailedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentFailedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentFailedHandler/<HandleAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentFailedHandler/<HandleAsync>d__3::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:32,0
+DA:33,0
+BRDA:22,69,0,0
+BRDA:26,391,0,0
+BRDA:26,391,1,0
+BRDA:22,69,1,0
+LF:17
+LH:0
+BRF:4
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\PaymentIntentSucceededHandler.cs
+FN:15,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentIntentSucceededHandler::.ctor(PayDotNet.Core.Abstraction.IChargeManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentIntentSucceededHandler::.ctor(PayDotNet.Core.Abstraction.IChargeManager)
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+FN:21,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentIntentSucceededHandler/<HandleAsync>d__2::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentIntentSucceededHandler/<HandleAsync>d__2::MoveNext()
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:29,0
+DA:30,0
+BRDA:24,56,0,0
+BRDA:24,56,1,0
+LF:11
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\PaymentMethodAttachedHandler.cs
+FN:9,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodAttachedHandler::.ctor(PayDotNet.Core.Abstraction.IPaymentMethodManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodAttachedHandler::.ctor(PayDotNet.Core.Abstraction.IPaymentMethodManager)
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+FN:15,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodAttachedHandler/<HandleAsync>d__2::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodAttachedHandler/<HandleAsync>d__2::MoveNext()
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+BRDA:17,55,0,0
+BRDA:17,55,1,0
+LF:10
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\PaymentMethodDetachedHandler.cs
+FN:9,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodDetachedHandler::.ctor(PayDotNet.Core.Abstraction.IPaymentMethodManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodDetachedHandler::.ctor(PayDotNet.Core.Abstraction.IPaymentMethodManager)
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+FN:15,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodDetachedHandler/<HandleAsync>d__2::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodDetachedHandler/<HandleAsync>d__2::MoveNext()
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+BRDA:17,58,0,0
+BRDA:17,58,1,0
+LF:10
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\PaymentMethodUpdatedHandler.cs
+FN:9,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodUpdatedHandler::.ctor(PayDotNet.Core.Abstraction.IPaymentMethodManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodUpdatedHandler::.ctor(PayDotNet.Core.Abstraction.IPaymentMethodManager)
+DA:10,0
+DA:11,0
+DA:12,0
+DA:13,0
+FN:15,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodUpdatedHandler/<HandleAsync>d__2::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.PaymentMethodUpdatedHandler/<HandleAsync>d__2::MoveNext()
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:24,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+BRDA:17,69,0,0
+BRDA:19,94,0,0
+BRDA:19,94,1,0
+BRDA:17,69,1,0
+LF:16
+LH:0
+BRF:4
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\SubscriptionCreatedHandler.cs
+FN:11,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionCreatedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionCreatedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionCreatedHandler/<HandleAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionCreatedHandler/<HandleAsync>d__3::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+BRDA:22,69,0,0
+BRDA:22,69,1,0
+LF:14
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\SubscriptionDeletedHandler.cs
+FN:11,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionDeletedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionDeletedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionDeletedHandler/<HandleAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionDeletedHandler/<HandleAsync>d__3::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+BRDA:22,69,0,0
+BRDA:22,69,1,0
+LF:14
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\SubscriptionRenewingHandler.cs
+FN:17,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionRenewingHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionRenewingHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+FN:26,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionRenewingHandler/<HandleAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionRenewingHandler/<HandleAsync>d__3::MoveNext()
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:37,0
+DA:39,0
+DA:40,0
+BRDA:28,64,0,0
+BRDA:28,64,1,0
+BRDA:28,90,0,0
+BRDA:32,412,0,0
+BRDA:32,412,1,0
+BRDA:28,90,1,0
+LF:18
+LH:0
+BRF:6
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\SubscriptionTrailWillEndHandler.cs
+FN:11,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionTrailWillEndHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionTrailWillEndHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionTrailWillEndHandler/<HandleAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionTrailWillEndHandler/<HandleAsync>d__3::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:31,0
+DA:33,0
+DA:34,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:40,0
+DA:41,0
+DA:42,0
+BRDA:22,83,0,0
+BRDA:26,405,0,0
+BRDA:26,405,1,0
+BRDA:33,556,0,0
+BRDA:33,556,1,0
+BRDA:37,577,0,0
+BRDA:37,577,1,0
+BRDA:22,83,1,0
+LF:24
+LH:0
+BRF:8
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Webhooks\SubscriptionUpdatedHandler.cs
+FN:11,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionUpdatedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionUpdatedHandler::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager)
+DA:12,0
+DA:13,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+FN:20,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionUpdatedHandler/<HandleAsync>d__3::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Webhooks.SubscriptionUpdatedHandler/<HandleAsync>d__3::MoveNext()
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+BRDA:22,69,0,0
+BRDA:22,69,1,0
+LF:14
+LH:0
+BRF:2
+BRH:0
+FNF:2
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Client\DataTransferObjectMapper.cs
+FN:17,PayDotNet.Core.Models.PayChargeRefund PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::Map(Stripe.Refund)
+FNDA:0,PayDotNet.Core.Models.PayChargeRefund PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::Map(Stripe.Refund)
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+FN:30,PayDotNet.Core.Models.PayCharge PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::Map(Stripe.Charge)
+FNDA:2,PayDotNet.Core.Models.PayCharge PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::Map(Stripe.Charge)
+DA:31,2
+DA:32,2
+DA:40,2
+DA:41,2
+DA:42,2
+DA:43,2
+DA:44,2
+DA:45,2
+DA:46,2
+DA:47,2
+DA:48,2
+DA:49,2
+DA:50,2
+DA:51,2
+DA:52,2
+DA:53,2
+DA:54,2
+DA:55,2
+DA:56,2
+DA:57,0
+DA:58,2
+DA:60,2
+DA:61,0
+DA:62,0
+DA:63,0
+DA:64,0
+DA:66,0
+DA:68,0
+DA:69,0
+DA:70,0
+DA:71,0
+DA:75,0
+DA:76,0
+DA:77,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:82,0
+DA:83,0
+DA:84,0
+DA:85,0
+DA:86,0
+DA:87,0
+DA:88,0
+DA:89,0
+DA:90,0
+DA:91,0
+DA:93,2
+DA:94,2
+DA:95,2
+DA:96,2
+DA:98,2
+DA:99,2
+BRDA:40,273,0,1
+BRDA:40,273,1,1
+BRDA:40,338,0,1
+BRDA:40,338,1,2
+BRDA:60,367,0,0
+BRDA:62,379,0,0
+BRDA:62,379,1,0
+BRDA:75,687,1,0
+BRDA:75,687,0,0
+BRDA:60,367,1,2
+FN:101,PayDotNet.Core.Models.PaySubscription PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::Map(Stripe.Subscription)
+FNDA:6,PayDotNet.Core.Models.PaySubscription PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::Map(Stripe.Subscription)
+DA:102,6
+DA:103,6
+DA:104,6
+DA:105,6
+DA:106,6
+DA:107,6
+DA:108,6
+DA:109,6
+DA:110,6
+DA:111,6
+DA:112,6
+DA:113,6
+DA:114,6
+DA:115,6
+DA:116,6
+DA:117,6
+DA:118,6
+DA:120,6
+DA:121,0
+DA:122,0
+DA:123,0
+DA:126,32
+DA:127,7
+DA:128,7
+DA:129,0
+DA:130,0
+DA:131,0
+DA:133,7
+DA:134,7
+DA:135,7
+DA:136,7
+DA:137,7
+DA:138,7
+DA:139,7
+DA:140,7
+DA:141,7
+DA:142,7
+DA:143,7
+DA:144,7
+DA:146,6
+DA:147,0
+DA:149,0
+DA:150,0
+DA:151,6
+DA:152,0
+DA:154,0
+DA:155,0
+DA:156,6
+DA:157,0
+DA:159,0
+DA:160,0
+DA:162,6
+DA:163,6
+DA:164,1
+DA:165,1
+DA:166,1
+DA:168,6
+DA:169,6
+BRDA:103,24,0,0
+BRDA:103,24,1,6
+BRDA:103,173,0,6
+BRDA:103,173,1,0
+BRDA:103,198,0,6
+BRDA:103,198,1,0
+BRDA:120,289,0,0
+BRDA:120,289,1,6
+BRDA:126,522,1,7
+BRDA:128,372,0,7
+BRDA:128,372,1,0
+BRDA:128,408,0,0
+BRDA:128,408,1,7
+BRDA:126,522,0,6
+BRDA:146,560,0,0
+BRDA:146,560,1,6
+BRDA:151,610,0,0
+BRDA:151,610,1,6
+BRDA:156,652,0,0
+BRDA:156,652,1,6
+BRDA:163,694,0,1
+BRDA:163,694,1,6
+FN:171,PayDotNet.Core.Models.PaySubscriptionStatus PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::ConvertSubscriptionStatus(Stripe.Subscription)
+FNDA:6,PayDotNet.Core.Models.PaySubscriptionStatus PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::ConvertSubscriptionStatus(Stripe.Subscription)
+DA:172,6
+DA:173,6
+DA:175,5
+DA:177,0
+DA:178,0
+DA:179,1
+DA:180,0
+DA:181,0
+DA:182,0
+DA:184,0
+DA:186,6
+BRDA:173,23,0,0
+BRDA:173,31,0,0
+BRDA:173,44,0,0
+BRDA:173,23,1,6
+BRDA:173,70,0,0
+BRDA:173,78,0,0
+BRDA:173,70,1,6
+BRDA:173,101,0,5
+BRDA:173,111,1,5
+BRDA:173,88,1,0
+BRDA:173,78,1,0
+BRDA:173,101,1,1
+BRDA:173,57,1,0
+BRDA:173,31,1,0
+BRDA:173,44,1,0
+BRDA:173,129,1,5
+BRDA:173,144,1,0
+BRDA:173,159,1,0
+BRDA:173,174,1,1
+BRDA:173,189,1,0
+BRDA:173,204,1,0
+BRDA:173,219,1,0
+BRDA:173,57,0,0
+BRDA:173,88,0,0
+BRDA:173,111,0,0
+BRDA:173,129,0,0
+BRDA:173,144,0,0
+BRDA:173,159,0,0
+BRDA:173,174,0,0
+BRDA:173,189,0,0
+BRDA:173,204,0,0
+BRDA:173,219,0,0
+FN:11,System.Void PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::.ctor(Microsoft.Extensions.Options.IOptions`1<PayDotNet.Core.PayDotNetConfiguration>)
+FNDA:11,System.Void PayDotNet.Core.Stripe.Client.DataTransferObjectMapper::.ctor(Microsoft.Extensions.Options.IOptions`1<PayDotNet.Core.PayDotNetConfiguration>)
+DA:12,11
+DA:13,11
+DA:14,11
+DA:15,11
+FN:191,System.String PayDotNet.Core.Stripe.Client.Extensions::ToSnakeCase(System.String)
+FNDA:0,System.String PayDotNet.Core.Stripe.Client.Extensions::ToSnakeCase(System.String)
+DA:192,0
+DA:193,0
+DA:194,0
+DA:195,0
+DA:198,0
+DA:199,0
+DA:201,0
+DA:202,0
+DA:203,0
+DA:204,0
+DA:205,0
+DA:208,0
+DA:209,0
+DA:210,0
+DA:211,0
+DA:212,0
+DA:213,0
+DA:215,0
+DA:216,0
+DA:218,0
+DA:219,0
+DA:220,0
+DA:222,0
+DA:223,0
+DA:225,0
+DA:226,0
+BRDA:193,9,0,0
+BRDA:193,9,1,0
+BRDA:201,148,1,0
+BRDA:203,59,0,0
+BRDA:203,59,1,0
+BRDA:208,75,0,0
+BRDA:210,86,0,0
+BRDA:210,86,1,0
+BRDA:208,75,1,0
+BRDA:201,148,0,0
+LF:164
+LH:79
+BRF:74
+BRH:25
+FNF:6
+FNH:4
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\src\PayDotNet.Core.Stripe\Api\StripeWebhooksController.cs
+FN:43,System.Threading.Tasks.Task`1<Stripe.Event> PayDotNet.Core.Stripe.Api.StripeWebhookController::GetVerifiedEvent(System.String)
+FNDA:0,System.Threading.Tasks.Task`1<Stripe.Event> PayDotNet.Core.Stripe.Api.StripeWebhookController::GetVerifiedEvent(System.String)
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:50,0
+DA:51,0
+DA:52,0
+DA:53,0
+DA:56,0
+DA:57,0
+DA:58,0
+BRDA:45,29,0,0
+BRDA:45,29,1,0
+BRDA:51,103,0,0
+BRDA:51,103,1,0
+FN:15,System.Void PayDotNet.Core.Stripe.Api.StripeWebhookController::.ctor(PayDotNet.Core.Abstraction.IWebhookManager,Microsoft.Extensions.Logging.ILogger`1<PayDotNet.Core.Stripe.Api.StripeWebhookController>,Microsoft.Extensions.Options.IOptions`1<PayDotNet.Core.PayDotNetConfiguration>)
+FNDA:0,System.Void PayDotNet.Core.Stripe.Api.StripeWebhookController::.ctor(PayDotNet.Core.Abstraction.IWebhookManager,Microsoft.Extensions.Logging.ILogger`1<PayDotNet.Core.Stripe.Api.StripeWebhookController>,Microsoft.Extensions.Options.IOptions`1<PayDotNet.Core.PayDotNetConfiguration>)
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+FN:27,System.Void PayDotNet.Core.Stripe.Api.StripeWebhookController/<Index>d__4::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Stripe.Api.StripeWebhookController/<Index>d__4::MoveNext()
+DA:28,0
+DA:29,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+DA:41,0
+BRDA:28,16,0,0
+BRDA:28,16,1,0
+LF:31
+LH:0
+BRF:6
+BRH:0
+FNF:3
+FNH:0
+end_of_record
+SF:C:\Users\rikva\.nuget\packages\microsoft.net.test.sdk\17.1.0\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.cs
+FN:3,System.Void AutoGeneratedProgram::Main(System.String[])
+FNDA:0,System.Void AutoGeneratedProgram::Main(System.String[])
+DA:4,0
+LF:1
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\tests\PayDotNet.Core.Tests\BillableManagerTest.cs
+FN:11,System.Void PayDotNet.Core.Tests.BillableManagerTest/<when_subscribing_new_customer_should_have_active_subscription>d__0::MoveNext()
+FNDA:0,System.Void PayDotNet.Core.Tests.BillableManagerTest/<when_subscribing_new_customer_should_have_active_subscription>d__0::MoveNext()
+DA:12,0
+DA:14,0
+DA:15,0
+DA:16,0
+DA:17,0
+DA:18,0
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:24,0
+DA:25,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:34,0
+DA:35,0
+DA:36,0
+DA:39,0
+DA:40,0
+DA:41,0
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:47,0
+DA:48,0
+DA:51,0
+DA:52,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:63,0
+DA:64,0
+DA:65,0
+LF:44
+LH:0
+BRF:0
+BRH:0
+FNF:1
+FNH:0
+end_of_record
+SF:C:\dev\repos\prototypes\pay-dotnet\tests\PayDotNet.Core.Tests\TestBase.cs
+FN:15,TSystemUnderTest PayDotNet.Core.Tests.TestBase`1::get_SystemUnderTest()
+FNDA:27,TSystemUnderTest PayDotNet.Core.Tests.TestBase`1::get_SystemUnderTest()
+DA:16,27
+FN:18,TSystemUnderTest PayDotNet.Core.Tests.TestBase`1::CreateSystemUnderTest()
+FNDA:0,TSystemUnderTest PayDotNet.Core.Tests.TestBase`1::CreateSystemUnderTest()
+DA:19,0
+DA:20,0
+DA:21,0
+DA:22,0
+DA:23,0
+DA:26,0
+DA:27,0
+DA:28,0
+DA:29,0
+DA:30,0
+DA:31,0
+DA:32,0
+DA:33,0
+DA:36,0
+DA:37,0
+DA:38,0
+DA:39,0
+BRDA:21,18,0,0
+BRDA:21,18,1,0
+BRDA:21,33,0,0
+BRDA:21,33,1,0
+BRDA:26,61,0,0
+BRDA:26,61,1,0
+BRDA:30,108,0,0
+BRDA:30,108,1,0
+FN:41,TSystemUnderTest PayDotNet.Core.Tests.TestBase`1::GetSystemUnderTest()
+FNDA:27,TSystemUnderTest PayDotNet.Core.Tests.TestBase`1::GetSystemUnderTest()
+DA:42,27
+DA:43,27
+DA:44,11
+DA:45,11
+DA:46,11
+DA:48,27
+DA:49,27
+BRDA:43,17,0,11
+BRDA:43,17,1,27
+FN:54,Moq.Mock`1<T> PayDotNet.Core.Tests.TestBase`1::Mocks()
+FNDA:0,Moq.Mock`1<T> PayDotNet.Core.Tests.TestBase`1::Mocks()
+DA:55,0
+DA:56,0
+DA:57,0
+DA:58,0
+DA:59,0
+DA:60,0
+DA:61,0
+DA:63,0
+DA:64,0
+BRDA:57,29,0,0
+BRDA:57,29,1,0
+FN:66,System.Object[] PayDotNet.Core.Tests.TestBase`1::GetParameters(System.Reflection.ParameterInfo[])
+FNDA:0,System.Object[] PayDotNet.Core.Tests.TestBase`1::GetParameters(System.Reflection.ParameterInfo[])
+DA:67,0
+DA:68,0
+DA:70,0
+DA:71,0
+DA:72,0
+DA:73,0
+DA:74,0
+DA:75,0
+DA:76,0
+DA:78,0
+DA:79,0
+DA:80,0
+DA:81,0
+DA:83,0
+DA:84,0
+BRDA:70,94,1,0
+BRDA:73,44,0,0
+BRDA:73,44,1,0
+BRDA:70,94,0,0
+FN:8,System.Void PayDotNet.Core.Tests.TestBase`1::.ctor()
+FNDA:11,System.Void PayDotNet.Core.Tests.TestBase`1::.ctor()
+DA:9,11
+DA:10,11
+DA:11,11
+DA:12,11
+DA:14,11
+DA:51,11
+LF:55
+LH:14
+BRF:16
+BRH:2
+FNF:6
+FNH:3
+end_of_record

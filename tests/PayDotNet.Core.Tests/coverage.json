@@ -1,0 +1,2837 @@
+{
+  "PayDotNet.Core.dll": {
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Extensions\\ServiceCollectionExtension.cs": {
+      "Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension": {
+        "PayDotNet.Core.PayDotNetBuilder Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::AddPayDotNet(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection Microsoft.Extensions.DependencyInjection.ServiceCollectionExtension::AddBillableManager(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Exceptions\\ActionRequiredPayDotNetException.cs": {
+      "PayDotNet.Core.ActionRequiredPayDotNetException": {
+        "PayDotNet.Core.Models.IPayment PayDotNet.Core.ActionRequiredPayDotNetException::get_Payment()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(PayDotNet.Core.Models.IPayment)": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(System.String)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(System.String,System.Exception)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.ActionRequiredPayDotNetException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Exceptions\\InvalidPaymentPayDotNetException.cs": {
+      "PayDotNet.Core.InvalidPaymentPayDotNetException": {
+        "PayDotNet.Core.Models.IPayment PayDotNet.Core.InvalidPaymentPayDotNetException::get_Payment()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(PayDotNet.Core.Models.IPayment)": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(System.String)": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(System.String,System.Exception)": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.InvalidPaymentPayDotNetException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Exceptions\\PayDotNetException.cs": {
+      "PayDotNet.Core.PayDotNetException": {
+        "System.Void PayDotNet.Core.PayDotNetException::.ctor()": {
+          "Lines": {
+            "6": 0,
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayDotNetException::.ctor(System.String)": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayDotNetException::.ctor(System.String,System.Exception)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayDotNetException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Extensions\\Helpers.cs": {
+      "PayDotNet.Core.Helpers": {
+        "System.Boolean PayDotNet.Core.Helpers::None(System.Collections.Generic.ICollection`1<T>)": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\PayCheckoutOptions.cs": {
+      "PayDotNet.Core.PayCheckoutOptions": {
+        "System.Collections.Generic.List`1<PayDotNet.Core.PayCheckoutLineItem> PayDotNet.Core.PayCheckoutOptions::get_LineItems()": {
+          "Lines": {
+            "3": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayCheckoutOptions::.ctor(System.Collections.Generic.List`1<PayDotNet.Core.PayCheckoutLineItem>,System.String,System.Boolean,System.String,System.String)": {
+          "Lines": {
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.PayCheckoutChargeOptions": {
+        "System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(System.Collections.Generic.List`1<PayDotNet.Core.PayCheckoutLineItem>,System.String,System.Boolean,System.String,System.String)": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(PayDotNet.Core.PayCheckoutLineItem[])": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(PayDotNet.Core.PayCheckoutLineItemProductData[])": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayCheckoutChargeOptions::.ctor(System.Int32,System.String,System.String,System.String,System.Int32)": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.PayCheckoutLineItem": {
+        "System.String PayDotNet.Core.PayCheckoutLineItem::get_PriceId()": {
+          "Lines": {
+            "48": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayCheckoutLineItem::.ctor(System.String,System.Int32,PayDotNet.Core.PayCheckoutLineItemProductData)": {
+          "Lines": {
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.PayCheckoutLineItemProductData": {
+        "System.String PayDotNet.Core.PayCheckoutLineItemProductData::get_Name()": {
+          "Lines": {
+            "61": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\PayDotNetBuilder.cs": {
+      "PayDotNet.Core.PayDotNetBuilder": {
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection PayDotNet.Core.PayDotNetBuilder::get_Services()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.Configuration.IConfiguration PayDotNet.Core.PayDotNetBuilder::get_Configuration()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "PayDotNet.Core.PayDotNetConfiguration PayDotNet.Core.PayDotNetBuilder::get_PayDotNetConfiguration()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayDotNetBuilder::.ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,PayDotNet.Core.PayDotNetConfiguration)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\PayDotNetConfiguration.cs": {
+      "PayDotNet.Core.PayDotNetConfiguration": {
+        "System.String PayDotNet.Core.PayDotNetConfiguration::get_DefaultProductName()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.PayDotNetConfiguration::get_DefaultPlanName()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.PayDotNetConfiguration::get_DefaultRefundDescription()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.PayDotNetConfiguration::get_RootUrl()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "PayDotNet.Core.PayDotNetStripeConfiguration PayDotNet.Core.PayDotNetConfiguration::get_Stripe()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.PayDotNetStripeConfiguration": {
+        "System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_ApiKey()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_EndpointSecret()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_PublicKey()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.PayDotNetStripeConfiguration::get_PaymentBehaviour()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayDotNetStripeConfiguration::.cctor()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\PaymentProcessorOptionsBuilder.cs": {
+      "PayDotNet.Core.PaymentProcessorOptionsBuilder`1": {
+        "PayDotNet.Core.Webhooks.WebhookRouterBuilder`1<TService> PayDotNet.Core.PaymentProcessorOptionsBuilder`1::get_Webhooks()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\PaymentProcessors.cs": {
+      "PayDotNet.Core.PaymentProcessors": {
+        "System.Void PayDotNet.Core.PaymentProcessors::.cctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\PayOptions.cs": {
+      "PayDotNet.Core.PaySubscribeOptionsItem": {
+        "System.String PayDotNet.Core.PaySubscribeOptionsItem::get_PriceId()": {
+          "Lines": {
+            "3": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.PayChargeOptions": {
+        "System.Int32 PayDotNet.Core.PayChargeOptions::get_Amount()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.PayChargeOptions::get_Currency()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.PayChargeOptions::get_PaymentMethodId()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.PayChargeOptions::get_CaptureMethod()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PayChargeOptions::.ctor(System.Int32,System.String,System.String,System.String)": {
+          "Lines": {
+            "12": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.PayAuthorizeChargeOptions": {
+        "System.Void PayDotNet.Core.PayAuthorizeChargeOptions::.ctor(System.Int32,System.String,System.String)": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.PayChargeRefundOptions": {
+        "System.Int32 PayDotNet.Core.PayChargeRefundOptions::get_Amount()": {
+          "Lines": {
+            "29": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\PaySubscribeOptions.cs": {
+      "PayDotNet.Core.PaySubscribeOptions": {
+        "System.String PayDotNet.Core.PaySubscribeOptions::get_Name()": {
+          "Lines": {
+            "3": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.PaySubscribeOptions::.ctor(System.String,System.Collections.Generic.List`1<PayDotNet.Core.PaySubscribeOptionsItem>)": {
+          "Lines": {
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.PayCustomerOptions": {
+        "System.String PayDotNet.Core.PayCustomerOptions::get_ProcessorName()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.PayCancelSubscriptionOptions": {
+        "PayDotNet.Core.CancellationReason PayDotNet.Core.PayCancelSubscriptionOptions::get_Feedback()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Webhooks\\CompositeWebhookDispatcher.cs": {
+      "PayDotNet.Core.Webhooks.CompositeWebhookDispatcher": {
+        "System.Threading.Tasks.Task PayDotNet.Core.Webhooks.CompositeWebhookDispatcher::DispatchAsync(System.String,System.String,System.String)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 18,
+              "EndOffset": 56,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PayDotNet.Core.Webhooks.CompositeWebhookDispatcher::.ctor(System.Collections.Generic.IEnumerable`1<PayDotNet.Core.Webhooks.WebhookDispatcher>,Microsoft.Extensions.Logging.ILogger`1<PayDotNet.Core.Webhooks.CompositeWebhookDispatcher>)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Webhooks\\WebhookDispatcher.cs": {
+      "PayDotNet.Core.Webhooks.WebhookDispatcher": {
+        "System.String PayDotNet.Core.Webhooks.WebhookDispatcher::get_Name()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "PayDotNet.Core.Webhooks.WebhookRouterTable PayDotNet.Core.Webhooks.WebhookDispatcher::get_RoutingTable()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.IServiceProvider PayDotNet.Core.Webhooks.WebhookDispatcher::get_ServiceProvider()": {
+          "Lines": {
+            "27": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Webhooks.WebhookDispatcher::.ctor(System.String,PayDotNet.Core.Webhooks.WebhookRouterTable,System.IServiceProvider,Microsoft.Extensions.Logging.ILogger)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Webhooks.WebhookDispatcher/<GetWebhookHandlers>d__12": {
+        "System.Boolean PayDotNet.Core.Webhooks.WebhookDispatcher/<GetWebhookHandlers>d__12::MoveNext()": {
+          "Lines": {
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "36": 0,
+            "37": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0
+          },
+          "Branches": [
+            {
+              "Line": 33,
+              "Offset": 67,
+              "EndOffset": 69,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 67,
+              "EndOffset": 114,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 306,
+              "EndOffset": 188,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 245,
+              "EndOffset": 247,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 245,
+              "EndOffset": 280,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 306,
+              "EndOffset": 308,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Webhooks\\WebhookRouterBuilder.cs": {
+      "PayDotNet.Core.Webhooks.WebhookRouterBuilder`1": {
+        "System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::SubscribeWebhook(System.String)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 12,
+              "Offset": 18,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::UnsubscribeWebhook(System.String)": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": [
+            {
+              "Line": 22,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 22,
+              "Offset": 18,
+              "EndOffset": 23,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::UnsubscribeAllWebhooks(System.String)": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "37": 0,
+            "38": 0
+          },
+          "Branches": [
+            {
+              "Line": 32,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 32,
+              "Offset": 18,
+              "EndOffset": 23,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::Clear()": {
+          "Lines": {
+            "40": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 92,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 46,
+              "Offset": 65,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 46,
+              "Offset": 65,
+              "EndOffset": 67,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 92,
+              "EndOffset": 94,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        },
+        "PayDotNet.Core.Webhooks.WebhookRouterTable PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::Build()": {
+          "Lines": {
+            "54": 0,
+            "55": 0,
+            "56": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Webhooks.WebhookRouterBuilder`1::.ctor()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Webhooks\\WebhookRouterTable.cs": {
+      "PayDotNet.Core.Webhooks.WebhookRouterTable": {
+        "System.Void PayDotNet.Core.Webhooks.WebhookRouterTable::.ctor(System.Collections.Generic.IDictionary`2<System.String,System.Collections.Generic.HashSet`1<System.Type>>)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Stores\\InMemoryStore.cs": {
+      "PayDotNet.Core.Stores.InMemoryStore": {
+        "System.Linq.IQueryable`1<PayDotNet.Core.Models.PaySubscription> PayDotNet.Core.Stores.InMemoryStore::get_Subscriptions()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Linq.IQueryable`1<PayDotNet.Core.Models.PayCustomer> PayDotNet.Core.Stores.InMemoryStore::get_Customers()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Linq.IQueryable`1<PayDotNet.Core.Models.PayPaymentMethod> PayDotNet.Core.Stores.InMemoryStore::get_PaymentMethods()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Linq.IQueryable`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Stores.InMemoryStore::get_Charges()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PaySubscription)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PayCustomer)": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PayPaymentMethod)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::CreateAsync(PayDotNet.Core.Models.PayCharge)": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PaySubscription)": {
+          "Lines": {
+            "47": 0,
+            "48": 0,
+            "49": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PaySubscription>)": {
+          "Lines": {
+            "52": 0,
+            "53": 0,
+            "54": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PayCustomer)": {
+          "Lines": {
+            "57": 0,
+            "58": 0,
+            "59": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCustomer>)": {
+          "Lines": {
+            "62": 0,
+            "63": 0,
+            "64": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PayPaymentMethod)": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayPaymentMethod>)": {
+          "Lines": {
+            "72": 0,
+            "73": 0,
+            "74": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(PayDotNet.Core.Models.PayCharge)": {
+          "Lines": {
+            "77": 0,
+            "78": 0,
+            "79": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Stores.InMemoryStore::UpdateAsync(System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCharge>)": {
+          "Lines": {
+            "82": 0,
+            "83": 0,
+            "84": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Stores.InMemoryStore::.cctor()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Services\\PaymentProcessorPaymentMethod.cs": {
+      "PayDotNet.Core.Services.PaymentProcessorPaymentMethod": {
+        "System.String PayDotNet.Core.Services.PaymentProcessorPaymentMethod::get_Id()": {
+          "Lines": {
+            "3": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Models\\PayCharge.cs": {
+      "PayDotNet.Core.Models.PayCharge": {
+        "PayDotNet.Core.Models.PayCustomer PayDotNet.Core.Models.PayCharge::get_Customer()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_CustomerId()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "PayDotNet.Core.Models.PaySubscription PayDotNet.Core.Models.PayCharge::get_Subscription()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_SubscriptionId()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_ProccesorId()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_Brand()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PayDotNet.Core.Models.PayCharge::get_Amount()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_Currency()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayCharge::get_ApplicationFeeAmount()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayCharge::get_AmountRefunded()": {
+          "Lines": {
+            "26": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PayDotNet.Core.Models.PayCharge::get_AmountCaptured()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PayDotNet.Core.Models.PayCharge::get_ExpirationMonth()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PayDotNet.Core.Models.PayCharge::get_ExpirationYear()": {
+          "Lines": {
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_PaymentIntentId()": {
+          "Lines": {
+            "34": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_PaymentMethodType()": {
+          "Lines": {
+            "36": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_ReceiptUrl()": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_Last4()": {
+          "Lines": {
+            "40": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.String> PayDotNet.Core.Models.PayCharge::get_Metadata()": {
+          "Lines": {
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayCharge::get_Data()": {
+          "Lines": {
+            "44": 0
+          },
+          "Branches": []
+        },
+        "PayDotNet.Core.Models.PayStatus PayDotNet.Core.Models.PayCharge::get_Status()": {
+          "Lines": {
+            "46": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayCharge::get_CreatedAt()": {
+          "Lines": {
+            "48": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayCharge::get_UpdatedAt()": {
+          "Lines": {
+            "50": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeLineItem> PayDotNet.Core.Models.PayCharge::get_LineItems()": {
+          "Lines": {
+            "52": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeDiscount> PayDotNet.Core.Models.PayCharge::get_Discounts()": {
+          "Lines": {
+            "54": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeTaxAmount> PayDotNet.Core.Models.PayCharge::get_TaxAmounts()": {
+          "Lines": {
+            "56": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeRefund> PayDotNet.Core.Models.PayCharge::get_Refunds()": {
+          "Lines": {
+            "58": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayCharge::get_PeriodEnd()": {
+          "Lines": {
+            "59": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayCharge::get_PeriodStart()": {
+          "Lines": {
+            "60": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCharge::get_InvoiceId()": {
+          "Lines": {
+            "61": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PayDotNet.Core.Models.PayCharge::get_Subtotal()": {
+          "Lines": {
+            "62": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayCharge::get_Tax()": {
+          "Lines": {
+            "63": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Models\\PayChargeLineItem.cs": {
+      "PayDotNet.Core.Models.PayChargeLineItem": {
+        "System.DateTime PayDotNet.Core.Models.PayChargeLineItem::get_PeriodEnd()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayChargeLineItem::get_PeriodStart()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.PayChargeLineItem::get_IsProration()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayChargeLineItem::get_ProcessorId()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayChargeLineItem::get_Description()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayChargeLineItem::get_PriceId()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PayDotNet.Core.Models.PayChargeLineItem::get_Quantity()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> PayDotNet.Core.Models.PayChargeLineItem::get_UnitAmount()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Models\\PayChargeRefund.cs": {
+      "PayDotNet.Core.Models.PayChargeRefund": {
+        "System.String PayDotNet.Core.Models.PayChargeRefund::get_ProcessorId()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayChargeRefund::get_CreatedAt()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayChargeRefund::get_Description()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PayDotNet.Core.Models.PayChargeRefund::get_Amount()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayChargeRefund::get_Reason()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayChargeRefund::get_Status()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Models\\PayCustomer.cs": {
+      "PayDotNet.Core.Models.PayCustomer": {
+        "System.String PayDotNet.Core.Models.PayCustomer::get_Id()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCustomer::get_Email()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Models.PayCustomer::get_Charges()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PaySubscription> PayDotNet.Core.Models.PayCustomer::get_Subscriptions()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayPaymentMethod> PayDotNet.Core.Models.PayCustomer::get_PaymentMethods()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCustomer::get_Processor()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayCustomer::get_ProcessorId()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.PayCustomer::get_IsDefault()": {
+          "Lines": {
+            "27": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayCustomer::get_Data()": {
+          "Lines": {
+            "29": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayCustomer::get_CreatedAt()": {
+          "Lines": {
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayCustomer::get_UpdatedAt()": {
+          "Lines": {
+            "33": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayCustomer::get_DeletedAt()": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": []
+        },
+        "PayDotNet.Core.Models.PayPaymentMethod PayDotNet.Core.Models.PayCustomer::get_DefaultPaymentMethod()": {
+          "Lines": {
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.PayCustomer::HasProcessorId()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Models\\PayMerchant.cs": {
+      "PayDotNet.Core.Models.PayMerchant": {
+        "System.String PayDotNet.Core.Models.PayMerchant::get_Processor()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayMerchant::get_ProcessorId()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.PayMerchant::get_IsDefault()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayMerchant::get_Data()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayMerchant::get_CreatedAt()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayMerchant::get_UpdatedAt()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Models\\PayPaymentMethod.cs": {
+      "PayDotNet.Core.Models.PayPaymentMethod": {
+        "PayDotNet.Core.Models.PayCustomer PayDotNet.Core.Models.PayPaymentMethod::get_Customer()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayPaymentMethod::get_CustomerId()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayPaymentMethod::get_ProcessorId()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.PayPaymentMethod::get_IsDefault()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayPaymentMethod::get_Type()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PayPaymentMethod::get_Data()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayPaymentMethod::get_CreatedAt()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayPaymentMethod::get_UpdatedAt()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Models\\PaySubscription.cs": {
+      "PayDotNet.Core.Models.PaySubscription": {
+        "System.Int32 PayDotNet.Core.Models.PaySubscription::get_Id()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PaySubscription::get_CustomerId()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PaySubscription::get_Name()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PaySubscription::get_ProcessorId()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PaySubscription::get_ProcessorPlan()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PayDotNet.Core.Models.PaySubscription::get_Quantity()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "PayDotNet.Core.Models.PaySubscriptionStatus PayDotNet.Core.Models.PaySubscription::get_Status()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_CurrentPeriodStart()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_CurrentPeriodEnd()": {
+          "Lines": {
+            "26": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_TrailEndsAt()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_EndsAt()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.PaySubscription::get_IsMetered()": {
+          "Lines": {
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PaySubscription::get_PauseBehaviour()": {
+          "Lines": {
+            "34": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_PauseStartsAt()": {
+          "Lines": {
+            "36": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PayDotNet.Core.Models.PaySubscription::get_PauseResumesAt()": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Decimal> PayDotNet.Core.Models.PaySubscription::get_ApplicationFeePercent()": {
+          "Lines": {
+            "41": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.String> PayDotNet.Core.Models.PaySubscription::get_Metadata()": {
+          "Lines": {
+            "43": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.Object> PayDotNet.Core.Models.PaySubscription::get_Data()": {
+          "Lines": {
+            "45": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PaySubscription::get_CreatedAt()": {
+          "Lines": {
+            "47": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PaySubscription::get_UpdatedAt()": {
+          "Lines": {
+            "49": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Models.PaySubscription::get_Charges()": {
+          "Lines": {
+            "51": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PaySubscriptionItem> PayDotNet.Core.Models.PaySubscription::get_SubscriptionItems()": {
+          "Lines": {
+            "53": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.PaySubscription::IsOnTrial()": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0
+          },
+          "Branches": [
+            {
+              "Line": 57,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 15,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean PayDotNet.Core.Models.PaySubscription::IsTrialEnded()": {
+          "Lines": {
+            "61": 0,
+            "62": 0,
+            "63": 0
+          },
+          "Branches": [
+            {
+              "Line": 62,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 62,
+              "Offset": 15,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean PayDotNet.Core.Models.PaySubscription::IsIncomplete()": {
+          "Lines": {
+            "66": 0,
+            "67": 0,
+            "68": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Models.PaySubscription::CancelNow()": {
+          "Lines": {
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Models.IPaymentExtensions": {
+        "System.Void PayDotNet.Core.Models.IPaymentExtensions::Validate(PayDotNet.Core.Models.IPayment)": {
+          "Lines": {
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "89": 0
+          },
+          "Branches": [
+            {
+              "Line": 81,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 81,
+              "Offset": 9,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 27,
+              "EndOffset": 29,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 27,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean PayDotNet.Core.Models.IPaymentExtensions::IsCanceled(PayDotNet.Core.Models.IPayment)": {
+          "Lines": {
+            "92": 0,
+            "93": 0,
+            "94": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.IPaymentExtensions::IsSucceeded(PayDotNet.Core.Models.IPayment)": {
+          "Lines": {
+            "97": 0,
+            "98": 0,
+            "99": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.IPaymentExtensions::RequiresAction(PayDotNet.Core.Models.IPayment)": {
+          "Lines": {
+            "102": 0,
+            "103": 0,
+            "104": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Models.IPaymentExtensions::RequiresPaymentMethod(PayDotNet.Core.Models.IPayment)": {
+          "Lines": {
+            "107": 0,
+            "108": 0,
+            "109": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Models\\PaySubscriptionItem.cs": {
+      "PayDotNet.Core.Models.PaySubscriptionItem": {
+        "System.String PayDotNet.Core.Models.PaySubscriptionItem::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "PayDotNet.Core.Models.PaySubscriptionItemPrice PayDotNet.Core.Models.PaySubscriptionItem::get_Price()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.String> PayDotNet.Core.Models.PaySubscriptionItem::get_Metadata()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 PayDotNet.Core.Models.PaySubscriptionItem::get_Quantity()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Models.PaySubscriptionItemPrice": {
+        "System.String PayDotNet.Core.Models.PaySubscriptionItemPrice::get_Id()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Models\\PayWebhook.cs": {
+      "PayDotNet.Core.Models.PayWebhook": {
+        "System.String PayDotNet.Core.Models.PayWebhook::get_Processor()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayWebhook::get_EventType()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.String PayDotNet.Core.Models.PayWebhook::get_Event()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayWebhook::get_CreatedAt()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PayDotNet.Core.Models.PayWebhook::get_UpdatedAt()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\PayResults.cs": {
+      "PayDotNet.Core.Models.PaySubscriptionResult": {
+        "PayDotNet.Core.Models.PaySubscription PayDotNet.Core.Models.PaySubscriptionResult::get_PaySubscription()": {
+          "Lines": {
+            "3": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Models.PayChargeResult": {
+        "PayDotNet.Core.Models.PayCharge PayDotNet.Core.Models.PayChargeResult::get_PayCharge()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Models.PayChargeRefundResult": {
+        "PayDotNet.Core.Models.PayChargeRefund PayDotNet.Core.Models.PayChargeRefundResult::get_Refund()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Managers\\BillableManager.cs": {
+      "PayDotNet.Core.Managers.BillableManager": {
+        "System.Threading.Tasks.Task`1<System.Uri> PayDotNet.Core.Managers.BillableManager::CheckoutAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayCheckoutOptions)": {
+          "Lines": {
+            "78": 0,
+            "79": 0,
+            "80": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<System.Uri> PayDotNet.Core.Managers.BillableManager::CheckoutChargeAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayCheckoutChargeOptions)": {
+          "Lines": {
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Managers.BillableManager::AuthorizeAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayAuthorizeChargeOptions)": {
+          "Lines": {
+            "97": 0,
+            "98": 0,
+            "99": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Managers.BillableManager::.ctor(PayDotNet.Core.Abstraction.ICheckoutManager,PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.ISubscriptionManager,PayDotNet.Core.Abstraction.IPaymentMethodManager)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.BillableManager/<ChargeAsync>d__8": {
+        "System.Void PayDotNet.Core.Managers.BillableManager/<ChargeAsync>d__8::MoveNext()": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "73": 0,
+            "74": 0
+          },
+          "Branches": [
+            {
+              "Line": 68,
+              "Offset": 47,
+              "EndOffset": 49,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 47,
+              "EndOffset": 176,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PayDotNet.Core.Managers.BillableManager/<GetOrCreateCustomerAsync>d__6": {
+        "System.Void PayDotNet.Core.Managers.BillableManager/<GetOrCreateCustomerAsync>d__6::MoveNext()": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": [
+            {
+              "Line": 34,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 51,
+              "EndOffset": 69,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 72,
+              "EndOffset": 74,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 72,
+              "EndOffset": 107,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 278,
+              "EndOffset": 280,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 278,
+              "EndOffset": 407,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PayDotNet.Core.Managers.BillableManager/<SubscribeAsync>d__7": {
+        "System.Void PayDotNet.Core.Managers.BillableManager/<SubscribeAsync>d__7::MoveNext()": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "57": 0,
+            "59": 0,
+            "62": 0,
+            "63": 0
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 36,
+              "EndOffset": 38,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 53,
+              "Offset": 55,
+              "EndOffset": 57,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 53,
+              "Offset": 55,
+              "EndOffset": 69,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 36,
+              "EndOffset": 70,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Managers\\ChargeManager.cs": {
+      "PayDotNet.Core.Managers.ChargeManager": {
+        "System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayCharge> PayDotNet.Core.Managers.ChargeManager::GetAsync(System.String)": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<System.Collections.Generic.ICollection`1<PayDotNet.Core.Models.PayChargeRefund>> PayDotNet.Core.Managers.ChargeManager::GetCreditNotesAsync(PayDotNet.Core.Models.PayCharge)": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "51": 0
+          },
+          "Branches": [
+            {
+              "Line": 46,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 46,
+              "Offset": 14,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PayDotNet.Core.Managers.ChargeManager::.ctor(PayDotNet.Core.Abstraction.ICustomerManager,PayDotNet.Core.Abstraction.IChargeStore,PayDotNet.Core.Services.IPaymentProcessorService)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.ChargeManager/<CaptureAsync>d__4": {
+        "System.Void PayDotNet.Core.Managers.ChargeManager/<CaptureAsync>d__4::MoveNext()": {
+          "Lines": {
+            "24": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.ChargeManager/<ChargeAsync>d__5": {
+        "System.Void PayDotNet.Core.Managers.ChargeManager/<ChargeAsync>d__5::MoveNext()": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": [
+            {
+              "Line": 31,
+              "Offset": 179,
+              "EndOffset": 181,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 179,
+              "EndOffset": 199,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 204,
+              "EndOffset": 209,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 204,
+              "EndOffset": 345,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PayDotNet.Core.Managers.ChargeManager/<RefundAsync>d__8": {
+        "System.Void PayDotNet.Core.Managers.ChargeManager/<RefundAsync>d__8::MoveNext()": {
+          "Lines": {
+            "56": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0
+          },
+          "Branches": [
+            {
+              "Line": 59,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 44,
+              "EndOffset": 168,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PayDotNet.Core.Managers.ChargeManager/<SynchroniseAsync>d__10": {
+        "System.Void PayDotNet.Core.Managers.ChargeManager/<SynchroniseAsync>d__10::MoveNext()": {
+          "Lines": {
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0
+          },
+          "Branches": [
+            {
+              "Line": 78,
+              "Offset": 101,
+              "EndOffset": 106,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 78,
+              "Offset": 101,
+              "EndOffset": 256,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 290,
+              "EndOffset": 292,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 290,
+              "EndOffset": 298,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 86,
+              "Offset": 462,
+              "EndOffset": 464,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 86,
+              "Offset": 462,
+              "EndOffset": 583,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PayDotNet.Core.Managers.ChargeManager/<SynchroniseAsync>d__9": {
+        "System.Void PayDotNet.Core.Managers.ChargeManager/<SynchroniseAsync>d__9::MoveNext()": {
+          "Lines": {
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Managers\\CheckoutManager.cs": {
+      "PayDotNet.Core.Managers.CheckoutManager": {
+        "System.Threading.Tasks.Task`1<System.Uri> PayDotNet.Core.Managers.CheckoutManager::CheckoutAsync(PayDotNet.Core.Models.PayCustomer,PayDotNet.Core.PayCheckoutOptions)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Managers.CheckoutManager::.ctor(PayDotNet.Core.Services.IPaymentProcessorService)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Managers\\CustomerManager.cs": {
+      "PayDotNet.Core.Managers.CustomerManager": {
+        "System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayCustomer> PayDotNet.Core.Managers.CustomerManager::FindByEmailAsync(System.String,System.String)": {
+          "Lines": {
+            "76": 0,
+            "77": 0,
+            "78": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Managers.CustomerManager::UpdateAsync(PayDotNet.Core.Models.PayCustomer)": {
+          "Lines": {
+            "81": 0,
+            "82": 0,
+            "83": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayCustomer> PayDotNet.Core.Managers.CustomerManager::FindByIdAsync(System.String,System.String)": {
+          "Lines": {
+            "86": 0,
+            "87": 0,
+            "88": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Managers.CustomerManager::.ctor(PayDotNet.Core.Services.IPaymentProcessorService,PayDotNet.Core.Abstraction.ICustomerStore)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerAsync>d__3": {
+        "System.Void PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerAsync>d__3::MoveNext()": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": [
+            {
+              "Line": 23,
+              "Offset": 266,
+              "EndOffset": 271,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 23,
+              "Offset": 266,
+              "EndOffset": 454,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerAsync>d__4": {
+        "System.Void PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerAsync>d__4::MoveNext()": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerForEmailAsync>d__5": {
+        "System.Void PayDotNet.Core.Managers.CustomerManager/<GetOrCreateCustomerForEmailAsync>d__5::MoveNext()": {
+          "Lines": {
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "62": 0,
+            "63": 0
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 266,
+              "EndOffset": 271,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 266,
+              "EndOffset": 441,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PayDotNet.Core.Managers.CustomerManager/<InitializeCustomerAsync>d__6": {
+        "System.Void PayDotNet.Core.Managers.CustomerManager/<InitializeCustomerAsync>d__6::MoveNext()": {
+          "Lines": {
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0
+          },
+          "Branches": [
+            {
+              "Line": 67,
+              "Offset": 42,
+              "EndOffset": 47,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 42,
+              "EndOffset": 322,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Managers\\MerchantManager.cs": {
+      "PayDotNet.Core.Managers.MerchantManager": {
+        "System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayMerchant> PayDotNet.Core.Managers.MerchantManager::FindByIdAsync(System.String,System.String)": {
+          "Lines": {
+            "9": 0,
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Managers.MerchantManager::UpdateAsync(PayDotNet.Core.Models.PayMerchant)": {
+          "Lines": {
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Managers\\PaymentMethodManager.cs": {
+      "PayDotNet.Core.Managers.PaymentMethodManager": {
+        "System.Threading.Tasks.Task PayDotNet.Core.Managers.PaymentMethodManager::DeleteAllAsync(PayDotNet.Core.Models.PayCustomer)": {
+          "Lines": {
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Managers.PaymentMethodManager::DeleteByIdAsync(System.String,System.String)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean PayDotNet.Core.Managers.PaymentMethodManager::IsPaymentMethodRequired()": {
+          "Lines": {
+            "39": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PayPaymentMethod> PayDotNet.Core.Managers.PaymentMethodManager::SynchroniseAsync(System.String)": {
+          "Lines": {
+            "42": 0,
+            "43": 0,
+            "44": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Managers.PaymentMethodManager::UpdateAllAsync(System.Boolean)": {
+          "Lines": {
+            "47": 0,
+            "48": 0,
+            "49": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Managers.PaymentMethodManager::.ctor(PayDotNet.Core.Abstraction.IPaymentMethodStore,PayDotNet.Core.Services.IPaymentProcessorService)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.PaymentMethodManager/<AddPaymentMethodAsync>d__3": {
+        "System.Void PayDotNet.Core.Managers.PaymentMethodManager/<AddPaymentMethodAsync>d__3::MoveNext()": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.PaymentMethodManager/<SavePaymentMethodAsync>d__9": {
+        "System.Void PayDotNet.Core.Managers.PaymentMethodManager/<SavePaymentMethodAsync>d__9::MoveNext()": {
+          "Lines": {
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "59": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0
+          },
+          "Branches": [
+            {
+              "Line": 54,
+              "Offset": 227,
+              "EndOffset": 229,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 54,
+              "Offset": 227,
+              "EndOffset": 354,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 375,
+              "EndOffset": 380,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 688,
+              "EndOffset": 638,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 688,
+              "EndOffset": 690,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 375,
+              "EndOffset": 848,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Managers\\SubscriptionManager.cs": {
+      "PayDotNet.Core.Managers.SubscriptionManager": {
+        "System.Threading.Tasks.Task`1<PayDotNet.Core.Models.PaySubscription> PayDotNet.Core.Managers.SubscriptionManager::FindByIdAsync(System.String,System.String)": {
+          "Lines": {
+            "34": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task PayDotNet.Core.Managers.SubscriptionManager::CancellAllAsync(PayDotNet.Core.Models.PayCustomer)": {
+          "Lines": {
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "103": 0,
+            "104": 0
+          },
+          "Branches": [
+            {
+              "Line": 98,
+              "Offset": 183,
+              "EndOffset": 159,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 98,
+              "Offset": 183,
+              "EndOffset": 185,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PayDotNet.Core.Managers.SubscriptionManager::.ctor(PayDotNet.Core.Abstraction.IChargeManager,PayDotNet.Core.Abstraction.ISubscriptionStore,PayDotNet.Core.Services.IPaymentProcessorService)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.SubscriptionManager/<CancelAsync>d__7": {
+        "System.Void PayDotNet.Core.Managers.SubscriptionManager/<CancelAsync>d__7::MoveNext()": {
+          "Lines": {
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0
+          },
+          "Branches": [
+            {
+              "Line": 74,
+              "Offset": 46,
+              "EndOffset": 48,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 46,
+              "EndOffset": 69,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "PayDotNet.Core.Managers.SubscriptionManager/<CancelNowAsync>d__8": {
+        "System.Void PayDotNet.Core.Managers.SubscriptionManager/<CancelNowAsync>d__8::MoveNext()": {
+          "Lines": {
+            "84": 0,
+            "85": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.SubscriptionManager/<CreateSubscriptionAsync>d__4": {
+        "System.Void PayDotNet.Core.Managers.SubscriptionManager/<CreateSubscriptionAsync>d__4::MoveNext()": {
+          "Lines": {
+            "24": 0,
+            "26": 0,
+            "28": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        }
+      },
+      "PayDotNet.Core.Managers.SubscriptionManager/<SynchroniseAsync>d__6": {
+        "System.Void PayDotNet.Core.Managers.SubscriptionManager/<SynchroniseAsync>d__6::MoveNext()": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "47": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "55": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0
+          },
+          "Branches": [
+            {
+              "Line": 40,
+              "Offset": 115,
+              "EndOffset": 120,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 40,
+              "Offset": 115,
+              "EndOffset": 270,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 312,
+              "EndOffset": 314,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 312,
+              "EndOffset": 320,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 50,
+              "Offset": 534,
+              "EndOffset": 539,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 50,
+              "Offset": 534,
+              "EndOffset": 671,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 58,
+              "Offset": 709,
+              "EndOffset": 711,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 58,
+              "Offset": 709,
+              "EndOffset": 744,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 58,
+              "Offset": 749,
+              "EndOffset": 751,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 58,
+              "Offset": 749,
+              "EndOffset": 776,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 940,
+              "EndOffset": 942,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 940,
+              "EndOffset": 958,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 963,
+              "EndOffset": 968,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 963,
+              "EndOffset": 1114,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "c:\\dev\\repos\\prototypes\\pay-dotnet\\src\\PayDotNet.Core\\Managers\\WebhookManager.cs": {
+      "PayDotNet.Core.Managers.WebhookManager": {
+        "System.Threading.Tasks.Task PayDotNet.Core.Managers.WebhookManager::CreateAsync(System.String,System.String,System.String)": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Void PayDotNet.Core.Managers.WebhookManager::.ctor(PayDotNet.Core.Abstraction.IWebhookDispatcher)": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

@@ -27,9 +27,10 @@ public class DataTransferObjectMapper
         };
     }
 
-    public PayCharge Map(Charge @object)
+    public PayCharge Map(Charge @object, Invoice? invoice)
     {
         ChargePaymentMethodDetails paymentMethod = @object.PaymentMethodDetails;
+        invoice ??= @object.Invoice;
 
         //string bank = string.Empty;
         //if (!paymentMethod.Metadata.TryGetValue("bank_name", out bank))
@@ -39,6 +40,7 @@ public class DataTransferObjectMapper
 
         PayCharge payCharge = new()
         {
+            ProccesorId = @object.Id,
             Amount = Convert.ToInt32(@object.Amount),
             AmountCaptured = Convert.ToInt32(@object.AmountCaptured),
             AmountRefunded = Convert.ToInt32(@object.AmountRefunded),
@@ -54,15 +56,11 @@ public class DataTransferObjectMapper
             PaymentIntentId = @object.PaymentIntentId,
             PaymentMethodType = @object.PaymentMethodDetails.Type,
             ReceiptUrl = @object.ReceiptUrl,
-            Refunds = @object.Refunds.OrderBy(r => r.Created).Select(Map).ToArray()
+            Refunds = @object.Refunds?.Select(Map).OrderBy(r => r.CreatedAt).ToArray() ?? Array.Empty<PayChargeRefund>()
         };
 
-        if (@object.Invoice is not null)
+        if (invoice is not null)
         {
-            Invoice invoice = @object.Invoice is Invoice
-                ? @object.Invoice
-                : default; // TODO: retrieve invoice
-
             payCharge.InvoiceId = invoice.Id;
             //payCharge.SubscriptionId = invoice.SubscriptionId; // TODO, find based on processorId
             payCharge.PeriodStart = invoice.PeriodStart;
@@ -133,7 +131,10 @@ public class DataTransferObjectMapper
             PaySubscriptionItem paySubscriptionItem = new()
             {
                 Id = subscriptionItem.Id,
-                Price = subscriptionItem.Price,
+                Price = new()
+                {
+                    Id = subscriptionItem.Price.Id,
+                },
                 Metadata = subscriptionItem.Metadata,
                 Quantity = subscriptionItem.Quantity
             };
@@ -154,6 +155,12 @@ public class DataTransferObjectMapper
         {
             // Subscriptions cancelling the future
             paySubscription.EndsAt = @object.CurrentPeriodEnd;
+        }
+
+        Charge? charge = @object.LatestInvoice.Charge;
+        if (charge is not null)
+        {
+            paySubscription.Charges.Add(Map(charge, @object.LatestInvoice));
         }
 
         return paySubscription;

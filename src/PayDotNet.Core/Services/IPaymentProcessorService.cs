@@ -18,6 +18,16 @@ public interface IPaymentProcessorService
 
     #region Subscriptions API
 
+    /// <summary>
+    /// Creates a subscription for a given customer and options
+    /// </summary>
+    /// <param name="payCustomer">The customer, should have payment methods filled.</param>
+    /// <param name="options">The options that can be used to create the subscription.</param>
+    /// <returns>The result.</returns>
+    /// <remarks>
+    /// If customer has no default payment method, we MUST allow the subscription to be incomplete.
+    /// Then the caller, can decide if they want to redirect to the payment form.
+    /// </remarks>
     Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, PaySubscribeOptions options);
 
     Task<PaySubscriptionResult?> GetSubscriptionAsync(string processorId);
@@ -40,13 +50,13 @@ public interface IPaymentProcessorService
 
     #region Checkout API
 
-    Task<Uri> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options);
+    Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options);
 
     #endregion Checkout API
 
     #region Refunds API
 
-    Task RefundAsync(PayCharge payCharge, PayChargeRefundOptions options);
+    Task<PayChargeRefund> RefundAsync(PayCharge payCharge, PayChargeRefundOptions options);
 
     Task IssueCreditNotesAsync(PayCharge payCharge, PayChargeRefundOptions options);
 

@@ -29,11 +29,11 @@ namespace RazorWebApp.Pages
         {
             PayCustomer payCustomer = await _billableManager.GetOrCreateCustomerAsync(Email, new(PaymentProcessors.Stripe));
 
-            Uri checkoutUri = Mode == "checkout"
+            PayCheckoutResult result = Mode == "checkout"
                 ? await _billableManager.CheckoutChargeAsync(payCustomer, new PayCheckoutChargeOptions(name: "T-Shirt", unitAmount: 15_00, currency: "eur", quantity: 2))
                 : await _billableManager.CheckoutChargeAsync(payCustomer, new PayCheckoutChargeOptions(LineItems: new() { new(Data.Plans.FirstOrDefault().Key) }, Mode: "subscription"));
 
-            return Redirect(checkoutUri.ToString());
+            return Redirect(result.CheckoutUrl.ToString());
         }
     }
 }

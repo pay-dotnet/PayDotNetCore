@@ -50,8 +50,7 @@ public class BillableManager : IBillableManager
     {
         if (_paymentMethodManager.IsPaymentMethodRequired())
         {
-            PayPaymentMethod? paymentMethod = payCustomer.PaymentMethods.FirstOrDefault(p => p.IsDefault);
-            if (paymentMethod == null)
+            if (payCustomer.DefaultPaymentMethod == null)
             {
                 throw new PayDotNetException("Customer has no default payment method");
             }
@@ -75,13 +74,13 @@ public class BillableManager : IBillableManager
     }
 
     /// <inheritdoc/>
-    public Task<Uri> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
+    public Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
     {
         return _checkoutManager.CheckoutAsync(payCustomer, options);
     }
 
     /// <inheritdoc/>
-    public Task<Uri> CheckoutChargeAsync(PayCustomer payCustomer, PayCheckoutChargeOptions options)
+    public Task<PayCheckoutResult> CheckoutChargeAsync(PayCustomer payCustomer, PayCheckoutChargeOptions options)
     {
         return CheckoutAsync(payCustomer, new()
         {

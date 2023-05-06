@@ -48,8 +48,8 @@ public interface IBillableManager
     /// </summary>
     /// <param name="payCustomer">The pay customer. MUST HAVE A PROCESSOR ID</param>
     /// <param name="options">The options for the checkout.</param>
-    /// <returns>An URL to redirect the user to.</returns>
-    Task<Uri> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options);
+    /// <returns>The checkout result with an URI and payment data..</returns>
+    Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options);
 
     /// <summary>
     /// Starts a checkout session in the payment processor based on a specified shopping card.
@@ -74,6 +74,6 @@ public interface IBillableManager
     /// </summary>
     /// <param name="payCustomer">The pay customer. MUST HAVE A PROCESSOR ID</param>
     /// <param name="options">The options for the checkout charge.</param>
-    /// <returns>An URL to redirect the user to.</returns>
-    Task<Uri> CheckoutChargeAsync(PayCustomer payCustomer, PayCheckoutChargeOptions options);
+    /// <returns>The checkout result with an URI and payment data..</returns>
+    Task<PayCheckoutResult> CheckoutChargeAsync(PayCustomer payCustomer, PayCheckoutChargeOptions options);
 }

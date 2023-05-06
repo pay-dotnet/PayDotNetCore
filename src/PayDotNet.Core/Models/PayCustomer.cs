@@ -34,6 +34,8 @@ public class PayCustomer
 
     public DateTime DeletedAt { get; set; }
 
+    public PayPaymentMethod? DefaultPaymentMethod => PaymentMethods.FirstOrDefault(p => p.IsDefault);
+
     public bool HasProcessorId()
     {
         return !string.IsNullOrEmpty(ProcessorId);

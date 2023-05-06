@@ -16,8 +16,3 @@ public interface IChargeManager
 
     Task<ICollection<PayChargeRefund>> GetCreditNotesAsync(PayCharge payCharge);
 }
-
-public interface ICheckoutManager
-{
-    Task<Uri> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options);
-}

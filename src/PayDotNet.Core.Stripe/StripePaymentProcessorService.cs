@@ -9,35 +9,54 @@ namespace PayDotNet.Core.Stripe;
 
 public class StripePaymentProcessorService : IPaymentProcessorService
 {
+    public static readonly AppInfo AppInfo = new AppInfo()
+    {
+        Name = "Pay.DotNet",
+        PartnerId = "TODO",
+        Url = "https://github.com/pay-dotnet/PayDotNetCore"
+    };
+
     private readonly PaymentIntentService _paymentIntents;
     private readonly ChargeService _charges;
+    private readonly CreditNoteService _creditNotes;
+    private readonly RefundService _refunds;
+    private readonly SessionService _checkoutSession;
     private readonly CustomerService _customers;
     private readonly SubscriptionService _subscriptions;
     private readonly PaymentMethodService _paymentMethods;
     private readonly SetupIntentService _setupIntents;
+    private readonly IStripeClient _stripeClient;
     private readonly IOptions<PayDotNetConfiguration> _options;
     private readonly DataTransferObjectMapper _mapper;
 
     public bool IsPaymentMethodRequired => false;
 
     public StripePaymentProcessorService(
+        IStripeClient stripeClient,
         IOptions<PayDotNetConfiguration> options)
     {
-        _charges = new();
-        _customers = new();
-        _subscriptions = new();
-        _paymentMethods = new();
-        _paymentIntents = new();
-        _setupIntents = new();
+        _stripeClient = stripeClient;
         _options = options;
         _mapper = new(options);
+
+        _charges = new(_stripeClient);
+        _customers = new(_stripeClient);
+        _subscriptions = new(_stripeClient);
+        _paymentMethods = new(_stripeClient);
+        _paymentIntents = new(_stripeClient);
+        _setupIntents = new(_stripeClient);
+        _refunds = new(_stripeClient);
+        _checkoutSession = new(_stripeClient);
+        _creditNotes = new(_stripeClient);
     }
 
     private static readonly List<string> DefaultSubscriptionExpandOptions = new()
     {
         "pending_setup_intent",
+        "latest_invoice",
         "latest_invoice.payment_intent",
-        "latest_invoice.charge"
+        "latest_invoice.charge",
+        "latest_invoice.charge.refunds"
     };
 
     #region Customer API
@@ -57,8 +76,6 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     #endregion Customer API
 
     #region Payment method API
-
-    #region Subscriptions API
 
     public async Task<PayPaymentMethod> AttachPaymentMethodAsync(PayCustomer payCustomer, string paymentMethodId, bool isDefault)
     {
@@ -92,13 +109,17 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         };
     }
 
-    #endregion Subscriptions API
+    #endregion Payment method API
 
+    #region Subscriptions API
+
+    /// <remarks>
+    /// If customer has no default payment method, we MUST allow the subscription to be incomplete.
+    /// Then the caller, can decide if they want to redirect to the payment form.
+    /// </remarks>
     public async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, PaySubscribeOptions options)
     {
-        // If customer has no default payment method, we MUST allow the subscription to be incomplete.
-        // Then the caller, can decide if they want to redirect to the payment form.
-        string paymentBehaviour = !payCustomer.PaymentMethods.Any(p => p.IsDefault)
+        string paymentBehaviour = payCustomer.DefaultPaymentMethod is null
             ? "default_incomplete"
             : _options.Value.Stripe.PaymentBehaviour;
 
@@ -115,12 +136,8 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             {
                 ["pay_name"] = string.IsNullOrEmpty(options.Name) ? _options.Value.DefaultPlanName : options.Name
             },
+            Expand = DefaultSubscriptionExpandOptions,
         };
-
-        stripeOptions.AddExpand("pending_setup_intent");
-        stripeOptions.AddExpand("latest_invoice");
-        stripeOptions.AddExpand("latest_invoice.payment_intent");
-        stripeOptions.AddExpand("latest_invoice.charge");
 
         Subscription subscription = await _subscriptions.CreateAsync(stripeOptions);
 
@@ -131,10 +148,12 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     public async Task<PaySubscriptionResult?> GetSubscriptionAsync(string processorId)
     {
-        Subscription? subscription = await _subscriptions.GetAsync(processorId, new()
+        SubscriptionGetOptions stripeOptions = new()
         {
             Expand = DefaultSubscriptionExpandOptions,
-        });
+        };
+
+        Subscription? subscription = await _subscriptions.GetAsync(processorId, stripeOptions);
         if (subscription is null)
         {
             return null;
@@ -158,7 +177,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         });
     }
 
-    #endregion Payment method API
+    #endregion Subscriptions API
 
     #region Charges API
 
@@ -173,7 +192,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
                 "refunds"
             }
         });
-        return _mapper.Map(charge);
+        return _mapper.Map(charge, invoice: null);
     }
 
     public async Task<IPayment> GetPaymentAsync(string processorId)
@@ -187,47 +206,73 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     {
         PaymentIntent paymentIntent = await _paymentIntents.CaptureAsync(payCharge.ProccesorId, new()
         {
-            //TODO: AmountToCapture = options.AmountToCapture
+            //TODO: AmountToCapture = stripeOptions.AmountToCapture
         });
 
         return new StripePaymentIntentPayment(paymentIntent);
     }
 
-    public async Task<PayChargeResult> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
+    public Task<PayChargeResult> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
     {
-        PaymentIntent paymentIntent = await _paymentIntents.CreateAsync(new()
+        return TryAsync(async () =>
         {
-            Customer = payCustomer.ProcessorId,
-            Confirm = true,
-            Amount = options.Amount,
-            Currency = options.Currency,
-            CaptureMethod = options.CaptureMethod,
-            Expand = new() { "latest_charge.refunds" }
-        });
+            PaymentIntent paymentIntent = await _paymentIntents.CreateAsync(new()
+            {
+                Customer = payCustomer.ProcessorId,
+                Confirm = true,
+                Amount = options.Amount,
+                Currency = options.Currency,
+                CaptureMethod = options.CaptureMethod,
+                Expand = new() { "latest_charge", "latest_charge.refunds" },
+                PaymentMethod = string.IsNullOrEmpty(options.PaymentMethodId)
+                    ? payCustomer.DefaultPaymentMethod?.ProcessorId
+                    : options.PaymentMethodId,
+            });
 
-        return new PayChargeResult(
-            _mapper.Map(paymentIntent.LatestCharge),
-            new StripePaymentIntentPayment(paymentIntent));
+            return new PayChargeResult(
+                paymentIntent.LatestCharge is null ? null : _mapper.Map(paymentIntent.LatestCharge, invoice: null),
+                new StripePaymentIntentPayment(paymentIntent));
+        });
+    }
+
+    private async Task<TResult> TryAsync<TResult>(Func<Task<TResult>> value)
+    {
+        try
+        {
+            return await value.Invoke().WaitAsync(CancellationToken.None);
+        }
+        catch (StripeException exception)
+        {
+            throw new PayDotNetStripeException(PayDotNetStripeException.DefaultMessage, exception);
+        }
     }
 
     #endregion Charges API
 
     #region Checkout API
 
-    public async Task<Uri> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
+    public async Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
     {
         string successUrl = string.IsNullOrEmpty(options.SuccessUrl) ? _options.Value.RootUrl : options.SuccessUrl;
         string cancelUrl = string.IsNullOrEmpty(options.CancelUrl) ? _options.Value.RootUrl : options.CancelUrl;
 
-        var services = new SessionService();
-        Session session = await services.CreateAsync(new()
+        bool isSetup = options.Mode == "setup";
+        Session session = await _checkoutSession.CreateAsync(new()
         {
-            AllowPromotionCodes = options.AllowPromotionCodes,
-            Customer = payCustomer.ProcessorId,
             Mode = options.Mode,
+            Customer = payCustomer.ProcessorId,
+            ClientReferenceId = options.ClientReferenceId,
+
+            // Setup specific required fields.
+            AllowPromotionCodes = isSetup ? null : options.AllowPromotionCodes,
+            PaymentMethodTypes = isSetup ? _options.Value.Stripe.PaymentMethodTypes : null,
+
             SuccessUrl = $"{successUrl}?session_id={{CHECKOUT_SESSION_ID}}",
             CancelUrl = $"{cancelUrl}",
-            LineItems = options.LineItems.Select(li =>
+
+            // What are we checking out?
+            // TODO: move to mapper or seperate method.
+            LineItems = options.LineItems.None() ? null : options.LineItems.Select(li =>
             {
                 if (li.PriceData is null)
                 {
@@ -255,25 +300,32 @@ public class StripePaymentProcessorService : IPaymentProcessorService
                         },
                     };
                 }
-            }).ToList()
+            }).ToList(),
+
+            Expand = new() { "payment_intent", "setup_intent" },
         });
-        return new Uri(session.Url);
+
+        return new PayCheckoutResult(
+            session.Id,
+            new Uri(session.Url),
+            new Uri(session.SuccessUrl),
+            session.Mode);
     }
 
     #endregion Checkout API
 
     #region Refunds API
 
-    public async Task RefundAsync(PayCharge payCharge, PayChargeRefundOptions options)
+    public async Task<PayChargeRefund> RefundAsync(PayCharge payCharge, PayChargeRefundOptions options)
     {
         try
         {
-            RefundService refundService = new();
-            await refundService.CreateAsync(new()
+            Refund refund = await _refunds.CreateAsync(new()
             {
                 Charge = payCharge.ProccesorId,
                 Amount = options.Amount,
             });
+            return _mapper.Map(refund);
         }
         catch (StripeException exception)
         {
@@ -287,15 +339,17 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         try
         {
             CreditNoteService creditNoteService = new();
-            await creditNoteService.CreateAsync(new()
+            CreditNote creditNote = await creditNoteService.CreateAsync(new()
             {
+                Invoice = payCharge.InvoiceId,
                 RefundAmount = options.Amount,
                 Lines = new()
                 {
                     new CreditNoteLineOptions()
                     {
+                        Type = "custom_line_item",
                         Description = string.IsNullOrEmpty(options.Description) ? _options.Value.DefaultRefundDescription : options.Description,
-                        Amount = options.Amount,
+                        UnitAmount = options.Amount,
                         Quantity = 1,
                     }
                 },
@@ -310,9 +364,9 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     public async Task<ICollection<object>> GetCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge)
     {
         GuardInvoiceId(payCharge);
-        CreditNoteService creditNoteService = new();
-        StripeList<CreditNote> creditNotes = await creditNoteService.ListAsync(new()
+        StripeList<CreditNote> creditNotes = await _creditNotes.ListAsync(new()
         {
+            Invoice = payCharge.InvoiceId,
             Customer = payCustomer.ProcessorId
         });
         return new List<object> { creditNotes };

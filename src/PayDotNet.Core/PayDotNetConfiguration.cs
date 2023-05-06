@@ -23,4 +23,9 @@ public class PayDotNetStripeConfiguration
     public string? PublicKey { get; set; }
 
     public string PaymentBehaviour { get; set; } = DefaultPaymentBehaviour;
+
+    public List<string> PaymentMethodTypes { get; set; } = new()
+    {
+        "card", "ideal", "link"
+    };
 }

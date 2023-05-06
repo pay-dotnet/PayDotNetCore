@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using PayDotNet.Core;
 using PayDotNet.Core.Services;
 using PayDotNet.Core.Stripe;
@@ -25,7 +26,8 @@ public static class ServiceCollectionExtension
         // Allow integrators to customize their own webhooks or PaymentProcessor specific configuration.
         configureOptionsAction?.Invoke(options);
 
-        builder
+        builder.Services
+            .ConfigureStripeClient()
             .ConfigureStripeServices()
             .ConfigureStripeWebhookServices(options)
             .ConfigureWebhookController();
@@ -91,37 +93,53 @@ public static class ServiceCollectionExtension
         return builder;
     }
 
-    private static PayDotNetBuilder ConfigureStripeServices(this PayDotNetBuilder builder)
+    public static IServiceCollection ConfigureStripeClient(this IServiceCollection services)
     {
+        // Add HttpClient.
+        services.AddHttpClient<StripeClient>();
+
         // Stripe API configuration.
-        StripeConfiguration.ApiKey = builder.PayDotNetConfiguration.Stripe.ApiKey;
-        StripeConfiguration.AppInfo = new()
-        {
-            Name = "PayDotNetCore",
-            PartnerId = "TODO",
-            Url = "https://github.com/pay-dotnet/PayDotNetCore"
-        };
-        builder.Services.AddSingleton<IPaymentProcessorService, StripePaymentProcessorService>();
-        return builder;
+        services.AddSingleton<IStripeClient, StripeClient>(CreateStripeClient);
+        return services;
     }
 
-    private static PayDotNetBuilder ConfigureStripeWebhookServices(this PayDotNetBuilder builder, PaymentProcessorOptionsBuilder<IStripeWebhookHandler> options)
+    private static StripeClient CreateStripeClient(IServiceProvider serviceProvider)
+    {
+        // HttpClient
+        IHttpClientFactory httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+        HttpClient httpClient = httpClientFactory.CreateClient(nameof(StripeClient));
+        SystemNetHttpClient stripeHttpClient = new(httpClient, appInfo: StripePaymentProcessorService.AppInfo);
+
+        // Options
+        IOptions<PayDotNetConfiguration> options = serviceProvider.GetRequiredService<IOptions<PayDotNetConfiguration>>();
+
+        return new StripeClient(apiKey: options.Value.Stripe.ApiKey, httpClient: stripeHttpClient);
+    }
+
+    public static IServiceCollection ConfigureStripeServices(this IServiceCollection services)
+    {
+        services.AddSingleton<StripePaymentProcessorService>();
+        services.AddSingleton<IPaymentProcessorService>(sp => sp.GetRequiredService<StripePaymentProcessorService>());
+        return services;
+    }
+
+    private static IServiceCollection ConfigureStripeWebhookServices(this IServiceCollection services, PaymentProcessorOptionsBuilder<IStripeWebhookHandler> options)
     {
         WebhookRouterTable routingTable = options.Webhooks.Build();
-        options.Webhooks.Configure(builder.Services);
-        builder.Services.AddSingleton<WebhookDispatcher>(serviceProvider =>
+        options.Webhooks.Configure(services);
+        services.AddSingleton<WebhookDispatcher>(serviceProvider =>
         {
             return new StripeWebhookDispatcher(routingTable, serviceProvider, serviceProvider.GetRequiredService<ILogger<StripeWebhookDispatcher>>());
         });
 
-        return builder;
+        return services;
     }
 
-    private static PayDotNetBuilder ConfigureWebhookController(this PayDotNetBuilder builder)
+    private static IServiceCollection ConfigureWebhookController(this IServiceCollection services)
     {
-        builder.Services
+        services
             .AddMvcCore()
             .AddApplicationPart(typeof(StripePaymentProcessorService).Assembly);
-        return builder;
+        return services;
     }
 }

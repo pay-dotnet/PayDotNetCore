@@ -28,8 +28,10 @@ public class ChargeManager : IChargeManager
     public async Task<IPayment> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
     {
         PayChargeResult result = await _paymentProcessorService.ChargeAsync(payCustomer, options);
-
-        await SynchroniseAsync(payCustomer, result.PayCharge.ProccesorId, result.PayCharge);
+        if (result.PayCharge is not null && result.Payment.IsSucceeded())
+        {
+            await SynchroniseAsync(payCustomer, result.PayCharge.ProccesorId, result.PayCharge);
+        }
 
         return result.Payment;
     }
