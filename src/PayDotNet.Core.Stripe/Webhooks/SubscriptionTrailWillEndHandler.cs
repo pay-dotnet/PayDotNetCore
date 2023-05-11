@@ -8,13 +8,16 @@ public class SubscriptionTrailWillEndHandler : IStripeWebhookHandler
 {
     private readonly ICustomerManager _customerManager;
     private readonly ISubscriptionManager _subscriptionManager;
+    private readonly IPayNotificationService _notificationService;
 
     public SubscriptionTrailWillEndHandler(
         ICustomerManager customerManager,
-        ISubscriptionManager subscriptionManager)
+        ISubscriptionManager subscriptionManager,
+        IPayNotificationService notificationService)
     {
         _customerManager = customerManager;
         _subscriptionManager = subscriptionManager;
+        _notificationService = notificationService;
     }
 
     public async Task HandleAsync(Event @event)
@@ -31,11 +34,11 @@ public class SubscriptionTrailWillEndHandler : IStripeWebhookHandler
             await _subscriptionManager.SynchroniseAsync(payCustomer, subscription.Id);
             if (paySubscription.IsOnTrial())
             {
-                // TODO: Send email for trial will end
+                await _notificationService.OnSubscriptionTrialEndingAsync(payCustomer, paySubscription);
             }
             else if (paySubscription.IsTrialEnded())
             {
-                // TODO: Send email for trial has ended.
+                await _notificationService.OnSubscriptionTrialEndedAsync(payCustomer, paySubscription);
             }
         }
     }

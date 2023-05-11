@@ -64,17 +64,17 @@ public class ChargeManager : IChargeManager
     }
 
     /// <inheritdoc/>
-    public virtual async Task SynchroniseAsync(PayCustomer payCustomer, string processorId)
+    public virtual async Task<PayCharge?> SynchroniseAsync(PayCustomer payCustomer, string processorId)
     {
         PayCharge? payCharge = await _paymentProcessorService.GetChargeAsync(payCustomer, processorId);
         if (payCharge is null)
         {
-            return;
+            return null;
         }
-        await SynchroniseAsync(payCustomer, payCharge);
+        return await SynchroniseAsync(payCustomer, payCharge);
     }
 
-    private async Task SynchroniseAsync(PayCustomer payCustomer, PayCharge payCharge)
+    private async Task<PayCharge> SynchroniseAsync(PayCustomer payCustomer, PayCharge payCharge)
     {
         // Fix link to Pay Customer
         payCharge.CustomerId = payCustomer.Id;
@@ -88,5 +88,6 @@ public class ChargeManager : IChargeManager
         {
             await _chargeStore.CreateAsync(payCharge);
         }
+        return payCharge;
     }
 }

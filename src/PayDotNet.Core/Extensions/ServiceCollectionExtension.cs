@@ -22,6 +22,7 @@ public static class ServiceCollectionExtension
             .AddScoped<ICheckoutManager, CheckoutManager>()
             .AddSingleton<CompositePaymentProcessorService>()
             .AddScoped<IPayCustomerEmailResolverService, PayDefaultCustomerEmailResolverService>()
+            .AddScoped<IPayNotificationService, PayNullNotificationService>()
             .AddHttpContextAccessor();
 
         // Webhook infrastructure registration

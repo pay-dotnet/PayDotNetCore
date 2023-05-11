@@ -8,13 +8,16 @@ public class PaymentActionRequiredHandler : IStripeWebhookHandler
 {
     private readonly ICustomerManager _customerManager;
     private readonly ISubscriptionManager _subscriptionManager;
+    private readonly IPayNotificationService _notificationService;
 
     public PaymentActionRequiredHandler(
         ICustomerManager customerManager,
-        ISubscriptionManager subscriptionManager)
+        ISubscriptionManager subscriptionManager,
+        IPayNotificationService notificationService)
     {
         _customerManager = customerManager;
         _subscriptionManager = subscriptionManager;
+        _notificationService = notificationService;
     }
 
     public async Task HandleAsync(Event @event)
@@ -28,7 +31,7 @@ public class PaymentActionRequiredHandler : IStripeWebhookHandler
                 return;
             }
 
-            // TODO: decide on sending emails
+            await _notificationService.OnPaymentActionRequiredAsync(payCustomer, paySubscription, null);
         }
     }
 }

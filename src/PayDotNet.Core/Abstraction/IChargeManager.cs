@@ -9,8 +9,8 @@ public interface IChargeManager
     /// </summary>
     /// <param name="payCustomer">The customer.</param>
     /// <param name="processorId">The payment processor id for the charge.</param>
-    /// <returns>An awaitable task.</returns>
-    Task SynchroniseAsync(PayCustomer payCustomer, string processorId);
+    /// <returns>The synchronised pay charge.</returns>
+    Task<PayCharge?> SynchroniseAsync(PayCustomer payCustomer, string processorId);
 
     Task<PayCharge?> GetAsync(string processorId);
 

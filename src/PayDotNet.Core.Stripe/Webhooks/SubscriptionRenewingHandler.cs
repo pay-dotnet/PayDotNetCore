@@ -14,13 +14,16 @@ public class SubscriptionRenewingHandler : IStripeWebhookHandler
 {
     private readonly ICustomerManager _customerManager;
     private readonly ISubscriptionManager _subscriptionManager;
+    private readonly IPayNotificationService _notificationService;
 
     public SubscriptionRenewingHandler(
         ICustomerManager customerManager,
-        ISubscriptionManager subscriptionManager)
+        ISubscriptionManager subscriptionManager,
+        IPayNotificationService notificationService)
     {
         _customerManager = customerManager;
         _subscriptionManager = subscriptionManager;
+        _notificationService = notificationService;
     }
 
     public async Task HandleAsync(Event @event)
@@ -34,8 +37,7 @@ public class SubscriptionRenewingHandler : IStripeWebhookHandler
                 return;
             }
 
-            Price price = invoice.Lines.Data.First().Price;
-            // TODO: Send email for subscription renewing.
+            await _notificationService.OnSubscriptionRenewingAsync(payCustomer, paySubscription);
         }
     }
 }

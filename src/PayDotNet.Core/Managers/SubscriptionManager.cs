@@ -117,7 +117,7 @@ public class SubscriptionManager : ISubscriptionManager
         PayCharge? charge = result.PaySubscription.Charges.LastOrDefault();
         if (charge is not null && charge.Status == PayStatus.Succeeded)
         {
-            await _chargeManager.SynchroniseAsync(payCustomer, charge.ProcessorId);
+            PayCharge? _ = await _chargeManager.SynchroniseAsync(payCustomer, charge.ProcessorId);
         }
     }
 }

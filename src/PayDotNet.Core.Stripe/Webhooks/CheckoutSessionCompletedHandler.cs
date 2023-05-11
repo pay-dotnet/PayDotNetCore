@@ -34,7 +34,7 @@ public class CheckoutSessionCompletedHandler : IStripeWebhookHandler
 
             if (@event.Data.Object is PaymentIntent paymentIntent)
             {
-                await _chargeManager.SynchroniseAsync(payCustomer, paymentIntent.LatestChargeId);
+                PayCharge? _ = await _chargeManager.SynchroniseAsync(payCustomer, paymentIntent.LatestChargeId);
             }
 
             if (@event.Data.Object is Subscription subscription)
