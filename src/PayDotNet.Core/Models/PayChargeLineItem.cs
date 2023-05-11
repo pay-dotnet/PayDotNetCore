@@ -10,4 +10,6 @@ public class PayChargeLineItem
     public string PriceId { get; set; }
     public int Quantity { get; set; }
     public int? UnitAmount { get; set; }
+    public int Amount { get; set; }
+    public virtual ICollection<string> Discounts { get; set; } = new List<string>();
 }

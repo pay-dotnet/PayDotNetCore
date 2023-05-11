@@ -28,8 +28,7 @@ public class SubscriptionTrailWillEndHandler : IStripeWebhookHandler
                 return;
             }
 
-            await _subscriptionManager.SynchroniseAsync(subscription.Id, null, payCustomer);
-
+            await _subscriptionManager.SynchroniseAsync(payCustomer, subscription.Id);
             if (paySubscription.IsOnTrial())
             {
                 // TODO: Send email for trial will end

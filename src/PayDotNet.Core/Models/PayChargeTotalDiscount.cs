@@ -1,5 +1,5 @@
 ﻿namespace PayDotNet.Core.Models;
 
-public class PayChargeDiscount
+public class PayChargeTotalDiscount
 {
 }

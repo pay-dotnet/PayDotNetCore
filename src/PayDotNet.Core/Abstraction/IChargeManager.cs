@@ -4,15 +4,28 @@ namespace PayDotNet.Core.Abstraction;
 
 public interface IChargeManager
 {
-    Task SynchroniseAsync(string processor, string processorId, string customerProcessorId, int attempt = 0, int retries = 1);
+    /// <summary>
+    /// Synchronises the charge to the store.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <param name="processorId">The payment processor id for the charge.</param>
+    /// <returns>An awaitable task.</returns>
+    Task SynchroniseAsync(PayCustomer payCustomer, string processorId);
 
     Task<PayCharge?> GetAsync(string processorId);
 
-    Task<IPayment> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options);
+    /// <summary>
+    /// Charges the customer with an amount and saves it into the store.
+    /// The payment indicates if the charge was succesful or additional actions are required in case of SCA.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <param name="options">The options.</param>
+    /// <returns>The result.</returns>
+    Task<PayChargeResult> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options);
 
     Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options);
 
     Task RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options);
 
-    Task<ICollection<PayChargeRefund>> GetCreditNotesAsync(PayCharge payCharge);
+    Task<ICollection<object>> GetCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge);
 }

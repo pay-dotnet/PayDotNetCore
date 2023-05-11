@@ -59,7 +59,7 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
         await SystemUnderTest.RefundAsync(payCustomer, result.PayCharge, new(5_00, "Refund"));
 
         // Assert #2
-        PayCharge payCharge = await SystemUnderTest.GetChargeAsync(payCustomer, result.PayCharge.ProccesorId);
+        PayCharge payCharge = await SystemUnderTest.GetChargeAsync(payCustomer, result.PayCharge.ProcessorId);
         payCharge.Should().NotBeNull();
         payCharge.Refunds.Should().NotBeEmpty();
         payCharge.Refunds.Last().Amount.Should().Be(5_00);
@@ -85,7 +85,7 @@ public class RefundStripeTest : StripeTestBase<StripePaymentProcessorService>
         await SystemUnderTest.RefundAsync(payCustomer, result.PayCharge, new(5_00, "Refund"));
 
         // Assert #2
-        PayCharge payCharge = await SystemUnderTest.GetChargeAsync(payCustomer, result.PayCharge.ProccesorId);
+        PayCharge payCharge = await SystemUnderTest.GetChargeAsync(payCustomer, result.PayCharge.ProcessorId);
         payCharge.Should().NotBeNull();
         payCharge.Refunds.Should().NotBeEmpty();
         payCharge.Refunds.First().Amount.Should().Be(15_00);

@@ -30,12 +30,12 @@ public class CustomerUpdatedHandler : IStripeWebhookHandler
             if (!string.IsNullOrEmpty(customer.InvoiceSettings?.DefaultPaymentMethodId))
             {
                 // Sync default card
-                await _paymentMethodManager.SynchroniseAsync(customer.InvoiceSettings.DefaultPaymentMethodId);
+                await _paymentMethodManager.SynchroniseAsync(payCustomer, customer.InvoiceSettings.DefaultPaymentMethodId);
             }
             else
             {
                 // No default payment method set
-                await _paymentMethodManager.UpdateAllAsync(isDefault: false);
+                await _paymentMethodManager.UpdateAllAsync(payCustomer, isDefault: false);
             }
         }
     }

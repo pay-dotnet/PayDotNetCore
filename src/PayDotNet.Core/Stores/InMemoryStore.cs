@@ -43,12 +43,68 @@ internal class InMemoryStore :
         return Task.CompletedTask;
     }
 
+    public Task DeleteAsync(PayCustomer model)
+    {
+        Data.Remove(model.Id);
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteAllAsync(ICollection<PayCustomer> models)
+    {
+        foreach (var model in models)
+        {
+            Data.Remove(model.Id);
+        }
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteAsync(PayCharge model)
+    {
+        Data[model.CustomerId].Charges.Remove(model);
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteAllAsync(ICollection<PayCharge> models)
+    {
+        foreach (var model in models)
+        {
+            Data[model.CustomerId].Charges.Remove(model);
+        }
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteAsync(PayPaymentMethod model)
+    {
+        Data[model.CustomerId].PaymentMethods.Remove(model);
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteAllAsync(ICollection<PayPaymentMethod> models)
+    {
+        foreach (var model in models)
+        {
+            Data[model.CustomerId].PaymentMethods.Remove(model);
+        }
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteAsync(PaySubscription model)
+    {
+        Data[model.CustomerId].Subscriptions.Remove(model);
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteAllAsync(ICollection<PaySubscription> models)
+    {
+        return Task.CompletedTask;
+    }
+
     public Task UpdateAsync(PaySubscription model)
     {
         return Task.CompletedTask;
     }
 
-    public Task UpdateAsync(ICollection<PaySubscription> models)
+    public Task UpdateAllAsync(ICollection<PaySubscription> models)
     {
         return Task.CompletedTask;
     }
@@ -58,7 +114,7 @@ internal class InMemoryStore :
         return Task.CompletedTask;
     }
 
-    public Task UpdateAsync(ICollection<PayCustomer> models)
+    public Task UpdateAllAsync(ICollection<PayCustomer> models)
     {
         return Task.CompletedTask;
     }
@@ -68,7 +124,7 @@ internal class InMemoryStore :
         return Task.CompletedTask;
     }
 
-    public Task UpdateAsync(ICollection<PayPaymentMethod> models)
+    public Task UpdateAllAsync(ICollection<PayPaymentMethod> models)
     {
         return Task.CompletedTask;
     }
@@ -78,7 +134,7 @@ internal class InMemoryStore :
         return Task.CompletedTask;
     }
 
-    public Task UpdateAsync(ICollection<PayCharge> models)
+    public Task UpdateAllAsync(ICollection<PayCharge> models)
     {
         return Task.CompletedTask;
     }

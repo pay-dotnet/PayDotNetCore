@@ -108,6 +108,25 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
 
         // Assert
         payChargeResult.Payment.IsSucceeded().Should().BeTrue();
+        payChargeResult.PayCharge.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task stripe_can_charge_customer_without_attached_payment_method()
+    {
+        // Arrange
+        PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
+
+        PayCustomer payCustomer = NewCustomer;
+        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+
+        // Act
+        PayChargeResult payChargeResult =
+            await SystemUnderTest.ChargeAsync(payCustomer, new PayChargeOptions(29_00, "eur", PaymentMethodId: paymentMethod.Id));
+
+        // Assert
+        payChargeResult.Payment.IsSucceeded().Should().BeTrue();
+        payChargeResult.PayCharge.Should().NotBeNull();
     }
 
     [Fact]
@@ -141,7 +160,7 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
             await SystemUnderTest.ChargeAsync(payCustomer, new PayChargeOptions(29_00, "eur", PaymentMethodId: payPaymentMethod.ProcessorId));
 
         // Assert
-        result.PayCharge.Should().BeNull("Because the charge didn't exceed and the payment will indicate an action is required");
+        result.PayCharge.Should().BeNull("Because the charge didn't succeed and the payment will indicate an action is required");
         result.Payment.IsSucceeded().Should().BeFalse();
         result.Payment.RequiresAction().Should().BeTrue();
     }

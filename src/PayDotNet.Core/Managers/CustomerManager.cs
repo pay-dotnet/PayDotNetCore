@@ -34,9 +34,9 @@ public class CustomerManager : ICustomerManager
         return customer;
     }
 
-    public virtual async Task<PayCustomer> GetOrCreateCustomerAsync(string email, string processorName)
+    public virtual async Task<PayCustomer> GetOrCreateCustomerAsync(string processorName, string email)
     {
-        PayCustomer? customer = await GetOrCreateCustomerForEmailAsync(email, processorName);
+        PayCustomer? customer = await GetOrCreateCustomerForEmailAsync(processorName, email);
         await InitializeCustomerAsync(customer);
 
         // TODO:
@@ -45,7 +45,7 @@ public class CustomerManager : ICustomerManager
         return customer;
     }
 
-    public virtual Task<PayCustomer?> FindByEmailAsync(string email, string processorName)
+    public virtual Task<PayCustomer?> FindByEmailAsync(string processorName, string email)
     {
         return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Email == email && c.Processor == processorName));
     }
@@ -60,7 +60,7 @@ public class CustomerManager : ICustomerManager
         return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Processor == processorName && c.ProcessorId == processorId));
     }
 
-    private async Task<PayCustomer?> GetOrCreateCustomerForEmailAsync(string email, string processorName)
+    private async Task<PayCustomer> GetOrCreateCustomerForEmailAsync(string processorName, string email)
     {
         PayCustomer? customer = _customerStore.Customers.FirstOrDefault(c => c.Email == email && c.Processor == processorName);
         if (customer == null)

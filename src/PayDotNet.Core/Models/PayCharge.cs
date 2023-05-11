@@ -13,9 +13,11 @@ public class PayCharge
 
     public string? SubscriptionId { get; set; }
 
-    public string ProccesorId { get; set; }
+    public string ProcessorId { get; set; }
 
-    public string Brand { get; set; }
+    public string? Bank { get; set; }
+
+    public string? Brand { get; set; }
 
     public int Amount { get; set; }
 
@@ -27,9 +29,9 @@ public class PayCharge
 
     public int AmountCaptured { get; set; }
 
-    public int ExpirationMonth { get; set; }
+    public string? ExpirationMonth { get; set; }
 
-    public int ExpirationYear { get; set; }
+    public string? ExpirationYear { get; set; }
 
     public string PaymentIntentId { get; set; }
 
@@ -37,7 +39,7 @@ public class PayCharge
 
     public string ReceiptUrl { get; set; }
 
-    public string Last4 { get; set; }
+    public string? Last4 { get; set; }
 
     public Dictionary<string, string> Metadata { get; set; }
 
@@ -51,9 +53,11 @@ public class PayCharge
 
     public virtual ICollection<PayChargeLineItem> LineItems { get; set; } = new List<PayChargeLineItem>();
 
-    public virtual ICollection<PayChargeDiscount> Discounts { get; set; } = new List<PayChargeDiscount>();
+    public virtual ICollection<string> Discounts { get; set; } = new List<string>();
 
-    public virtual ICollection<PayChargeTaxAmount> TaxAmounts { get; set; } = new List<PayChargeTaxAmount>();
+    public virtual ICollection<PayChargeTotalTaxAmount> TotalTaxAmounts { get; set; } = new List<PayChargeTotalTaxAmount>();
+
+    public virtual ICollection<PayChargeTotalDiscount> TotalDiscountAmounts { get; set; } = new List<PayChargeTotalDiscount>();
 
     public virtual ICollection<PayChargeRefund> Refunds { get; set; } = new List<PayChargeRefund>();
     public DateTime PeriodEnd { get; set; }

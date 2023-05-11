@@ -1,5 +1,8 @@
 ﻿namespace PayDotNet.Core.Models;
 
-public class PayChargeTaxAmount
+public class PayChargeTotalTaxAmount
 {
+    public int Amount { get; set; }
+
+    public string Description { get; set; }
 }

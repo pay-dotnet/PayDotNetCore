@@ -1,14 +1,19 @@
 ﻿using PayDotNet.Core.Abstraction;
+using PayDotNet.Core.Models;
 using Stripe;
 
 namespace PayDotNet.Core.Stripe.Webhooks;
 
 public class PaymentMethodAttachedHandler : IStripeWebhookHandler
 {
+    private readonly ICustomerManager _customerManager;
     private readonly IPaymentMethodManager _paymentMethodManager;
 
-    public PaymentMethodAttachedHandler(IPaymentMethodManager paymentMethodManager)
+    public PaymentMethodAttachedHandler(
+        ICustomerManager customerManager,
+        IPaymentMethodManager paymentMethodManager)
     {
+        _customerManager = customerManager;
         _paymentMethodManager = paymentMethodManager;
     }
 
@@ -16,7 +21,8 @@ public class PaymentMethodAttachedHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is PaymentMethod paymentMethod)
         {
-            await _paymentMethodManager.SynchroniseAsync(paymentMethod.Id);
+            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, paymentMethod.CustomerId);
+            await _paymentMethodManager.SynchroniseAsync(payCustomer, paymentMethod.Id);
         }
     }
 }

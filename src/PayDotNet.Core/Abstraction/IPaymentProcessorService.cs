@@ -14,6 +14,14 @@ public interface IPaymentProcessorService
 
     #region Payment method API
 
+    Task<PayPaymentMethod?> GetPaymentMethodAsync(PayCustomer payCustomer, string processorId);
+
+    /// <summary>
+    /// Attaches the payment method to the customer in the PaymentProcessor.
+    /// </summary>
+    /// <param name="payCustomer">The pay customer for which this operation should take place.</param>
+    /// <param name="options">The options.</param>
+    /// <returns>The payment method.</returns>
     Task<PayPaymentMethod> AttachPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options);
 
     #endregion Payment method API
@@ -40,12 +48,25 @@ public interface IPaymentProcessorService
 
     #region Charges API
 
-    Task<PayCharge> GetChargeAsync(PayCustomer payCustomer, string processorId);
+    /// <summary>
+    /// Retrieves the charge based on the customer and processor id.
+    /// If the customer is null, it should return a null.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <param name="processorId">The payment processor id for the charge.</param>
+    /// <returns>The pay charge if found.</returns>
+    Task<PayCharge?> GetChargeAsync(PayCustomer payCustomer, string processorId);
 
     Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options);
 
     Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId);
 
+    /// <summary>
+    /// Charges the customer an amount. Returns a result that can be used to validate if payment was successful or an action is required.
+    /// </summary>
+    /// <param name="payCustomer">The pay customer for which this operation should take place.</param>
+    /// <param name="options">The options.</param>
+    /// <returns>The charge result.</returns>
     Task<PayChargeResult> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options);
 
     #endregion Charges API

@@ -6,16 +6,13 @@ namespace PayDotNet.Core.Managers;
 
 public class ChargeManager : IChargeManager
 {
-    private readonly ICustomerManager _customerManager;
     private readonly IChargeStore _chargeStore;
-    private readonly CompositePaymentProcessorService _paymentProcessorService;
+    private readonly IPaymentProcessorService _paymentProcessorService;
 
     public ChargeManager(
-        ICustomerManager customerManager,
         IChargeStore chargeStore,
         CompositePaymentProcessorService paymentProcessorService)
     {
-        _customerManager = customerManager;
         _chargeStore = chargeStore;
         _paymentProcessorService = paymentProcessorService;
     }
@@ -25,30 +22,30 @@ public class ChargeManager : IChargeManager
         return await _paymentProcessorService.CaptureAsync(payCustomer, payCharge, options);
     }
 
-    public virtual async Task<IPayment> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
+    /// <inheritdoc/>
+    public virtual async Task<PayChargeResult> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
     {
         PayChargeResult result = await _paymentProcessorService.ChargeAsync(payCustomer, options);
         if (result.PayCharge is not null && result.Payment.IsSucceeded())
         {
-            await SynchroniseAsync(payCustomer, result.PayCharge.ProccesorId, result.PayCharge);
+            await SynchroniseAsync(payCustomer, result.PayCharge);
         }
 
-        return result.Payment;
+        return result;
     }
 
     public virtual Task<PayCharge?> GetAsync(string processorId)
     {
-        return Task.FromResult(_chargeStore.Charges.FirstOrDefault(c => c.ProccesorId == processorId));
+        return Task.FromResult(_chargeStore.Charges.FirstOrDefault(c => c.ProcessorId == processorId));
     }
 
-    public virtual Task<ICollection<PayChargeRefund>> GetCreditNotesAsync(PayCharge payCharge)
+    public virtual Task<ICollection<object>> GetCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge)
     {
         if (string.IsNullOrEmpty(payCharge.InvoiceId))
         {
             throw new PayDotNetException("No InvoiceId on PayCharge");
         }
-        // TODO:
-        throw new NotImplementedException();
+        return _paymentProcessorService.GetCreditNotesAsync(payCustomer, payCharge);
     }
 
     /// <inheritdoc/>
@@ -66,30 +63,30 @@ public class ChargeManager : IChargeManager
         }
     }
 
-    public virtual async Task SynchroniseAsync(string processor, string processorId, string customerProcessorId, int attempt = 0, int retries = 1)
+    /// <inheritdoc/>
+    public virtual async Task SynchroniseAsync(PayCustomer payCustomer, string processorId)
     {
-        PayCustomer payCustomer = await _customerManager.FindByIdAsync(processor, customerProcessorId);
-        PayCharge payCharge = await _paymentProcessorService.GetChargeAsync(payCustomer, processorId);
-        await SynchroniseAsync(payCustomer, processorId, payCharge);
-    }
-
-    private async Task SynchroniseAsync(PayCustomer payCustomer, string processorId, PayCharge? @object)
-    {
-        @object ??= await _paymentProcessorService.GetChargeAsync(payCustomer, processorId);
-        if (@object == null)
+        PayCharge? payCharge = await _paymentProcessorService.GetChargeAsync(payCustomer, processorId);
+        if (payCharge is null)
         {
             return;
         }
+        await SynchroniseAsync(payCustomer, payCharge);
+    }
 
-        PayCharge? existingCharge = _chargeStore.Charges.FirstOrDefault(s => s.ProccesorId == processorId);
-        @object.CustomerId = payCustomer.Id;
-        if (existingCharge is null)
+    private async Task SynchroniseAsync(PayCustomer payCustomer, PayCharge payCharge)
+    {
+        // Fix link to Pay Customer
+        payCharge.CustomerId = payCustomer.Id;
+
+        PayCharge? existingCharge = _chargeStore.Charges.FirstOrDefault(s => s.ProcessorId == payCharge.ProcessorId);
+        if (existingCharge is not null)
         {
-            await _chargeStore.CreateAsync(@object);
+            await _chargeStore.UpdateAsync(payCharge);
         }
         else
         {
-            await _chargeStore.UpdateAsync(@object);
+            await _chargeStore.CreateAsync(payCharge);
         }
     }
 }

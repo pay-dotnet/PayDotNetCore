@@ -41,7 +41,7 @@ public class BillableManager : IBillableManager
     /// <inheritdoc/>
     public virtual async Task<PayCustomer> GetOrCreateCustomerAsync(string email, PayCustomerOptions options)
     {
-        PayCustomer payCustomer = await _customerManager.GetOrCreateCustomerAsync(email, options.ProcessorName);
+        PayCustomer payCustomer = await _customerManager.GetOrCreateCustomerAsync(options.ProcessorName, email);
         if (!string.IsNullOrEmpty(options.PaymentMethodId))
         {
             await _paymentMethodManager.AddPaymentMethodAsync(payCustomer, new(options.PaymentMethodId, IsDefault: true));
@@ -72,19 +72,21 @@ public class BillableManager : IBillableManager
     {
         if (!string.IsNullOrEmpty(options.PaymentMethodId))
         {
+            // Make sure the provided payment method becomes the new default.
             await _paymentMethodManager.AddPaymentMethodAsync(payCustomer, new(options.PaymentMethodId, IsDefault: true));
         }
 
-        return await _chargeManager.ChargeAsync(payCustomer, options);
+        PayChargeResult result = await _chargeManager.ChargeAsync(payCustomer, options);
+
+        // Let caller decide how to handle flow.
+        return result.Payment;
     }
 
-    /// <inheritdoc/>
     public virtual Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
     {
         return _checkoutManager.CheckoutAsync(payCustomer, options);
     }
 
-    /// <inheritdoc/>
     public virtual Task<PayCheckoutResult> CheckoutChargeAsync(PayCustomer payCustomer, PayCheckoutChargeOptions options)
     {
         return CheckoutAsync(payCustomer, new()
@@ -97,7 +99,6 @@ public class BillableManager : IBillableManager
         });
     }
 
-    /// <inheritdoc/>
     public virtual Task AuthorizeAsync(PayCustomer payCustomer, PayAuthorizeChargeOptions options)
     {
         return ChargeAsync(payCustomer, options);

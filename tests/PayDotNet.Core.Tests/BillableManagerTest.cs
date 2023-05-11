@@ -43,7 +43,7 @@ public class BillableManagerTest : TestBase<BillableManager>
             .Returns(Task.CompletedTask);
         Mocks<IPaymentMethodManager>().Setup(m => m.AddPaymentMethodAsync(It.IsAny<PayCustomer>(), new PayPaymentMethodOptions("payment_id", true)))
             .ReturnsAsync(newCustomer.PaymentMethods.First());
-        Mocks<ICustomerManager>().Setup(m => m.FindByEmailAsync(newCustomer.Email, "stripe"))
+        Mocks<ICustomerManager>().Setup(m => m.FindByEmailAsync(PaymentProcessors.Stripe, newCustomer.Email))
             .ReturnsAsync(newCustomer);
 
         // Mocks for Step 2

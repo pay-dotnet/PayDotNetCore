@@ -1,14 +1,19 @@
 ﻿using PayDotNet.Core.Abstraction;
+using PayDotNet.Core.Models;
 using Stripe;
 
 namespace PayDotNet.Core.Stripe.Webhooks;
 
 public class ChargeRefundedHandler : IStripeWebhookHandler
 {
+    private readonly ICustomerManager _customerManager;
     private readonly IChargeManager _chargeManager;
 
-    public ChargeRefundedHandler(IChargeManager chargeManager)
+    public ChargeRefundedHandler(
+        ICustomerManager customerManager,
+        IChargeManager chargeManager)
     {
+        _customerManager = customerManager;
         _chargeManager = chargeManager;
     }
 
@@ -16,7 +21,8 @@ public class ChargeRefundedHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is Charge charge)
         {
-            await _chargeManager.SynchroniseAsync(PaymentProcessors.Stripe, charge.Id, charge.CustomerId);
+            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, charge.CustomerId);
+            await _chargeManager.SynchroniseAsync(payCustomer, charge.Id);
         }
 
         // TODO: decide what to do with emails;

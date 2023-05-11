@@ -13,7 +13,7 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
     {
         if (!_paymentProcessorServices.ContainsKey(payCustomer.Processor))
         {
-            throw new PayDotNetException($"A {nameof(IPaymentProcessorService)} for the processor '{payCustomer.Processor}' was not registered");
+            throw new PayDotNetException($"A implementation of {nameof(IPaymentProcessorService)} for the processor '{payCustomer.Processor}' was not registered");
         }
     }
 
@@ -106,5 +106,11 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
     {
         GuardPaymentProcessorExists(payCustomer);
         return _paymentProcessorServices[payCustomer.Processor].RefundAsync(payCustomer, payCharge, options);
+    }
+
+    public Task<PayPaymentMethod?> GetPaymentMethodAsync(PayCustomer payCustomer, string processorId)
+    {
+        GuardPaymentProcessorExists(payCustomer);
+        return _paymentProcessorServices[payCustomer.Processor].GetPaymentMethodAsync(payCustomer, processorId);
     }
 }

@@ -5,10 +5,14 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 
 public class PaymentMethodDetachedHandler : IStripeWebhookHandler
 {
+    private readonly ICustomerManager _customerManager;
     private readonly IPaymentMethodManager _paymentMethodManager;
 
-    public PaymentMethodDetachedHandler(IPaymentMethodManager paymentMethodManager)
+    public PaymentMethodDetachedHandler(
+        ICustomerManager customerManager,
+        IPaymentMethodManager paymentMethodManager)
     {
+        _customerManager = customerManager;
         _paymentMethodManager = paymentMethodManager;
     }
 

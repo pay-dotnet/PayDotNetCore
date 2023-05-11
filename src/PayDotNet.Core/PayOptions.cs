@@ -28,4 +28,9 @@ public record PayAuthorizeChargeOptions(int Amount, string Currency, string? Pay
 /// <param name="RefundApplicationFee"></param>
 public record PayChargeRefundOptions(int Amount, string? Description = null, bool RefundApplicationFee = false);
 
+/// <summary>
+///
+/// </summary>
+/// <param name="PaymentMethodId"></param>
+/// <param name="IsDefault"></param>
 public record PayPaymentMethodOptions(string PaymentMethodId, bool IsDefault);

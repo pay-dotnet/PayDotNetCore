@@ -1,4 +1,5 @@
 ﻿using PayDotNet.Core.Abstraction;
+using PayDotNet.Core.Models;
 using Stripe;
 
 namespace PayDotNet.Core.Stripe.Webhooks;
@@ -11,10 +12,14 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 /// </summary>
 public class PaymentIntentSucceededHandler : IStripeWebhookHandler
 {
+    private readonly ICustomerManager _customerManager;
     private readonly IChargeManager _chargeManager;
 
-    public PaymentIntentSucceededHandler(IChargeManager chargeManager)
+    public PaymentIntentSucceededHandler(
+        ICustomerManager customerManager,
+        IChargeManager chargeManager)
     {
+        _customerManager = customerManager;
         _chargeManager = chargeManager;
     }
 
@@ -26,6 +31,7 @@ public class PaymentIntentSucceededHandler : IStripeWebhookHandler
             return;
         }
 
-        await _chargeManager.SynchroniseAsync(PaymentProcessors.Stripe, paymentIntent.LatestChargeId, paymentIntent.CustomerId);
+        PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, paymentIntent.CustomerId);
+        await _chargeManager.SynchroniseAsync(payCustomer, paymentIntent.LatestChargeId);
     }
 }

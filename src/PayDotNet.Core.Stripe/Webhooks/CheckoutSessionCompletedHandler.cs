@@ -21,7 +21,7 @@ public class CheckoutSessionCompletedHandler : IStripeWebhookHandler
         _subscriptionManager = subscriptionManager;
     }
 
-    public async Task HandleAsync(Event @event)
+    public virtual async Task HandleAsync(Event @event)
     {
         if (@event.Data.Object is Session session)
         {
@@ -34,12 +34,12 @@ public class CheckoutSessionCompletedHandler : IStripeWebhookHandler
 
             if (@event.Data.Object is PaymentIntent paymentIntent)
             {
-                await _chargeManager.SynchroniseAsync(PaymentProcessors.Stripe, paymentIntent.Id, paymentIntent.CustomerId);
+                await _chargeManager.SynchroniseAsync(payCustomer, paymentIntent.LatestChargeId);
             }
 
             if (@event.Data.Object is Subscription subscription)
             {
-                await _subscriptionManager.SynchroniseAsync(subscription.Id, null, payCustomer);
+                await _subscriptionManager.SynchroniseAsync(payCustomer, subscription.Id);
             }
         }
     }

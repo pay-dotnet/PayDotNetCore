@@ -4,12 +4,11 @@ namespace PayDotNet.Core.Abstraction;
 
 public interface ICustomerManager
 {
-    // TODO: reorder params
     Task<PayCustomer> GetOrCreateCustomerAsync(string processorName, string processorId, string email);
 
-    Task<PayCustomer> GetOrCreateCustomerAsync(string email, string processorName);
+    Task<PayCustomer> GetOrCreateCustomerAsync(string processorName, string email);
 
-    Task<PayCustomer?> FindByEmailAsync(string email, string processorName);
+    Task<PayCustomer?> FindByEmailAsync(string processorName, string email);
 
     Task<PayCustomer?> FindByIdAsync(string processorName, string processorId);
 

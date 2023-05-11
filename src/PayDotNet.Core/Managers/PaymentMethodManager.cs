@@ -17,37 +17,71 @@ public class PaymentMethodManager : IPaymentMethodManager
         _paymentProcessorService = paymentProcessorService;
     }
 
+    /// <inheritdoc/>
     public virtual async Task<PayPaymentMethod> AddPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options)
     {
         PayPaymentMethod payPaymentMethod = await _paymentProcessorService.AttachPaymentMethodAsync(payCustomer, options);
 
-        await SavePaymentMethodAsync(payPaymentMethod);
+        await SavePaymentMethodAsync(payPaymentMethod, options);
         return payPaymentMethod;
     }
 
     public virtual Task DeleteAllAsync(PayCustomer payCustomer)
     {
-        throw new NotImplementedException();
+        ICollection<PayPaymentMethod> payPaymentMethods =
+            _paymentMethodStore.PaymentMethods.Where(pm => pm.CustomerId == payCustomer.Id).ToList();
+        return _paymentMethodStore.DeleteAllAsync(payPaymentMethods);
     }
 
-    public virtual Task DeleteByIdAsync(string processorName, string processorId)
+    public virtual async Task DeleteByIdAsync(string processorName, string processorId)
     {
-        throw new NotImplementedException();
+        PayPaymentMethod? payPaymentMethod = _paymentMethodStore.PaymentMethods.FirstOrDefault(pm => pm.ProcessorId == processorId);
+        if (payPaymentMethod is not null)
+        {
+            await _paymentMethodStore.DeleteAsync(payPaymentMethod);
+        }
     }
 
     public virtual bool IsPaymentMethodRequired(PayCustomer payCustomer) => _paymentProcessorService.IsPaymentMethodRequired(payCustomer);
 
-    public virtual Task<PayPaymentMethod> SynchroniseAsync(string processorId)
+    public virtual Task SynchroniseAsync(PayCustomer payCustomer, string processorId)
     {
-        return Task.FromResult<PayPaymentMethod>(new());
+        return SynchroniseAsync(payCustomer, processorId, null);
     }
 
-    public virtual Task UpdateAllAsync(bool isDefault)
+    private async Task SynchroniseAsync(PayCustomer payCustomer, string processorId, PayPaymentMethod? @object)
     {
-        throw new NotImplementedException();
+        @object ??= await _paymentProcessorService.GetPaymentMethodAsync(payCustomer, processorId);
+        if (@object == null)
+        {
+            return;
+        }
+
+        PayPaymentMethod? existingPayPaymentMethod = _paymentMethodStore.PaymentMethods.FirstOrDefault(s => s.ProcessorId == processorId);
+        @object.CustomerId = payCustomer.Id;
+        if (existingPayPaymentMethod is null)
+        {
+            await _paymentMethodStore.CreateAsync(@object);
+        }
+        else
+        {
+            await _paymentMethodStore.UpdateAsync(@object);
+        }
     }
 
-    private async Task SavePaymentMethodAsync(PayPaymentMethod payPaymentMethod)
+    public virtual async Task UpdateAllAsync(PayCustomer payCustomer, bool isDefault)
+    {
+        ICollection<PayPaymentMethod> payPaymentMethods =
+            _paymentMethodStore.PaymentMethods.Where(pm => pm.CustomerId == payCustomer.Id).ToList();
+        foreach (var payPaymentMethod in payPaymentMethods)
+        {
+            payPaymentMethod.IsDefault = isDefault;
+        }
+
+        await _paymentMethodStore.UpdateAllAsync(payPaymentMethods);
+    }
+
+    private async Task SavePaymentMethodAsync(PayPaymentMethod payPaymentMethod, PayPaymentMethodOptions options)
     {
         PayPaymentMethod? existingPaymentMethod = _paymentMethodStore.PaymentMethods.FirstOrDefault(p => p.ProcessorId == payPaymentMethod.ProcessorId);
         if (existingPaymentMethod is null)
@@ -56,21 +90,26 @@ public class PaymentMethodManager : IPaymentMethodManager
         }
         else
         {
-            // Ignore the payment method if it's already in the database
-            if (payPaymentMethod.IsDefault)
+            if (options.IsDefault)
             {
-                ICollection<PayPaymentMethod> otherPaymentMethods = _paymentMethodStore.PaymentMethods
-                    .Where(p => p.CustomerId == payPaymentMethod.CustomerId && p.ProcessorId != payPaymentMethod.ProcessorId)
-                    .ToList();
-                foreach (var otherPaymentMethod in otherPaymentMethods)
-                {
-                    otherPaymentMethod.IsDefault = false;
-                }
-                await _paymentMethodStore.UpdateAsync(otherPaymentMethods);
+                await ResetDefaultPaymentMethodsAsync(payPaymentMethod);
             }
 
-            existingPaymentMethod.IsDefault = true;
+            existingPaymentMethod.IsDefault = options.IsDefault;
             await _paymentMethodStore.UpdateAsync(existingPaymentMethod);
         }
+    }
+
+    private async Task ResetDefaultPaymentMethodsAsync(PayPaymentMethod payPaymentMethod)
+    {
+        ICollection<PayPaymentMethod> otherPaymentMethods = _paymentMethodStore.PaymentMethods
+            .Where(p => p.CustomerId == payPaymentMethod.CustomerId && p.ProcessorId != payPaymentMethod.ProcessorId)
+            .ToList();
+        foreach (var otherPaymentMethod in otherPaymentMethods)
+        {
+            otherPaymentMethod.IsDefault = false;
+        }
+
+        await _paymentMethodStore.UpdateAllAsync(otherPaymentMethods);
     }
 }
