@@ -4,7 +4,7 @@
 /// TODO: required id+email
 /// TODO: unique (processor, processorId)
 /// </summary>
-public class PayCustomer
+public class PayCustomer : Timestamps
 {
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
@@ -25,12 +25,6 @@ public class PayCustomer
     public string? ProcessorId { get; set; }
 
     public bool IsDefault { get; set; }
-
-    public Dictionary<string, object> Data { get; set; }
-
-    public DateTime CreatedAt { get; set; }
-
-    public DateTime UpdatedAt { get; set; }
 
     public DateTime DeletedAt { get; set; }
 

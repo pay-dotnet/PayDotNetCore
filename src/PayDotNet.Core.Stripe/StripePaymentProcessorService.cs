@@ -30,6 +30,26 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     private readonly IOptions<PayDotNetConfiguration> _options;
     private readonly DataTransferObjectResponseMapper _mapper;
 
+    public StripePaymentProcessorService(
+        IStripeClient stripeClient,
+        IOptions<PayDotNetConfiguration> options)
+    {
+        _stripeClient = stripeClient;
+        _options = options;
+        _mapper = new(options);
+
+        _charges = new(_stripeClient);
+        _customers = new(_stripeClient);
+        _invoices = new(_stripeClient);
+        _subscriptions = new(_stripeClient);
+        _paymentMethods = new(_stripeClient);
+        _paymentIntents = new(_stripeClient);
+        _setupIntents = new(_stripeClient);
+        _refunds = new(_stripeClient);
+        _checkoutSession = new(_stripeClient);
+        _creditNotes = new(_stripeClient);
+    }
+
     internal static class Expand
     {
         public static readonly List<string> Customer = new() { "tax" };
@@ -67,26 +87,6 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             "payment_intent",
             "setup_intent"
         };
-    }
-
-    public StripePaymentProcessorService(
-        IStripeClient stripeClient,
-        IOptions<PayDotNetConfiguration> options)
-    {
-        _stripeClient = stripeClient;
-        _options = options;
-        _mapper = new();
-
-        _charges = new(_stripeClient);
-        _customers = new(_stripeClient);
-        _invoices = new(_stripeClient);
-        _subscriptions = new(_stripeClient);
-        _paymentMethods = new(_stripeClient);
-        _paymentIntents = new(_stripeClient);
-        _setupIntents = new(_stripeClient);
-        _refunds = new(_stripeClient);
-        _checkoutSession = new(_stripeClient);
-        _creditNotes = new(_stripeClient);
     }
 
     public string Name => PaymentProcessors.Stripe;

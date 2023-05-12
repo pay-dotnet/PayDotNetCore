@@ -3,21 +3,13 @@
 /// <summary>
 /// TODO: unique (customerid, processorid)
 /// </summary>
-public class PayCharge
+public class PayCharge : Timestamps
 {
-    public virtual PayCustomer Customer { get; set; }
-
     public string CustomerId { get; set; }
-
-    public virtual PaySubscription? Subscription { get; set; }
 
     public string? SubscriptionId { get; set; }
 
     public string ProcessorId { get; set; }
-
-    public string? Bank { get; set; }
-
-    public string? Brand { get; set; }
 
     public int Amount { get; set; }
 
@@ -26,6 +18,12 @@ public class PayCharge
     public int? ApplicationFeeAmount { get; set; }
 
     public int? AmountRefunded { get; set; }
+
+    #region Additional Properties
+
+    public string? Bank { get; set; }
+
+    public string? Brand { get; set; }
 
     public int AmountCaptured { get; set; }
 
@@ -41,15 +39,7 @@ public class PayCharge
 
     public string? Last4 { get; set; }
 
-    public Dictionary<string, string> Metadata { get; set; }
-
-    public Dictionary<string, object> Data { get; set; }
-
     public PayStatus Status { get; set; }
-
-    public DateTime CreatedAt { get; set; }
-
-    public DateTime UpdatedAt { get; set; }
 
     public virtual ICollection<PayChargeLineItem> LineItems { get; set; } = new List<PayChargeLineItem>();
 
@@ -65,4 +55,57 @@ public class PayCharge
     public string? InvoiceId { get; set; }
     public int Subtotal { get; set; }
     public int? Tax { get; set; }
+
+    #endregion Additional Properties
+}
+
+public class PayChargeLineItem
+{
+    public DateTime PeriodEnd { get; set; }
+
+    public DateTime PeriodStart { get; set; }
+
+    public bool IsProration { get; set; }
+
+    public string ProcessorId { get; set; }
+
+    public string Description { get; set; }
+
+    public string PriceId { get; set; }
+
+    public int Quantity { get; set; }
+
+    public int? UnitAmount { get; set; }
+
+    public int Amount { get; set; }
+
+    public virtual ICollection<string> Discounts { get; set; } = new List<string>();
+
+    public virtual ICollection<PayChargeTaxAmount> TaxAmounts { get; set; }
+}
+
+public class PayChargeRefund
+{
+    public string ProcessorId { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public string Description { get; set; }
+    public int Amount { get; set; }
+    public string Reason { get; set; }
+    public string Status { get; set; }
+}
+
+public class PayChargeTaxAmount
+{
+    public int Amount { get; set; }
+
+    public string Description { get; set; }
+}
+
+public class PayChargeTotalDiscount
+{
+    public string DiscountId { get; set; }
+
+    public int Amount { get; set; }
+
+    public string Description { get; set; }
 }

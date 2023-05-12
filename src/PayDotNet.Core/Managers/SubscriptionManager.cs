@@ -112,8 +112,6 @@ public class SubscriptionManager : ISubscriptionManager
         }
         else
         {
-            // Allow setting the subscription name in metadata, otherwise use the default
-            paySubscriptionResult.PaySubscription.Name = paySubscriptionResult.PaySubscription.Metadata.TryOrDefault(PayMetadata.Fields.PaySubscriptionName, _options.Value.DefaultProductName);
             await _subscriptionStore.CreateAsync(paySubscriptionResult.PaySubscription);
         }
 

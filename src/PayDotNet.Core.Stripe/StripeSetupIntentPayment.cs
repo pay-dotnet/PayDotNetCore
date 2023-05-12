@@ -1,4 +1,5 @@
 ﻿using PayDotNet.Core.Models;
+using PayDotNet.Core.Stripe.Client;
 using Stripe;
 
 namespace PayDotNet.Core.Stripe;
@@ -15,7 +16,7 @@ public record StripeSetupIntentPayment(SetupIntent Intent) : IPayment
 
     public string CustomerId => Intent.CustomerId;
 
-    public string Status => Intent.Status;
+    public PayStatus Status => StripeStatusMapper.GetPayStatus(Intent.Status);
 
     public string Mode => "setup";
 }

@@ -20,8 +20,7 @@ public class AccountUpdatedHandler : IStripeWebhookHandler
             PayMerchant? payMerchant = await _merchantManager.FindByIdAsync(PaymentProcessors.Stripe, account.Id);
             if (payMerchant is not null)
             {
-                // TODO: set onboarding_complete
-                payMerchant.Data["onboarding_complete"] = account.ChargesEnabled;
+                payMerchant.IsOnboardingComplete = account.ChargesEnabled;
                 await _merchantManager.UpdateAsync(payMerchant);
             }
         }

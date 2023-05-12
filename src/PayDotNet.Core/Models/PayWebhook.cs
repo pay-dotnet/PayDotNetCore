@@ -1,6 +1,6 @@
 ﻿namespace PayDotNet.Core.Models;
 
-public class PayWebhook
+public class PayWebhook : Timestamps
 {
     public string Processor { get; init; }
 
@@ -8,8 +8,4 @@ public class PayWebhook
 
     // TODO: JSON
     public string Event { get; init; }
-
-    public DateTime CreatedAt { get; init; }
-
-    public DateTime UpdatedAt { get; init; }
 }

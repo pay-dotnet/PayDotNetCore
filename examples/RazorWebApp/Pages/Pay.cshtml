@@ -16,7 +16,7 @@
     method="post"
     data-payment-intent="@(Model.Payment?.Mode == "payment" ? Model.Payment.Id : null)" 
     data-setup-intent="@(Model.Payment?.Mode == "setup" ? Model.Payment.Id : null)"
-    data-status="@(string.IsNullOrEmpty(Model.Payment?.Status) ? null : Model.Payment?.Status)">
+    data-status="@(Model.Payment is null ? null : Model.Payment.Status)">
 
     @if(Model.Payment is null)
     {

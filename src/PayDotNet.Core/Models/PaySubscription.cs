@@ -3,10 +3,8 @@
 /// <summary>
 /// TODO: unique(customer, processorId)
 /// </summary>
-public class PaySubscription
+public class PaySubscription : Timestamps
 {
-    public int Id { get; set; }
-
     public string CustomerId { get; set; }
 
     public string Name { get; set; }
@@ -40,14 +38,6 @@ public class PaySubscription
     // TÖDO: 8,2
     public decimal? ApplicationFeePercent { get; set; }
 
-    public Dictionary<string, string> Metadata { get; set; }
-
-    public Dictionary<string, object> Data { get; set; }
-
-    public DateTime CreatedAt { get; set; }
-
-    public DateTime UpdatedAt { get; set; }
-
     public virtual ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
 
     public virtual ICollection<PaySubscriptionItem> SubscriptionItems { get; set; } = new List<PaySubscriptionItem>();
@@ -74,37 +64,16 @@ public class PaySubscription
     }
 }
 
-public static class IPaymentExtensions
+public class PaySubscriptionItem
 {
-    public static void Validate(this IPayment payment)
-    {
-        if (payment.RequiresPaymentMethod())
-        {
-            throw new InvalidPaymentPayDotNetException(payment);
-        }
-        if (payment.RequiresAction())
-        {
-            throw new ActionRequiredPayDotNetException(payment);
-        }
-    }
+    public string Id { get; set; } = default!;
 
-    public static bool IsCanceled(this IPayment payment)
-    {
-        return payment.Status == "canceled";
-    }
+    public PaySubscriptionItemPrice Price { get; set; } = default!;
 
-    public static bool IsSucceeded(this IPayment payment)
-    {
-        return payment.Status == "succeeded";
-    }
+    public long Quantity { get; set; }
+}
 
-    public static bool RequiresAction(this IPayment payment)
-    {
-        return payment.Status == "requires_action";
-    }
-
-    public static bool RequiresPaymentMethod(this IPayment payment)
-    {
-        return payment.Status == "requires_payment_method";
-    }
+public class PaySubscriptionItemPrice
+{
+    public string Id { get; set; }
 }

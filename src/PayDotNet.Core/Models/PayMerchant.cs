@@ -1,6 +1,6 @@
 ﻿namespace PayDotNet.Core.Models;
 
-public class PayMerchant
+public class PayMerchant : Timestamps
 {
     public string Processor { get; set; }
 
@@ -8,9 +8,5 @@ public class PayMerchant
 
     public bool IsDefault { get; set; }
 
-    public Dictionary<string, object> Data { get; set; }
-
-    public DateTime CreatedAt { get; set; }
-
-    public DateTime UpdatedAt { get; set; }
+    public bool IsOnboardingComplete { get; set; }
 }

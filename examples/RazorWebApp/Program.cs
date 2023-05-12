@@ -8,7 +8,6 @@ builder.Services.AddPayDotNet(builder.Configuration)
     .AddInMemoryStore()
     .AddStripe(config =>
     {
-        config.
     });
 
 var app = builder.Build();

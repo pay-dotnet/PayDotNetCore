@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Linq;
 using PayDotNet.Core.Models;
 using Stripe;
 
@@ -6,6 +7,13 @@ namespace PayDotNet.Core.Stripe.Client;
 
 public class DataTransferObjectResponseMapper
 {
+    private readonly IOptions<PayDotNetConfiguration> _options;
+
+    public DataTransferObjectResponseMapper(IOptions<PayDotNetConfiguration> options)
+    {
+        _options = options;
+    }
+
     public PayChargeRefund Map(Refund refund)
     {
         return new()
@@ -40,7 +48,6 @@ public class DataTransferObjectResponseMapper
             ExpirationYear = paymentMethod?["exp_year"]?.Value<string>(),
             Last4 = paymentMethod?["last4"]?.Value<string>(),
             LineItems = new List<PayChargeLineItem>(),
-            Metadata = @object.Metadata,
             PaymentIntentId = @object.PaymentIntentId,
             PaymentMethodType = @object.PaymentMethodDetails.Type,
             // TODO: StripeAccount = payCustomer.StripeAccount,
@@ -200,7 +207,7 @@ public class DataTransferObjectResponseMapper
             Quantity = Convert.ToInt32(@object.Items.First().Quantity),
             Status = StripeStatusMapper.GetSubscriptionStatus(@object.Status),
             // TODO: StripeAccount = payCustomer.StripeAccount.
-            Metadata = @object.Metadata,
+            Name = @object.Metadata.TryOrDefault(PayMetadata.Fields.PaySubscriptionName, _options.Value.DefaultProductName),
             SubscriptionItems = new List<PaySubscriptionItem>(),
             IsMetered = false,
             PauseBehaviour = StripeStatusMapper.GetPauseBehaviour(@object.PauseCollection?.Behavior),
@@ -232,7 +239,6 @@ public class DataTransferObjectResponseMapper
                 {
                     Id = subscriptionItem.Price.Id,
                 },
-                Metadata = subscriptionItem.Metadata,
                 Quantity = subscriptionItem.Quantity
             };
             paySubscription.SubscriptionItems.Add(paySubscriptionItem);
