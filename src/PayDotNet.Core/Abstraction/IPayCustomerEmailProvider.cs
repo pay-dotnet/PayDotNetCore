@@ -1,6 +1,6 @@
 ﻿namespace PayDotNet.Core.Abstraction;
 
-public interface IPayCustomerEmailResolverService
+public interface IPayCustomerEmailProvider
 {
     string ResolveCustomerEmail();
 }

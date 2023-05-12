@@ -1,6 +1,3 @@
-using PayDotNet.Core.Stripe.Webhooks;
-using Stripe;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,7 +8,7 @@ builder.Services.AddPayDotNet(builder.Configuration)
     .AddInMemoryStore()
     .AddStripe(config =>
     {
-        config.Webhooks.SubscribeWebhook<PaymentIntentSucceededHandler>(Events.PaymentIntentSucceeded);
+        config.
     });
 
 var app = builder.Build();

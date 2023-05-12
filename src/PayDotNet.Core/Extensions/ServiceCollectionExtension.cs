@@ -21,7 +21,7 @@ public static class ServiceCollectionExtension
             .AddScoped<IMerchantManager, MerchantManager>()
             .AddScoped<ICheckoutManager, CheckoutManager>()
             .AddSingleton<CompositePaymentProcessorService>()
-            .AddScoped<IPayCustomerEmailResolverService, PayDefaultCustomerEmailResolverService>()
+            .AddScoped<IPayCustomerEmailProvider, PayDefaultCustomerEmailProvider>()
             .AddScoped<IPayNotificationService, PayNullNotificationService>()
             .AddHttpContextAccessor();
 

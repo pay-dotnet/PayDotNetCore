@@ -10,6 +10,8 @@ public interface IPaymentProcessorService
 
     Task<string> CreateCustomerAsync(PayCustomer payCustomer);
 
+    Task UpdateCustomerAsync(PayCustomer payCustomer);
+
     #endregion Customer
 
     #region Payment method API
@@ -95,8 +97,6 @@ public interface IPaymentProcessorService
     Task<PayChargeRefund> RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options);
 
     Task IssueCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options);
-
-    Task<ICollection<object>> GetCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge);
 
     #endregion Refunds API
 

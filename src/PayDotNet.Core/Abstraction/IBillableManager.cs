@@ -9,7 +9,7 @@ public interface IBillableManager
 {
     /// <summary>
     /// Retrieves or create a new customer based on the options.
-    /// Uses the provided <see cref="IPayCustomerEmailResolverService"/> to resolve the customer email.
+    /// Uses the provided <see cref="IPayCustomerEmailProvider"/> to resolve the customer email.
     /// </summary>
     /// <param name="options">The options for the customer.</param>
     /// <returns>The pay customer that is used in the other operations.</returns>

@@ -8,7 +8,7 @@ namespace PayDotNet.Core.Managers;
 /// </summary>
 public class BillableManager : IBillableManager
 {
-    private readonly IPayCustomerEmailResolverService _payCustomerEmailResolver;
+    private readonly IPayCustomerEmailProvider _payCustomerEmailProvider;
     private readonly ICheckoutManager _checkoutManager;
     private readonly IChargeManager _chargeManager;
     private readonly ICustomerManager _customerManager;
@@ -16,14 +16,14 @@ public class BillableManager : IBillableManager
     private readonly IPaymentMethodManager _paymentMethodManager;
 
     public BillableManager(
-        IPayCustomerEmailResolverService payCustomerEmailResolver,
+        IPayCustomerEmailProvider payCustomerEmailProvider,
         ICheckoutManager checkoutManager,
         IChargeManager chargeManager,
         ICustomerManager customerManager,
         ISubscriptionManager subscriptionManager,
         IPaymentMethodManager paymentMethodManager)
     {
-        _payCustomerEmailResolver = payCustomerEmailResolver;
+        _payCustomerEmailProvider = payCustomerEmailProvider;
         _checkoutManager = checkoutManager;
         _chargeManager = chargeManager;
         _customerManager = customerManager;
@@ -34,7 +34,7 @@ public class BillableManager : IBillableManager
     /// <inheritdoc/>
     public virtual Task<PayCustomer> GetOrCreateCustomerAsync(PayCustomerOptions options)
     {
-        string email = _payCustomerEmailResolver.ResolveCustomerEmail();
+        string email = _payCustomerEmailProvider.ResolveCustomerEmail();
         return GetOrCreateCustomerAsync(email, options);
     }
 

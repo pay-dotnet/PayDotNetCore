@@ -5,13 +5,13 @@ using PayDotNet.Core.Abstraction;
 namespace PayDotNet.Core.Services;
 
 /// <summary>
-/// Default implementation of the context
+/// Default implementation to provide pay customer email. Uses the HttpContext.User and "email" claim to resolve the user his email.
 /// </summary>
-public class PayDefaultCustomerEmailResolverService : IPayCustomerEmailResolverService
+public class PayDefaultCustomerEmailProvider : IPayCustomerEmailProvider
 {
     protected readonly IHttpContextAccessor HttpContextAccessor;
 
-    public PayDefaultCustomerEmailResolverService(IHttpContextAccessor httpContextAccessor)
+    public PayDefaultCustomerEmailProvider(IHttpContextAccessor httpContextAccessor)
     {
         HttpContextAccessor = httpContextAccessor;
     }
