@@ -12,13 +12,40 @@ public interface IPaymentMethodManager
     /// <returns>The resulting PaymentMethod.</returns>
     Task<PayPaymentMethod> AddPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options);
 
-    Task DeleteAllAsync(PayCustomer payCustomer);
+    /// <summary>
+    /// Deletes all the payment methods for this customer.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <returns>An awaitable task.</returns>
+    Task DeleteAllPaymentMethodsForCustomerAsync(PayCustomer payCustomer);
 
+    /// <summary>
+    /// Deletes the payment method from the store.
+    /// </summary>
+    /// <param name="processorName">The payment processor name.</param>
+    /// <param name="processorId">The id of the payment method in the payment processor.</param>
+    /// <returns>An awaitable task.</returns>
     Task DeleteByIdAsync(string processorName, string processorId);
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="payCustomer"></param>
+    /// <param name="paymentMethodId"></param>
+    /// <returns>An awaitable task.</returns>
     Task SynchroniseAsync(PayCustomer payCustomer, string paymentMethodId);
 
-    Task UpdateAllAsync(PayCustomer payCustomer, bool isDefault);
+    /// <summary>
+    /// Resets all the payment methods to no longer be default.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <returns>An awaitable task.</returns>
+    Task ResetDefaultPaymentMethodsAsync(PayCustomer payCustomer);
 
+    /// <summary>
+    /// Check if the payment method is required for the payment processor.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <returns>True or false.</returns>
     bool IsPaymentMethodRequired(PayCustomer payCustomer);
 }

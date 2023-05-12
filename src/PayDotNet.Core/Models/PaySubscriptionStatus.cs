@@ -1,9 +1,5 @@
 ﻿namespace PayDotNet.Core.Models;
 
-/// <summary>
-/// TODO: map stripe vs locally.
-/// </summary>
-
 public enum PaySubscriptionStatus
 {
     None = 0,
@@ -20,8 +16,19 @@ public enum PaySubscriptionStatus
 public enum PayStatus
 {
     None = 0,
-    Void,
+    RequiresPaymentMethod,
+    RequiresConfirmation,
+    RequiresAction,
+    RequiresCapture,
+    Processing,
+    Canceled,
     Succeeded,
-    Warning,
-    Error,
+}
+
+public enum PaySubscriptionPauseBehaviour
+{
+    None = 0,
+    Void,
+    KeepAsDraft,
+    MarkUncollectible
 }

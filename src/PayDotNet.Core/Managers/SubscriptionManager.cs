@@ -26,8 +26,7 @@ public class SubscriptionManager : ISubscriptionManager
 
     /// <inheritdoc/>
     /// <remarks>
-    /// The flow might be different for other payment processor. Stripe and Braintree work a bit differently.
-    /// TODO: Resolve the above.
+    /// TODO: The flow might be different for other payment processor. Stripe and Braintree work a bit differently.
     /// </remarks>
     public virtual async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, PaySubscribeOptions options)
     {
@@ -36,11 +35,13 @@ public class SubscriptionManager : ISubscriptionManager
         return result;
     }
 
-    public virtual Task<PaySubscription?> FindByIdAsync(string processorId, string customerId)
+    /// <inheritdoc/>
+    public virtual Task<PaySubscription?> FindByIdAsync(PayCustomer payCustomer, string processorId)
     {
-        return Task.FromResult(_subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == processorId && s.CustomerId == customerId));
+        return Task.FromResult(_subscriptionStore.Subscriptions.FirstOrDefault(s => s.CustomerId == payCustomer.Id && s.ProcessorId == processorId));
     }
 
+    /// <inheritdoc/>
     public virtual async Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options)
     {
         paySubscription.EndsAt = paySubscription.IsOnTrial()
@@ -52,6 +53,7 @@ public class SubscriptionManager : ISubscriptionManager
         await _subscriptionStore.UpdateAsync(paySubscription);
     }
 
+    /// <inheritdoc/>
     public virtual async Task CancelNowAsync(PayCustomer payCustomer, PaySubscription paySubscription)
     {
         paySubscription.CancelNow();
@@ -61,6 +63,7 @@ public class SubscriptionManager : ISubscriptionManager
         await _subscriptionStore.UpdateAsync(paySubscription);
     }
 
+    /// <inheritdoc/>
     /// <remarks>
     /// We manually cancel and save all subscriptions since the customer was deleted.
     /// </remarks>
@@ -90,31 +93,32 @@ public class SubscriptionManager : ISubscriptionManager
     /// <remarks>
     /// TODO: there should be a retry mechanism, but maybe we can exclude that and use Polly or tell people to use polly and document it.
     /// </remarks>
-    public async Task SynchroniseAsync(PayCustomer payCustomer, PaySubscriptionResult result)
+    public async Task SynchroniseAsync(PayCustomer payCustomer, PaySubscriptionResult paySubscriptionResult)
     {
         // Fix link to Pay Customer
-        result.PaySubscription.CustomerId = payCustomer.Id;
+        paySubscriptionResult.PaySubscription.CustomerId = payCustomer.Id;
 
-        PaySubscription? paySubscription = _subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == result.PaySubscription.ProcessorId);
+        PaySubscription? paySubscription = _subscriptionStore.Subscriptions.FirstOrDefault(s => s.ProcessorId == paySubscriptionResult.PaySubscription.ProcessorId);
         if (paySubscription is not null)
         {
             // If pause behavior is changing to `void`, record the pause start date
             // Any other pause status (or no pause at all) should have nil for start
-            if (paySubscription.PauseBehaviour != result.PaySubscription.PauseBehaviour && result.PaySubscription.PauseBehaviour == "void")
+            if (paySubscription.PauseBehaviour != paySubscriptionResult.PaySubscription.PauseBehaviour &&
+                paySubscriptionResult.PaySubscription.PauseBehaviour == PaySubscriptionPauseBehaviour.Void)
             {
-                result.PaySubscription.PauseStartsAt = result.PaySubscription.CurrentPeriodEnd;
+                paySubscriptionResult.PaySubscription.PauseStartsAt = paySubscriptionResult.PaySubscription.CurrentPeriodEnd;
             }
-            await _subscriptionStore.UpdateAsync(result.PaySubscription);
+            await _subscriptionStore.UpdateAsync(paySubscriptionResult.PaySubscription);
         }
         else
         {
             // Allow setting the subscription name in metadata, otherwise use the default
-            result.PaySubscription.Name = result.PaySubscription.Metadata.TryOrDefault(PayMetadata.Fields.PaySubscriptionName, _options.Value.DefaultProductName);
-            await _subscriptionStore.CreateAsync(result.PaySubscription);
+            paySubscriptionResult.PaySubscription.Name = paySubscriptionResult.PaySubscription.Metadata.TryOrDefault(PayMetadata.Fields.PaySubscriptionName, _options.Value.DefaultProductName);
+            await _subscriptionStore.CreateAsync(paySubscriptionResult.PaySubscription);
         }
 
         // Sync the latest charge if we already have it loaded (like during subscrbe), otherwise, let webhooks take care of creating it
-        PayCharge? charge = result.PaySubscription.Charges.LastOrDefault();
+        PayCharge? charge = paySubscriptionResult.PaySubscription.Charges.LastOrDefault();
         if (charge is not null && charge.Status == PayStatus.Succeeded)
         {
             PayCharge? _ = await _chargeManager.SynchroniseAsync(payCustomer, charge.ProcessorId);

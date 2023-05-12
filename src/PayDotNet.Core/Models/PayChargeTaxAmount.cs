@@ -1,6 +1,6 @@
 ﻿namespace PayDotNet.Core.Models;
 
-public class PayChargeTotalTaxAmount
+public class PayChargeTaxAmount
 {
     public int Amount { get; set; }
 

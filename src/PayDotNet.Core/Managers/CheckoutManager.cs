@@ -13,6 +13,7 @@ public class CheckoutManager : ICheckoutManager
         _paymentProcessorService = paymentProcessorService;
     }
 
+    /// <inheritdoc/>
     public virtual Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
     {
         return _paymentProcessorService.CheckoutAsync(payCustomer, options);

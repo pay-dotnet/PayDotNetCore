@@ -65,7 +65,7 @@ public static class ServiceCollectionExtension
         // If the plan, quantity, or trial ending date is updated on Stripe, we want to sync
         builder.Webhooks.SubscribeWebhook<SubscriptionUpdatedHandler>(Events.CustomerSubscriptionUpdated);
 
-        // When a customers subscription is canceled, we want to update our records
+        // When a customers subscription is Canceled, we want to update our records
         builder.Webhooks.SubscribeWebhook<SubscriptionDeletedHandler>(Events.CustomerSubscriptionDeleted);
 
         // When a customers subscription trial period is 3 days from ending or ended immediately this event is fired

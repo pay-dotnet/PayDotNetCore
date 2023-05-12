@@ -17,6 +17,12 @@ public record PayChargeOptions(
 {
 }
 
+/// <summary>
+/// The options for capturing a previous authorized charge.
+/// </summary>
+/// <param name="AmountToCapture">(Optional) the amount to capture of the authorized amount. Leaving empty means everything will be captured.</param>
+public record PayChargeCaptureOptions(int? AmountToCapture);
+
 public record PayAuthorizeChargeOptions(int Amount, string Currency, string? PaymentMethodId = null)
     : PayChargeOptions(Amount, Currency, PaymentMethodId, CaptureMethod: "manual");
 
@@ -29,7 +35,6 @@ public record PayAuthorizeChargeOptions(int Amount, string Currency, string? Pay
 public record PayChargeRefundOptions(int Amount, string? Description = null, bool RefundApplicationFee = false);
 
 /// <summary>
-///
 /// </summary>
 /// <param name="PaymentMethodId"></param>
 /// <param name="IsDefault"></param>

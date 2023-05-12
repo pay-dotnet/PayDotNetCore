@@ -33,7 +33,6 @@ namespace RazorWebApp.Pages
             }
             if (!string.IsNullOrEmpty(id))
             {
-                // TODO: circumvent this issue
                 PayCustomer payCustomer = await _billableManager.GetOrCreateCustomerAsync("dotnetfromthemountain@gmail.com", new(PaymentProcessors.Stripe));
                 Payment = await _paymentProcessorService.GetPaymentAsync(payCustomer, id);
             }

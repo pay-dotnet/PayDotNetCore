@@ -6,9 +6,9 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 
 /// <summary>
 /// This webhook does NOT send notifications because stripe sends both
-/// `charge.succeeded` and `payment_intent.succeeded` events.
+/// `charge.Succeeded` and `payment_intent.Succeeded` events.
 ///
-/// We use `charge.succeeded` as the single place to send notifications
+/// We use `charge.Succeeded` as the single place to send notifications
 /// </summary>
 public class PaymentIntentSucceededHandler : IStripeWebhookHandler
 {

@@ -39,7 +39,7 @@ public class BillableManagerTest : TestBase<BillableManager>
             .ReturnsAsync(newCustomer);
         Mocks<IPaymentProcessorService>().Setup(s => s.CreateCustomerAsync(newCustomer))
             .ReturnsAsync("cus_123456");
-        Mocks<ICustomerManager>().Setup(m => m.UpdateAsync(It.IsAny<PayCustomer>()))
+        Mocks<ICustomerManager>().Setup(m => m.SoftDeleteAsync(It.IsAny<PayCustomer>()))
             .Returns(Task.CompletedTask);
         Mocks<IPaymentMethodManager>().Setup(m => m.AddPaymentMethodAsync(It.IsAny<PayCustomer>(), new PayPaymentMethodOptions("payment_id", true)))
             .ReturnsAsync(newCustomer.PaymentMethods.First());

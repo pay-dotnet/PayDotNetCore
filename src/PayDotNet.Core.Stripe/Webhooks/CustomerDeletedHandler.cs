@@ -34,12 +34,10 @@ public class CustomerDeletedHandler : IStripeWebhookHandler
             await _subscriptionManager.CancellAllAsync(payCustomer);
 
             // Remove all payment methods.
-            await _paymentMethodManager.DeleteAllAsync(payCustomer);
+            await _paymentMethodManager.DeleteAllPaymentMethodsForCustomerAsync(payCustomer);
 
-            // Mark customer as deleted
-            payCustomer.DeletedAt = DateTime.UtcNow;
-            payCustomer.IsDefault = false;
-            await _customerManager.UpdateAsync(payCustomer);
+            // Mark customer as deleted.
+            await _customerManager.SoftDeleteAsync(payCustomer);
         }
     }
 }

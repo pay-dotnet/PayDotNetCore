@@ -31,7 +31,7 @@ public class SubscriptionRenewingHandler : IStripeWebhookHandler
         if (@event.Data.Object is Invoice invoice && !string.IsNullOrEmpty(invoice.SubscriptionId))
         {
             PayCustomer payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, invoice.CustomerId);
-            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(invoice.SubscriptionId, payCustomer.Id);
+            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(payCustomer, invoice.SubscriptionId);
             if (paySubscription is null)
             {
                 return;

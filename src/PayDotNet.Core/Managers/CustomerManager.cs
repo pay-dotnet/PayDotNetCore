@@ -17,9 +17,10 @@ public class CustomerManager : ICustomerManager
         _customerStore = customerStore;
     }
 
+    /// <inheritdoc/>
     public virtual async Task<PayCustomer> GetOrCreateCustomerAsync(string processorName, string processorId, string email)
     {
-        PayCustomer? customer = _customerStore.Customers.FirstOrDefault(c => c.ProcessorId == processorId && c.Processor == processorName);
+        PayCustomer? customer = _customerStore.Customers.FirstOrDefault(c => c.Processor == processorName && c.ProcessorId == processorId);
         if (customer == null)
         {
             customer = new()
@@ -34,56 +35,51 @@ public class CustomerManager : ICustomerManager
         return customer;
     }
 
+    /// <inheritdoc/>
     public virtual async Task<PayCustomer> GetOrCreateCustomerAsync(string processorName, string email)
     {
-        PayCustomer? customer = await GetOrCreateCustomerForEmailAsync(processorName, email);
-        await InitializeCustomerAsync(customer);
-
-        // TODO:
-        // 1. Update all other paycustomers for this email/accountid to not be default.
-        // https://github.com/pay-rails/pay/blob/75cebad8786c901a447cc6459174c7044e2b261d/lib/pay/attributes.rb#L29
-        return customer;
-    }
-
-    public virtual Task<PayCustomer?> FindByEmailAsync(string processorName, string email)
-    {
-        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Email == email && c.Processor == processorName));
-    }
-
-    public virtual Task UpdateAsync(PayCustomer customer)
-    {
-        return _customerStore.UpdateAsync(customer);
-    }
-
-    public virtual Task<PayCustomer?> FindByIdAsync(string processorName, string processorId)
-    {
-        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Processor == processorName && c.ProcessorId == processorId));
-    }
-
-    private async Task<PayCustomer> GetOrCreateCustomerForEmailAsync(string processorName, string email)
-    {
-        PayCustomer? customer = _customerStore.Customers.FirstOrDefault(c => c.Email == email && c.Processor == processorName);
-        if (customer == null)
+        PayCustomer? payCustomer = _customerStore.Customers.FirstOrDefault(c => c.Processor == processorName && c.Email == email);
+        if (payCustomer == null)
         {
-            customer = new()
+            payCustomer = new()
             {
                 Email = email,
                 Processor = processorName,
                 IsDefault = true
             };
-            await _customerStore.CreateAsync(customer);
+            await _customerStore.CreateAsync(payCustomer);
         }
 
-        return customer;
-    }
-
-    private async Task InitializeCustomerAsync(PayCustomer payCustomer)
-    {
         if (!payCustomer.HasProcessorId())
         {
             string processorId = await _paymentProcessorService.CreateCustomerAsync(payCustomer);
             payCustomer.ProcessorId = processorId;
             await _customerStore.UpdateAsync(payCustomer);
         }
+
+        // TODO:
+        // 1. Update all other paycustomers for this email/accountid to not be default.
+        // https://github.com/pay-rails/pay/blob/75cebad8786c901a447cc6459174c7044e2b261d/lib/pay/attributes.rb#L29
+        return payCustomer;
+    }
+
+    /// <inheritdoc/>
+    public virtual Task<PayCustomer?> FindByEmailAsync(string processorName, string email)
+    {
+        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Email == email && c.Processor == processorName));
+    }
+
+    /// <inheritdoc/>
+    public virtual Task<PayCustomer?> FindByIdAsync(string processorName, string processorId)
+    {
+        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Processor == processorName && c.ProcessorId == processorId));
+    }
+
+    /// <inheritdoc/>
+    public virtual Task SoftDeleteAsync(PayCustomer payCustomer)
+    {
+        payCustomer.DeletedAt = DateTime.UtcNow;
+        payCustomer.IsDefault = false;
+        return _customerStore.UpdateAsync(payCustomer);
     }
 }

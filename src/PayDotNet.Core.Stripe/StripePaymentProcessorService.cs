@@ -28,14 +28,46 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     private readonly SetupIntentService _setupIntents;
     private readonly IStripeClient _stripeClient;
     private readonly IOptions<PayDotNetConfiguration> _options;
-    private readonly DataTransferObjectMapper _mapper;
+    private readonly DataTransferObjectResponseMapper _mapper;
 
-    public bool IsPaymentMethodRequired(PayCustomer payCustomer)
+    internal static class Expand
     {
-        return false;
-    }
+        public static readonly List<string> Customer = new() { "tax" };
 
-    public string Name => PaymentProcessors.Stripe;
+        public static readonly List<string> Subscription = new()
+        {
+            "pending_setup_intent",
+            "latest_invoice",
+            "latest_invoice.payment_intent",
+            "latest_invoice.charge",
+            "latest_invoice.charge.refunds"
+        };
+
+        public static readonly List<string> Charge = new()
+        {
+            "invoice.total_discount_amounts.discount",
+            "invoice.total_tax_amounts.tax_rate",
+            "refunds"
+        };
+
+        public static readonly List<string> Invoice = new()
+        {
+            "total_discount_amounts.discount",
+            "total_tax_amounts.tax_rate"
+        };
+
+        public static readonly List<string> PaymentIntent = new()
+        {
+            "latest_charge",
+            "latest_charge.refunds"
+        };
+
+        public static readonly List<string> Checkout = new()
+        {
+            "payment_intent",
+            "setup_intent"
+        };
+    }
 
     public StripePaymentProcessorService(
         IStripeClient stripeClient,
@@ -43,7 +75,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     {
         _stripeClient = stripeClient;
         _options = options;
-        _mapper = new(options);
+        _mapper = new();
 
         _charges = new(_stripeClient);
         _customers = new(_stripeClient);
@@ -57,14 +89,12 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         _creditNotes = new(_stripeClient);
     }
 
-    private static readonly List<string> DefaultSubscriptionExpandOptions = new()
+    public string Name => PaymentProcessors.Stripe;
+
+    public bool IsPaymentMethodRequired(PayCustomer payCustomer)
     {
-        "pending_setup_intent",
-        "latest_invoice",
-        "latest_invoice.payment_intent",
-        "latest_invoice.charge",
-        "latest_invoice.charge.refunds"
-    };
+        return false;
+    }
 
     #region Customer API
 
@@ -74,7 +104,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         {
             // TODO: customer attributes
             Email = payCustomer.Email,
-            Expand = new() { "tax" },
+            Expand = Expand.Customer,
         });
 
         return customer.Id;
@@ -92,7 +122,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             return null;
         }
 
-        return _mapper.Map(payCustomer, paymentMethod);
+        return _mapper.Map(paymentMethod);
     }
 
     /// <inheritdoc/>
@@ -114,7 +144,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             });
         }
 
-        return _mapper.Map(payCustomer, paymentMethod, options.IsDefault);
+        return _mapper.Map(paymentMethod, options.IsDefault);
     }
 
     #endregion Payment method API
@@ -144,7 +174,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             {
                 [PayMetadata.Fields.PaySubscriptionName] = string.IsNullOrEmpty(options.Name) ? _options.Value.DefaultPlanName : options.Name
             },
-            Expand = DefaultSubscriptionExpandOptions,
+            Expand = Expand.Subscription,
         };
 
         Subscription subscription = await _subscriptions.CreateAsync(stripeOptions);
@@ -158,7 +188,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     {
         SubscriptionGetOptions stripeOptions = new()
         {
-            Expand = DefaultSubscriptionExpandOptions,
+            Expand = Expand.Subscription,
         };
 
         Subscription? subscription = await _subscriptions.GetAsync(processorId, stripeOptions);
@@ -197,12 +227,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     {
         Charge? charge = await _charges.GetAsync(processorId, new()
         {
-            Expand = new()
-            {
-                "invoice.total_discount_amounts.discount",
-                "invoice.total_tax_amounts.tax_rate",
-                "refunds"
-            }
+            Expand = Expand.Charge
         });
 
         if (charge is null || charge.Customer is null || charge.CustomerId != payCustomer.ProcessorId)
@@ -224,7 +249,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     {
         return await _invoices.GetAsync(processorId, new()
         {
-            Expand = new() { "total_discount_amounts.discount", "total_tax_amounts.tax_rate" }
+            Expand = Expand.Invoice
         });
     }
 
@@ -236,11 +261,25 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             : new StripePaymentIntentPayment(await _paymentIntents.GetAsync(processorId));
     }
 
-    public async Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options)
+    /// <inheritdoc/>
+    /// <remarks>
+    /// For more information, see: https://stripe.com/docs/payments/place-a-hold-on-a-payment-method
+    /// </remarks>
+    public async Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeCaptureOptions options)
     {
+        if (string.IsNullOrEmpty(payCharge.PaymentIntentId))
+        {
+            throw new PayDotNetStripeException("The pay charge is missing the PaymentIntentId");
+        }
+
+        if (payCharge.Status != PayStatus.RequiresCapture)
+        {
+            throw new PayDotNetStripeException("The pay charge is not in an \"to capture\" state. Unable to capture this pay charge.");
+        }
+
         PaymentIntent paymentIntent = await _paymentIntents.CaptureAsync(payCharge.ProcessorId, new()
         {
-            //TODO: AmountToCapture = stripeOptions.AmountToCapture
+            AmountToCapture = options.AmountToCapture
         });
 
         return new StripePaymentIntentPayment(paymentIntent);
@@ -266,7 +305,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
                 Amount = options.Amount,
                 Currency = options.Currency,
                 CaptureMethod = options.CaptureMethod,
-                Expand = new() { "latest_charge", "latest_charge.refunds" },
+                Expand = Expand.PaymentIntent,
 
                 PaymentMethod = string.IsNullOrEmpty(options.PaymentMethodId)
                     ? payCustomer.DefaultPaymentMethod?.ProcessorId
@@ -295,6 +334,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     #region Checkout API
 
+    /// <inheritdoc/>
     public async Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
     {
         string successUrl = string.IsNullOrEmpty(options.SuccessUrl) ? _options.Value.RootUrl : options.SuccessUrl;
@@ -314,39 +354,40 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             SuccessUrl = $"{successUrl}?session_id={{CHECKOUT_SESSION_ID}}",
             CancelUrl = $"{cancelUrl}",
 
-            // What are we checking out?
-            // TODO: move to mapper or seperate method.
-            LineItems = options.LineItems.None() ? null : options.LineItems.Select(li =>
-            {
-                if (li.PriceData is null)
+            // Line items are optional.
+            LineItems = options.LineItems.None()
+                ? null
+                : options.LineItems.Select(li =>
                 {
-                    return new SessionLineItemOptions()
+                    if (li.PriceData is null)
                     {
-                        Quantity = li.Quantity,
-                        Price = li.PriceId,
-                    };
-                }
-                else
-                {
-                    return new SessionLineItemOptions()
-                    {
-                        Quantity = li.Quantity,
-                        PriceData = new()
+                        return new SessionLineItemOptions()
                         {
-                            Currency = li.PriceData.Currency,
-                            UnitAmount = li.PriceData.UnitAmount,
-                            ProductData = new()
+                            Quantity = li.Quantity,
+                            Price = li.PriceId,
+                        };
+                    }
+                    else
+                    {
+                        return new SessionLineItemOptions()
+                        {
+                            Quantity = li.Quantity,
+                            PriceData = new()
                             {
-                                Description = li.PriceData.Description,
-                                Images = li.PriceData.Images,
-                                Name = li.PriceData.Name
+                                Currency = li.PriceData.Currency,
+                                UnitAmount = li.PriceData.UnitAmount,
+                                ProductData = new()
+                                {
+                                    Description = li.PriceData.Description,
+                                    Images = li.PriceData.Images,
+                                    Name = li.PriceData.Name
+                                },
                             },
-                        },
-                    };
-                }
-            }).ToList(),
+                        };
+                    }
+                }).ToList(),
 
-            Expand = new() { "payment_intent", "setup_intent" },
+            Expand = Expand.Checkout,
         });
 
         return new PayCheckoutResult(
@@ -413,7 +454,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             Invoice = payCharge.InvoiceId,
             Customer = payCustomer.ProcessorId
         });
-        return new List<object> { creditNotes };
+        return creditNotes.OfType<object>().ToList();
     }
 
     #endregion Refunds API

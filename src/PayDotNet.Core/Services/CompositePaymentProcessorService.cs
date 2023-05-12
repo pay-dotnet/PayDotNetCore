@@ -42,7 +42,7 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
         return _paymentProcessorServices[payCustomer.Processor].CancelAsync(payCustomer, paySubscription, options);
     }
 
-    public Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options)
+    public Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeCaptureOptions options)
     {
         GuardPaymentProcessorExists(payCustomer);
         return _paymentProcessorServices[payCustomer.Processor].CaptureAsync(payCustomer, payCharge, options);

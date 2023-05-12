@@ -35,7 +35,7 @@ public class CustomerUpdatedHandler : IStripeWebhookHandler
             else
             {
                 // No default payment method set
-                await _paymentMethodManager.UpdateAllAsync(payCustomer, isDefault: false);
+                await _paymentMethodManager.ResetDefaultPaymentMethodsAsync(payCustomer);
             }
         }
     }

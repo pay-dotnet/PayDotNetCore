@@ -25,7 +25,7 @@ public class SubscriptionTrailWillEndHandler : IStripeWebhookHandler
         if (@event.Data.Object is Subscription subscription)
         {
             PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, subscription.CustomerId);
-            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(subscription.Id, payCustomer.Id);
+            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(payCustomer, subscription.Id);
             if (paySubscription is null)
             {
                 return;

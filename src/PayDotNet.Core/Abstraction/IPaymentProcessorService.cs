@@ -57,7 +57,14 @@ public interface IPaymentProcessorService
     /// <returns>The pay charge if found.</returns>
     Task<PayCharge?> GetChargeAsync(PayCustomer payCustomer, string processorId);
 
-    Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options);
+    /// <summary>
+    /// Captures a previous authorized charge.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <param name="payCharge">The charge</param>
+    /// <param name="options">The options</param>
+    /// <returns>The payment indicating if the capture was successful.</returns>
+    Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeCaptureOptions options);
 
     Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId);
 
@@ -73,6 +80,12 @@ public interface IPaymentProcessorService
 
     #region Checkout API
 
+    /// <summary>
+    /// Starts a checkout session for the customer based on optios.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <param name="options">The options.</param>
+    /// <returns>The checkout result.</returns>
     Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options);
 
     #endregion Checkout API

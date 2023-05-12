@@ -17,9 +17,12 @@ public class ChargeManager : IChargeManager
         _paymentProcessorService = paymentProcessorService;
     }
 
-    public virtual async Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeOptions options)
+    /// <inheritdoc/>
+    public virtual async Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeCaptureOptions options)
     {
-        return await _paymentProcessorService.CaptureAsync(payCustomer, payCharge, options);
+        IPayment payment = await _paymentProcessorService.CaptureAsync(payCustomer, payCharge, options);
+        await SynchroniseAsync(payCustomer, payCharge.ProcessorId);
+        return payment;
     }
 
     /// <inheritdoc/>
@@ -34,18 +37,10 @@ public class ChargeManager : IChargeManager
         return result;
     }
 
+    /// <inheritdoc/>
     public virtual Task<PayCharge?> GetAsync(string processorId)
     {
         return Task.FromResult(_chargeStore.Charges.FirstOrDefault(c => c.ProcessorId == processorId));
-    }
-
-    public virtual Task<ICollection<object>> GetCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge)
-    {
-        if (string.IsNullOrEmpty(payCharge.InvoiceId))
-        {
-            throw new PayDotNetException("No InvoiceId on PayCharge");
-        }
-        return _paymentProcessorService.GetCreditNotesAsync(payCustomer, payCharge);
     }
 
     /// <inheritdoc/>
@@ -53,13 +48,13 @@ public class ChargeManager : IChargeManager
     {
         // Issues a CreditNote if there's an invoice, otherwise uses a Refund.
         // This allows Tax to be handled properly
-        if (string.IsNullOrEmpty(payCharge.InvoiceId))
+        if (!string.IsNullOrEmpty(payCharge.InvoiceId))
         {
-            await _paymentProcessorService.RefundAsync(payCustomer, payCharge, options);
+            await _paymentProcessorService.IssueCreditNotesAsync(payCustomer, payCharge, options);
         }
         else
         {
-            await _paymentProcessorService.IssueCreditNotesAsync(payCustomer, payCharge, options);
+            await _paymentProcessorService.RefundAsync(payCustomer, payCharge, options);
         }
     }
 

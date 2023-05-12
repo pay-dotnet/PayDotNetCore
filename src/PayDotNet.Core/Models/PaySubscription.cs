@@ -31,7 +31,7 @@ public class PaySubscription
 
     public bool IsMetered { get; set; }
 
-    public string? PauseBehaviour { get; set; }
+    public PaySubscriptionPauseBehaviour? PauseBehaviour { get; set; }
 
     public DateTime? PauseStartsAt { get; set; }
 

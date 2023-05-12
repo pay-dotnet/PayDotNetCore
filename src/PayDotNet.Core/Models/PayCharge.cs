@@ -55,7 +55,7 @@ public class PayCharge
 
     public virtual ICollection<string> Discounts { get; set; } = new List<string>();
 
-    public virtual ICollection<PayChargeTotalTaxAmount> TotalTaxAmounts { get; set; } = new List<PayChargeTotalTaxAmount>();
+    public virtual ICollection<PayChargeTaxAmount> TotalTaxAmounts { get; set; } = new List<PayChargeTaxAmount>();
 
     public virtual ICollection<PayChargeTotalDiscount> TotalDiscountAmounts { get; set; } = new List<PayChargeTotalDiscount>();
 

@@ -25,7 +25,7 @@ public class PaymentActionRequiredHandler : IStripeWebhookHandler
         if (@event.Data.Object is Invoice invoice)
         {
             PayCustomer payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, invoice.CustomerId);
-            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(invoice.SubscriptionId, payCustomer.Id);
+            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(payCustomer, invoice.SubscriptionId);
             if (paySubscription is null)
             {
                 return;
