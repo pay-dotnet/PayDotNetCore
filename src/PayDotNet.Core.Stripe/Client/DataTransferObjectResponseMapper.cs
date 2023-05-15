@@ -147,7 +147,7 @@ public class DataTransferObjectResponseMapper
                 {
                     Id = subscriptionItem.Price.Id,
                 },
-                Quantity = subscriptionItem.Quantity
+                Quantity = Convert.ToInt32(subscriptionItem.Quantity),
             };
             paySubscription.SubscriptionItems.Add(paySubscriptionItem);
         }

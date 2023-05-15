@@ -1,11 +1,7 @@
 ﻿namespace PayDotNet.Core.Models;
 
-/// <summary>
-/// TODO: unique(customer, processorId)
-/// </summary>
 public class PaySubscription : Timestamps
 {
-    // TÖDO: 8,2
     public decimal? ApplicationFeePercent { get; set; }
 
     public virtual ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
@@ -68,7 +64,7 @@ public class PaySubscriptionItem
 
     public PaySubscriptionItemPrice Price { get; set; } = default!;
 
-    public long Quantity { get; set; }
+    public int Quantity { get; set; }
 }
 
 public class PaySubscriptionItemPrice

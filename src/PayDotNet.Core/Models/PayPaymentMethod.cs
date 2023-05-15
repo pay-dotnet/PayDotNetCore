@@ -1,6 +1,5 @@
 ﻿namespace PayDotNet.Core.Models;
 
-/// TODO: unique(customer, processorId)
 public class PayPaymentMethod : Timestamps
 {
     public string CustomerId { get; set; }

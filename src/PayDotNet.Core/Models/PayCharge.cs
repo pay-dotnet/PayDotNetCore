@@ -1,8 +1,5 @@
 ﻿namespace PayDotNet.Core.Models;
 
-/// <summary>
-/// TODO: unique (customerid, processorid)
-/// </summary>
 public class PayCharge : Timestamps
 {
     public int Amount { get; set; }
@@ -11,7 +8,7 @@ public class PayCharge : Timestamps
 
     public int? ApplicationFeeAmount { get; set; }
 
-    public string? Currency { get; set; }
+    public string Currency { get; set; }
 
     public string CustomerId { get; set; }
 

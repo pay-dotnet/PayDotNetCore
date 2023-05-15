@@ -2,10 +2,11 @@
 
 public class PayWebhook : Timestamps
 {
-    // TODO: JSON
     public string Event { get; init; }
 
     public string EventType { get; init; }
+
+    public Guid Id { get; set; }
 
     public string Processor { get; init; }
 }
