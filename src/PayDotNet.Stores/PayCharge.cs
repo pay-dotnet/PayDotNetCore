@@ -1,4 +1,4 @@
-﻿namespace PayDotNet.Core.Models;
+﻿namespace PayDotNet.Stores;
 
 public class PayCharge : Timestamps
 {
@@ -14,25 +14,25 @@ public class PayCharge : Timestamps
 
     public string ProcessorId { get; set; }
 
-    public string? SubscriptionId { get; set; }
+    public string SubscriptionId { get; set; }
 
     #region Additional Properties
 
     public int AmountCaptured { get; set; }
 
-    public string? Bank { get; set; }
+    public string Bank { get; set; }
 
-    public string? Brand { get; set; }
+    public string Brand { get; set; }
 
     public virtual ICollection<string> Discounts { get; set; } = new List<string>();
 
-    public string? ExpirationMonth { get; set; }
+    public string ExpirationMonth { get; set; }
 
-    public string? ExpirationYear { get; set; }
+    public string ExpirationYear { get; set; }
 
-    public string? InvoiceId { get; set; }
+    public string InvoiceId { get; set; }
 
-    public string? Last4 { get; set; }
+    public string Last4 { get; set; }
 
     public virtual ICollection<PayChargeLineItem> LineItems { get; set; } = new List<PayChargeLineItem>();
 

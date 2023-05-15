@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Options;
-using PayDotNet.Core.Models;
 using Stripe;
 using Xunit.Abstractions;
 

@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PayDotNet.Stores\PayDotNet.Stores.csproj" />
+  </ItemGroup>
+
 </Project>

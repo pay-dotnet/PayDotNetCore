@@ -1,6 +1,5 @@
 using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Managers;
-using PayDotNet.Core.Models;
 
 namespace PayDotNet.Core.Tests;
 

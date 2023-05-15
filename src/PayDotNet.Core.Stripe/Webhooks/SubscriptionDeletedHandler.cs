@@ -1,5 +1,4 @@
 ﻿using PayDotNet.Core.Abstraction;
-using PayDotNet.Core.Models;
 using Stripe;
 
 namespace PayDotNet.Core.Stripe.Webhooks;

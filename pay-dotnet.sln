@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayDotNet.EntityFrameworkCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Migrations", "examples\EntityFramework.Migrations\EntityFramework.Migrations.csproj", "{42EF16C0-3234-40CE-BE01-B5FE6BC43B32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayDotNet.Stores", "src\PayDotNet.Stores\PayDotNet.Stores.csproj", "{1DC34D8B-9F9B-49E1-A08B-0D5254EA81E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{42EF16C0-3234-40CE-BE01-B5FE6BC43B32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42EF16C0-3234-40CE-BE01-B5FE6BC43B32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42EF16C0-3234-40CE-BE01-B5FE6BC43B32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DC34D8B-9F9B-49E1-A08B-0D5254EA81E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC34D8B-9F9B-49E1-A08B-0D5254EA81E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC34D8B-9F9B-49E1-A08B-0D5254EA81E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC34D8B-9F9B-49E1-A08B-0D5254EA81E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{6303B037-2E49-4EFB-89D8-F970D01BC62D} = {2E3C6133-6660-4175-9BCA-81A6EF0E4DC0}
 		{1C7969A1-22E9-4FCB-8698-BC28FA0FE4BB} = {0A892F5E-838C-4104-ABB8-41AA637BE5F3}
 		{42EF16C0-3234-40CE-BE01-B5FE6BC43B32} = {4A719C85-A10F-4EAE-B206-ADA38D522818}
+		{1DC34D8B-9F9B-49E1-A08B-0D5254EA81E2} = {0A892F5E-838C-4104-ABB8-41AA637BE5F3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92A0DF56-DC37-444A-8842-129AA122EC65}

@@ -1,4 +1,4 @@
-﻿namespace PayDotNet.Core.Models;
+﻿namespace PayDotNet.Core;
 
 public interface IPayment
 {

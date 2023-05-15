@@ -1,6 +1,4 @@
-﻿using PayDotNet.Core.Models;
-
-namespace PayDotNet.Core.Abstraction;
+﻿namespace PayDotNet.Core.Abstraction;
 
 /// <summary>
 /// A facade interface containing the primary operations for Pay

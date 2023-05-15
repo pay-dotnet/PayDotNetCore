@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
-using PayDotNet.Core.Models;
 using Stripe;
 
 namespace PayDotNet.Core.Stripe.Client;

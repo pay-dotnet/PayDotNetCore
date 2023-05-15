@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PayDotNet.Core;
 using PayDotNet.Core.Abstraction;
-using PayDotNet.Core.Models;
+using PayDotNet.Stores;
 
 namespace RazorWebApp.Pages
 {

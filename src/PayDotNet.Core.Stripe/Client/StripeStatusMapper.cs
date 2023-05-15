@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using PayDotNet.Core.Models;
 
 namespace PayDotNet.Core.Stripe.Client;
 

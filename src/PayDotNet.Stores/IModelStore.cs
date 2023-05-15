@@ -1,4 +1,4 @@
-﻿namespace PayDotNet.Core.Abstraction;
+﻿namespace PayDotNet.Stores;
 
 public interface IModelStore<TModel>
 {

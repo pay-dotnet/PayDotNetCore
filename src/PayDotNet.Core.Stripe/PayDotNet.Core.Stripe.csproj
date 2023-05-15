@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PayDotNet.Core\PayDotNet.Core.csproj" />
+    <ProjectReference Include="..\PayDotNet.Stores\PayDotNet.Stores.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,4 @@
-﻿using PayDotNet.Core.Models;
-
-namespace PayDotNet.Core;
+﻿namespace PayDotNet.Core;
 
 [Serializable]
 public class InvalidPaymentPayDotNetException : PayDotNetException

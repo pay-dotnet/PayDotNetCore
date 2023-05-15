@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PayDotNet.Core.Models;
 
 namespace PayDotNet.EntityFrameworkCore;
 

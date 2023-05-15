@@ -1,6 +1,4 @@
-﻿using PayDotNet.Core.Models;
-
-namespace PayDotNet.Core.Abstraction;
+﻿namespace PayDotNet.Stores;
 
 public interface IPaymentMethodStore : IModelStore<PayPaymentMethod>
 {

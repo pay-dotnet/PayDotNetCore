@@ -1,5 +1,4 @@
-﻿using PayDotNet.Core.Models;
-using PayDotNet.Core.Stripe.Client;
+﻿using PayDotNet.Core.Stripe.Client;
 using Stripe;
 
 namespace PayDotNet.Core.Stripe;

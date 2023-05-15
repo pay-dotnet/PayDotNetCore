@@ -1,7 +1,4 @@
-﻿using PayDotNet.Core.Abstraction;
-using PayDotNet.Core.Models;
-
-namespace PayDotNet.Core.Stores;
+﻿namespace PayDotNet.Core.Stores;
 
 internal class InMemoryStore :
     ICustomerStore,

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
 using PayDotNet.Core.Abstraction;
-using PayDotNet.Core.Models;
 using PayDotNet.Core.Services;
 
 namespace PayDotNet.Core.Managers;

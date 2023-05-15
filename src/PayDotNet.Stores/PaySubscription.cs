@@ -1,10 +1,10 @@
-﻿namespace PayDotNet.Core.Models;
+﻿namespace PayDotNet.Stores;
 
 public class PaySubscription : Timestamps
 {
     public decimal? ApplicationFeePercent { get; set; }
 
-    public virtual ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
+    public virtual ICollection<PayCharge> Charges { get; set; } = new List<PayCharge>();
 
     public DateTime? CurrentPeriodEnd { get; set; }
 

@@ -1,5 +1,4 @@
-﻿using PayDotNet.Core.Models;
-using Stripe;
+﻿using Stripe;
 using Xunit.Abstractions;
 
 namespace PayDotNet.Core.Stripe.Tests.StripeTests;
