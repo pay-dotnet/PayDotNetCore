@@ -15,15 +15,15 @@ namespace RazorWebApp.Pages
             _billableManager = billableManager;
         }
 
-        public void OnGet()
-        {
-        }
-
         [BindProperty]
         public string Email { get; set; }
 
         [BindProperty]
         public string Mode { get; set; }
+
+        public void OnGet()
+        {
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {

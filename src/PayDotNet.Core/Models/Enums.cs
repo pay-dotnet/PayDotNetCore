@@ -1,5 +1,17 @@
 ﻿namespace PayDotNet.Core.Models;
 
+public enum PayStatus
+{
+    None = 0,
+    RequiresPaymentMethod,
+    RequiresConfirmation,
+    RequiresAction,
+    RequiresCapture,
+    Processing,
+    Canceled,
+    Succeeded,
+}
+
 public enum PaySubscriptionStatus
 {
     None = 0,
@@ -11,18 +23,6 @@ public enum PaySubscriptionStatus
     Cancelled,
     Unpaid,
     Paused
-}
-
-public enum PayStatus
-{
-    None = 0,
-    RequiresPaymentMethod,
-    RequiresConfirmation,
-    RequiresAction,
-    RequiresCapture,
-    Processing,
-    Canceled,
-    Succeeded,
 }
 
 public enum PaySubscriptionPauseBehaviour

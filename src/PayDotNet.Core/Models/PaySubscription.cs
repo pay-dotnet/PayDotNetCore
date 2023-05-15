@@ -5,11 +5,28 @@
 /// </summary>
 public class PaySubscription : Timestamps
 {
+    // TÖDO: 8,2
+    public decimal? ApplicationFeePercent { get; set; }
+
+    public virtual ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
+
+    public DateTime? CurrentPeriodEnd { get; set; }
+
+    public DateTime? CurrentPeriodStart { get; set; }
+
     public string CustomerId { get; set; }
+
+    public DateTime? EndsAt { get; set; }
+
+    public bool IsMetered { get; set; }
 
     public string Name { get; set; }
 
-    // public string Processor { get; set; } Can be found in the Customer.
+    public PaySubscriptionPauseBehaviour? PauseBehaviour { get; set; }
+
+    public DateTime? PauseResumesAt { get; set; }
+
+    public DateTime? PauseStartsAt { get; set; }
 
     public string ProcessorId { get; set; }
 
@@ -19,28 +36,20 @@ public class PaySubscription : Timestamps
 
     public PaySubscriptionStatus Status { get; set; }
 
-    public DateTime? CurrentPeriodStart { get; set; }
-
-    public DateTime? CurrentPeriodEnd { get; set; }
+    public virtual ICollection<PaySubscriptionItem> SubscriptionItems { get; set; } = new List<PaySubscriptionItem>();
 
     public DateTime? TrailEndsAt { get; set; }
 
-    public DateTime? EndsAt { get; set; }
+    public void CancelNow()
+    {
+        Status = PaySubscriptionStatus.Cancelled;
+        EndsAt = DateTime.UtcNow;
+    }
 
-    public bool IsMetered { get; set; }
-
-    public PaySubscriptionPauseBehaviour? PauseBehaviour { get; set; }
-
-    public DateTime? PauseStartsAt { get; set; }
-
-    public DateTime? PauseResumesAt { get; set; }
-
-    // TÖDO: 8,2
-    public decimal? ApplicationFeePercent { get; set; }
-
-    public virtual ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
-
-    public virtual ICollection<PaySubscriptionItem> SubscriptionItems { get; set; } = new List<PaySubscriptionItem>();
+    public bool IsIncomplete()
+    {
+        return Status == PaySubscriptionStatus.Incomplete;
+    }
 
     public bool IsOnTrial()
     {
@@ -50,17 +59,6 @@ public class PaySubscription : Timestamps
     public bool IsTrialEnded()
     {
         return TrailEndsAt.HasValue && TrailEndsAt.Value <= DateTime.UtcNow;
-    }
-
-    public bool IsIncomplete()
-    {
-        return Status == PaySubscriptionStatus.Incomplete;
-    }
-
-    public void CancelNow()
-    {
-        Status = PaySubscriptionStatus.Cancelled;
-        EndsAt = DateTime.UtcNow;
     }
 }
 

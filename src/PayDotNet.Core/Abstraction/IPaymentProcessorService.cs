@@ -16,8 +16,6 @@ public interface IPaymentProcessorService
 
     #region Payment method API
 
-    Task<PayPaymentMethod?> GetPaymentMethodAsync(PayCustomer payCustomer, string processorId);
-
     /// <summary>
     /// Attaches the payment method to the customer in the PaymentProcessor.
     /// </summary>
@@ -26,9 +24,13 @@ public interface IPaymentProcessorService
     /// <returns>The payment method.</returns>
     Task<PayPaymentMethod> AttachPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options);
 
+    Task<PayPaymentMethod?> GetPaymentMethodAsync(PayCustomer payCustomer, string processorId);
+
     #endregion Payment method API
 
     #region Subscriptions API
+
+    Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options);
 
     /// <summary>
     /// Creates a subscription for a given customer and options
@@ -44,20 +46,9 @@ public interface IPaymentProcessorService
 
     Task<PaySubscriptionResult?> GetSubscriptionAsync(PayCustomer payCustomer, string processorId);
 
-    Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options);
-
     #endregion Subscriptions API
 
     #region Charges API
-
-    /// <summary>
-    /// Retrieves the charge based on the customer and processor id.
-    /// If the customer is null, it should return a null.
-    /// </summary>
-    /// <param name="payCustomer">The customer.</param>
-    /// <param name="processorId">The payment processor id for the charge.</param>
-    /// <returns>The pay charge if found.</returns>
-    Task<PayCharge?> GetChargeAsync(PayCustomer payCustomer, string processorId);
 
     /// <summary>
     /// Captures a previous authorized charge.
@@ -68,8 +59,6 @@ public interface IPaymentProcessorService
     /// <returns>The payment indicating if the capture was successful.</returns>
     Task<IPayment> CaptureAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeCaptureOptions options);
 
-    Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId);
-
     /// <summary>
     /// Charges the customer an amount. Returns a result that can be used to validate if payment was successful or an action is required.
     /// </summary>
@@ -77,6 +66,17 @@ public interface IPaymentProcessorService
     /// <param name="options">The options.</param>
     /// <returns>The charge result.</returns>
     Task<PayChargeResult> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options);
+
+    /// <summary>
+    /// Retrieves the charge based on the customer and processor id.
+    /// If the customer is null, it should return a null.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <param name="processorId">The payment processor id for the charge.</param>
+    /// <returns>The pay charge if found.</returns>
+    Task<PayCharge?> GetChargeAsync(PayCustomer payCustomer, string processorId);
+
+    Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId);
 
     #endregion Charges API
 
@@ -94,9 +94,9 @@ public interface IPaymentProcessorService
 
     #region Refunds API
 
-    Task<PayChargeRefund> RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options);
-
     Task IssueCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options);
+
+    Task<PayChargeRefund> RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options);
 
     #endregion Refunds API
 

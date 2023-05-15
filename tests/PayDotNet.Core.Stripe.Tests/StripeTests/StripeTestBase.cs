@@ -16,23 +16,17 @@ public class StripeTestBase<TSystemUnderTest> : TestBase<TSystemUnderTest>
         Email = "dotnetfromthemountain+test@gmail.com"
     };
 
-    public class Subscriptions
-    {
-        public const string BasicSubscription = "price_1MyDj2JUAL06t0UNphFwwc6l";
-        public const string PremiumSubscription = "price_1MyDj2JUAL06t0UNjnmx5za5";
-    }
-
     public class PaymentMethods
     {
-        public static PaymentMethodCreateOptions Visa4242 => new()
+        public static PaymentMethodCreateOptions DeclineAfterAttaching => new()
         {
             Type = "card",
             Card = new()
             {
-                Number = "4242424242424242",
+                Number = "4000000000000341",
                 ExpMonth = 12,
                 ExpYear = 2030,
-                Cvc = "424",
+                Cvc = "111"
             }
         };
 
@@ -60,18 +54,6 @@ public class StripeTestBase<TSystemUnderTest> : TestBase<TSystemUnderTest>
             }
         };
 
-        public static PaymentMethodCreateOptions DeclineAfterAttaching => new()
-        {
-            Type = "card",
-            Card = new()
-            {
-                Number = "4000000000000341",
-                ExpMonth = 12,
-                ExpYear = 2030,
-                Cvc = "111"
-            }
-        };
-
         public static PaymentMethodCreateOptions SCA => new()
         {
             Type = "card",
@@ -83,5 +65,23 @@ public class StripeTestBase<TSystemUnderTest> : TestBase<TSystemUnderTest>
                 Cvc = "111"
             }
         };
+
+        public static PaymentMethodCreateOptions Visa4242 => new()
+        {
+            Type = "card",
+            Card = new()
+            {
+                Number = "4242424242424242",
+                ExpMonth = 12,
+                ExpYear = 2030,
+                Cvc = "424",
+            }
+        };
+    }
+
+    public class Subscriptions
+    {
+        public const string BasicSubscription = "price_1MyDj2JUAL06t0UNphFwwc6l";
+        public const string PremiumSubscription = "price_1MyDj2JUAL06t0UNjnmx5za5";
     }
 }

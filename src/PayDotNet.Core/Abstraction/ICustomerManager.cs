@@ -5,6 +5,22 @@ namespace PayDotNet.Core.Abstraction;
 public interface ICustomerManager
 {
     /// <summary>
+    /// Finds the customer in the store by email.
+    /// </summary>
+    /// <param name="processorName">The payment processor name.</param>
+    /// <param name="email">The email.</param>
+    /// <returns>The pay customer.</returns>
+    Task<PayCustomer?> FindByEmailAsync(string processorName, string email);
+
+    /// <summary>
+    /// Finds the customer in the store by id.
+    /// </summary>
+    /// <param name="processorName">The payment processor name.</param>
+    /// <param name="processorId">The customer identifier from the payment processor.</param>
+    /// <returns>The pay customer.</returns>
+    Task<PayCustomer?> FindByIdAsync(string processorName, string processorId);
+
+    /// <summary>
     /// Get or creates the customer both in the store as well as in the payment processor.
     /// If it already exists, there are no API calls to the payment processor.
     ///
@@ -24,22 +40,6 @@ public interface ICustomerManager
     /// <param name="email">The email.</param>
     /// <returns>The pay customer.</returns>
     Task<PayCustomer> GetOrCreateCustomerAsync(string processorName, string email);
-
-    /// <summary>
-    /// Finds the customer in the store by email.
-    /// </summary>
-    /// <param name="processorName">The payment processor name.</param>
-    /// <param name="email">The email.</param>
-    /// <returns>The pay customer.</returns>
-    Task<PayCustomer?> FindByEmailAsync(string processorName, string email);
-
-    /// <summary>
-    /// Finds the customer in the store by id.
-    /// </summary>
-    /// <param name="processorName">The payment processor name.</param>
-    /// <param name="processorId">The customer identifier from the payment processor.</param>
-    /// <returns>The pay customer.</returns>
-    Task<PayCustomer?> FindByIdAsync(string processorName, string processorId);
 
     /// <summary>
     /// Soft deletes the customer in the store, since we don't want to delete the customer and its history.

@@ -10,8 +10,14 @@ public class InvalidPaymentPayDotNetException : PayDotNetException
         Payment = payment;
     }
 
-    public InvalidPaymentPayDotNetException(string message) : base(message) { }
-    public InvalidPaymentPayDotNetException(string message, Exception inner) : base(message, inner) { }
+    public InvalidPaymentPayDotNetException(string message) : base(message)
+    {
+    }
+
+    public InvalidPaymentPayDotNetException(string message, Exception inner) : base(message, inner)
+    {
+    }
+
     protected InvalidPaymentPayDotNetException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context) : base(info, context) { }

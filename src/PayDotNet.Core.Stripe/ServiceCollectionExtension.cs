@@ -35,6 +35,43 @@ public static class ServiceCollectionExtension
         return builder;
     }
 
+    public static IServiceCollection ConfigureStripeClient(this IServiceCollection services)
+    {
+        // Add HttpClient.
+        services.AddHttpClient<StripeClient>();
+
+        // Stripe API configuration.
+        services.AddSingleton<IStripeClient, StripeClient>(CreateStripeClient);
+        return services;
+    }
+
+    public static IServiceCollection ConfigureStripeServices(this IServiceCollection services)
+    {
+        services.AddSingleton<StripePaymentProcessorService>();
+        services.AddSingleton<IPaymentProcessorService>(sp => sp.GetRequiredService<StripePaymentProcessorService>());
+        return services;
+    }
+
+    private static IServiceCollection ConfigureStripeWebhookServices(this IServiceCollection services, PaymentProcessorOptionsBuilder<IStripeWebhookHandler> options)
+    {
+        WebhookRouterTable routingTable = options.Webhooks.Build();
+        options.Webhooks.Configure(services);
+        services.AddSingleton<WebhookDispatcher>(serviceProvider =>
+        {
+            return new StripeWebhookDispatcher(routingTable, serviceProvider, serviceProvider.GetRequiredService<ILogger<StripeWebhookDispatcher>>());
+        });
+
+        return services;
+    }
+
+    private static IServiceCollection ConfigureWebhookController(this IServiceCollection services)
+    {
+        services
+            .AddMvcCore()
+            .AddApplicationPart(typeof(StripePaymentProcessorService).Assembly);
+        return services;
+    }
+
     /// <remarks>
     /// For reference, see: https://github.com/pay-rails/pay/blob/master/lib/pay/stripe.rb#L39
     /// </remarks>
@@ -93,16 +130,6 @@ public static class ServiceCollectionExtension
         return builder;
     }
 
-    public static IServiceCollection ConfigureStripeClient(this IServiceCollection services)
-    {
-        // Add HttpClient.
-        services.AddHttpClient<StripeClient>();
-
-        // Stripe API configuration.
-        services.AddSingleton<IStripeClient, StripeClient>(CreateStripeClient);
-        return services;
-    }
-
     private static StripeClient CreateStripeClient(IServiceProvider serviceProvider)
     {
         // HttpClient
@@ -114,32 +141,5 @@ public static class ServiceCollectionExtension
         IOptions<PayDotNetConfiguration> options = serviceProvider.GetRequiredService<IOptions<PayDotNetConfiguration>>();
 
         return new StripeClient(apiKey: options.Value.Stripe.ApiKey, httpClient: stripeHttpClient);
-    }
-
-    public static IServiceCollection ConfigureStripeServices(this IServiceCollection services)
-    {
-        services.AddSingleton<StripePaymentProcessorService>();
-        services.AddSingleton<IPaymentProcessorService>(sp => sp.GetRequiredService<StripePaymentProcessorService>());
-        return services;
-    }
-
-    private static IServiceCollection ConfigureStripeWebhookServices(this IServiceCollection services, PaymentProcessorOptionsBuilder<IStripeWebhookHandler> options)
-    {
-        WebhookRouterTable routingTable = options.Webhooks.Build();
-        options.Webhooks.Configure(services);
-        services.AddSingleton<WebhookDispatcher>(serviceProvider =>
-        {
-            return new StripeWebhookDispatcher(routingTable, serviceProvider, serviceProvider.GetRequiredService<ILogger<StripeWebhookDispatcher>>());
-        });
-
-        return services;
-    }
-
-    private static IServiceCollection ConfigureWebhookController(this IServiceCollection services)
-    {
-        services
-            .AddMvcCore()
-            .AddApplicationPart(typeof(StripePaymentProcessorService).Assembly);
-        return services;
     }
 }

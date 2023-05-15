@@ -7,11 +7,6 @@ namespace PayDotNet.Core.Stripe.Tests.StripeTests;
 
 public class CheckoutStripeTest : StripeTestBase<StripePaymentProcessorService>
 {
-    public CheckoutStripeTest(ITestOutputHelper testOutputHelper)
-        : base(testOutputHelper)
-    {
-    }
-
     public static PayCheckoutOptions CheckoutOptions = new(LineItems: new()
     {
         new PayCheckoutLineItem(PriceData: new("T-shirt", 30_00, "eur")),
@@ -19,6 +14,11 @@ public class CheckoutStripeTest : StripeTestBase<StripePaymentProcessorService>
         new PayCheckoutLineItem(PriceData: new("Shoes", 25_00, "eur")),
         new PayCheckoutLineItem(PriceData: new("Socks", 5_00, "eur")),
     });
+
+    public CheckoutStripeTest(ITestOutputHelper testOutputHelper)
+            : base(testOutputHelper)
+    {
+    }
 
     [Fact]
     public async Task stripe_can_checkout_payment()
@@ -112,24 +112,6 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
     }
 
     [Fact]
-    public async Task stripe_can_charge_customer_without_attached_payment_method()
-    {
-        // Arrange
-        PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
-
-        PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-
-        // Act
-        PayChargeResult payChargeResult =
-            await SystemUnderTest.ChargeAsync(payCustomer, new PayChargeOptions(29_00, "eur", PaymentMethodId: paymentMethod.Id));
-
-        // Assert
-        payChargeResult.Payment.IsSucceeded().Should().BeTrue();
-        payChargeResult.PayCharge.Should().NotBeNull();
-    }
-
-    [Fact]
     public async Task stripe_can_charge_customer_raises_payment_declined()
     {
         // Arrange
@@ -163,6 +145,24 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
         result.PayCharge.Should().BeNull("Because the charge didn't succeed and the payment will indicate an action is required");
         result.Payment.IsSucceeded().Should().BeFalse();
         result.Payment.RequiresAction().Should().BeTrue();
+    }
+
+    [Fact]
+    public async Task stripe_can_charge_customer_without_attached_payment_method()
+    {
+        // Arrange
+        PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
+
+        PayCustomer payCustomer = NewCustomer;
+        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+
+        // Act
+        PayChargeResult payChargeResult =
+            await SystemUnderTest.ChargeAsync(payCustomer, new PayChargeOptions(29_00, "eur", PaymentMethodId: paymentMethod.Id));
+
+        // Assert
+        payChargeResult.Payment.IsSucceeded().Should().BeTrue();
+        payChargeResult.PayCharge.Should().NotBeNull();
     }
 
     [Fact]

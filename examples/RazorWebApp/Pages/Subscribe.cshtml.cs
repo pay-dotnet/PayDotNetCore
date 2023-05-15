@@ -15,21 +15,21 @@ namespace RazorWebApp.Pages
             _billableManager = billableManager;
         }
 
-        public void OnGet(string priceId)
-        {
-            SelectedPlan = Data.Plans[priceId];
-        }
-
-        public Data.Plan SelectedPlan { get; set; }
-
         [BindProperty]
-        public string Price { get; set; }
+        public string Email { get; set; }
 
         [BindProperty]
         public string PaymentProcessor { get; set; } = "stripe";
 
         [BindProperty]
-        public string Email { get; set; }
+        public string Price { get; set; }
+
+        public Data.Plan SelectedPlan { get; set; }
+
+        public void OnGet(string priceId)
+        {
+            SelectedPlan = Data.Plans[priceId];
+        }
 
         public async Task<IActionResult> OnPostAsync(string priceId)
         {

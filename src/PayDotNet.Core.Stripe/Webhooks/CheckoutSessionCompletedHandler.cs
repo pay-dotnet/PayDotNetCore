@@ -7,8 +7,8 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 
 public class CheckoutSessionCompletedHandler : IStripeWebhookHandler
 {
-    private readonly ICustomerManager _customerManager;
     private readonly IChargeManager _chargeManager;
+    private readonly ICustomerManager _customerManager;
     private readonly ISubscriptionManager _subscriptionManager;
 
     public CheckoutSessionCompletedHandler(

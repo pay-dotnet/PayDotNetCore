@@ -13,8 +13,8 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 public class SubscriptionRenewingHandler : IStripeWebhookHandler
 {
     private readonly ICustomerManager _customerManager;
-    private readonly ISubscriptionManager _subscriptionManager;
     private readonly IPayNotificationService _notificationService;
+    private readonly ISubscriptionManager _subscriptionManager;
 
     public SubscriptionRenewingHandler(
         ICustomerManager customerManager,

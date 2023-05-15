@@ -6,35 +6,9 @@ public sealed class WebhookRouterBuilder<TService>
 {
     private readonly Dictionary<string, HashSet<Type>> RoutingTable = new();
 
-    public void SubscribeWebhook<TWebhook>(string eventType)
-        where TWebhook : TService
+    public WebhookRouterTable Build()
     {
-        if (!RoutingTable.ContainsKey(eventType))
-        {
-            RoutingTable.Add(eventType, new());
-        }
-        RoutingTable[eventType].Add(typeof(TWebhook));
-    }
-
-    public void UnsubscribeWebhook<TWebhook>(string eventType)
-        where TWebhook : TService
-    {
-        if (!RoutingTable.ContainsKey(eventType))
-        {
-            return;
-        }
-
-        RoutingTable[eventType].Remove(typeof(TWebhook));
-    }
-
-    public void UnsubscribeAllWebhooks(string eventType)
-    {
-        if (!RoutingTable.ContainsKey(eventType))
-        {
-            return;
-        }
-
-        RoutingTable[eventType].Clear();
+        return new(RoutingTable);
     }
 
     public void Clear() => RoutingTable.Clear();
@@ -50,8 +24,34 @@ public sealed class WebhookRouterBuilder<TService>
         }
     }
 
-    public WebhookRouterTable Build()
+    public void SubscribeWebhook<TWebhook>(string eventType)
+                    where TWebhook : TService
     {
-        return new(RoutingTable);
+        if (!RoutingTable.ContainsKey(eventType))
+        {
+            RoutingTable.Add(eventType, new());
+        }
+        RoutingTable[eventType].Add(typeof(TWebhook));
+    }
+
+    public void UnsubscribeAllWebhooks(string eventType)
+    {
+        if (!RoutingTable.ContainsKey(eventType))
+        {
+            return;
+        }
+
+        RoutingTable[eventType].Clear();
+    }
+
+    public void UnsubscribeWebhook<TWebhook>(string eventType)
+            where TWebhook : TService
+    {
+        if (!RoutingTable.ContainsKey(eventType))
+        {
+            return;
+        }
+
+        RoutingTable[eventType].Remove(typeof(TWebhook));
     }
 }

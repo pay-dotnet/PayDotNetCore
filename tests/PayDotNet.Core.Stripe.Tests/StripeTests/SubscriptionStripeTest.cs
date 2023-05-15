@@ -13,19 +13,24 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
     }
 
     [Fact]
-    public async Task stripe_can_retrieve_subscription()
+    public async Task stripe_can_cancel_subscription()
     {
         // Arrange
+        PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
+        payCustomer.PaymentMethods.Add(payPaymentMethod);
 
-        // Act
+        // Act #1
         PaySubscriptionResult result = await SystemUnderTest.CreateSubscriptionAsync(payCustomer, new(string.Empty, Subscriptions.BasicSubscription));
+        await SystemUnderTest.CancelAsync(payCustomer, result.PaySubscription, new(CancellationReason.Other, "test"));
+        result = await SystemUnderTest.GetSubscriptionAsync(payCustomer, result.PaySubscription.ProcessorId);
 
+        // Assert
         result.Should().NotBeNull();
-        result.Payment.IsSucceeded().Should().BeFalse();
-        result.Payment.RequiresPaymentMethod().Should().BeTrue();
-        result.PaySubscription.Charges.Should().BeEmpty();
+        PaySubscription paySubscription = result.PaySubscription;
+        paySubscription.EndsAt.HasValue.Should().BeTrue();
     }
 
     [Fact]
@@ -52,24 +57,43 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
     }
 
     [Fact]
-    public async Task stripe_can_cancel_subscription()
+    public async Task stripe_can_create_subscription_also_saves_initial_charge()
     {
-        // Arrange
+        // Assert
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
+
         PayCustomer payCustomer = NewCustomer;
         payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(payPaymentMethod);
 
-        // Act #1
+        // Act
         PaySubscriptionResult result = await SystemUnderTest.CreateSubscriptionAsync(payCustomer, new(string.Empty, Subscriptions.BasicSubscription));
-        await SystemUnderTest.CancelAsync(payCustomer, result.PaySubscription, new(CancellationReason.Other, "test"));
-        result = await SystemUnderTest.GetSubscriptionAsync(payCustomer, result.PaySubscription.ProcessorId);
 
         // Assert
         result.Should().NotBeNull();
+        result.Payment.IsSucceeded().Should().BeTrue();
+        result.Payment.RequiresPaymentMethod().Should().BeFalse();
+
         PaySubscription paySubscription = result.PaySubscription;
-        paySubscription.EndsAt.HasValue.Should().BeTrue();
+        paySubscription.Charges.Should().NotBeEmpty();
+        paySubscription.Charges.FirstOrDefault().Amount.Should().BeGreaterThanOrEqualTo(249_00);
+    }
+
+    [Fact]
+    public async Task stripe_can_retrieve_subscription()
+    {
+        // Arrange
+        PayCustomer payCustomer = NewCustomer;
+        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+
+        // Act
+        PaySubscriptionResult result = await SystemUnderTest.CreateSubscriptionAsync(payCustomer, new(string.Empty, Subscriptions.BasicSubscription));
+
+        result.Should().NotBeNull();
+        result.Payment.IsSucceeded().Should().BeFalse();
+        result.Payment.RequiresPaymentMethod().Should().BeTrue();
+        result.PaySubscription.Charges.Should().BeEmpty();
     }
 
     [Fact]
@@ -131,30 +155,6 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
         result.PaySubscription.SubscriptionItems.Should().HaveCount(2);
         result.PaySubscription.SubscriptionItems.First(s => s.Price.Id == Subscriptions.BasicSubscription).Quantity.Should().Be(3);
         result.PaySubscription.SubscriptionItems.First(s => s.Price.Id == Subscriptions.PremiumSubscription).Quantity.Should().Be(5);
-    }
-
-    [Fact]
-    public async Task stripe_can_create_subscription_also_saves_initial_charge()
-    {
-        // Assert
-        PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
-
-        PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
-        PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
-        payCustomer.PaymentMethods.Add(payPaymentMethod);
-
-        // Act
-        PaySubscriptionResult result = await SystemUnderTest.CreateSubscriptionAsync(payCustomer, new(string.Empty, Subscriptions.BasicSubscription));
-
-        // Assert
-        result.Should().NotBeNull();
-        result.Payment.IsSucceeded().Should().BeTrue();
-        result.Payment.RequiresPaymentMethod().Should().BeFalse();
-
-        PaySubscription paySubscription = result.PaySubscription;
-        paySubscription.Charges.Should().NotBeEmpty();
-        paySubscription.Charges.FirstOrDefault().Amount.Should().BeGreaterThanOrEqualTo(249_00);
     }
 
     protected override StripePaymentProcessorService CreateSystemUnderTest()

@@ -8,9 +8,9 @@ namespace PayDotNet.Core.Managers;
 public class SubscriptionManager : ISubscriptionManager
 {
     private readonly IChargeManager _chargeManager;
-    private readonly ISubscriptionStore _subscriptionStore;
-    private readonly IPaymentProcessorService _paymentProcessorService;
     private readonly IOptions<PayDotNetConfiguration> _options;
+    private readonly IPaymentProcessorService _paymentProcessorService;
+    private readonly ISubscriptionStore _subscriptionStore;
 
     public SubscriptionManager(
         IChargeManager chargeManager,
@@ -22,6 +22,43 @@ public class SubscriptionManager : ISubscriptionManager
         _subscriptionStore = subscriptionStore;
         _paymentProcessorService = paymentProcessorService;
         _options = options;
+    }
+
+    /// <inheritdoc/>
+    public virtual async Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options)
+    {
+        paySubscription.EndsAt = paySubscription.IsOnTrial()
+            ? paySubscription.TrailEndsAt!.Value
+            : paySubscription.CurrentPeriodEnd!.Value;
+
+        // First cancel the payment processor, then save the outcome.
+        await _paymentProcessorService.CancelAsync(payCustomer, paySubscription, options);
+        await _subscriptionStore.UpdateAsync(paySubscription);
+    }
+
+    /// <inheritdoc/>
+    /// <remarks>
+    /// We manually cancel and save all subscriptions since the customer was deleted.
+    /// </remarks>
+    public virtual Task CancellAllAsync(PayCustomer payCustomer)
+    {
+        ICollection<PaySubscription> customerSubscriptions = _subscriptionStore.Subscriptions.Where(sub => sub.CustomerId == payCustomer.Id).ToList();
+        foreach (PaySubscription paySubscription in customerSubscriptions)
+        {
+            paySubscription.CancelNow();
+        }
+
+        return _subscriptionStore.UpdateAllAsync(customerSubscriptions);
+    }
+
+    /// <inheritdoc/>
+    public virtual async Task CancelNowAsync(PayCustomer payCustomer, PaySubscription paySubscription)
+    {
+        paySubscription.CancelNow();
+
+        // First cancel the payment processor, then save the outcome.
+        await _paymentProcessorService.CancelAsync(payCustomer, paySubscription, new(CancelAtEndPeriod: false));
+        await _subscriptionStore.UpdateAsync(paySubscription);
     }
 
     /// <inheritdoc/>
@@ -39,43 +76,6 @@ public class SubscriptionManager : ISubscriptionManager
     public virtual Task<PaySubscription?> FindByIdAsync(PayCustomer payCustomer, string processorId)
     {
         return Task.FromResult(_subscriptionStore.Subscriptions.FirstOrDefault(s => s.CustomerId == payCustomer.Id && s.ProcessorId == processorId));
-    }
-
-    /// <inheritdoc/>
-    public virtual async Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options)
-    {
-        paySubscription.EndsAt = paySubscription.IsOnTrial()
-            ? paySubscription.TrailEndsAt!.Value
-            : paySubscription.CurrentPeriodEnd!.Value;
-
-        // First cancel the payment processor, then save the outcome.
-        await _paymentProcessorService.CancelAsync(payCustomer, paySubscription, options);
-        await _subscriptionStore.UpdateAsync(paySubscription);
-    }
-
-    /// <inheritdoc/>
-    public virtual async Task CancelNowAsync(PayCustomer payCustomer, PaySubscription paySubscription)
-    {
-        paySubscription.CancelNow();
-
-        // First cancel the payment processor, then save the outcome.
-        await _paymentProcessorService.CancelAsync(payCustomer, paySubscription, new(CancelAtEndPeriod: false));
-        await _subscriptionStore.UpdateAsync(paySubscription);
-    }
-
-    /// <inheritdoc/>
-    /// <remarks>
-    /// We manually cancel and save all subscriptions since the customer was deleted.
-    /// </remarks>
-    public virtual Task CancellAllAsync(PayCustomer payCustomer)
-    {
-        ICollection<PaySubscription> customerSubscriptions = _subscriptionStore.Subscriptions.Where(sub => sub.CustomerId == payCustomer.Id).ToList();
-        foreach (PaySubscription paySubscription in customerSubscriptions)
-        {
-            paySubscription.CancelNow();
-        }
-
-        return _subscriptionStore.UpdateAllAsync(customerSubscriptions);
     }
 
     /// <inheritdoc/>

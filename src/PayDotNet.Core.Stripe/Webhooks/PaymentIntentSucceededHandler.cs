@@ -12,8 +12,8 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 /// </summary>
 public class PaymentIntentSucceededHandler : IStripeWebhookHandler
 {
-    private readonly ICustomerManager _customerManager;
     private readonly IChargeManager _chargeManager;
+    private readonly ICustomerManager _customerManager;
 
     public PaymentIntentSucceededHandler(
         ICustomerManager customerManager,

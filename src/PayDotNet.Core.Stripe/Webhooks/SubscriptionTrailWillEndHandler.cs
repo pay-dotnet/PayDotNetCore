@@ -7,8 +7,8 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 public class SubscriptionTrailWillEndHandler : IStripeWebhookHandler
 {
     private readonly ICustomerManager _customerManager;
-    private readonly ISubscriptionManager _subscriptionManager;
     private readonly IPayNotificationService _notificationService;
+    private readonly ISubscriptionManager _subscriptionManager;
 
     public SubscriptionTrailWillEndHandler(
         ICustomerManager customerManager,

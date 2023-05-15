@@ -28,12 +28,11 @@ public interface IPaymentMethodManager
     Task DeleteByIdAsync(string processorName, string processorId);
 
     /// <summary>
-    ///
+    /// Check if the payment method is required for the payment processor.
     /// </summary>
-    /// <param name="payCustomer"></param>
-    /// <param name="paymentMethodId"></param>
-    /// <returns>An awaitable task.</returns>
-    Task SynchroniseAsync(PayCustomer payCustomer, string paymentMethodId);
+    /// <param name="payCustomer">The customer.</param>
+    /// <returns>True or false.</returns>
+    bool IsPaymentMethodRequired(PayCustomer payCustomer);
 
     /// <summary>
     /// Resets all the payment methods to no longer be default.
@@ -43,9 +42,10 @@ public interface IPaymentMethodManager
     Task ResetDefaultPaymentMethodsAsync(PayCustomer payCustomer);
 
     /// <summary>
-    /// Check if the payment method is required for the payment processor.
+    ///
     /// </summary>
-    /// <param name="payCustomer">The customer.</param>
-    /// <returns>True or false.</returns>
-    bool IsPaymentMethodRequired(PayCustomer payCustomer);
+    /// <param name="payCustomer"></param>
+    /// <param name="paymentMethodId"></param>
+    /// <returns>An awaitable task.</returns>
+    Task SynchroniseAsync(PayCustomer payCustomer, string paymentMethodId);
 }

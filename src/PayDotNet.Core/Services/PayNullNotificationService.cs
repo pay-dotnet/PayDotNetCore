@@ -26,12 +26,12 @@ internal sealed class PayNullNotificationService : IPayNotificationService
         return Task.CompletedTask;
     }
 
-    public Task OnSubscriptionTrialEndedAsync(PayCustomer payCustomer, PaySubscription paySubscription)
+    public Task OnSubscriptionRenewingAsync(PayCustomer payCustomer, PaySubscription paySubscription)
     {
         return Task.CompletedTask;
     }
 
-    public Task OnSubscriptionRenewingAsync(PayCustomer payCustomer, PaySubscription paySubscription)
+    public Task OnSubscriptionTrialEndedAsync(PayCustomer payCustomer, PaySubscription paySubscription)
     {
         return Task.CompletedTask;
     }

@@ -16,19 +16,19 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         Url = "https://github.com/pay-dotnet/PayDotNetCore"
     };
 
-    private readonly PaymentIntentService _paymentIntents;
     private readonly ChargeService _charges;
-    private readonly InvoiceService _invoices;
-    private readonly CreditNoteService _creditNotes;
-    private readonly RefundService _refunds;
     private readonly SessionService _checkoutSession;
+    private readonly CreditNoteService _creditNotes;
     private readonly CustomerService _customers;
-    private readonly SubscriptionService _subscriptions;
+    private readonly InvoiceService _invoices;
+    private readonly DataTransferObjectResponseMapper _mapper;
+    private readonly IOptions<PayDotNetConfiguration> _options;
+    private readonly PaymentIntentService _paymentIntents;
     private readonly PaymentMethodService _paymentMethods;
+    private readonly RefundService _refunds;
     private readonly SetupIntentService _setupIntents;
     private readonly IStripeClient _stripeClient;
-    private readonly IOptions<PayDotNetConfiguration> _options;
-    private readonly DataTransferObjectResponseMapper _mapper;
+    private readonly SubscriptionService _subscriptions;
 
     public StripePaymentProcessorService(
         IStripeClient stripeClient,
@@ -50,25 +50,61 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         _creditNotes = new(_stripeClient);
     }
 
+    public string Name => PaymentProcessors.Stripe;
+
+    public bool IsPaymentMethodRequired(PayCustomer payCustomer)
+    {
+        return false;
+    }
+
+    private static void GuardInvoiceId(PayCharge payCharge)
+    {
+        if (string.IsNullOrEmpty(payCharge.InvoiceId))
+        {
+            throw new PayDotNetStripeException("No InvoiceId on PayCharge");
+        }
+    }
+
+    private async Task<TResult> TryAsync<TResult>(Func<Task<TResult>> value)
+    {
+        try
+        {
+            return await value.Invoke().WaitAsync(CancellationToken.None);
+        }
+        catch (StripeException exception)
+        {
+            throw new PayDotNetStripeException(PayDotNetStripeException.DefaultMessage, exception);
+        }
+    }
+
+    private async Task TryAsync(Func<Task> value)
+    {
+        try
+        {
+            await value.Invoke().WaitAsync(CancellationToken.None);
+        }
+        catch (StripeException exception)
+        {
+            throw new PayDotNetStripeException(PayDotNetStripeException.DefaultMessage, exception);
+        }
+    }
+
     internal static class Expand
     {
-        public static readonly List<string> Customer = new() { "tax" };
-
-        public static readonly List<string> Subscription = new()
-        {
-            "pending_setup_intent",
-            "latest_invoice",
-            "latest_invoice.payment_intent",
-            "latest_invoice.charge",
-            "latest_invoice.charge.refunds"
-        };
-
         public static readonly List<string> Charge = new()
         {
             "invoice.total_discount_amounts.discount",
             "invoice.total_tax_amounts.tax_rate",
             "refunds"
         };
+
+        public static readonly List<string> Checkout = new()
+        {
+            "payment_intent",
+            "setup_intent"
+        };
+
+        public static readonly List<string> Customer = new() { "tax" };
 
         public static readonly List<string> Invoice = new()
         {
@@ -82,18 +118,14 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             "latest_charge.refunds"
         };
 
-        public static readonly List<string> Checkout = new()
+        public static readonly List<string> Subscription = new()
         {
-            "payment_intent",
-            "setup_intent"
+            "pending_setup_intent",
+            "latest_invoice",
+            "latest_invoice.payment_intent",
+            "latest_invoice.charge",
+            "latest_invoice.charge.refunds"
         };
-    }
-
-    public string Name => PaymentProcessors.Stripe;
-
-    public bool IsPaymentMethodRequired(PayCustomer payCustomer)
-    {
-        return false;
     }
 
     #region Customer API
@@ -105,26 +137,6 @@ public class StripePaymentProcessorService : IPaymentProcessorService
             Customer customer = await _customers.CreateAsync(GetCustomerCreateOptions(payCustomer));
             return customer.Id;
         });
-    }
-
-    public Task UpdateCustomerAsync(PayCustomer payCustomer)
-    {
-        return TryAsync(async () =>
-        {
-            Customer _ = await _customers.UpdateAsync(payCustomer.Processor, GetCustomerUpdateOptions(payCustomer));
-        });
-    }
-
-    /// <remarks>
-    /// TODO: find a smart way to allow pay customers to synchronise other attribute to the payment processors.
-    /// </remarks>
-    public virtual CustomerUpdateOptions GetCustomerUpdateOptions(PayCustomer payCustomer)
-    {
-        return new()
-        {
-            Email = payCustomer.Email,
-            Expand = Expand.Customer,
-        };
     }
 
     /// <remarks>
@@ -139,23 +151,29 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         };
     }
 
-    #endregion Customer API
+    /// <remarks>
+    /// TODO: find a smart way to allow pay customers to synchronise other attribute to the payment processors.
+    /// </remarks>
+    public virtual CustomerUpdateOptions GetCustomerUpdateOptions(PayCustomer payCustomer)
+    {
+        return new()
+        {
+            Email = payCustomer.Email,
+            Expand = Expand.Customer,
+        };
+    }
 
-    #region Payment method API
-
-    public Task<PayPaymentMethod?> GetPaymentMethodAsync(PayCustomer payCustomer, string processorId)
+    public Task UpdateCustomerAsync(PayCustomer payCustomer)
     {
         return TryAsync(async () =>
         {
-            PaymentMethod? paymentMethod = await _paymentMethods.GetAsync(processorId);
-            if (paymentMethod is null)
-            {
-                return null;
-            }
-
-            return _mapper.Map(paymentMethod);
+            Customer _ = await _customers.UpdateAsync(payCustomer.Processor, GetCustomerUpdateOptions(payCustomer));
         });
     }
+
+    #endregion Customer API
+
+    #region Payment method API
 
     /// <inheritdoc/>
     public Task<PayPaymentMethod> AttachPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options)
@@ -182,9 +200,39 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         });
     }
 
+    public Task<PayPaymentMethod?> GetPaymentMethodAsync(PayCustomer payCustomer, string processorId)
+    {
+        return TryAsync(async () =>
+        {
+            PaymentMethod? paymentMethod = await _paymentMethods.GetAsync(processorId);
+            if (paymentMethod is null)
+            {
+                return null;
+            }
+
+            return _mapper.Map(paymentMethod);
+        });
+    }
+
     #endregion Payment method API
 
     #region Subscriptions API
+
+    public Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options)
+    {
+        return TryAsync(async () =>
+        {
+            await _subscriptions.CancelAsync(paySubscription.ProcessorId, new()
+            {
+                Prorate = options.Prorate,
+                CancellationDetails = new()
+                {
+                    Comment = options.Comment,
+                    Feedback = options.Feedback.ToString().ToSnakeCase(),
+                }
+            });
+        });
+    }
 
     /// <remarks>
     /// If customer has no default payment method, we MUST allow the subscription to be incomplete.
@@ -243,73 +291,9 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         });
     }
 
-    public Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options)
-    {
-        return TryAsync(async () =>
-        {
-            await _subscriptions.CancelAsync(paySubscription.ProcessorId, new()
-            {
-                Prorate = options.Prorate,
-                CancellationDetails = new()
-                {
-                    Comment = options.Comment,
-                    Feedback = options.Feedback.ToString().ToSnakeCase(),
-                }
-            });
-        });
-    }
-
     #endregion Subscriptions API
 
     #region Charges API
-
-    /// <inheritdoc/>
-    /// <remarks>
-    /// Returns null if the customer is not specified on the charge.
-    /// </remarks>
-    public Task<PayCharge?> GetChargeAsync(PayCustomer payCustomer, string processorId)
-    {
-        return TryAsync(async () =>
-        {
-            Charge? charge = await _charges.GetAsync(processorId, new()
-            {
-                Expand = Expand.Charge
-            });
-
-            if (charge is null || charge.Customer is null || charge.CustomerId != payCustomer.ProcessorId)
-            {
-                return null;
-            }
-
-            if (charge.Invoice is null && string.IsNullOrEmpty(charge.InvoiceId))
-            {
-                return _mapper.Map(charge, null);
-            }
-
-            Invoice? invoice = charge.Invoice;
-            invoice ??= await GetInvoiceAsync(charge.InvoiceId);
-            return _mapper.Map(charge, invoice: invoice);
-        });
-    }
-
-    private Task<Invoice?> GetInvoiceAsync(string processorId)
-    {
-        return TryAsync<Invoice?>(() => _invoices.GetAsync(processorId, new()
-        {
-            Expand = Expand.Invoice
-        }));
-    }
-
-    public Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId)
-    {
-        return TryAsync<IPayment>(async () =>
-        {
-            // TODO: check if this charge is actually for this customer.
-            return processorId.StartsWith("seti_")
-                ? new StripeSetupIntentPayment(await _setupIntents.GetAsync(processorId))
-                : new StripePaymentIntentPayment(await _paymentIntents.GetAsync(processorId));
-        });
-    }
 
     /// <inheritdoc/>
     /// <remarks>
@@ -369,6 +353,54 @@ public class StripePaymentProcessorService : IPaymentProcessorService
                 paymentIntent.LatestCharge is null ? null : _mapper.Map(paymentIntent.LatestCharge, invoice: null),
                 new StripePaymentIntentPayment(paymentIntent));
         });
+    }
+
+    /// <inheritdoc/>
+    /// <remarks>
+    /// Returns null if the customer is not specified on the charge.
+    /// </remarks>
+    public Task<PayCharge?> GetChargeAsync(PayCustomer payCustomer, string processorId)
+    {
+        return TryAsync(async () =>
+        {
+            Charge? charge = await _charges.GetAsync(processorId, new()
+            {
+                Expand = Expand.Charge
+            });
+
+            if (charge is null || charge.Customer is null || charge.CustomerId != payCustomer.ProcessorId)
+            {
+                return null;
+            }
+
+            if (charge.Invoice is null && string.IsNullOrEmpty(charge.InvoiceId))
+            {
+                return _mapper.Map(charge, null);
+            }
+
+            Invoice? invoice = charge.Invoice;
+            invoice ??= await GetInvoiceAsync(charge.InvoiceId);
+            return _mapper.Map(charge, invoice: invoice);
+        });
+    }
+
+    public Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId)
+    {
+        return TryAsync<IPayment>(async () =>
+        {
+            // TODO: check if this charge is actually for this customer.
+            return processorId.StartsWith("seti_")
+                ? new StripeSetupIntentPayment(await _setupIntents.GetAsync(processorId))
+                : new StripePaymentIntentPayment(await _paymentIntents.GetAsync(processorId));
+        });
+    }
+
+    private Task<Invoice?> GetInvoiceAsync(string processorId)
+    {
+        return TryAsync<Invoice?>(() => _invoices.GetAsync(processorId, new()
+        {
+            Expand = Expand.Invoice
+        }));
     }
 
     #endregion Charges API
@@ -450,19 +482,6 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     #region Refunds API
 
-    public Task<PayChargeRefund> RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options)
-    {
-        return TryAsync(async () =>
-        {
-            Refund refund = await _refunds.CreateAsync(new()
-            {
-                Charge = payCharge.ProcessorId,
-                Amount = options.Amount,
-            });
-            return _mapper.Map(refund);
-        });
-    }
-
     public Task IssueCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options)
     {
         GuardInvoiceId(payCharge);
@@ -487,37 +506,18 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         });
     }
 
+    public Task<PayChargeRefund> RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options)
+    {
+        return TryAsync(async () =>
+        {
+            Refund refund = await _refunds.CreateAsync(new()
+            {
+                Charge = payCharge.ProcessorId,
+                Amount = options.Amount,
+            });
+            return _mapper.Map(refund);
+        });
+    }
+
     #endregion Refunds API
-
-    private static void GuardInvoiceId(PayCharge payCharge)
-    {
-        if (string.IsNullOrEmpty(payCharge.InvoiceId))
-        {
-            throw new PayDotNetStripeException("No InvoiceId on PayCharge");
-        }
-    }
-
-    private async Task<TResult> TryAsync<TResult>(Func<Task<TResult>> value)
-    {
-        try
-        {
-            return await value.Invoke().WaitAsync(CancellationToken.None);
-        }
-        catch (StripeException exception)
-        {
-            throw new PayDotNetStripeException(PayDotNetStripeException.DefaultMessage, exception);
-        }
-    }
-
-    private async Task TryAsync(Func<Task> value)
-    {
-        try
-        {
-            await value.Invoke().WaitAsync(CancellationToken.None);
-        }
-        catch (StripeException exception)
-        {
-            throw new PayDotNetStripeException(PayDotNetStripeException.DefaultMessage, exception);
-        }
-    }
 }

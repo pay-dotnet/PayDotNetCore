@@ -8,30 +8,6 @@ namespace PayDotNet.Core.Abstraction;
 public interface IBillableManager
 {
     /// <summary>
-    /// Retrieves or create a new customer based on the options.
-    /// Uses the provided <see cref="IPayCustomerEmailProvider"/> to resolve the customer email.
-    /// </summary>
-    /// <param name="options">The options for the customer.</param>
-    /// <returns>The pay customer that is used in the other operations.</returns>
-    Task<PayCustomer> GetOrCreateCustomerAsync(PayCustomerOptions options);
-
-    /// <summary>
-    /// Retrieves or create a new customer based on processorName and email.
-    /// </summary>
-    /// <param name="email">The email of the customer</param>
-    /// <param name="options">The options for the customer.</param>
-    /// <returns>The pay customer that is used in the other operations.</returns>
-    Task<PayCustomer> GetOrCreateCustomerAsync(string email, PayCustomerOptions options);
-
-    /// <summary>
-    /// Creates a subscription for the customer.
-    /// </summary>
-    /// <param name="payCustomer">The pay customer. MUST HAVE A PROCESSOR ID</param>
-    /// <param name="options">The subscription options</param>
-    /// <returns>returns a payment that can be used to determine if everything was successful.</returns>
-    Task<IPayment> SubscribeAsync(PayCustomer payCustomer, PaySubscribeOptions options);
-
-    /// <summary>
     /// Charges the customer one-time amount depending on the options.
     /// </summary>
     /// <param name="payCustomer"></param>
@@ -84,4 +60,28 @@ public interface IBillableManager
     /// <param name="options">The options for the checkout charge.</param>
     /// <returns>The checkout result with an URI and payment data..</returns>
     Task<PayCheckoutResult> CheckoutChargeAsync(PayCustomer payCustomer, PayCheckoutChargeOptions options);
+
+    /// <summary>
+    /// Retrieves or create a new customer based on the options.
+    /// Uses the provided <see cref="IPayCustomerEmailProvider"/> to resolve the customer email.
+    /// </summary>
+    /// <param name="options">The options for the customer.</param>
+    /// <returns>The pay customer that is used in the other operations.</returns>
+    Task<PayCustomer> GetOrCreateCustomerAsync(PayCustomerOptions options);
+
+    /// <summary>
+    /// Retrieves or create a new customer based on processorName and email.
+    /// </summary>
+    /// <param name="email">The email of the customer</param>
+    /// <param name="options">The options for the customer.</param>
+    /// <returns>The pay customer that is used in the other operations.</returns>
+    Task<PayCustomer> GetOrCreateCustomerAsync(string email, PayCustomerOptions options);
+
+    /// <summary>
+    /// Creates a subscription for the customer.
+    /// </summary>
+    /// <param name="payCustomer">The pay customer. MUST HAVE A PROCESSOR ID</param>
+    /// <param name="options">The subscription options</param>
+    /// <returns>returns a payment that can be used to determine if everything was successful.</returns>
+    Task<IPayment> SubscribeAsync(PayCustomer payCustomer, PaySubscribeOptions options);
 }

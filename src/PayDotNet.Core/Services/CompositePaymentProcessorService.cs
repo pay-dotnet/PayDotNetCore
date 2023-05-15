@@ -7,8 +7,6 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
 {
     private readonly Dictionary<string, IPaymentProcessorService> _paymentProcessorServices;
 
-    public string Name => "Composite";
-
     public CompositePaymentProcessorService(IEnumerable<IPaymentProcessorService> paymentProcessorServices)
     {
         _paymentProcessorServices = paymentProcessorServices
@@ -16,12 +14,7 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
             .ToDictionary(service => service.Name);
     }
 
-    public bool IsPaymentMethodRequired(PayCustomer payCustomer)
-    {
-        GuardPayCustomerId(payCustomer);
-        GuardPaymentProcessorExists(payCustomer);
-        return _paymentProcessorServices[payCustomer.Processor].IsPaymentMethodRequired(payCustomer);
-    }
+    public string Name => "Composite";
 
     public Task<PayPaymentMethod> AttachPaymentMethodAsync(PayCustomer payCustomer, PayPaymentMethodOptions options)
     {
@@ -64,13 +57,6 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
         return _paymentProcessorServices[payCustomer.Processor].CreateCustomerAsync(payCustomer);
     }
 
-    public Task UpdateCustomerAsync(PayCustomer payCustomer)
-    {
-        GuardPayCustomerId(payCustomer);
-        GuardPaymentProcessorExists(payCustomer);
-        return _paymentProcessorServices[payCustomer.Processor].UpdateCustomerAsync(payCustomer);
-    }
-
     public Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, PaySubscribeOptions options)
     {
         GuardPayCustomerId(payCustomer);
@@ -92,11 +78,25 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
         return _paymentProcessorServices[payCustomer.Processor].GetPaymentAsync(payCustomer, processorId);
     }
 
+    public Task<PayPaymentMethod?> GetPaymentMethodAsync(PayCustomer payCustomer, string processorId)
+    {
+        GuardPayCustomerId(payCustomer);
+        GuardPaymentProcessorExists(payCustomer);
+        return _paymentProcessorServices[payCustomer.Processor].GetPaymentMethodAsync(payCustomer, processorId);
+    }
+
     public Task<PaySubscriptionResult?> GetSubscriptionAsync(PayCustomer payCustomer, string processorId)
     {
         GuardPayCustomerId(payCustomer);
         GuardPaymentProcessorExists(payCustomer);
         return _paymentProcessorServices[payCustomer.Processor].GetSubscriptionAsync(payCustomer, processorId);
+    }
+
+    public bool IsPaymentMethodRequired(PayCustomer payCustomer)
+    {
+        GuardPayCustomerId(payCustomer);
+        GuardPaymentProcessorExists(payCustomer);
+        return _paymentProcessorServices[payCustomer.Processor].IsPaymentMethodRequired(payCustomer);
     }
 
     public Task IssueCreditNotesAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options)
@@ -113,19 +113,11 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
         return _paymentProcessorServices[payCustomer.Processor].RefundAsync(payCustomer, payCharge, options);
     }
 
-    public Task<PayPaymentMethod?> GetPaymentMethodAsync(PayCustomer payCustomer, string processorId)
+    public Task UpdateCustomerAsync(PayCustomer payCustomer)
     {
         GuardPayCustomerId(payCustomer);
         GuardPaymentProcessorExists(payCustomer);
-        return _paymentProcessorServices[payCustomer.Processor].GetPaymentMethodAsync(payCustomer, processorId);
-    }
-
-    protected virtual void GuardPaymentProcessorExists(PayCustomer payCustomer)
-    {
-        if (!_paymentProcessorServices.ContainsKey(payCustomer.Processor))
-        {
-            throw new PayDotNetException($"A implementation of {nameof(IPaymentProcessorService)} for the processor '{payCustomer.Processor}' was not registered");
-        }
+        return _paymentProcessorServices[payCustomer.Processor].UpdateCustomerAsync(payCustomer);
     }
 
     protected virtual void GuardPayCustomerId(PayCustomer payCustomer)
@@ -133,6 +125,14 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
         if (string.IsNullOrEmpty(payCustomer.ProcessorId))
         {
             throw new PayDotNetException("No ProcessorId on PayCustomer. Please make sure the pay customer was successfully created in the payment processor and the ProcessorId was stored.");
+        }
+    }
+
+    protected virtual void GuardPaymentProcessorExists(PayCustomer payCustomer)
+    {
+        if (!_paymentProcessorServices.ContainsKey(payCustomer.Processor))
+        {
+            throw new PayDotNetException($"A implementation of {nameof(IPaymentProcessorService)} for the processor '{payCustomer.Processor}' was not registered");
         }
     }
 }

@@ -5,18 +5,6 @@ namespace PayDotNet.Core.Stripe.Client;
 
 internal static class StripeStatusMapper
 {
-    public static PayStatus GetPayStatus(string status) => status switch
-    {
-        "requires_payment_method" => PayStatus.RequiresPaymentMethod,
-        "requires_confirmation" => PayStatus.RequiresConfirmation,
-        "requires_action" => PayStatus.RequiresAction,
-        "requires_capture" => PayStatus.RequiresCapture,
-        "succeeded" => PayStatus.Succeeded,
-        "processing" => PayStatus.Processing,
-        "canceled" => PayStatus.Canceled,
-        _ => PayStatus.None,
-    };
-
     public static PaySubscriptionPauseBehaviour? GetPauseBehaviour(string? behavior)
     {
         if (string.IsNullOrEmpty(behavior))
@@ -39,6 +27,18 @@ internal static class StripeStatusMapper
                 return PaySubscriptionPauseBehaviour.None;
         }
     }
+
+    public static PayStatus GetPayStatus(string status) => status switch
+    {
+        "requires_payment_method" => PayStatus.RequiresPaymentMethod,
+        "requires_confirmation" => PayStatus.RequiresConfirmation,
+        "requires_action" => PayStatus.RequiresAction,
+        "requires_capture" => PayStatus.RequiresCapture,
+        "succeeded" => PayStatus.Succeeded,
+        "processing" => PayStatus.Processing,
+        "canceled" => PayStatus.Canceled,
+        _ => PayStatus.None,
+    };
 
     public static PaySubscriptionStatus GetSubscriptionStatus(string status) => status switch
     {

@@ -44,15 +44,7 @@ public class PaymentMethodManager : IPaymentMethodManager
     }
 
     /// <inheritdoc/>
-    public virtual async Task SynchroniseAsync(PayCustomer payCustomer, string processorId)
-    {
-        PayPaymentMethod? payPaymentMethod = await _paymentProcessorService.GetPaymentMethodAsync(payCustomer, processorId);
-        if (payPaymentMethod is null)
-        {
-            return;
-        }
-        await SynchroniseAsync(payCustomer, payPaymentMethod);
-    }
+    public virtual bool IsPaymentMethodRequired(PayCustomer payCustomer) => _paymentProcessorService.IsPaymentMethodRequired(payCustomer);
 
     /// <inheritdoc/>
     public virtual async Task ResetDefaultPaymentMethodsAsync(PayCustomer payCustomer)
@@ -62,7 +54,15 @@ public class PaymentMethodManager : IPaymentMethodManager
     }
 
     /// <inheritdoc/>
-    public virtual bool IsPaymentMethodRequired(PayCustomer payCustomer) => _paymentProcessorService.IsPaymentMethodRequired(payCustomer);
+    public virtual async Task SynchroniseAsync(PayCustomer payCustomer, string processorId)
+    {
+        PayPaymentMethod? payPaymentMethod = await _paymentProcessorService.GetPaymentMethodAsync(payCustomer, processorId);
+        if (payPaymentMethod is null)
+        {
+            return;
+        }
+        await SynchroniseAsync(payCustomer, payPaymentMethod);
+    }
 
     private async Task ResetDefaultPaymentMethodsAsync(PayPaymentMethod payPaymentMethod)
     {

@@ -8,12 +8,12 @@ namespace PayDotNet.Core.Managers;
 /// </summary>
 public class BillableManager : IBillableManager
 {
-    private readonly IPayCustomerEmailProvider _payCustomerEmailProvider;
-    private readonly ICheckoutManager _checkoutManager;
     private readonly IChargeManager _chargeManager;
+    private readonly ICheckoutManager _checkoutManager;
     private readonly ICustomerManager _customerManager;
-    private readonly ISubscriptionManager _subscriptionManager;
+    private readonly IPayCustomerEmailProvider _payCustomerEmailProvider;
     private readonly IPaymentMethodManager _paymentMethodManager;
+    private readonly ISubscriptionManager _subscriptionManager;
 
     public BillableManager(
         IPayCustomerEmailProvider payCustomerEmailProvider,
@@ -29,6 +29,43 @@ public class BillableManager : IBillableManager
         _customerManager = customerManager;
         _subscriptionManager = subscriptionManager;
         _paymentMethodManager = paymentMethodManager;
+    }
+
+    public virtual Task AuthorizeAsync(PayCustomer payCustomer, PayAuthorizeChargeOptions options)
+    {
+        return ChargeAsync(payCustomer, options);
+    }
+
+    /// <inheritdoc/>
+    public virtual async Task<IPayment> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
+    {
+        if (!string.IsNullOrEmpty(options.PaymentMethodId))
+        {
+            // Make sure the provided payment method becomes the new default.
+            await _paymentMethodManager.AddPaymentMethodAsync(payCustomer, new(options.PaymentMethodId, IsDefault: true));
+        }
+
+        PayChargeResult result = await _chargeManager.ChargeAsync(payCustomer, options);
+
+        // Let caller decide how to handle flow.
+        return result.Payment;
+    }
+
+    public virtual Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
+    {
+        return _checkoutManager.CheckoutAsync(payCustomer, options);
+    }
+
+    public virtual Task<PayCheckoutResult> CheckoutChargeAsync(PayCustomer payCustomer, PayCheckoutChargeOptions options)
+    {
+        return CheckoutAsync(payCustomer, new()
+        {
+            AllowPromotionCodes = options.AllowPromotionCodes,
+            Mode = options.Mode,
+            LineItems = options.LineItems,
+            SuccessUrl = options.SuccessUrl,
+            CancelUrl = options.CancelUrl,
+        });
     }
 
     /// <inheritdoc/>
@@ -65,42 +102,5 @@ public class BillableManager : IBillableManager
 
         // Let caller decide how to handle flow.
         return result.Payment;
-    }
-
-    /// <inheritdoc/>
-    public virtual async Task<IPayment> ChargeAsync(PayCustomer payCustomer, PayChargeOptions options)
-    {
-        if (!string.IsNullOrEmpty(options.PaymentMethodId))
-        {
-            // Make sure the provided payment method becomes the new default.
-            await _paymentMethodManager.AddPaymentMethodAsync(payCustomer, new(options.PaymentMethodId, IsDefault: true));
-        }
-
-        PayChargeResult result = await _chargeManager.ChargeAsync(payCustomer, options);
-
-        // Let caller decide how to handle flow.
-        return result.Payment;
-    }
-
-    public virtual Task<PayCheckoutResult> CheckoutAsync(PayCustomer payCustomer, PayCheckoutOptions options)
-    {
-        return _checkoutManager.CheckoutAsync(payCustomer, options);
-    }
-
-    public virtual Task<PayCheckoutResult> CheckoutChargeAsync(PayCustomer payCustomer, PayCheckoutChargeOptions options)
-    {
-        return CheckoutAsync(payCustomer, new()
-        {
-            AllowPromotionCodes = options.AllowPromotionCodes,
-            Mode = options.Mode,
-            LineItems = options.LineItems,
-            SuccessUrl = options.SuccessUrl,
-            CancelUrl = options.CancelUrl,
-        });
-    }
-
-    public virtual Task AuthorizeAsync(PayCustomer payCustomer, PayAuthorizeChargeOptions options)
-    {
-        return ChargeAsync(payCustomer, options);
     }
 }

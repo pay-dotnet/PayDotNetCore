@@ -9,9 +9,9 @@ namespace PayDotNet.Core.Stripe.Api;
 [Route("pay/webhooks/stripe")]
 public class StripeWebhookController : Controller
 {
-    private readonly IWebhookManager _webhookManager;
     private readonly ILogger<StripeWebhookController> _logger;
     private readonly IOptions<PayDotNetConfiguration> _options;
+    private readonly IWebhookManager _webhookManager;
 
     public StripeWebhookController(
         IWebhookManager webhookManager,

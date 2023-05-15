@@ -98,98 +98,6 @@ public class DataTransferObjectResponseMapper
         };
     }
 
-    private ICollection<PayChargeLineItem> Map(StripeList<InvoiceLineItem> lines)
-    {
-        return lines.Select(lineItem => new PayChargeLineItem
-        {
-            ProcessorId = lineItem.Id,
-            Description = lineItem.Description,
-            PriceId = lineItem.Price.Id,
-            Quantity = Convert.ToInt32(lineItem.Quantity),
-            UnitAmount = lineItem.Price.UnitAmount.HasValue ? Convert.ToInt32(lineItem.Price.UnitAmount.Value) : null,
-            Amount = Convert.ToInt32(lineItem.Amount),
-            Discounts = lineItem.DiscountIds,
-            TaxAmounts = Map(lineItem.TaxAmounts),
-            IsProration = lineItem.Proration,
-            PeriodStart = lineItem.Period.Start,
-            PeriodEnd = lineItem.Period.End,
-        }).ToList();
-    }
-
-    private ICollection<PayChargeTaxAmount> Map(List<InvoiceTaxAmount> totalTaxAmounts)
-    {
-        return totalTaxAmounts.Select(invoiceTaxAmount => new PayChargeTaxAmount
-        {
-            Amount = Convert.ToInt32(invoiceTaxAmount.Amount),
-            Description = GetTaxDescription(invoiceTaxAmount.TaxRate)
-        }).ToList();
-    }
-
-    private ICollection<PayChargeTaxAmount> Map(List<InvoiceLineItemTaxAmount> lineTaxAmounts)
-    {
-        return lineTaxAmounts.Select(lineTaxAmount => new PayChargeTaxAmount
-        {
-            Amount = Convert.ToInt32(lineTaxAmount.Amount),
-            Description = GetTaxDescription(lineTaxAmount.TaxRate)
-        }).ToList();
-    }
-
-    private static ICollection<PayChargeTotalDiscount> Map(List<InvoiceDiscountAmount>? discounts)
-    {
-        if (discounts is null)
-        {
-            return new List<PayChargeTotalDiscount>();
-        }
-
-        return discounts.Select(discount =>
-        {
-            return new PayChargeTotalDiscount()
-            {
-                DiscountId = discount.DiscountId,
-                Amount = Convert.ToInt32(discount.Amount),
-                Description = GetDiscountDescription(discount.RawJObject)
-            };
-        }).ToList();
-    }
-
-    /// <remarks>Implementation of: https://github.com/pay-rails/pay/blob/c7aa98f460a64d03c6fe51b2eb35763b0ee25315/lib/pay/receipts.rb#L71</remarks>
-    private static string GetDiscountDescription(JObject discount)
-    {
-        JToken? coupon = discount?["discount"]?["coupon"];
-        string? name = discount?["name"]?.Value<string>();
-        string? percentOff = coupon?["percent_off"]?.Value<string>();
-
-        // TODO: Resources for I18N
-        if (!string.IsNullOrEmpty(percentOff))
-        {
-            return string.Format("{0} ({1:P2} off)", name, percentOff);
-        }
-        else
-        {
-            // Amount off
-            return string.Format("{0} ({1} off)", name, percentOff);
-        }
-    }
-
-    private static string GetTaxDescription(TaxRate taxRate)
-    {
-        return string.Format("{0} - {1} ({2:P} {3})",
-            taxRate.DisplayName,
-            taxRate.Jurisdiction,
-            taxRate.Percentage,
-            taxRate.Inclusive ? " inclusive" : string.Empty);
-    }
-
-    private static string? GetBank(JToken? paymentMethod)
-    {
-        string? bank = paymentMethod?["bank_name"]?.Value<string>();
-        if (string.IsNullOrEmpty(bank))
-        {
-            bank = paymentMethod?["bank"]?.Value<string>();
-        }
-        return bank;
-    }
-
     /// <summary>
     /// Maps the stripe subscription to a PaySubscription.
     /// </summary>
@@ -267,5 +175,97 @@ public class DataTransferObjectResponseMapper
         }
 
         return paySubscription;
+    }
+
+    private static string? GetBank(JToken? paymentMethod)
+    {
+        string? bank = paymentMethod?["bank_name"]?.Value<string>();
+        if (string.IsNullOrEmpty(bank))
+        {
+            bank = paymentMethod?["bank"]?.Value<string>();
+        }
+        return bank;
+    }
+
+    /// <remarks>Implementation of: https://github.com/pay-rails/pay/blob/c7aa98f460a64d03c6fe51b2eb35763b0ee25315/lib/pay/receipts.rb#L71</remarks>
+    private static string GetDiscountDescription(JObject discount)
+    {
+        JToken? coupon = discount?["discount"]?["coupon"];
+        string? name = discount?["name"]?.Value<string>();
+        string? percentOff = coupon?["percent_off"]?.Value<string>();
+
+        // TODO: Resources for I18N
+        if (!string.IsNullOrEmpty(percentOff))
+        {
+            return string.Format("{0} ({1:P2} off)", name, percentOff);
+        }
+        else
+        {
+            // Amount off
+            return string.Format("{0} ({1} off)", name, percentOff);
+        }
+    }
+
+    private static string GetTaxDescription(TaxRate taxRate)
+    {
+        return string.Format("{0} - {1} ({2:P} {3})",
+            taxRate.DisplayName,
+            taxRate.Jurisdiction,
+            taxRate.Percentage,
+            taxRate.Inclusive ? " inclusive" : string.Empty);
+    }
+
+    private static ICollection<PayChargeTotalDiscount> Map(List<InvoiceDiscountAmount>? discounts)
+    {
+        if (discounts is null)
+        {
+            return new List<PayChargeTotalDiscount>();
+        }
+
+        return discounts.Select(discount =>
+        {
+            return new PayChargeTotalDiscount()
+            {
+                DiscountId = discount.DiscountId,
+                Amount = Convert.ToInt32(discount.Amount),
+                Description = GetDiscountDescription(discount.RawJObject)
+            };
+        }).ToList();
+    }
+
+    private ICollection<PayChargeLineItem> Map(StripeList<InvoiceLineItem> lines)
+    {
+        return lines.Select(lineItem => new PayChargeLineItem
+        {
+            ProcessorId = lineItem.Id,
+            Description = lineItem.Description,
+            PriceId = lineItem.Price.Id,
+            Quantity = Convert.ToInt32(lineItem.Quantity),
+            UnitAmount = lineItem.Price.UnitAmount.HasValue ? Convert.ToInt32(lineItem.Price.UnitAmount.Value) : null,
+            Amount = Convert.ToInt32(lineItem.Amount),
+            Discounts = lineItem.DiscountIds,
+            TaxAmounts = Map(lineItem.TaxAmounts),
+            IsProration = lineItem.Proration,
+            PeriodStart = lineItem.Period.Start,
+            PeriodEnd = lineItem.Period.End,
+        }).ToList();
+    }
+
+    private ICollection<PayChargeTaxAmount> Map(List<InvoiceTaxAmount> totalTaxAmounts)
+    {
+        return totalTaxAmounts.Select(invoiceTaxAmount => new PayChargeTaxAmount
+        {
+            Amount = Convert.ToInt32(invoiceTaxAmount.Amount),
+            Description = GetTaxDescription(invoiceTaxAmount.TaxRate)
+        }).ToList();
+    }
+
+    private ICollection<PayChargeTaxAmount> Map(List<InvoiceLineItemTaxAmount> lineTaxAmounts)
+    {
+        return lineTaxAmounts.Select(lineTaxAmount => new PayChargeTaxAmount
+        {
+            Amount = Convert.ToInt32(lineTaxAmount.Amount),
+            Description = GetTaxDescription(lineTaxAmount.TaxRate)
+        }).ToList();
     }
 }

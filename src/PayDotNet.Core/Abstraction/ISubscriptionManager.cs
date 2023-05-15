@@ -5,12 +5,28 @@ namespace PayDotNet.Core.Abstraction;
 public interface ISubscriptionManager
 {
     /// <summary>
-    /// Finds the subscription in the store.
+    /// Cancels the subscription for this customer based on the options.
     /// </summary>
-    /// <param name="payCustomer">The customer.</param>
-    /// <param name="processorId">The id for the subscription of the payment processor.</param>
-    /// <returns>The subscription if found.</returns>
-    Task<PaySubscription?> FindByIdAsync(PayCustomer payCustomer, string processorId);
+    /// <param name="payCustomer">The customer</param>
+    /// <param name="paySubscription">The subscription that will be canceled.</param>
+    /// <param name="options">The options</param>
+    /// <returns>An awaitable task.</returns>
+    Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options);
+
+    /// <summary>
+    /// Cancels all the subscriptions for this customer.
+    /// </summary>
+    /// <param name="payCustomer">The customer</param>
+    /// <returns>An awaitable task.</returns>
+    Task CancellAllAsync(PayCustomer payCustomer);
+
+    /// <summary>
+    /// Cancels the subscription for this customer immediatly.
+    /// </summary>
+    /// <param name="payCustomer">The customer</param>
+    /// <param name="paySubscription">The subscription that will be canceled.</param>
+    /// <returns>An awaitable task.</returns>
+    Task CancelNowAsync(PayCustomer payCustomer, PaySubscription paySubscription);
 
     /// <summary>
     /// Creates a subscription for the customer, charges the customer and saves it into the store.
@@ -22,28 +38,12 @@ public interface ISubscriptionManager
     Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, PaySubscribeOptions options);
 
     /// <summary>
-    /// Cancels the subscription for this customer based on the options.
+    /// Finds the subscription in the store.
     /// </summary>
-    /// <param name="payCustomer">The customer</param>
-    /// <param name="paySubscription">The subscription that will be canceled.</param>
-    /// <param name="options">The options</param>
-    /// <returns>An awaitable task.</returns>
-    Task CancelAsync(PayCustomer payCustomer, PaySubscription paySubscription, PayCancelSubscriptionOptions options);
-
-    /// <summary>
-    /// Cancels the subscription for this customer immediatly.
-    /// </summary>
-    /// <param name="payCustomer">The customer</param>
-    /// <param name="paySubscription">The subscription that will be canceled.</param>
-    /// <returns>An awaitable task.</returns>
-    Task CancelNowAsync(PayCustomer payCustomer, PaySubscription paySubscription);
-
-    /// <summary>
-    /// Cancels all the subscriptions for this customer.
-    /// </summary>
-    /// <param name="payCustomer">The customer</param>
-    /// <returns>An awaitable task.</returns>
-    Task CancellAllAsync(PayCustomer payCustomer);
+    /// <param name="payCustomer">The customer.</param>
+    /// <param name="processorId">The id for the subscription of the payment processor.</param>
+    /// <returns>The subscription if found.</returns>
+    Task<PaySubscription?> FindByIdAsync(PayCustomer payCustomer, string processorId);
 
     /// <summary>
     /// Synchronises the subscription to the store. Use the overload if you already have the paySubscription.

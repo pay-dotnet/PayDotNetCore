@@ -6,15 +6,18 @@
 /// </summary>
 public class PayCustomer : Timestamps
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
-
-    public string Email { get; set; }
-
     // TODO: make readonly so you can't add them
     public ICollection<PayCharge> Charges { get; init; } = new List<PayCharge>();
 
-    // TODO: make readonly so you can't add them
-    public ICollection<PaySubscription> Subscriptions { get; init; } = new List<PaySubscription>();
+    public PayPaymentMethod? DefaultPaymentMethod => PaymentMethods.FirstOrDefault(p => p.IsDefault);
+
+    public DateTime DeletedAt { get; set; }
+
+    public string Email { get; set; }
+
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+
+    public bool IsDefault { get; set; }
 
     // TODO: make readonly so you can't add them
     public ICollection<PayPaymentMethod> PaymentMethods { get; init; } = new List<PayPaymentMethod>();
@@ -24,11 +27,8 @@ public class PayCustomer : Timestamps
 
     public string? ProcessorId { get; set; }
 
-    public bool IsDefault { get; set; }
-
-    public DateTime DeletedAt { get; set; }
-
-    public PayPaymentMethod? DefaultPaymentMethod => PaymentMethods.FirstOrDefault(p => p.IsDefault);
+    // TODO: make readonly so you can't add them
+    public ICollection<PaySubscription> Subscriptions { get; init; } = new List<PaySubscription>();
 
     public bool HasProcessorId()
     {

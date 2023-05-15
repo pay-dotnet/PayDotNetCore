@@ -4,14 +4,14 @@ namespace PayDotNet.Core.Tests;
 
 public class TestBase<TSystemUnderTest>
 {
+    public MockRepository MockRepository = new(MockBehavior.Strict);
+    private readonly Dictionary<Type, Mock> _mockDictionary = new Dictionary<Type, Mock>();
     private TSystemUnderTest? _systemUnderTest;
 
     protected TestBase()
     {
         _systemUnderTest = default;
     }
-
-    public MockRepository MockRepository = new(MockBehavior.Strict);
 
     public TSystemUnderTest SystemUnderTest => GetSystemUnderTest();
 
@@ -38,31 +38,6 @@ public class TestBase<TSystemUnderTest>
         return (TSystemUnderTest)result;
     }
 
-    private TSystemUnderTest GetSystemUnderTest()
-    {
-        if (_systemUnderTest == null)
-        {
-            _systemUnderTest = CreateSystemUnderTest();
-        }
-
-        return _systemUnderTest;
-    }
-
-    private readonly Dictionary<Type, Mock> _mockDictionary = new Dictionary<Type, Mock>();
-
-    protected Mock<T> Mocks<T>()
-        where T : class
-    {
-        Type type = typeof(T);
-        if (!_mockDictionary.ContainsKey(type))
-        {
-            Mock<T> mock = MockRepository.Create<T>();
-            _mockDictionary.Add(type, mock);
-        }
-
-        return (Mock<T>)_mockDictionary[type];
-    }
-
     protected object?[] GetParameters(ParameterInfo[] parameters)
     {
         List<object?> result = new List<object?>();
@@ -81,5 +56,28 @@ public class TestBase<TSystemUnderTest>
         }
 
         return result.ToArray();
+    }
+
+    protected Mock<T> Mocks<T>()
+        where T : class
+    {
+        Type type = typeof(T);
+        if (!_mockDictionary.ContainsKey(type))
+        {
+            Mock<T> mock = MockRepository.Create<T>();
+            _mockDictionary.Add(type, mock);
+        }
+
+        return (Mock<T>)_mockDictionary[type];
+    }
+
+    private TSystemUnderTest GetSystemUnderTest()
+    {
+        if (_systemUnderTest == null)
+        {
+            _systemUnderTest = CreateSystemUnderTest();
+        }
+
+        return _systemUnderTest;
     }
 }

@@ -2,17 +2,17 @@
 
 public class PayDotNetConfiguration
 {
-    public string DefaultProductName { get; set; } = "default";
+    public string DefaultPaymentProcessor { get; set; } = PaymentProcessors.Stripe;
 
     public string DefaultPlanName { get; set; } = "default";
 
+    public string DefaultProductName { get; set; } = "default";
+
     public string DefaultRefundDescription { get; set; } = "Refund";
 
-    public string DefaultPaymentProcessor { get; set; } = PaymentProcessors.Stripe;
+    public string RootUrl { get; set; } = "https://localhost:7148";
 
     public PayDotNetStripeConfiguration Stripe { get; set; } = new();
-
-    public string RootUrl { get; set; } = "https://localhost:7148";
 }
 
 public class PayDotNetStripeConfiguration
@@ -23,12 +23,12 @@ public class PayDotNetStripeConfiguration
 
     public string? EndpointSecret { get; set; }
 
-    public string? PublicKey { get; set; }
-
     public string PaymentBehaviour { get; set; } = DefaultPaymentBehaviour;
 
     public List<string> PaymentMethodTypes { get; set; } = new()
     {
         "card", "ideal", "link"
     };
+
+    public string? PublicKey { get; set; }
 }

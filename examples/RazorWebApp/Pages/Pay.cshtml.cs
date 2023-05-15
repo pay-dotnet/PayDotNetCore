@@ -19,6 +19,9 @@ namespace RazorWebApp.Pages
             _paymentProcessorService = paymentProcessorService;
         }
 
+        [BindProperty]
+        public string Email { get; set; }
+
         public IPayment? Payment { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string? id)
@@ -38,9 +41,6 @@ namespace RazorWebApp.Pages
             }
             return Page();
         }
-
-        [BindProperty]
-        public string Email { get; set; }
 
         public async Task<IActionResult> OnPost(
             [FromForm(Name = "payment_method_id")] string paymentMethodId)

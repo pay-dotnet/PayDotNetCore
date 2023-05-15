@@ -7,8 +7,8 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 public class CustomerDeletedHandler : IStripeWebhookHandler
 {
     private readonly ICustomerManager _customerManager;
-    private readonly ISubscriptionManager _subscriptionManager;
     private readonly IPaymentMethodManager _paymentMethodManager;
+    private readonly ISubscriptionManager _subscriptionManager;
 
     public CustomerDeletedHandler(
         ICustomerManager customerManager,

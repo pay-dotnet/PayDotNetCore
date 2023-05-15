@@ -8,16 +8,16 @@ namespace PayDotNet.Core;
 /// </summary>
 public sealed class PayDotNetBuilder
 {
-    public IServiceCollection Services { get; }
-
-    public IConfiguration Configuration { get; }
-
-    public PayDotNetConfiguration PayDotNetConfiguration { get; }
-
     public PayDotNetBuilder(IServiceCollection services, IConfiguration configuration, PayDotNetConfiguration payDotNetConfiguration)
     {
         Services = services;
         Configuration = configuration;
         PayDotNetConfiguration = payDotNetConfiguration;
     }
+
+    public IConfiguration Configuration { get; }
+
+    public PayDotNetConfiguration PayDotNetConfiguration { get; }
+
+    public IServiceCollection Services { get; }
 }
