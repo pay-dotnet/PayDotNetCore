@@ -19,7 +19,7 @@ public class PayChargeEntityTypeConfiguration : IEntityTypeConfiguration<PayChar
         builder.Property(e => e.UpdatedAt).IsRequired();
 
         // Additional properties.
-        builder.Property(e => e.Bank).IsRequired();
+        builder.Property(e => e.Bank).IsRequired(false);
         builder.Property(e => e.Brand).IsRequired(false);
         builder.Property(e => e.Discounts).HasConversion<StringCollectionToStringValueConverter>();
         builder.Property(e => e.ExpirationMonth).IsRequired(false);

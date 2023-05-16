@@ -367,7 +367,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
                 Expand = Expand.Charge
             });
 
-            if (charge is null || charge.Customer is null || charge.CustomerId != payCustomer.ProcessorId)
+            if (charge is null || charge.CustomerId != payCustomer.ProcessorId)
             {
                 return null;
             }

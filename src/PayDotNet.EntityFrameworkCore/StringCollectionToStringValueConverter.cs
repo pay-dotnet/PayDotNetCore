@@ -2,7 +2,7 @@
 
 namespace PayDotNet.EntityFrameworkCore;
 
-internal class StringCollectionToStringValueConverter : ValueConverter<ICollection<string>, string>
+internal class StringCollectionToStringValueConverter : ValueConverter<List<string>, string>
 {
     private const char Separator = ',';
 
@@ -11,12 +11,12 @@ internal class StringCollectionToStringValueConverter : ValueConverter<ICollecti
     {
     }
 
-    public static ICollection<string> FromDatabaseValue(string value)
+    public static List<string> FromDatabaseValue(string value)
     {
-        return value.Split(Separator, StringSplitOptions.RemoveEmptyEntries);
+        return value.Split(Separator, StringSplitOptions.RemoveEmptyEntries).ToList();
     }
 
-    public static string ToDatabaseValue(ICollection<string> value)
+    public static string ToDatabaseValue(List<string> value)
     {
         return string.Join(Separator, value);
     }

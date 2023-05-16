@@ -5,7 +5,7 @@ namespace RazorWebApp.Pages
 {
     public class PayHandleModel : PageModel
     {
-        public async Task<IActionResult> OnGetAsync(
+        public IActionResult OnGet(
             [FromQuery(Name = "redirect_status")] string redirectStatus,
             [FromQuery(Name = "payment_intent")] string? paymentIntentId,
             [FromQuery(Name = "setup_intent")] string? setupIntentId)

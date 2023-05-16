@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using RazorWebApp;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,10 +8,12 @@ builder.Services.AddRazorPages();
 
 // STEP 1:
 builder.Services.AddPayDotNet(builder.Configuration)
-    .AddInMemoryStore()
     .AddStripe(config =>
     {
-    });
+    })
+    .AddEntityFrameworkStore<ExampleDbContext>();
+
+builder.Services.AddDbContext<ExampleDbContext>(options => options.UseInMemoryDatabase("RazorWebApp"));
 
 var app = builder.Build();
 

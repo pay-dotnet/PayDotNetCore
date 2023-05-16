@@ -20,19 +20,19 @@ public class PayCharge : Timestamps
 
     public int AmountCaptured { get; set; }
 
-    public string Bank { get; set; }
+    public string? Bank { get; set; }
 
-    public string Brand { get; set; }
+    public string? Brand { get; set; }
 
-    public virtual ICollection<string> Discounts { get; set; } = new List<string>();
+    public virtual List<string> Discounts { get; set; } = new List<string>();
 
-    public string ExpirationMonth { get; set; }
+    public string? ExpirationMonth { get; set; }
 
-    public string ExpirationYear { get; set; }
+    public string? ExpirationYear { get; set; }
 
-    public string InvoiceId { get; set; }
+    public string? InvoiceId { get; set; }
 
-    public string Last4 { get; set; }
+    public string? Last4 { get; set; }
 
     public virtual ICollection<PayChargeLineItem> LineItems { get; set; } = new List<PayChargeLineItem>();
 
@@ -67,7 +67,7 @@ public class PayChargeLineItem
 
     public string Description { get; set; }
 
-    public virtual ICollection<string> Discounts { get; set; } = new List<string>();
+    public virtual List<string> Discounts { get; set; } = new List<string>();
 
     public bool IsProration { get; set; }
 
