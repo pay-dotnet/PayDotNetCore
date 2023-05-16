@@ -48,14 +48,14 @@ public interface ISubscriptionManager
     /// </summary>
     /// <param name="payCustomer">The customer.</param>
     /// <param name="processorId"></param>
-    /// <returns>An awaitable task.</returns>
-    Task SynchroniseAsync(PayCustomer payCustomer, string processorId);
+    /// <returns>The synchronised subscription.</returns>
+    Task<PaySubscription?> SynchroniseAsync(PayCustomer payCustomer, string processorId);
 
     /// <summary>
     /// Synchronises the subscription to the store.
     /// </summary>
     /// <param name="payCustomer">The customer.</param>
     /// <param name="paySubscriptionResult">The pay subscription result.</param>
-    /// <returns>An awaitable task.</returns>
-    Task SynchroniseAsync(PayCustomer payCustomer, PaySubscriptionResult paySubscriptionResult);
+    /// <returns>The synchronised subscription.</returns>
+    Task<PaySubscription?> SynchroniseAsync(PayCustomer payCustomer, PaySubscriptionResult paySubscriptionResult);
 }

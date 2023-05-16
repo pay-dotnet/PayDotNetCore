@@ -53,14 +53,14 @@ public class PaymentMethodManager : IPaymentMethodManager
     }
 
     /// <inheritdoc/>
-    public virtual async Task SynchroniseAsync(PayCustomer payCustomer, string processorId)
+    public virtual async Task<PayPaymentMethod?> SynchroniseAsync(PayCustomer payCustomer, string processorId)
     {
         PayPaymentMethod? payPaymentMethod = await _paymentProcessorService.GetPaymentMethodAsync(payCustomer, processorId);
         if (payPaymentMethod is null)
         {
-            return;
+            return null;
         }
-        await SynchroniseAsync(payCustomer, payPaymentMethod);
+        return await SynchroniseAsync(payCustomer, payPaymentMethod);
     }
 
     private async Task ResetDefaultPaymentMethodsAsync(PayPaymentMethod payPaymentMethod)
@@ -100,7 +100,12 @@ public class PaymentMethodManager : IPaymentMethodManager
         }
     }
 
-    private async Task SynchroniseAsync(PayCustomer payCustomer, PayPaymentMethod paymentMethod)
+    private Task<PayPaymentMethod> SynchroniseAsync(PayCustomer payCustomer, PayPaymentMethod paymentMethod)
+    {
+        return Synchronizer.Retry(() => SynchroniseAsyncInternal(payCustomer, paymentMethod));
+    }
+
+    private async Task<PayPaymentMethod> SynchroniseAsyncInternal(PayCustomer payCustomer, PayPaymentMethod paymentMethod)
     {
         // Fix link to Pay Customer
         paymentMethod.CustomerId = payCustomer.Id;
@@ -114,5 +119,7 @@ public class PaymentMethodManager : IPaymentMethodManager
         {
             await _paymentMethodStore.UpdateAsync(paymentMethod);
         }
+
+        return paymentMethod;
     }
 }

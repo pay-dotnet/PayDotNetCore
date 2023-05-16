@@ -68,7 +68,12 @@ public class ChargeManager : IChargeManager
         return await SynchroniseAsync(payCustomer, payCharge);
     }
 
-    private async Task<PayCharge> SynchroniseAsync(PayCustomer payCustomer, PayCharge payCharge)
+    private Task<PayCharge> SynchroniseAsync(PayCustomer payCustomer, PayCharge payCharge)
+    {
+        return Synchronizer.Retry(() => SynchroniseAsyncInternal(payCustomer, payCharge));
+    }
+
+    private async Task<PayCharge> SynchroniseAsyncInternal(PayCustomer payCustomer, PayCharge payCharge)
     {
         // Fix link to Pay Customer
         payCharge.CustomerId = payCustomer.Id;

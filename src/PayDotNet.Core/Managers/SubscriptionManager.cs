@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using PayDotNet.Core.Abstraction;
+﻿using PayDotNet.Core.Abstraction;
 using PayDotNet.Core.Services;
 
 namespace PayDotNet.Core.Managers;
@@ -7,20 +6,17 @@ namespace PayDotNet.Core.Managers;
 public class SubscriptionManager : ISubscriptionManager
 {
     private readonly IChargeManager _chargeManager;
-    private readonly IOptions<PayDotNetConfiguration> _options;
     private readonly IPaymentProcessorService _paymentProcessorService;
     private readonly ISubscriptionStore _subscriptionStore;
 
     public SubscriptionManager(
         IChargeManager chargeManager,
         ISubscriptionStore subscriptionStore,
-        CompositePaymentProcessorService paymentProcessorService,
-        IOptions<PayDotNetConfiguration> options)
+        CompositePaymentProcessorService paymentProcessorService)
     {
         _chargeManager = chargeManager;
         _subscriptionStore = subscriptionStore;
         _paymentProcessorService = paymentProcessorService;
-        _options = options;
     }
 
     /// <inheritdoc/>
@@ -30,7 +26,8 @@ public class SubscriptionManager : ISubscriptionManager
             ? paySubscription.TrailEndsAt!.Value
             : paySubscription.CurrentPeriodEnd!.Value;
 
-        // First cancel the payment processor, then save the outcome.
+        // First cancel the subscription in the payment processor to make sure no payments are going through anymore.
+        // Then safe the result. This makes sure
         await _paymentProcessorService.CancelAsync(payCustomer, paySubscription, options);
         await _subscriptionStore.UpdateAsync(paySubscription);
     }
@@ -78,21 +75,23 @@ public class SubscriptionManager : ISubscriptionManager
     }
 
     /// <inheritdoc/>
-    public async Task SynchroniseAsync(PayCustomer payCustomer, string processorId)
+    public async Task<PaySubscription?> SynchroniseAsync(PayCustomer payCustomer, string processorId)
     {
         PaySubscriptionResult? result = await _paymentProcessorService.GetSubscriptionAsync(payCustomer, processorId);
         if (result is null)
         {
-            return;
+            return null;
         }
-        await SynchroniseAsync(payCustomer, result);
+        return await SynchroniseAsync(payCustomer, result);
     }
 
     /// <inheritdoc/>
-    /// <remarks>
-    /// TODO: there should be a retry mechanism, but maybe we can exclude that and use Polly or tell people to use polly and document it.
-    /// </remarks>
-    public async Task SynchroniseAsync(PayCustomer payCustomer, PaySubscriptionResult paySubscriptionResult)
+    public Task<PaySubscription?> SynchroniseAsync(PayCustomer payCustomer, PaySubscriptionResult paySubscriptionResult)
+    {
+        return Synchronizer.Retry(() => SynchroniseAsyncInternal(payCustomer, paySubscriptionResult));
+    }
+
+    private async Task<PaySubscription?> SynchroniseAsyncInternal(PayCustomer payCustomer, PaySubscriptionResult paySubscriptionResult)
     {
         // Fix link to Pay Customer
         paySubscriptionResult.PaySubscription.CustomerId = payCustomer.Id;
@@ -118,7 +117,9 @@ public class SubscriptionManager : ISubscriptionManager
         PayCharge? charge = paySubscriptionResult.PaySubscription.Charges.LastOrDefault();
         if (charge is not null && charge.Status == PayStatus.Succeeded)
         {
-            PayCharge? _ = await _chargeManager.SynchroniseAsync(payCustomer, charge.ProcessorId);
+            await _chargeManager.SynchroniseAsync(payCustomer, charge.ProcessorId);
         }
+
+        return paySubscriptionResult.PaySubscription;
     }
 }
