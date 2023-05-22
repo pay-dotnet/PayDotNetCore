@@ -11,5 +11,8 @@ public class PayMerchantEntityTypeConfiguration : IEntityTypeConfiguration<PayMe
         builder.Property(e => e.Processor).IsRequired();
         builder.Property(e => e.IsDefault).IsRequired();
         builder.Property(e => e.IsOnboardingComplete).IsRequired();
+
+        builder.Property(e => e.CreatedAt).IsRequired();
+        builder.Property(e => e.UpdatedAt).IsRequired();
     }
 }

@@ -13,6 +13,10 @@ public class PayCustomerEntityTypeConfiguration : IEntityTypeConfiguration<PayCu
         builder.Property(e => e.IsDefault).IsRequired();
         builder.Property(e => e.Processor).IsRequired().HasMaxLength(512);
 
+        builder.Property(e => e.CreatedAt).IsRequired();
+        builder.Property(e => e.UpdatedAt).IsRequired();
+        builder.Property(e => e.DeletedAt).IsRequired(false);
+
         // Relations
         builder.HasMany(e => e.Subscriptions).WithOne().HasForeignKey(e => e.CustomerId);
         builder.HasMany(e => e.PaymentMethods).WithOne().HasForeignKey(e => e.CustomerId);

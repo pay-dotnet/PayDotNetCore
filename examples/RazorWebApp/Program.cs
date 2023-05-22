@@ -13,7 +13,8 @@ builder.Services.AddPayDotNet(builder.Configuration)
     })
     .AddEntityFrameworkStore<ExampleDbContext>();
 
-builder.Services.AddDbContext<ExampleDbContext>(options => options.UseInMemoryDatabase("RazorWebApp"));
+//builder.Services.AddDbContext<ExampleDbContext>(options => options.UseInMemoryDatabase("RazorWebApp"));
+builder.Services.AddDbContext<ExampleDbContext>(options => options.UseSqlite($"Data Source=paydotnet.sqlite"));
 
 var app = builder.Build();
 
@@ -37,5 +38,9 @@ app.MapRazorPages();
 // STEP 1:
 // REQUIRED TO ADD in RazorPage app.
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+var ctx = scope.ServiceProvider.GetRequiredService<ExampleDbContext>();
+ctx.Database.EnsureCreated();
 
 app.Run();

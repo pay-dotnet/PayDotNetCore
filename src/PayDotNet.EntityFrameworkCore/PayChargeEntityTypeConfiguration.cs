@@ -38,6 +38,7 @@ public class PayChargeEntityTypeConfiguration : IEntityTypeConfiguration<PayChar
         // Owner entities.
         builder.OwnsMany(e => e.LineItems, child =>
         {
+            child.HasKey(e => e.ProcessorId);
             child.Property(e => e.Amount).IsRequired();
             child.Property(e => e.Description).IsRequired();
             child.Property(e => e.Amount).IsRequired();
@@ -45,7 +46,6 @@ public class PayChargeEntityTypeConfiguration : IEntityTypeConfiguration<PayChar
             child.Property(e => e.PeriodStart).IsRequired();
             child.Property(e => e.PeriodEnd).IsRequired();
             child.Property(e => e.PriceId).IsRequired();
-            child.Property(e => e.ProcessorId).IsRequired();
             child.Property(e => e.Quantity).IsRequired();
             child.Property(e => e.UnitAmount).IsRequired(false);
 

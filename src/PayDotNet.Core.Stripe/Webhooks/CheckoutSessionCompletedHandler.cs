@@ -24,16 +24,17 @@ public class CheckoutSessionCompletedHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is Session session)
         {
-            PayCustomer payCustomer = null;
-            // If there is a client reference ID, make sure we have a PayCustomer record
-            if (!string.IsNullOrEmpty(session.ClientReferenceId))
+            if (string.IsNullOrEmpty(session.ClientReferenceId))
             {
-                payCustomer = await _customerManager.GetOrCreateCustomerAsync(PaymentProcessors.Stripe, session.ClientReferenceId, session.CustomerEmail);
+                // Ignore anything without a client reference, else we might copy data we don't need.
+                return;
             }
 
+            // Locate owner.
+            PayCustomer payCustomer = await _customerManager.GetOrCreateCustomerAsync(PaymentProcessors.Stripe, session.ClientReferenceId, session.CustomerEmail); ;
             if (@event.Data.Object is PaymentIntent paymentIntent)
             {
-                PayCharge? _ = await _chargeManager.SynchroniseAsync(payCustomer, paymentIntent.LatestChargeId);
+                await _chargeManager.SynchroniseAsync(payCustomer, paymentIntent.LatestChargeId);
             }
 
             if (@event.Data.Object is Subscription subscription)

@@ -372,6 +372,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
                 return null;
             }
 
+            // Invoice is only for subscriptions. Checkout doesn't create an invoice.
             if (charge.Invoice is null && string.IsNullOrEmpty(charge.InvoiceId))
             {
                 return _mapper.Map(charge, null);
