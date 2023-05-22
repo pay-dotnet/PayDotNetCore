@@ -6,7 +6,7 @@ public class PayCustomer : Timestamps
 
     public PayPaymentMethod DefaultPaymentMethod => PaymentMethods.FirstOrDefault(p => p.IsDefault);
 
-    public DateTime? DeletedAt { get; set; }
+    public DateTimeOffset? DeletedAt { get; set; }
 
     public string Email { get; set; }
 

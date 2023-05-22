@@ -10,6 +10,7 @@ public class PayWebhookEntityTypeConfiguration : IEntityTypeConfiguration<PayWeb
         builder.HasKey(e => e.Id);
         builder.Property(e => e.Event).IsRequired();
         builder.Property(e => e.EventType).IsRequired();
-        builder.Property(e => e.CreatedAt).IsRequired();
+        builder.Property(e => e.CreatedAt).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
+        builder.Property(e => e.UpdatedAt).IsRequired().ValueGeneratedOnUpdate().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
     }
 }

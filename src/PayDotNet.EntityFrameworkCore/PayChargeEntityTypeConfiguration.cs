@@ -15,8 +15,8 @@ public class PayChargeEntityTypeConfiguration : IEntityTypeConfiguration<PayChar
         builder.Property(e => e.ProcessorId).IsRequired();
         builder.Property(e => e.SubscriptionId).IsRequired(false);
 
-        builder.Property(e => e.CreatedAt).IsRequired();
-        builder.Property(e => e.UpdatedAt).IsRequired();
+        builder.Property(e => e.CreatedAt).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
+        builder.Property(e => e.UpdatedAt).IsRequired().ValueGeneratedOnUpdate().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
 
         // Additional properties.
         builder.Property(e => e.Bank).IsRequired(false);

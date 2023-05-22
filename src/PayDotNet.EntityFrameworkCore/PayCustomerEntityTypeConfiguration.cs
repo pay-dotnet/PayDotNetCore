@@ -13,8 +13,8 @@ public class PayCustomerEntityTypeConfiguration : IEntityTypeConfiguration<PayCu
         builder.Property(e => e.IsDefault).IsRequired();
         builder.Property(e => e.Processor).IsRequired().HasMaxLength(512);
 
-        builder.Property(e => e.CreatedAt).IsRequired();
-        builder.Property(e => e.UpdatedAt).IsRequired();
+        builder.Property(e => e.CreatedAt).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
+        builder.Property(e => e.UpdatedAt).IsRequired().ValueGeneratedOnUpdate().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
         builder.Property(e => e.DeletedAt).IsRequired(false);
 
         // Relations

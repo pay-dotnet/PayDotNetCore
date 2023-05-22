@@ -12,7 +12,7 @@ public class PayMerchantEntityTypeConfiguration : IEntityTypeConfiguration<PayMe
         builder.Property(e => e.IsDefault).IsRequired();
         builder.Property(e => e.IsOnboardingComplete).IsRequired();
 
-        builder.Property(e => e.CreatedAt).IsRequired();
-        builder.Property(e => e.UpdatedAt).IsRequired();
+        builder.Property(e => e.CreatedAt).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
+        builder.Property(e => e.UpdatedAt).IsRequired().ValueGeneratedOnUpdate().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
     }
 }
