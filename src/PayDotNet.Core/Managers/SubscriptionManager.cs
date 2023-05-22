@@ -58,9 +58,6 @@ public class SubscriptionManager : ISubscriptionManager
     }
 
     /// <inheritdoc/>
-    /// <remarks>
-    /// TODO: The flow might be different for other payment processor. Stripe and Braintree work a bit differently.
-    /// </remarks>
     public virtual async Task<PaySubscriptionResult> CreateSubscriptionAsync(PayCustomer payCustomer, PaySubscribeOptions options)
     {
         PaySubscriptionResult result = await _paymentProcessorService.CreateSubscriptionAsync(payCustomer, options);

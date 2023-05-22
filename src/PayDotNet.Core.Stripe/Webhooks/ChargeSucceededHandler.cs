@@ -23,8 +23,8 @@ public class ChargeSucceededHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is Charge charge)
         {
-            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, charge.CustomerId);
-            PayCharge? payCharge = await _chargeManager.SynchroniseAsync(payCustomer, charge.Id);
+            PayCustomer payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, charge.CustomerId);
+            PayCharge payCharge = await _chargeManager.SynchroniseAsync(payCustomer, charge.Id);
             await _notificationService.OnChargeSucceededAsync(payCustomer, payCharge);
         }
     }

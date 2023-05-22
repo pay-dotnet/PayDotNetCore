@@ -22,7 +22,7 @@ public class PaymentMethodUpdatedHandler : IStripeWebhookHandler
         {
             if (paymentMethod.Customer is not null)
             {
-                PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, paymentMethod.CustomerId);
+                PayCustomer? payCustomer = await _customerManager.TryFindByIdAsync(PaymentProcessors.Stripe, paymentMethod.CustomerId);
                 if (payCustomer is null)
                 {
                     // If there is a client reference ID, make sure we have a PayCustomer record

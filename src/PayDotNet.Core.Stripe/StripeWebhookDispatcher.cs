@@ -24,7 +24,18 @@ public sealed class StripeWebhookDispatcher : WebhookDispatcher
         {
             if (handler is IStripeWebhookHandler stripeWebhookHandler)
             {
-                await stripeWebhookHandler.HandleAsync(stripeEvent);
+                try
+                {
+                    await stripeWebhookHandler.HandleAsync(stripeEvent);
+                }
+                catch (PayDotNetException payDotNetException)
+                {
+                    Logger.LogError(payDotNetException, string.Format("Handler '{0}' caused a known exception", handler.GetType()));
+                }
+            }
+            else
+            {
+                Logger.LogWarning(string.Format("Handler of type '{0}' does not implement contract interface {1}", handler.GetType(), typeof(IStripeWebhookHandler)));
             }
         }
     }

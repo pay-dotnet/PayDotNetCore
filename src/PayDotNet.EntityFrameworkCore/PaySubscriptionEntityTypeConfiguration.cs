@@ -22,8 +22,8 @@ public class PaySubscriptionEntityTypeConfiguration : IEntityTypeConfiguration<P
         builder.Property(e => e.Status).IsRequired();
         builder.Property(e => e.TrailEndsAt).IsRequired(false);
 
-        builder.Property(e => e.CreatedAt).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
-        builder.Property(e => e.UpdatedAt).IsRequired().ValueGeneratedOnUpdate().HasValueGenerator<DateTimeOffsetValueGeneratorFactory>();
+        builder.Property(e => e.CreatedAt).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<CreatedAtValueGeneratorFactory>();
+        builder.Property(e => e.UpdatedAt).IsRequired().ValueGeneratedOnUpdate().HasValueGenerator<UpdatedAtValueGeneratorFactory>();
 
         // Owned entities.
         builder.OwnsMany(e => e.SubscriptionItems, child =>

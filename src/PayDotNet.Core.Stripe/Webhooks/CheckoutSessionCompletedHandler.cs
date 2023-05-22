@@ -31,7 +31,7 @@ public class CheckoutSessionCompletedHandler : IStripeWebhookHandler
             }
 
             // Locate owner.
-            PayCustomer payCustomer = await _customerManager.GetOrCreateCustomerAsync(PaymentProcessors.Stripe, session.ClientReferenceId, session.CustomerEmail); ;
+            PayCustomer payCustomer = await _customerManager.GetOrCreateCustomerAsync(PaymentProcessors.Stripe, session.ClientReferenceId, session.CustomerEmail);
             if (@event.Data.Object is PaymentIntent paymentIntent)
             {
                 await _chargeManager.SynchroniseAsync(payCustomer, paymentIntent.LatestChargeId);

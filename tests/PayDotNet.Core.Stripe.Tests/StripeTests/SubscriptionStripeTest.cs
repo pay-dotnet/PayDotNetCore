@@ -17,7 +17,7 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
         // Arrange
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(payPaymentMethod);
 
@@ -38,7 +38,7 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
         // Arrange
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(payPaymentMethod);
 
@@ -62,7 +62,7 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
 
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(payPaymentMethod);
 
@@ -84,7 +84,7 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
     {
         // Arrange
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
 
         // Act
         PaySubscriptionResult result = await SystemUnderTest.CreateSubscriptionAsync(payCustomer, new(string.Empty, Subscriptions.BasicSubscription));
@@ -100,7 +100,7 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
     {
         // Arrange
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
 
         // Act
         PaySubscriptionResult result = await SystemUnderTest.CreateSubscriptionAsync(payCustomer, new(string.Empty, Subscriptions.BasicSubscription));
@@ -118,7 +118,7 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.SCA);
 
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
         payCustomer.PaymentMethods.Add(payPaymentMethod);
 
@@ -137,7 +137,7 @@ public class SubscriptionStripeTest : StripeTestBase<StripePaymentProcessorServi
     {
         // Arrange
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
 
         // Act
         PaySubscriptionResult result = await SystemUnderTest.CreateSubscriptionAsync(payCustomer, new("Seats", Items: new()

@@ -20,7 +20,7 @@ public class SubscriptionDeletedHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is Subscription subscription)
         {
-            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, subscription.CustomerId);
+            PayCustomer payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, subscription.CustomerId);
             await _subscriptionManager.SynchroniseAsync(payCustomer, subscription.Id);
         }
     }

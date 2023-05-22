@@ -20,7 +20,7 @@ public class PaymentMethodAttachedHandler : IStripeWebhookHandler
     {
         if (@event.Data.Object is PaymentMethod paymentMethod)
         {
-            PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, paymentMethod.CustomerId);
+            PayCustomer payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, paymentMethod.CustomerId);
             await _paymentMethodManager.SynchroniseAsync(payCustomer, paymentMethod.Id);
         }
     }

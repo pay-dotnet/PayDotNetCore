@@ -17,15 +17,14 @@ public class CustomerManager : ICustomerManager
     }
 
     /// <inheritdoc/>
-    public virtual Task<PayCustomer?> FindByEmailAsync(string processorName, string email)
+    public virtual async Task<PayCustomer> FindByIdAsync(string processorName, string processorId)
     {
-        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Email == email && c.Processor == processorName));
-    }
-
-    /// <inheritdoc/>
-    public virtual Task<PayCustomer?> FindByIdAsync(string processorName, string processorId)
-    {
-        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Processor == processorName && c.ProcessorId == processorId));
+        PayCustomer? payCustomer = await TryFindByIdAsync(processorName, processorId);
+        if (payCustomer is null)
+        {
+            throw new PayDotNetException(string.Format("PayCustomer for payment processor {0} does not exist for processor id '{1}'. ", processorId, processorName));
+        }
+        return payCustomer;
     }
 
     /// <inheritdoc/>
@@ -63,8 +62,9 @@ public class CustomerManager : ICustomerManager
 
         if (!payCustomer.HasProcessorId())
         {
-            string processorId = await _paymentProcessorService.CreateCustomerAsync(payCustomer);
-            payCustomer.ProcessorId = processorId;
+            PayCustomerResult result = await _paymentProcessorService.CreateCustomerAsync(payCustomer);
+            payCustomer.ProcessorId = result.ProcessorId;
+            payCustomer.Account = result.Account;
             await _customerStore.UpdateAsync(payCustomer);
         }
 
@@ -80,5 +80,17 @@ public class CustomerManager : ICustomerManager
         payCustomer.DeletedAt = DateTime.UtcNow;
         payCustomer.IsDefault = false;
         return _customerStore.UpdateAsync(payCustomer);
+    }
+
+    /// <inheritdoc/>
+    public virtual Task<PayCustomer?> TryFindByEmailAsync(string processorName, string email)
+    {
+        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Email == email && c.Processor == processorName));
+    }
+
+    /// <inheritdoc/>
+    public Task<PayCustomer?> TryFindByIdAsync(string processorName, string processorId)
+    {
+        return Task.FromResult(_customerStore.Customers.FirstOrDefault(c => c.Processor == processorName && c.ProcessorId == processorId));
     }
 }

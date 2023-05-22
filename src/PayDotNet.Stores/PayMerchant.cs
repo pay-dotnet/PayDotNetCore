@@ -6,7 +6,7 @@ public class PayMerchant : Timestamps
 
     public bool IsOnboardingComplete { get; set; }
 
-    public string Processor { get; set; }
+    public string Processor { get; set; } = string.Empty;
 
-    public string ProcessorId { get; set; }
+    public string ProcessorId { get; set; } = string.Empty;
 }

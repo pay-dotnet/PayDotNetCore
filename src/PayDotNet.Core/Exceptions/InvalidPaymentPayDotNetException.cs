@@ -1,4 +1,6 @@
-﻿namespace PayDotNet.Core;
+﻿using System.Runtime.Serialization;
+
+namespace PayDotNet.Core;
 
 [Serializable]
 public class InvalidPaymentPayDotNetException : PayDotNetException
@@ -8,17 +10,31 @@ public class InvalidPaymentPayDotNetException : PayDotNetException
         Payment = payment;
     }
 
-    public InvalidPaymentPayDotNetException(string message) : base(message)
+    public InvalidPaymentPayDotNetException(IPayment payment, string message)
+        : base(message)
     {
+        Payment = payment;
     }
 
-    public InvalidPaymentPayDotNetException(string message, Exception inner) : base(message, inner)
+    public InvalidPaymentPayDotNetException(IPayment payment, string message, Exception inner)
+        : base(message, inner)
     {
+        Payment = payment;
     }
 
     protected InvalidPaymentPayDotNetException(
-      System.Runtime.Serialization.SerializationInfo info,
-      System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+      SerializationInfo info,
+      StreamingContext context) : base(info, context)
+    {
+        Payment = (IPayment)info.GetValue(nameof(Payment), typeof(IPayment))!;
+    }
 
     public IPayment Payment { get; }
+
+    public override void GetObjectData(SerializationInfo info, StreamingContext context)
+    {
+        ArgumentNullException.ThrowIfNull(info);
+        info.AddValue(nameof(Payment), Payment);
+        base.GetObjectData(info, context);
+    }
 }

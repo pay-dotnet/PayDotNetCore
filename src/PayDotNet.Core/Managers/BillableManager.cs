@@ -89,12 +89,9 @@ public class BillableManager : IBillableManager
     /// <inheritdoc/>
     public virtual async Task<IPayment> SubscribeAsync(PayCustomer payCustomer, PaySubscribeOptions options)
     {
-        if (_paymentMethodManager.IsPaymentMethodRequired(payCustomer))
+        if (_paymentMethodManager.IsPaymentMethodRequired(payCustomer) && payCustomer.DefaultPaymentMethod == null)
         {
-            if (payCustomer.DefaultPaymentMethod == null)
-            {
-                throw new PayDotNetException("Customer has no default payment method");
-            }
+            throw new PayDotNetException("Customer has no default payment method");
         }
 
         PaySubscriptionResult result = await _subscriptionManager.CreateSubscriptionAsync(payCustomer, options);

@@ -6,7 +6,7 @@ namespace PayDotNet.Core.Webhooks;
 
 public abstract class WebhookDispatcher : IWebhookDispatcher
 {
-    private readonly ILogger _logger;
+    protected readonly ILogger Logger;
 
     protected WebhookDispatcher(
         string name,
@@ -17,7 +17,7 @@ public abstract class WebhookDispatcher : IWebhookDispatcher
         Name = name;
         RoutingTable = routingTable;
         ServiceProvider = serviceProvider;
-        _logger = logger;
+        Logger = logger;
     }
 
     public string Name { get; }
@@ -33,7 +33,7 @@ public abstract class WebhookDispatcher : IWebhookDispatcher
         if (!RoutingTable.ContainsKey(eventType))
         {
             // Unexpected event type
-            _logger.LogWarning("Unhandled event type: {0}", eventType);
+            Logger.LogWarning("Unhandled event type: {0}", eventType);
             yield break;
         }
 

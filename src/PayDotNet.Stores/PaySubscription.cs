@@ -10,13 +10,13 @@ public class PaySubscription : Timestamps
 
     public DateTime? CurrentPeriodStart { get; set; }
 
-    public string CustomerId { get; set; }
+    public string CustomerId { get; set; } = string.Empty;
 
     public DateTime? EndsAt { get; set; }
 
     public bool IsMetered { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
     public PaySubscriptionPauseBehaviour? PauseBehaviour { get; set; }
 
@@ -24,9 +24,9 @@ public class PaySubscription : Timestamps
 
     public DateTime? PauseStartsAt { get; set; }
 
-    public string ProcessorId { get; set; }
+    public string ProcessorId { get; set; } = string.Empty;
 
-    public string ProcessorPlan { get; set; }
+    public string ProcessorPlan { get; set; } = string.Empty;
 
     public int Quantity { get; set; } = 1;
 
@@ -69,5 +69,5 @@ public class PaySubscriptionItem
 
 public class PaySubscriptionItemPrice
 {
-    public string Id { get; set; }
+    public string Id { get; set; } = string.Empty;
 }

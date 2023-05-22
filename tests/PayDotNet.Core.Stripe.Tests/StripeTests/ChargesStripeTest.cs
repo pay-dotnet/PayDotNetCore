@@ -26,7 +26,7 @@ public class CheckoutStripeTest : StripeTestBase<StripePaymentProcessorService>
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
 
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
@@ -44,7 +44,7 @@ public class CheckoutStripeTest : StripeTestBase<StripePaymentProcessorService>
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
 
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
@@ -62,7 +62,7 @@ public class CheckoutStripeTest : StripeTestBase<StripePaymentProcessorService>
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
 
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
@@ -98,7 +98,7 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
 
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
         // Act
@@ -115,7 +115,7 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
     {
         // Arrange
         var payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.DeclineAfterAttaching);
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
@@ -132,7 +132,7 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
     {
         // Arrange
         var payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.SCA);
         PayPaymentMethod payPaymentMethod = await SystemUnderTest.AttachPaymentMethodAsync(payCustomer, new(paymentMethod.Id, IsDefault: true));
 
@@ -153,7 +153,7 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
         PaymentMethod paymentMethod = await new PaymentMethodService().CreateAsync(PaymentMethods.Visa4242);
 
         PayCustomer payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
 
         // Act
         PayChargeResult payChargeResult =
@@ -169,7 +169,7 @@ public class ChargesStripeTest : StripeTestBase<StripePaymentProcessorService>
     {
         // Arrange
         var payCustomer = NewCustomer;
-        payCustomer.ProcessorId = await SystemUnderTest.CreateCustomerAsync(payCustomer);
+        payCustomer.ProcessorId = (await SystemUnderTest.CreateCustomerAsync(payCustomer)).ProcessorId;
 
         // Act
         Func<Task> action = () =>

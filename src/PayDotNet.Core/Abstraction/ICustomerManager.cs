@@ -3,20 +3,12 @@
 public interface ICustomerManager
 {
     /// <summary>
-    /// Finds the customer in the store by email.
-    /// </summary>
-    /// <param name="processorName">The payment processor name.</param>
-    /// <param name="email">The email.</param>
-    /// <returns>The pay customer.</returns>
-    Task<PayCustomer?> FindByEmailAsync(string processorName, string email);
-
-    /// <summary>
-    /// Finds the customer in the store by id.
+    /// Finds the customer in the store by id. If not found, throws a <see cref="PayDotNetException"/> exception.
     /// </summary>
     /// <param name="processorName">The payment processor name.</param>
     /// <param name="processorId">The customer identifier from the payment processor.</param>
     /// <returns>The pay customer.</returns>
-    Task<PayCustomer?> FindByIdAsync(string processorName, string processorId);
+    Task<PayCustomer> FindByIdAsync(string processorName, string processorId);
 
     /// <summary>
     /// Get or creates the customer both in the store as well as in the payment processor.
@@ -45,4 +37,20 @@ public interface ICustomerManager
     /// <param name="payCustomer">The pay customer.</param>
     /// <returns>An awaitable task.</returns>
     Task SoftDeleteAsync(PayCustomer payCustomer);
+
+    /// <summary>
+    /// Finds the customer in the store by email.
+    /// </summary>
+    /// <param name="processorName">The payment processor name.</param>
+    /// <param name="email">The email.</param>
+    /// <returns>The pay customer.</returns>
+    Task<PayCustomer?> TryFindByEmailAsync(string processorName, string email);
+
+    /// <summary>
+    /// Finds the customer in the store by id.
+    /// </summary>
+    /// <param name="processorName">The payment processor name.</param>
+    /// <param name="processorId">The customer identifier from the payment processor.</param>
+    /// <returns>The pay customer.</returns>
+    Task<PayCustomer?> TryFindByIdAsync(string processorName, string processorId);
 }

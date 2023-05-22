@@ -17,7 +17,6 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     private readonly ChargeService _charges;
     private readonly SessionService _checkoutSession;
-    private readonly CreditNoteService _creditNotes;
     private readonly CustomerService _customers;
     private readonly InvoiceService _invoices;
     private readonly DataTransferObjectResponseMapper _mapper;
@@ -26,27 +25,24 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     private readonly PaymentMethodService _paymentMethods;
     private readonly RefundService _refunds;
     private readonly SetupIntentService _setupIntents;
-    private readonly IStripeClient _stripeClient;
     private readonly SubscriptionService _subscriptions;
 
     public StripePaymentProcessorService(
         IStripeClient stripeClient,
         IOptions<PayDotNetConfiguration> options)
     {
-        _stripeClient = stripeClient;
         _options = options;
         _mapper = new(options);
 
-        _charges = new(_stripeClient);
-        _customers = new(_stripeClient);
-        _invoices = new(_stripeClient);
-        _subscriptions = new(_stripeClient);
-        _paymentMethods = new(_stripeClient);
-        _paymentIntents = new(_stripeClient);
-        _setupIntents = new(_stripeClient);
-        _refunds = new(_stripeClient);
-        _checkoutSession = new(_stripeClient);
-        _creditNotes = new(_stripeClient);
+        _charges = new(stripeClient);
+        _customers = new(stripeClient);
+        _invoices = new(stripeClient);
+        _subscriptions = new(stripeClient);
+        _paymentMethods = new(stripeClient);
+        _paymentIntents = new(stripeClient);
+        _setupIntents = new(stripeClient);
+        _refunds = new(stripeClient);
+        _checkoutSession = new(stripeClient);
     }
 
     public string Name => PaymentProcessors.Stripe;
@@ -129,12 +125,12 @@ public class StripePaymentProcessorService : IPaymentProcessorService
 
     #region Customer API
 
-    public Task<string> CreateCustomerAsync(PayCustomer payCustomer)
+    public Task<PayCustomerResult> CreateCustomerAsync(PayCustomer payCustomer)
     {
         return TryAsync(async () =>
         {
             Customer customer = await _customers.CreateAsync(GetCustomerCreateOptions(payCustomer));
-            return customer.Id;
+            return new PayCustomerResult(customer.Id, "DEFAULT");
         });
     }
 
@@ -166,7 +162,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
     {
         return TryAsync(async () =>
         {
-            Customer _ = await _customers.UpdateAsync(payCustomer.Processor, GetCustomerUpdateOptions(payCustomer));
+            await _customers.UpdateAsync(payCustomer.Processor, GetCustomerUpdateOptions(payCustomer));
         });
     }
 
@@ -488,7 +484,7 @@ public class StripePaymentProcessorService : IPaymentProcessorService
         return TryAsync(async () =>
         {
             CreditNoteService creditNoteService = new();
-            CreditNote creditNote = await creditNoteService.CreateAsync(new()
+            await creditNoteService.CreateAsync(new()
             {
                 Invoice = payCharge.InvoiceId,
                 RefundAmount = options.Amount,

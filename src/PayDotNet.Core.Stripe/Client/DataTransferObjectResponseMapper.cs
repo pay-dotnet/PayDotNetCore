@@ -30,7 +30,6 @@ public class DataTransferObjectResponseMapper
     {
         ChargePaymentMethodDetails paymentMethodDetails = @object.PaymentMethodDetails;
         JToken? paymentMethod = paymentMethodDetails.RawJObject.GetValue(paymentMethodDetails.Type);
-
         PayCharge payCharge = new()
         {
             ProcessorId = @object.Id,

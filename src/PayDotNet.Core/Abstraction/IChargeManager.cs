@@ -28,6 +28,14 @@ public interface IChargeManager
     Task<PayCharge?> GetAsync(string processorId);
 
     /// <summary>
+    /// Retrieves the "payment" object from the payment processor.
+    /// </summary>
+    /// <param name="payCustomer">The customer.</param>
+    /// <param name="processorId">The payment processor id for the charge.</param>
+    /// <returns>The payment.</returns>
+    Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId);
+
+    /// <summary>
     /// Refund the customer on the specified charge.
     /// Issues a CreditNote if there's an invoice, otherwise uses a Refund.
     /// This allows Tax to be handled properly
@@ -44,5 +52,5 @@ public interface IChargeManager
     /// <param name="payCustomer">The customer.</param>
     /// <param name="processorId">The payment processor id for the charge.</param>
     /// <returns>The synchronised pay charge.</returns>
-    Task<PayCharge?> SynchroniseAsync(PayCustomer payCustomer, string processorId);
+    Task<PayCharge> SynchroniseAsync(PayCustomer payCustomer, string processorId);
 }

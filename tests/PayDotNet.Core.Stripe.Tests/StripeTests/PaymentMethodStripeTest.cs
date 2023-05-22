@@ -14,14 +14,14 @@ public class PaymentMethodStripeTest : StripeTestBase<StripePaymentProcessorServ
     [Fact]
     public async Task stripe_attach_payment_method_to_customer()
     {
-        string customerProcessorId = await SystemUnderTest.CreateCustomerAsync(new PayCustomer()
+        var result = await SystemUnderTest.CreateCustomerAsync(new PayCustomer()
         {
             Email = "johndoe@email.com"
         });
-        customerProcessorId.Should().NotBeNull();
+        result.ProcessorId.Should().NotBeNull();
         PayCustomer payCustomer = new()
         {
-            ProcessorId = customerProcessorId,
+            ProcessorId = result.ProcessorId,
         };
 
         // Simulate creation of payment method through another form.

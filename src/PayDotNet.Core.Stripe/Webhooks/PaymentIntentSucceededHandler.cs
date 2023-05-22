@@ -30,7 +30,7 @@ public class PaymentIntentSucceededHandler : IStripeWebhookHandler
             return;
         }
 
-        PayCustomer? payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, paymentIntent.CustomerId);
-        PayCharge? _ = await _chargeManager.SynchroniseAsync(payCustomer, paymentIntent.LatestChargeId);
+        PayCustomer payCustomer = await _customerManager.FindByIdAsync(PaymentProcessors.Stripe, paymentIntent.CustomerId);
+        await _chargeManager.SynchroniseAsync(payCustomer, paymentIntent.LatestChargeId);
     }
 }

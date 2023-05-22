@@ -6,7 +6,7 @@ public interface IPaymentProcessorService
 
     #region Customer
 
-    Task<string> CreateCustomerAsync(PayCustomer payCustomer);
+    Task<PayCustomerResult> CreateCustomerAsync(PayCustomer payCustomer);
 
     Task UpdateCustomerAsync(PayCustomer payCustomer);
 

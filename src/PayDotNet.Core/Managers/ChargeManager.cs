@@ -42,6 +42,11 @@ public class ChargeManager : IChargeManager
         return Task.FromResult(_chargeStore.Charges.FirstOrDefault(c => c.ProcessorId == processorId));
     }
 
+    public Task<IPayment> GetPaymentAsync(PayCustomer payCustomer, string processorId)
+    {
+        return _paymentProcessorService.GetPaymentAsync(payCustomer, processorId);
+    }
+
     /// <inheritdoc/>
     public virtual async Task RefundAsync(PayCustomer payCustomer, PayCharge payCharge, PayChargeRefundOptions options)
     {
@@ -58,12 +63,12 @@ public class ChargeManager : IChargeManager
     }
 
     /// <inheritdoc/>
-    public virtual async Task<PayCharge?> SynchroniseAsync(PayCustomer payCustomer, string processorId)
+    public virtual async Task<PayCharge> SynchroniseAsync(PayCustomer payCustomer, string processorId)
     {
         PayCharge? payCharge = await _paymentProcessorService.GetChargeAsync(payCustomer, processorId);
         if (payCharge is null)
         {
-            return null;
+            throw new PayDotNetException(string.Format("Charge with identifier '{0}', does not exist. Unable to synchronise PayCharge", processorId));
         }
         return await SynchroniseAsync(payCustomer, payCharge);
     }

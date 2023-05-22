@@ -42,8 +42,8 @@ public interface IPaymentMethodManager
     /// <summary>
     ///
     /// </summary>
-    /// <param name="payCustomer"></param>
-    /// <param name="paymentMethodId"></param>
+    /// <param name="payCustomer">The customer.</param>
+    /// <param name="processorId">The payment method id to synchronise.</param>
     /// <returns>The synchronised payment method.</returns>
-    Task<PayPaymentMethod?> SynchroniseAsync(PayCustomer payCustomer, string paymentMethodId);
+    Task<PayPaymentMethod?> SynchroniseAsync(PayCustomer payCustomer, string processorId);
 }

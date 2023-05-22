@@ -50,7 +50,7 @@ public class CompositePaymentProcessorService : IPaymentProcessorService
         return _paymentProcessorServices[payCustomer.Processor].CheckoutAsync(payCustomer, options);
     }
 
-    public Task<string> CreateCustomerAsync(PayCustomer payCustomer)
+    public Task<PayCustomerResult> CreateCustomerAsync(PayCustomer payCustomer)
     {
         GuardPaymentProcessorExists(payCustomer);
         return _paymentProcessorServices[payCustomer.Processor].CreateCustomerAsync(payCustomer);

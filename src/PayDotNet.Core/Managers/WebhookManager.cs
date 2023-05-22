@@ -13,17 +13,7 @@ public class WebhookManager : IWebhookManager
 
     public virtual Task CreateAsync(string processor, string eventType, string @event)
     {
+        // TODO: refactor to PayWebhook class.
         return _webhookDispatcher.DispatchAsync(processor, eventType, @event);
-        //return _webhooksStore.CreateAsync(new()
-        //{
-        //    Processor = processor,
-        //    EventType = eventType,
-
-        //    // TODO: json
-        //    Event = @event.ToString(),
-
-        //    CreatedAt = DateTime.UtcNow,
-        //    UpdatedAt = DateTime.UtcNow,
-        //});
     }
 }

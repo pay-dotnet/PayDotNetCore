@@ -5,6 +5,7 @@ namespace PayDotNet.Core.Stripe.Webhooks;
 
 public class PaymentActionRequiredHandler : IStripeWebhookHandler
 {
+    private readonly IChargeManager _chargeManager;
     private readonly ICustomerManager _customerManager;
     private readonly IPayNotificationService _notificationService;
     private readonly ISubscriptionManager _subscriptionManager;
@@ -12,10 +13,12 @@ public class PaymentActionRequiredHandler : IStripeWebhookHandler
     public PaymentActionRequiredHandler(
         ICustomerManager customerManager,
         ISubscriptionManager subscriptionManager,
+        IChargeManager chargeManager,
         IPayNotificationService notificationService)
     {
         _customerManager = customerManager;
         _subscriptionManager = subscriptionManager;
+        _chargeManager = chargeManager;
         _notificationService = notificationService;
     }
 
@@ -30,7 +33,8 @@ public class PaymentActionRequiredHandler : IStripeWebhookHandler
                 return;
             }
 
-            await _notificationService.OnPaymentActionRequiredAsync(payCustomer, paySubscription, null);
+            IPayment payment = await _chargeManager.GetPaymentAsync(payCustomer, invoice.PaymentIntentId);
+            await _notificationService.OnPaymentActionRequiredAsync(payCustomer, paySubscription, payment);
         }
     }
 }

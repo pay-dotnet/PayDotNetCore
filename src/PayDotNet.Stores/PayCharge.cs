@@ -8,13 +8,13 @@ public class PayCharge : Timestamps
 
     public int? ApplicationFeeAmount { get; set; }
 
-    public string Currency { get; set; }
+    public string Currency { get; set; } = string.Empty;
 
-    public string CustomerId { get; set; }
+    public string CustomerId { get; set; } = string.Empty;
 
-    public string ProcessorId { get; set; }
+    public string ProcessorId { get; set; } = string.Empty;
 
-    public string SubscriptionId { get; set; }
+    public string SubscriptionId { get; set; } = string.Empty;
 
     #region Additional Properties
 
@@ -36,15 +36,15 @@ public class PayCharge : Timestamps
 
     public virtual ICollection<PayChargeLineItem> LineItems { get; set; } = new List<PayChargeLineItem>();
 
-    public string PaymentIntentId { get; set; }
+    public string PaymentIntentId { get; set; } = string.Empty;
 
-    public string PaymentMethodType { get; set; }
+    public string PaymentMethodType { get; set; } = string.Empty;
 
     public DateTime PeriodEnd { get; set; }
 
     public DateTime PeriodStart { get; set; }
 
-    public string ReceiptUrl { get; set; }
+    public string ReceiptUrl { get; set; } = string.Empty;
 
     public virtual ICollection<PayChargeRefund> Refunds { get; set; } = new List<PayChargeRefund>();
 
@@ -65,7 +65,7 @@ public class PayChargeLineItem
 {
     public int Amount { get; set; }
 
-    public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
     public virtual List<string> Discounts { get; set; } = new List<string>();
 
@@ -75,13 +75,13 @@ public class PayChargeLineItem
 
     public DateTime PeriodStart { get; set; }
 
-    public string PriceId { get; set; }
+    public string PriceId { get; set; } = string.Empty;
 
-    public string ProcessorId { get; set; }
+    public string ProcessorId { get; set; } = string.Empty;
 
     public int Quantity { get; set; }
 
-    public virtual ICollection<PayChargeTaxAmount> TaxAmounts { get; set; }
+    public virtual ICollection<PayChargeTaxAmount> TaxAmounts { get; set; } = new List<PayChargeTaxAmount>();
 
     public int? UnitAmount { get; set; }
 }
@@ -92,27 +92,27 @@ public class PayChargeRefund
 
     public DateTime CreatedAt { get; set; }
 
-    public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
-    public string ProcessorId { get; set; }
+    public string ProcessorId { get; set; } = string.Empty;
 
-    public string Reason { get; set; }
+    public string Reason { get; set; } = string.Empty;
 
-    public string Status { get; set; }
+    public string Status { get; set; } = string.Empty;
 }
 
 public class PayChargeTaxAmount
 {
     public int Amount { get; set; }
 
-    public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 }
 
 public class PayChargeTotalDiscount
 {
     public int Amount { get; set; }
 
-    public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
-    public string DiscountId { get; set; }
+    public string DiscountId { get; set; } = string.Empty;
 }

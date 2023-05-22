@@ -14,11 +14,11 @@ public class CustomerStripeTest : StripeTestBase<StripePaymentProcessorService>
     [Fact]
     public async Task stripe_create_customer()
     {
-        string customerProcessorId = await SystemUnderTest.CreateCustomerAsync(new PayCustomer()
+        var result = await SystemUnderTest.CreateCustomerAsync(new PayCustomer()
         {
             Email = "johndoe@email.com"
         });
-        customerProcessorId.Should().NotBeNullOrEmpty();
+        result.ProcessorId.Should().NotBeNullOrEmpty();
     }
 
     protected override StripePaymentProcessorService CreateSystemUnderTest()
