@@ -60,7 +60,7 @@ public class DataTransferObjectResponseMapper
         if (invoice is not null)
         {
             payCharge.InvoiceId = invoice.Id;
-            // TODO: payCharge.SubscriptionId = invoice.SubscriptionId; // TODO, find based on processorId
+            payCharge.SubscriptionProcessorId = invoice.SubscriptionId;
 
             payCharge.PeriodStart = invoice.PeriodStart;
             payCharge.PeriodEnd = invoice.PeriodEnd;

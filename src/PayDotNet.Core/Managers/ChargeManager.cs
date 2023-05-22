@@ -7,11 +7,14 @@ public class ChargeManager : IChargeManager
 {
     private readonly IChargeStore _chargeStore;
     private readonly IPaymentProcessorService _paymentProcessorService;
+    private readonly ISubscriptionManager _subscriptionManager;
 
     public ChargeManager(
+        ISubscriptionManager subscriptionManager,
         IChargeStore chargeStore,
         CompositePaymentProcessorService paymentProcessorService)
     {
+        _subscriptionManager = subscriptionManager;
         _chargeStore = chargeStore;
         _paymentProcessorService = paymentProcessorService;
     }
@@ -82,6 +85,13 @@ public class ChargeManager : IChargeManager
     {
         // Fix link to Pay Customer
         payCharge.CustomerId = payCustomer.Id;
+
+        // Fix link to Pay Subscription
+        if (!string.IsNullOrEmpty(payCharge.SubscriptionProcessorId))
+        {
+            PaySubscription? paySubscription = await _subscriptionManager.FindByIdAsync(payCustomer, payCharge.SubscriptionProcessorId);
+            payCharge.Subscription = paySubscription;
+        }
 
         PayCharge? existingCharge = _chargeStore.Charges.FirstOrDefault(s => s.ProcessorId == payCharge.ProcessorId);
         if (existingCharge is not null)

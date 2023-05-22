@@ -13,10 +13,13 @@ public class PayChargeEntityTypeConfiguration : IEntityTypeConfiguration<PayChar
         builder.Property(e => e.ApplicationFeeAmount).IsRequired(false);
         builder.Property(e => e.Currency).IsRequired(false);
         builder.Property(e => e.ProcessorId).IsRequired();
-        builder.Property(e => e.SubscriptionId).IsRequired(false);
 
         builder.Property(e => e.CreatedAt).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<CreatedAtValueGeneratorFactory>();
         builder.Property(e => e.UpdatedAt).IsRequired().ValueGeneratedOnUpdate().HasValueGenerator<UpdatedAtValueGeneratorFactory>();
+
+        // Relation
+        builder.Property(e => e.SubscriptionProcessorId).IsRequired(false);
+        builder.HasOne(e => e.Subscription).WithMany().HasForeignKey(e => e.SubscriptionId).IsRequired(false);
 
         // Additional properties.
         builder.Property(e => e.Bank).IsRequired(false);
