@@ -26,7 +26,7 @@ public abstract class WebhookDispatcher : IWebhookDispatcher
 
     public IServiceProvider ServiceProvider { get; }
 
-    public abstract Task DispatchAsync(string processorName, string eventType, string @event);
+    public abstract Task DispatchAsync(PayWebhook payWebhook);
 
     public IEnumerable<object> GetWebhookHandlers(string eventType)
     {

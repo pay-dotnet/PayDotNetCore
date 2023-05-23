@@ -2,5 +2,5 @@
 
 public interface IWebhookDispatcher
 {
-    Task DispatchAsync(string processorName, string eventType, string @event);
+    Task DispatchAsync(PayWebhook payWebhook);
 }

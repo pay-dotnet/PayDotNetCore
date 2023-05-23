@@ -30,6 +30,16 @@ public class PayCustomerStore<TContext> : PayStoreBase<PayCustomer, TContext>, I
     public IQueryable<PayCustomer> Customers => Entities;
 }
 
+public class PayMerchantStore<TContext> : PayStoreBase<PayMerchant, TContext>, IMerchantStore
+    where TContext : DbContext
+{
+    public PayMerchantStore(TContext context) : base(context)
+    {
+    }
+
+    public IQueryable<PayMerchant> Merchants => Entities;
+}
+
 public class PayPaymentMethodStore<TContext> : PayStoreBase<PayPaymentMethod, TContext>, IPaymentMethodStore
     where TContext : DbContext
 {
@@ -50,12 +60,13 @@ public class PaySubscriptionStore<TContext> : PayStoreBase<PaySubscription, TCon
     public IQueryable<PaySubscription> Subscriptions => Entities;
 }
 
-public class PayMerchantStore<TContext> : PayStoreBase<PayMerchant, TContext>, IMerchantStore
+public class PayWebhookStore<TContext> : PayStoreBase<PayWebhook, TContext>, IWebhookStore
     where TContext : DbContext
 {
-    public PayMerchantStore(TContext context) : base(context)
+    public PayWebhookStore(TContext context)
+        : base(context)
     {
     }
 
-    public IQueryable<PayMerchant> Merchants => Entities;
+    public IQueryable<PayWebhook> Webhooks => Entities;
 }

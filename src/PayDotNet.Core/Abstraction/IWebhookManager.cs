@@ -2,5 +2,5 @@
 
 public interface IWebhookManager
 {
-    Task CreateAsync(string processor, string eventType, string @event);
+    Task HandleAsync(PayWebhook payWebhook);
 }

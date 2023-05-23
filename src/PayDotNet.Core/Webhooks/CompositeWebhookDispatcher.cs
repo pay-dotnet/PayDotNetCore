@@ -19,15 +19,15 @@ public class CompositeWebhookDispatcher : IWebhookDispatcher
         _logger = logger;
     }
 
-    public Task DispatchAsync(string processorName, string eventType, string @event)
+    public Task DispatchAsync(PayWebhook payWebhook)
     {
-        if (!_dispatchers.ContainsKey(processorName))
+        if (!_dispatchers.ContainsKey(payWebhook.Processor))
         {
-            _logger.LogWarning("Unhandled processor name: {0}", processorName);
+            _logger.LogWarning("Unhandled processor name: {0}", payWebhook.Processor);
             return Task.CompletedTask;
         }
 
-        WebhookDispatcher dispatcher = _dispatchers[processorName];
-        return dispatcher.DispatchAsync(processorName, eventType, @event);
+        WebhookDispatcher dispatcher = _dispatchers[payWebhook.Processor];
+        return dispatcher.DispatchAsync(payWebhook);
     }
 }

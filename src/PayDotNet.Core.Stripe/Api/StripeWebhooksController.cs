@@ -30,7 +30,8 @@ public class StripeWebhookController : Controller
         try
         {
             Event stripeEvent = await GetVerifiedEvent(json);
-            await _webhookManager.CreateAsync(PaymentProcessors.Stripe, stripeEvent.Type, json);
+            PayWebhook payWebhook = new(stripeEvent.Id, PaymentProcessors.Stripe, stripeEvent.Type, json, stripeEvent.Created);
+            await _webhookManager.HandleAsync(payWebhook);
             return Ok();
         }
         catch (StripeException stripeException)

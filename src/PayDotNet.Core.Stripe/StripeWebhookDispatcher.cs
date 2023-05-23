@@ -17,10 +17,10 @@ public sealed class StripeWebhookDispatcher : WebhookDispatcher
     {
     }
 
-    public override async Task DispatchAsync(string processorName, string eventType, string @event)
+    public override async Task DispatchAsync(PayWebhook payWebhook)
     {
-        Event stripeEvent = EventUtility.ParseEvent(@event);
-        foreach (object handler in GetWebhookHandlers(eventType))
+        Event stripeEvent = EventUtility.ParseEvent(payWebhook.Event);
+        foreach (object handler in GetWebhookHandlers(payWebhook.EventType))
         {
             if (handler is IStripeWebhookHandler stripeWebhookHandler)
             {

@@ -14,6 +14,7 @@ public static class ServiceCollectionExtensions
         builder.Services.AddScoped<IPaymentMethodStore, PayPaymentMethodStore<TContext>>();
         builder.Services.AddScoped<IMerchantStore, PayMerchantStore<TContext>>();
         builder.Services.AddScoped<ISubscriptionStore, PaySubscriptionStore<TContext>>();
+        builder.Services.AddScoped<IWebhookStore, PayWebhookStore<TContext>>();
 
         return builder;
     }
