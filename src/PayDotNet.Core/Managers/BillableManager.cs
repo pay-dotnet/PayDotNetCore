@@ -77,6 +77,11 @@ public class BillableManager : IBillableManager
     /// <inheritdoc/>
     public virtual async Task<PayCustomer> GetOrCreateCustomerAsync(string email, PayCustomerOptions options)
     {
+        if (options.ProcessorName == PaymentProcessors.Fake && !options.AllowFake)
+        {
+            throw new PayDotNetException(string.Format("Processor '{0}' is not allowed", options.ProcessorName));
+        }
+
         PayCustomer payCustomer = await _customerManager.GetOrCreateCustomerAsync(options.ProcessorName, email);
         if (!string.IsNullOrEmpty(options.PaymentMethodId))
         {

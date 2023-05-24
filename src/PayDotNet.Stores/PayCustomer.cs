@@ -12,7 +12,6 @@ public class PayCustomer : Timestamps
 
     public string Email { get; set; } = string.Empty;
 
-    // TODO: generic key.
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
     public bool IsDefault { get; set; }
@@ -22,7 +21,7 @@ public class PayCustomer : Timestamps
     // Stripe, FakeProcessor, Braintree, etc.
     public string Processor { get; set; } = string.Empty;
 
-    public string ProcessorId { get; set; } = string.Empty;
+    public string? ProcessorId { get; set; } = string.Empty;
 
     public virtual ICollection<PaySubscription> Subscriptions { get; set; } = new List<PaySubscription>();
 

@@ -84,17 +84,17 @@ public class PaymentMethodManager : IPaymentMethodManager
     private async Task SavePaymentMethodAsync(PayPaymentMethod payPaymentMethod, PayPaymentMethodOptions options)
     {
         PayPaymentMethod? existingPaymentMethod = _paymentMethodStore.PaymentMethods.FirstOrDefault(p => p.ProcessorId == payPaymentMethod.ProcessorId);
+        if (options.IsDefault)
+        {
+            await ResetDefaultPaymentMethodsAsync(payPaymentMethod);
+        }
+
         if (existingPaymentMethod is null)
         {
             await _paymentMethodStore.CreateAsync(payPaymentMethod);
         }
         else
         {
-            if (options.IsDefault)
-            {
-                await ResetDefaultPaymentMethodsAsync(payPaymentMethod);
-            }
-
             existingPaymentMethod.IsDefault = options.IsDefault;
             await _paymentMethodStore.UpdateAsync(existingPaymentMethod);
         }
