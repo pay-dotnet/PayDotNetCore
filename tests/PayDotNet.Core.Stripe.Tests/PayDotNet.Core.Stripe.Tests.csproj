@@ -9,11 +9,87 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Webhooks\Fixtures\account.updated.json" />
+    <None Remove="Webhooks\Fixtures\charge.refunded.json" />
+    <None Remove="Webhooks\Fixtures\charge.succeeded.json" />
+    <None Remove="Webhooks\Fixtures\checkout.session.completed.json" />
+    <None Remove="Webhooks\Fixtures\customer.deleted.json" />
+    <None Remove="Webhooks\Fixtures\customer.updated.json" />
+    <None Remove="Webhooks\Fixtures\invoice.payment_action_required.json" />
+    <None Remove="Webhooks\Fixtures\invoice.payment_failed.json" />
+    <None Remove="Webhooks\Fixtures\invoice.upcoming.json" />
+    <None Remove="Webhooks\Fixtures\payment_method.attached.json" />
+    <None Remove="Webhooks\Fixtures\payment_method.detached.json" />
+    <None Remove="Webhooks\Fixtures\payment_method.updated.json" />
+    <None Remove="Webhooks\Fixtures\subscription.created.json" />
+    <None Remove="Webhooks\Fixtures\subscription.deleted.json" />
+    <None Remove="Webhooks\Fixtures\subscription.trial_ended.json" />
+    <None Remove="Webhooks\Fixtures\subscription.trial_will_end.json" />
+    <None Remove="Webhooks\Fixtures\subscription.updated.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Webhooks\Fixtures\account.updated.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\charge.refunded.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\charge.succeeded.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\checkout.session.completed.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\customer.deleted.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\customer.updated.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\invoice.payment_action_required.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\invoice.payment_failed.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\invoice.upcoming.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\payment_method.attached.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\payment_method.detached.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\payment_method.updated.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\subscription.created.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\subscription.deleted.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\subscription.trial_ended.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\subscription.trial_will_end.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Webhooks\Fixtures\subscription.updated.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="coverlet.msbuild" Version="3.2.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="RichardSzalay.MockHttp" Version="6.0.0" />
     <PackageReference Include="Scotch" Version="0.1.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
@@ -28,6 +104,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\PayDotNet.Core.Stripe\PayDotNet.Core.Stripe.csproj" />
+    <ProjectReference Include="..\..\src\PayDotNet.EntityFrameworkCore\PayDotNet.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\PayDotNet.Core.Tests\PayDotNet.Core.Tests.csproj" />
   </ItemGroup>
 

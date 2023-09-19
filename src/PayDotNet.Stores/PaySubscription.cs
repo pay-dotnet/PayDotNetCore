@@ -32,6 +32,8 @@ public class PaySubscription : Timestamps
 
     public PaySubscriptionStatus Status { get; set; }
 
+    public string? SubscriptionId { get; set; }
+
     public virtual ICollection<PaySubscriptionItem> SubscriptionItems { get; set; } = new List<PaySubscriptionItem>();
 
     public DateTime? TrailEndsAt { get; set; }

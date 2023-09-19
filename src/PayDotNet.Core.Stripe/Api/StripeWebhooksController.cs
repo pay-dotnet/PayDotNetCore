@@ -6,7 +6,6 @@ using Stripe;
 
 namespace PayDotNet.Core.Stripe.Api;
 
-[Route("pay/webhooks/stripe")]
 public class StripeWebhookController : Controller
 {
     private readonly ILogger<StripeWebhookController> _logger;
@@ -24,7 +23,8 @@ public class StripeWebhookController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Index()
+    [Route("pay/webhooks/stripe")]
+    public async Task<IActionResult> HandleWebhookAsync()
     {
         string json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
         try

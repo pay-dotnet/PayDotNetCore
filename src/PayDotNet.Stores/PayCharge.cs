@@ -16,8 +16,6 @@ public class PayCharge : Timestamps
 
     public virtual PaySubscription? Subscription { get; set; }
 
-    public string? SubscriptionId { get; set; }
-
     public string? SubscriptionProcessorId { get; set; }
 
     #region Additional Properties

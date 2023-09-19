@@ -19,7 +19,9 @@ public class PayChargeEntityTypeConfiguration : IEntityTypeConfiguration<PayChar
 
         // Relation
         builder.Property(e => e.SubscriptionProcessorId).IsRequired(false);
-        builder.HasOne(e => e.Subscription).WithMany().HasForeignKey(e => e.SubscriptionId).IsRequired(false);
+        builder.HasOne(e => e.Subscription)
+            .WithMany()
+            .HasPrincipalKey(e => new { e.CustomerId, e.SubscriptionId }).IsRequired(false);
 
         // Additional properties.
         builder.Property(e => e.Bank).IsRequired(false);

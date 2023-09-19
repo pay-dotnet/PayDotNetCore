@@ -40,3 +40,38 @@ public sealed class StripeWebhookDispatcher : WebhookDispatcher
         }
     }
 }
+
+
+public class Solution {
+    public bool CanJump(int[] nums) {
+        bool[] visited = new bool[nums.Length];
+        for(int i = nums[0]; i > 0; i--)
+        {
+            int cursor = i;
+            Console.Write($"START ");
+            Console.Write($"--> {cursor} ");
+            visited[cursor] = true;
+            while(true)
+            {   
+                if(cursor == nums.Length -1)
+                {
+                    Console.WriteLine($"--> END");
+                    return true;
+                }
+
+                cursor += nums[cursor];
+                visited[cursor] = true;
+                Console.Write($"--> {cursor} ");
+                if(cursor > nums.Length - 1)
+                {
+                    break;
+                }
+
+            }
+            Console.WriteLine($"Can't jump {i}");
+        }
+
+        return false;
+        
+    }
+}
